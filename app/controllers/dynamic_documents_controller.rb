@@ -1,0 +1,2 @@
+class DynamicDocumentsController < ApplicationController
+end

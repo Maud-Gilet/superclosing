@@ -1,0 +1,2 @@
+class DynamicTemplatesController < ApplicationController
+end
