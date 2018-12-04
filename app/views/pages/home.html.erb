@@ -4,10 +4,13 @@
 
 <% if user_signed_in? %>
 
+    <% if current_user.companies.length == 0 %>
 
   <p>Vous êtes associé d'une entreprise, créez votre première société :</p>
 
   <p> <%= link_to "Créer ma première société", new_company_path%> </p>
+
+  <% else %>
 
   <p>Vous êtes associé et souhaitez accéder à la dashboard de votre société, sélectionnez votre société :</p>
 
@@ -22,6 +25,11 @@
   <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
   <% end %>
 </ul>
+<% end %>
+
+<p>
+<p> <%= link_to "ou créez une nouvelle société", new_company_path%> </p>
+</p>
 
 <% else %>
 

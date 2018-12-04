@@ -4,4 +4,4 @@
 <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
 <br>
 <br>
-<%= link_to 'Retour au menu principal', current_user_dashboard_path %>
+<%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>

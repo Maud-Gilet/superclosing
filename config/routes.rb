@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  root to: 'pages#home'
   authenticated :user do
-    root 'pages#dashboard', as: :current_user_dashboard
+    root 'pages#home'
   end
 
-  root to: 'pages#home'
+
 
   resources :companies do
    resources :s_documents, only: [:index, :show, :new, :create, :destroy]
