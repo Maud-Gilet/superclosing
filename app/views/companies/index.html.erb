@@ -1,0 +1,6 @@
+<p>Voici toutes les companies du site</p>
+
+<ul> <% @companies.each do |societe| %>
+  <li> <%= societe.name %> - <%= societe.address %></li>
+  <% end %>
+</ul>

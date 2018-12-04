@@ -1,0 +1,39 @@
+<p>Formulaire de création d'une nouvelle company</p>
+
+<div class="container">
+<form action="/companies" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label for="name">Name: </label>
+  <input type="string" name="company[name]" id="name">
+
+  <label for="address">Address: </label>
+  <input type="string" name="company[address]" id="address">
+
+  <label for="siren">SIREN: </label>
+  <input type="string" name="company[siren]" id="siren">
+
+  <label for="legal_form">Forme sociale: </label>
+  <input type="string" name="company[legal_form]" id="legal_form">
+
+  <label for="number_of_shares">Nombre d'actions initial: </label>
+  <input type="integer" name="company[number_of_shares]" id="number_of_shares">
+
+  <label for="share_nominal_value_cents">Valeur nominale de l'action: </label>
+  <input type="integer" name="company[share_nominal_value_cents]" id="share_nominal_value_cents">
+
+  <label for="share_nominal_value_currency">Monnaie devise: </label>
+  <input type="string" name="company[share_nominal_value_currency]" id="share_nominal_value_currency">
+
+  <label for="creation_date">Date de création de l'Entreprise: </label>
+  <input type="date" name="company[creation_date]" id="creation_date">
+
+  <label for="fiscal_date">Année fiscale en cours: </label>
+  <input type="date" name="company[fiscal_date]" id="fiscal_date">
+
+  <label for="logo_url"> Logo de l'entreprise (.jpg): </label>
+  <input type="file" name="logo_url" value="logo_url" id="logo_url">
+
+  <input type="submit">
+</form>
+
+</div>
