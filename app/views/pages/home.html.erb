@@ -4,9 +4,24 @@
 
 <% if user_signed_in? %>
 
-  <p>Vos données en tant qu'associé dans une société :</p>
 
-  <p>Vos données en tant qu'investisseur: </p>
+  <p>Vous êtes associé d'une entreprise, créez votre première société :</p>
+
+  <p> <%= link_to "Créer ma première société", new_company_path%> </p>
+
+  <p>Vous êtes associé et souhaitez accéder à la dashboard de votre société, sélectionnez votre société :</p>
+
+<ul><% @associe.each do |role|%>
+  <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
+  <% end %>
+</ul>
+
+  <p>Vous êtes investisseur et souhaitez accéder aux Data Room de vos opérations, sélectionnez la société :</p>
+
+<ul><% @investisseur.each do |role|%>
+  <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
+  <% end %>
+</ul>
 
 <% else %>
 
