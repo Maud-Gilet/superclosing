@@ -1,0 +1,14 @@
+<h1>Bienvenue @ superclosing</h1>
+
+  <% if @user.gender == 'Mme' %>
+    <p>
+      <%= @greeting_female %> <%= @user.first_name %>, nous sommes ravis de te compter parmi nous!
+    </p>
+  <% else %>
+    <p>
+      <%= @greeting_male %> <%= @user.first_name %>, nous sommes ravis de te compter parmi nous!
+    </p>
+  <% end %>
+  <p>
+    A très vite sur <a href="http://www.superclosing.com" target="_blank">superclosing</a>!
+  </p>
