@@ -1,7 +1,7 @@
 class OperationsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
-    @operations = Operation.all.where(company: @company)
+    @operations = Operation.where(company: @company)
   end
 
   def new
