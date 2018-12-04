@@ -1,5 +1,18 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<br>
-<br>
-<h3>Super nice landing page to come</h3>
+
+
+
+<% if user_signed_in? %>
+
+  <p>Vos données en tant qu'associé dans une société :</p>
+
+  <p>Vos données en tant qu'investisseur: </p>
+
+<% else %>
+
+  <p>Doit afficher la Landing page des users non sign-in/up </p>
+  <h3>Super nice landing page to come</h3>
+
+<% end %>
+
+
