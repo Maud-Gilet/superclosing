@@ -1,0 +1,13 @@
+<h2>Créer une nouvelle opération</h2>
+
+
+<%= simple_form_for [@company, @operation] do |f| %>
+  <%= f.input :category, collection: ['Levée de fonds', 'BSPCE', 'AGA', 'BSA'], label: 'Quelle opération ?' %>
+  <%= f.input :target_amount_cents, label: 'Quel est le montant visé ?' %>
+  <%= f.input :expected_closing_date, label: 'Quelle est la date de cloture envisagée ?' %>
+  <%= f.button :submit %>
+  <%= link_to 'Cancel', company_operations_path(@company.id) %>
+<% end %>
+
+
+   <!-- f.input :name, label: 'Donnez un nom à cette opération' -->

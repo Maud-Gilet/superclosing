@@ -1,0 +1,11 @@
+<h2> Toutes les opérations pour <%= @company.name %></h2>
+
+<ul>
+  <% @operations.each do |operation| %>
+    <li>Catégorie :<%= operation.category %> || Montant espéré : <%= operation.target_amount_cents %> || Date de clôture envisagée : <%= operation.expected_closing_date %></li>
+  <% end %>
+</ul>
+
+
+
+<%= link_to 'Nouvelle opération', new_company_operation_path(@company)  %>
