@@ -8,4 +8,12 @@ class User < ApplicationRecord
   has_many :companies, through: :roles
   has_many :investments
   has_many :operations, through: :investments
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
