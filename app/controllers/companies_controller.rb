@@ -14,10 +14,12 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    @company.save
-    Role.create(user: current_user, company_id: @company.id, category: "Associe")
-
-    redirect_to company_path(@company)
+    if @company.save
+      Role.create(user: current_user, company_id: @company.id, category: "Associe")
+      redirect_to company_path(@company)
+    else
+      render :new
+    end
   end
 
   private
