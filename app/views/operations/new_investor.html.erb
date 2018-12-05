@@ -1,0 +1,9 @@
+<h1>Ajouter un investisseur à l'opération</h1>
+
+<%= form_for create_investor_path do |f| %>
+  <%= f.hidden_field :operation_id, value: @operation.id %>
+  <%= f.text_field :email %>
+  <%= f.text_field :amount %>
+  <%= f.submit %>
+
+<% end %>
