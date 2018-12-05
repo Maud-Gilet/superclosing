@@ -13,8 +13,11 @@ class OperationsController < ApplicationController
     @operation = Operation.new(operation_params)
     @operation.company = Company.find(params[:company_id])
     @operation.status = "Pending"
-    @operation.save!
-    redirect_to company_operation_path(params[:company_id], @operation.id)
+    if @operation.save!
+      redirect_to operation_path(@operation.id)
+    else
+      render :new
+    end
   end
 
   def show
