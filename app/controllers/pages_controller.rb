@@ -9,4 +9,5 @@ class PagesController < ApplicationController
       @investisseur = current_user.roles.where(category: 'Investisseur')
       @company = Company.new
   end
+
 end
