@@ -1,19 +1,22 @@
 .form-login, .form-signup, .form-password-change {
   background: white;
   padding: 10px 20px;
-  margin-top: 40px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   h2 {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 30px;
     text-align: center;
+    margin: 14px;
   }
   .btn {
     width: 100%;
     margin-bottom: 20px;
     background: $green;
     color: white;
+  }
+  label {
+    font-size: 16px;
   }
 }
