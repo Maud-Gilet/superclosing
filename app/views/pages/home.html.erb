@@ -1,44 +1,31 @@
+<% if current_user.companies.length == 0 %>
 
-
-
-
-<% if user_signed_in? %>
-
-<h1>Bienvenue <%= current_user.first_name %></h1>
-
-    <% if current_user.companies.length == 0 %>
 
   <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>
 
   <p> <%= link_to "Enregistrer une nouvelle société", new_company_path, class: 'btn btn-success'%> </p>
 
-  <% else %>
-
-  <p>Vous êtes associé et souhaitez accéder à la dashboard de votre société, sélectionnez votre société :</p>
-
-<ul><% @associe.each do |role|%>
-  <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
-  <% end %>
-</ul>
-
-  <p>Vous êtes investisseur et souhaitez accéder aux Data Room de vos opérations, sélectionnez la société :</p>
-
-<ul><% @investisseur.each do |role|%>
-  <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
-  <% end %>
-</ul>
-<p> <%= link_to "ou créez une nouvelle société", new_company_path%>
-
-
-<% end %>
-
-
-</p>
-
 <% else %>
 
-  <p>Doit afficher la Landing page des users non sign-in/up </p>
-  <h3>Super nice landing page to come</h3>
+  <p>
+    Vous êtes associé et souhaitez accéder à la dashboard de votre société, sélectionnez votre société :
+  </p>
 
+  <ul>
+    <% @associe.each do |role|%>
+    <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
+    <% end %>
+  </ul>
+
+    <p>Vous êtes investisseur et souhaitez accéder aux Data Room de vos opérations, sélectionnez la société :</p>
+
+  <ul><% @investisseur.each do |role|%>
+    <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
+    <% end %>
+  </ul>
 <% end %>
+
 <p>
+  <%= link_to "ou créez une nouvelle société", new_company_path%> </p>
+
+</p>
