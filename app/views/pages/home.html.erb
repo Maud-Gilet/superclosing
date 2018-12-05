@@ -9,7 +9,7 @@
 <% else %>
 
   <p>
-    Vous êtes associé et souhaitez accéder à la dashboard de votre société, sélectionnez votre société :
+    Sociétés dont vous êtes associé :
   </p>
 
   <ul>
@@ -18,14 +18,14 @@
     <% end %>
   </ul>
 
-    <p>Vous êtes investisseur et souhaitez accéder aux Data Room de vos opérations, sélectionnez la société :</p>
+    <p>Sociétés dans lesquelles vous envisagez d'investir :</p>
 
   <ul><% @investisseur.each do |role|%>
     <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
     <% end %>
   </ul>
 
-  <p><%= link_to "ou créez une nouvelle société", new_company_path%> </p>
+  <p><%= link_to "Enregistrer une nouvelle société", new_company_path%> </p>
 
 <% end %>
 
