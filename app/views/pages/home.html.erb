@@ -1,9 +1,10 @@
-<% if current_user.companies.length == 0 %>
+<h1> Bienvenue <%= current_user.first_name %></h1>
 
+<% if current_user.companies.length == 0 %>
 
   <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>
 
-  <p> <%= link_to "Enregistrer une nouvelle société", new_company_path, class: 'btn btn-success'%> </p>
+  <p> <%= link_to "Enregistrer ma société", new_company_path, class: 'btn btn-success'%> </p>
 
 <% else %>
 
@@ -23,9 +24,11 @@
     <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
     <% end %>
   </ul>
-<% end %>
 
-<p>
+  <p>
   <%= link_to "ou créez une nouvelle société", new_company_path%> </p>
 
 </p>
+<% end %>
+
+
