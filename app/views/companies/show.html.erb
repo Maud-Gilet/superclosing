@@ -1,9 +1,34 @@
-<p>Voici la show de la compagnie</p>
 
-<h1>
-<%= @company.name %>
-</h1>
+<div class='container'>
+  <div class='company-banner-container'>
+    <h1>Voici la show de la compagnie</h1>
+    <h2><%= @company.name %></h2>
+  </div>
+
+  <div class='company-content-container' style='display: flex'>
+
+    <div>
+      <h3>Infos</h3>
+       <p> Nom : </p> <%= @company.name %>
+       <p> Forme sociale : </p> <%= @company.legal_form %>
+       <p> Adresse : </p> <%= @company.address %>
+       <p> <%= link_to 'Modifier', edit_company_path(@company.id) %> </p>
+    </div>
+
+    <div>
+      <h3>Répartition du capital</h3>
+    </div>
+
+    <div>
+      <h3>Opérations</h3>
+      <%= link_to 'Opérations', company_operations_path(@company.id) %>
+    </div>
+
+    <div>
+      <h3>Actionnariat</h3>
+    </div>
+  </div>
+</div>
 
 
-<%= link_to 'Opérations', company_operations_path(@company.id) %>
 

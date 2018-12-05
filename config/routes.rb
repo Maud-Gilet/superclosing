@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#landing'
+
   authenticated :user do
     root 'pages#home'
   end
 
-
+  root 'pages#landing'
 
   resources :companies do
    resources :s_documents, only: [:index, :show, :new, :create, :destroy]
