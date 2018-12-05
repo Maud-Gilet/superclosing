@@ -1,14 +1,16 @@
-<h1>Pages#home</h1>
+
 
 
 
 <% if user_signed_in? %>
 
+<h1>Bienvenue <%= current_user.first_name %></h1>
+
     <% if current_user.companies.length == 0 %>
 
-  <p>Vous êtes associé d'une entreprise, créez votre première société :</p>
+  <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>
 
-  <p> <%= link_to "Créer ma première société", new_company_path%> </p>
+  <p> <%= link_to "Enregistrer une nouvelle société", new_company_path, class: 'btn btn-success'%> </p>
 
   <% else %>
 
@@ -25,10 +27,12 @@
   <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
   <% end %>
 </ul>
+<p> <%= link_to "ou créez une nouvelle société", new_company_path%>
+
+
 <% end %>
 
-<p>
-<p> <%= link_to "ou créez une nouvelle société", new_company_path%> </p>
+
 </p>
 
 <% else %>
