@@ -22,7 +22,7 @@ const autocomplete = (event) => {
   const sirenQuery = inputSiren.value;
   const url = `https://entreprise.data.gouv.fr/api/sirene/v1/siren/${sirenQuery}`;
   fetch(url, {
-    headers: {'Authorization': 'Bearer 1301b165-dc2e-327f-aa1b-1366e2698423'}
+    headers: {'Authorization': 'Bearer bfd874df-3924-3396-b372-541e25bbfbd9'}
   })
     .then(response => response.json())
     .then(data => drawResponse(data));
