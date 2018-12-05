@@ -37,15 +37,20 @@ class OperationsController < ApplicationController
     @number_of_shares = (params["/new_investor"][:amount].to_i / @price_per_share_operation).round(0)
     @final_amount = @number_of_shares * @price_per_share_operation
 
-    if user_exist?
-      @user = User.where(email: @email).first
+    if @user = User.find_by(email: @email)
 
-      create_role_investor if user_role_exist? == false
-      create_investment
+      create_role_investor unless user_role_exist?
 
-      # Edit a mail to the Investor
+    # Edit a mail to the Investor
     else
-      render :new_investor
+      @user = User.invite!(:email => @email)
+      create_role_investor
+    end
+    if investment_exist?
+      redirect_to operation_path(@operation), alert: 'Cet investisseur a déjà été ajouté à cette opération'
+    else
+      create_investment
+      redirect_to operation_path(@operation)
     end
   end
 
@@ -59,27 +64,25 @@ class OperationsController < ApplicationController
     params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date)
   end
 
-  def user_exist?
-    User.where(email: @email).length != 0
-  end
-
   def user_role_exist?
-    @user.roles.each do |role|
-      return true if role[:category] == 'Investisseur' && role[:company_id] == @company
-    end
+    !@user.roles.where(category: 'Investisseur', company: @company).empty?
   end
 
   def create_role_investor
-    Role.create(user_id: @user,
-                company_id: @company,
-                category: 'Investisseur')
+    Role.create!( user: @user,
+                  company: @company,
+                  category: 'Investisseur')
   end
 
   def create_investment
-    Investment.create(user_id: @user,
-                      operation_id: @operation,
-                      share_premium_cents: @share_premium_cents,
-                      number_of_shares: @number_of_shares,
-                      status: 'pending')
+    Investment.create!( user: @user,
+                        operation: @operation,
+                        share_premium_cents: @share_premium_cents,
+                        number_of_shares: @number_of_shares,
+                        status: 'pending')
+  end
+
+  def investment_exist?
+    !@operation.investments.where(user: @user).empty?
   end
 end
