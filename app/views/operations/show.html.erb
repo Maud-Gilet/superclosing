@@ -1,11 +1,11 @@
-<h2>Voici les infos relatives à l'opération <%= @operation.name %></h2>
+<h2>Opération <%= @operation.name %></h2>
 
 <h3>RESUME DE L'OPERATION</h3>
 <ul>
   <li>Type : <%= @operation.category %></li>
   <li>Statut : <%= @operation.status %></li>
+  <li>Montant : <%= @operation.target_amount_cents%> euros</li>
   <li>Date de fin : <%= @operation.expected_closing_date%></li>
-  <li>Valorisation : <%= @operation.target_amount_cents%><%= @operation.target_amount_currency%></li>
 </ul>
 
 <h3>LE TOUR DE TABLE</h3>
@@ -20,9 +20,6 @@
   <button type="button" class="btn btn-success">Ajouter un investisseur</button>
 <% end %>
 
-<%= link_to new_user_invitation_path do %>
-  <button type="button" class="btn btn-success">Invite</button>
-<% end %>
 
 
 <h3>LA CAPTABLE</h3>
@@ -37,7 +34,7 @@
 
 <hr>
 <h3>LANCER LE CLOSING ?</h3>
-<p>Pour lancer le closing, assurez-vous que tous les investisseurs soient renseignés et que votre page personnelle soit remplie à 100%.</p>
+<p>Pour lancer le closing, assurez-vous que tous les investisseurs sont renseignés et que votre page personnelle est remplie à 100%.</p>
 
 
 <hr>

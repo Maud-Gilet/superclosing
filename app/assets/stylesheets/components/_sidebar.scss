@@ -1,0 +1,36 @@
+/* Main sidebar */
+.sidebar {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: #2D3D4D;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  max-width: 220px;
+  padding: 14px 0px;
+  display: block;
+}
+.sidebar a {
+  color: #ffffffab;
+  text-decoration: none;
+}
+.sidebar > a {
+  font-size: 24px;
+  margin-left: 20px;
+  color: white;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: block;
+  padding-inline-start: 4px;
+  margin-top: 50px;
+  font-size: 14px;
+  li {
+    padding: 20px 0px;
+    display: list-item;
+    a i {
+      padding: 20px;
+      font-size: 30px;
+      color: white;
+    }
+  }
+}

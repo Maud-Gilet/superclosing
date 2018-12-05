@@ -1,17 +1,15 @@
+<div class='company-show-container'>
 
-<div class='container'>
   <div class='company-banner-container'>
-    <h1>Voici la show de la compagnie</h1>
-    <h2><%= @company.name %></h2>
+    <h2>Société <%= @company.name %></h2>
   </div>
 
-  <div class='company-content-container' style='display: flex'>
-
+  <div class='company-content-container'>
     <div>
       <h3>Infos</h3>
-       <p> Nom : </p> <%= @company.name %>
-       <p> Forme sociale : </p> <%= @company.legal_form %>
-       <p> Adresse : </p> <%= @company.address %>
+       <p> Nom :  <%= @company.name %> </p>
+       <p> Forme sociale : <%= @company.legal_form %> </p>
+       <p> Adresse :  <%= @company.address %></p>
        <p> <%= link_to 'Modifier', edit_company_path(@company.id) %> </p>
     </div>
 
@@ -27,6 +25,7 @@
     <div>
       <h3>Actionnariat</h3>
     </div>
+
   </div>
 </div>
 

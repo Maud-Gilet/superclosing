@@ -1,7 +1,15 @@
-<h2>Créer une nouvelle opération</h2>
+<h2>Nouvelle opération</h2>
 
+<div class="new-operation-form">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
 
-<%= simple_form_for [@company, @operation] do |f| %>
-  <%= f.input :name, label: 'Donnez un nom à cette opération'  %>
-  <%= f.input :category, collection: ['Levée de fonds', 'BSPCE', 'AGA', 'BSA'], label: 'Quelle opération ?' %>
-<% end %>
+      <%= simple_form_for [@company, @operation] do |f| %>
+        <%= f.input :name, label: 'Donnez un nom à cette opération'  %>
+        <%= f.input :category, collection: ["Attribution gratuite d'actions", 'Levée de fonds', 'Emission de BSPCE', 'Emission de BSA'], label: 'Quelle opération voulez-vous réaliser ?' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
