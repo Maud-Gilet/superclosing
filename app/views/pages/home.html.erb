@@ -4,7 +4,11 @@
 
   <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>
 
-  <p> <%= link_to "Enregistrer ma société", new_company_path, class: 'btn btn-success'%> </p>
+
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une société</a>
+
+
+  <p> <%= link_to "Enregistrer une société", new_company_path, class: 'btn btn-success'%> </p>
 
 <% else %>
 
@@ -25,7 +29,31 @@
     <% end %>
   </ul>
 
-  <p><%= link_to "Enregistrer une nouvelle société", new_company_path%> </p>
+
+<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une nouvelle société</a>
 
 <% end %>
 
+<div class="modal fade" id="modalCompanyCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Nouvelle société</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <p>Entrez votre numéro SIREN (9 chiffres - sans espace)</p>
+          <%= simple_form_for @company, method: :post do |f| %>
+          <%= f.input :siren, label: 'SIREN (9 chiffres - sans espace)' %>
+          <%= f.input :name, label: 'Nom'%>
+          <%= f.input :address, label: 'Adresse'%>
+          <%= f.input :legal_form, label: 'Forme sociale' %>
+          <%= f.input :creation_date, label: "Date d'immatriculation"%>
+          <%= f.submit 'Créer' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
