@@ -10,9 +10,11 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
-    @role.save
-
-    redirect_to company_path(company)
+    if @role.save
+      redirect_to company_path(company)
+    else
+      render :new
+    end
   end
 
   private
