@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_145117) do
+ActiveRecord::Schema.define(version: 2018_12_05_111609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_145117) do
     t.string "logo_url"
     t.integer "number_of_shares"
     t.integer "share_nominal_value_cents", default: 0, null: false
-    t.string "share_nominal_value_currency", default: "USD", null: false
+    t.string "share_nominal_value_currency", default: "EUR", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_145117) do
     t.bigint "operation_id"
     t.integer "number_of_shares"
     t.integer "share_premium_cents", default: 0, null: false
-    t.string "share_premium_currency", default: "USD", null: false
+    t.string "share_premium_currency", default: "EUR", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 2018_12_04_145117) do
     t.bigint "company_id"
     t.string "category"
     t.integer "target_amount_cents", default: 0, null: false
-    t.string "target_amount_currency", default: "USD", null: false
+    t.string "target_amount_currency", default: "EUR", null: false
     t.date "expected_closing_date"
     t.string "status"
     t.integer "premoney_cents", default: 0, null: false
-    t.string "premoney_currency", default: "USD", null: false
+    t.string "premoney_currency", default: "EUR", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -113,7 +113,19 @@ ActiveRecord::Schema.define(version: 2018_12_04_145117) do
     t.string "birth_place"
     t.string "linkedin_profile"
     t.string "photo_url"
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.bigint "invited_by_id"
+    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invitations_count"], name: "index_users_on_invitations_count"
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
