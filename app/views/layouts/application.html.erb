@@ -11,11 +11,24 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <% unless action_name == "landing" %>
-      <%= render 'shared/navbar' %>
+    <% if !user_signed_in? %>
+      <%= render 'shared/flashes' %>
+      <%=  yield %>
+    <% else %>
+
+      <div class='pages-wrapper'>
+        <%= render 'shared/sidebar' %>
+        <div class='main'>
+          <%= render 'shared/navbar' %>
+          <%= render 'shared/flashes' %>
+          <div class = 'page-content'>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+
     <% end %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
