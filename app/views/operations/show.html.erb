@@ -1,7 +1,42 @@
 <h2>Voici les infos relatives à l'opération <%= @operation.name %></h2>
 
+<h3>RESUME DE L'OPERATION</h3>
+<ul>
+  <li>Type : <%= @operation.category %></li>
+  <li>Statut : <%= @operation.status %></li>
+  <li>Date de fin : <%= @operation.expected_closing_date%></li>
+  <li>Valorisation : <%= @operation.target_amount_cents%><%= @operation.target_amount_currency%></li>
+</ul>
 
+<h3>LE TOUR DE TABLE</h3>
+<p>Liste des acteurs :</p>
+<ul><%  @operation.users do |user|%>
+  <li> <%= user.first_name %></li>
+  <% end %>
+</ul>
+
+<p>Ajouter un nouvel investisseur ?(modale à créer)</p>
+
+
+
+<h3>LA CAPTABLE</h3>
+<p>Liste des montants des investissements :</p>
+<ul><% @operation.investments do |investment| %>
+  <li><% investment.id %> -- Montant : <% investment.number_of_shares*investment.share_premium_cents+@operation.share_nominal_value_cents %> </li>
+  <% end %>
+</ul>
+
+<p>Total des investissements :  (faire la somme)</p>
+
+
+<hr>
+<h3>LANCER LE CLOSING ?</h3>
+<p>Pour lancer le closing, assurez-vous que tous les investisseurs soient renseignés et que votre page personnelle soit remplie à 100%.</p>
+
+
+<hr>
 <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
 <br>
 <br>
 <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
+

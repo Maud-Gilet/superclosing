@@ -1,39 +1,53 @@
-<p>Formulaire de création d'une nouvelle company</p>
+<h2>Enregistrer une nouvelle société</h2>
 
 <div class="container">
 <form action="/companies" method="post">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <label for="name">Name: </label>
-  <input type="string" name="company[name]" id="name">
+   <div>
+    <label for="siren">SIREN (sans espace): </label>
+    <input type="string" name="company[siren]" id="company-siren-field">
+  </div>
+  <div id='card-result-api-siren'>
+    <div>
+      <label for="name">Nom : </label>
+      <input type="string" name="company[name]" id="company-name-field">
+    </div>
+    <div>
+      <label for="address">Adresse : </label>
+      <input type="string" name="company[address]" id="company-address-field">
+    </div>
+    <div>
+      <label for="legal_form">Forme sociale : </label>
+      <input type="string" name="company[legal_form]" id="company-legal-form-field">
+    </div>
+    <div>
+      <label for="creation_date">Date de début d'activité de la société : </label>
+      <input type="string" name="company[creation_date]" id="company-creation-date-field">
+    </div>
+     <div>
+      <label for="fiscal_date">Date de cloture de l'exercice social :</label>
+      <input type="date" name="company[fiscal_date]" id="company-fiscal-date-field">
+    </div>
+    <div>
+      <label for="number_of_shares">Nombre d'actions initial : </label>
+      <input type="integer" name="company[number_of_shares]" id="number_of_shares">
+    </div>
+    <div>
+      <label for="share_nominal_value_cents">Valeur nominale de l'action : </label>
+      <input type="integer" name="company[share_nominal_value_cents]" id="share_nominal_value_cents">
+    </div>
+    <div>
+      <label for="share_nominal_value_currency">Monnaie devise : </label>
+      <input type="string" name="company[share_nominal_value_currency]" id="share_nominal_value_currency">
+    </div>
+  </div>
 
-  <label for="address">Address: </label>
-  <input type="string" name="company[address]" id="address">
+  <div>
+    <label for="logo_url"> Logo de l'entreprise (.jpg): </label>
+    <input type="file" name="logo_url" value="logo_url" id="logo_url">
+  </div>
 
-  <label for="siren">SIREN: </label>
-  <input type="string" name="company[siren]" id="siren">
-
-  <label for="legal_form">Forme sociale: </label>
-  <input type="string" name="company[legal_form]" id="legal_form">
-
-  <label for="number_of_shares">Nombre d'actions initial: </label>
-  <input type="integer" name="company[number_of_shares]" id="number_of_shares">
-
-  <label for="share_nominal_value_cents">Valeur nominale de l'action: </label>
-  <input type="integer" name="company[share_nominal_value_cents]" id="share_nominal_value_cents">
-
-  <label for="share_nominal_value_currency">Monnaie devise: </label>
-  <input type="string" name="company[share_nominal_value_currency]" id="share_nominal_value_currency">
-
-  <label for="creation_date">Date de création de l'Entreprise: </label>
-  <input type="date" name="company[creation_date]" id="creation_date">
-
-  <label for="fiscal_date">Année fiscale en cours: </label>
-  <input type="date" name="company[fiscal_date]" id="fiscal_date">
-
-  <label for="logo_url"> Logo de l'entreprise (.jpg): </label>
-  <input type="file" name="logo_url" value="logo_url" id="logo_url">
-
-  <input type="submit">
+  <input type="submit", class='btn btn-success'>
 
 </form>
 
