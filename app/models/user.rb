@@ -9,11 +9,13 @@ class User < ApplicationRecord
   has_many :investments
   has_many :operations, through: :investments
 
+  validates :email, presence: true, uniqueness: true
+
   after_create :send_welcome_email
 
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    UserMailer.welcome(self).deliver_now unless invitation_created_at
   end
 end

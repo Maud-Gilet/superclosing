@@ -1,0 +1,15 @@
+<h1>This is the form</h1>
+
+<%= form_tag create_investor_path do %>
+
+  <%= text_field "person", "name", "size" => 40 %>
+  <%= submit_tag :submit, value: 'Ajouter', class: 'btn' %>
+<% end %>
+
+<%= form_for create_investor_path do |f| %>
+  <%= f.hidden_field :operation_id, value: @operation.id %>
+  <%= f.text_field :email %>
+  <%= f.text_field :amount %>
+  <%= f.submit %>
+
+<% end %>
