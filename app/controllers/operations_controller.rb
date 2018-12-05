@@ -14,7 +14,7 @@ class OperationsController < ApplicationController
     @operation.company = Company.find(params[:company_id])
     @operation.status = "Pending"
     @operation.save!
-    redirect_to company_operation_path(params[:company_id], @operation.id)
+    redirect_to operation_path(@operation.id)
   end
 
   def show
