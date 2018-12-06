@@ -2,3 +2,47 @@
   height: 300px !important;
   width: 600px !important;
 }
+
+#mySecondChart {
+  height: 300px !important;
+  width: 300px !important;
+}
+
+
+
+.indicateurs {
+  display: flex;
+  border: solid 2px #fc9600;
+  background-color: #eaeaea;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px #fc9600;
+  justify-content: space-between;
+  flex: 20% 80% 20%;
+  margin: 1px;
+  padding: 4px 8px;
+  flex-direction: column;
+}
+.leftinfobox {
+  background-color: #474F58;
+  color: #eaeaea;
+  margin: 2px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline;
+}
+
+.number-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.graph-container {
+  display: flex;
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
