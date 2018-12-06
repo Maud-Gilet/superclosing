@@ -1,11 +1,11 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: [:show]
 
   def index
     @companies = Company.all
   end
 
   def show
-    @company = Company.find(params[:id])
   end
 
   def new
@@ -22,7 +22,40 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def new_captable
+    @company = Company.find(params[:company_id])
+  end
+
+  def create_captable
+    @company = Company.find(params[:company_id])
+    respond_to do |format|
+      format.html {
+        render :new_captable,
+        notice: "La valeur nominal de l'action a été fixée à #{@company.share_nominal_value_cents}"
+      }
+      format.js  # <-- will render `app/views/companies/create_captable.js.erb`
+    end
+  end
+
+  def create_nominal
+    @company = Company.find(params[:company_id])
+    @company.share_nominal_value_cents = params[:share_nominal_value_cents]
+    @company.save
+
+    respond_to do |format|
+      format.html {
+        render :new_captable,
+        notice: "La valeur nominal de l'action a été fixée à #{@company.share_nominal_value_cents}"
+      }
+      format.js  # <-- will render `app/views/companies/create_nominal.js.erb`
+    end
+  end
+
   private
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
 
   def company_params
     params.require(:company).permit(:name, :address, :siren, :legal_form, :number_of_shares, :logo_url, :share_nominal_value_cents, :share_nominal_value_currency, :creation_date, :fiscal_date)

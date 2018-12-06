@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newNominalForm = document.getElementById('form-nominal');
+  newNominalForm.innerHTML = innerHTML;
+}
+
+function displayNominal(reviewHTML) {
+  const displayNominal = document.getElementById('display-nominal');
+  displayNominal.innerHTML = reviewHTML;
+}
+
+<% if @company.errors.any? %>
+  refreshForm('<%= j render "companies/form-nominal", company: @company %>');
+<% else %>
+  displayNominal('<%= j render "companies/show-nominal", company: @company %>');
+  refreshForm('<%= j render "companies/form-nominal", company: @company %>');
+<% end %>
