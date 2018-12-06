@@ -46,11 +46,11 @@
       <div class="modal-body mx-3">
         <p>Entrez votre numéro SIREN (9 chiffres - sans espace)</p>
           <%= simple_form_for @company, method: :post do |f| %>
-          <%= f.input :siren, label: 'SIREN (9 chiffres - sans espace)' %>
+          <%= f.input :siren %>
           <%= f.input :name, label: 'Nom'%>
           <%= f.input :address, label: 'Adresse'%>
           <%= f.input :legal_form, label: 'Forme sociale' %>
-          <%= f.input :creation_date, label: "Date d'immatriculation"%>
+          <%= f.input :creation_date, as: :string, label: "Date d'immatriculation"%>
           <%= f.submit 'Créer' %>
         <% end %>
       </div>
