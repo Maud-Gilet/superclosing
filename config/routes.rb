@@ -19,13 +19,13 @@ Rails.application.routes.draw do
 
     resources :s_documents, only: [:index, :show, :new, :create, :destroy]
     resources :operations, only: [:index, :new, :create] do
-      resources :investments, only: [:index, :show, :new, :create, :edit, :update]
+      resources :investments, only: [:index, :new, :create, :edit, :update]
       resources :d_documents, only: [:index, :show]
     end
   end
 
   resources :operations, only: :show
-
+  resources :investments, only: [:show, :destroy]
   resources :d_templates
   resources :roles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

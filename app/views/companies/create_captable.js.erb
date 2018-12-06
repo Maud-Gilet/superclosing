@@ -1,16 +1,16 @@
 function refreshForm(innerHTML) {
-  const newNominalForm = document.getElementById('form-nominal');
-  newNominalForm.innerHTML = innerHTML;
+  const newShareholderForm = document.getElementById('form-shareholders');
+  newShareholderForm.innerHTML = innerHTML;
 }
 
-function displayNominal(reviewHTML) {
-  const displayNominal = document.getElementById('display-nominal');
-  displayNominal.innerHTML = reviewHTML;
+function displayShareholders(shareholderHTML) {
+  const displayShareholders = document.getElementById('display-shareholders');
+  displayShareholders.innerHTML = shareholderHTML;
 }
 
 <% if @company.errors.any? %>
-  refreshForm('<%= j render "companies/form-nominal", company: @company %>');
+  refreshForm('<%= j render "companies/form-shareholders", company: @company %>');
 <% else %>
-  displayNominal('<%= j render "companies/show-nominal", company: @company %>');
-  refreshForm('<%= j render "companies/form-nominal", company: @company %>');
+  displayShareholders('<%= j render "companies/show-shareholders", company: @company %>');
+  refreshForm('<%= j render "companies/form-shareholders", company: @company %>');
 <% end %>

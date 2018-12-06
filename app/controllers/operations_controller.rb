@@ -47,7 +47,7 @@ class OperationsController < ApplicationController
 
     # Edit a mail to the Investor
     else
-      @user = User.invite!(:email => @email)
+      @user = User.invite!(email: @email)
       create_role_investor
     end
     if investment_exist?

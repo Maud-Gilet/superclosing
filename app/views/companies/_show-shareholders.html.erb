@@ -1,0 +1,9 @@
+<% @company.operations.where(category: 'initialize-captable').first.investments.each do |invest| %>
+<ul>
+  <li data-investment-id="<%= invest.id %>">
+    <%= invest.user.first_name %> - <%= invest.number_of_shares %> - <%= link_to "Delete", investment_path(invest), method: :delete, remote: true %>
+  </li>
+
+</ul>
+
+<% end %>

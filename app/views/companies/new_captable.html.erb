@@ -15,13 +15,12 @@
 
 <br>
 
-<%= simple_form_for company_create_captable_path do |f| %>
+<div id="form-shareholders">
+  <%= render 'companies/form-shareholders', company: @company %>
+</div>
 
-  <p><strong>Identité de l'actionnaire à ajouter</strong></p>
-  <%= f.input :first_name, placeholder: "Prénom", input_html: { name: 'first_name' }, label: false %>
-  <%= f.input :last_name, placeholder: "Nom", input_html: { name: 'last_name' }, label: false %>
-  <%= f.input :email, placeholder: "email", input_html: { name: 'email' }, label: false %>
-  <%= f.input :number_of_shares, placeholder: "Nombre d'actions détenues", input_html: { name: 'number_of_shares' }, label: false %>
-  <%= f.input :category, collection: ['Associé', 'Président', 'Investisseur'], input_html: { name: 'category' }, label: "Qualité de l'actionnaire" %>
-  <%= f.button :submit, "Ajouter l'actionnaire" %>
-<% end %>
+<div id="display-shareholders">
+  <%= render 'companies/show-shareholders', company: @company %>
+</div>
+
+<%= link_to 'Terminer', company_path(@company) %>
