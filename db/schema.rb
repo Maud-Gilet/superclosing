@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_114944) do
+ActiveRecord::Schema.define(version: 2018_12_06_133824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_114944) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "share_nominal_value_cents", default: 0, null: false
+    t.string "share_nominal_value_currency", default: "EUR", null: false
     t.index ["operation_id"], name: "index_investments_on_operation_id"
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
