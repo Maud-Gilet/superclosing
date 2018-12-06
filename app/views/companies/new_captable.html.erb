@@ -1,0 +1,26 @@
+<h1>Initialiser la table de capitalisation</h1>
+
+<div id="form-nominal">
+  <%= render 'companies/form-nominal', company: @company %>
+</div>
+<% if @company.share_nominal_value_cents.nil? %>
+  <div id="display-nominal">
+
+  </div>
+<% else %>
+  <div id="display-nominal">
+    <p>Nominal des actions : <%= @company.share_nominal_value_cents %></p>
+  </div>
+<% end %>
+
+<br>
+
+<div id="form-shareholders">
+  <%= render 'companies/form-shareholders', company: @company %>
+</div>
+
+<div id="display-shareholders">
+  <%= render 'companies/show-shareholders', company: @company %>
+</div>
+
+<%= link_to 'Terminer', company_path(@company) %>

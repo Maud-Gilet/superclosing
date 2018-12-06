@@ -1,5 +1,5 @@
 class InvestmentsController < ApplicationController
-  before_action :set_investement, only: [:show, :edit, :update]
+  before_action :set_investment, only: [:show, :edit, :update, :destroy]
 
   def index
     @operation = Operation.find(params[:operation_id])
@@ -36,6 +36,11 @@ class InvestmentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    # Protection for Operations with 'Completed' status
+    @investment.destroy if @investment.operation.status == 'completed'
   end
 
   private
