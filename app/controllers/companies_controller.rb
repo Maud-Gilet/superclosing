@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
 
   def create_nominal
     @company = Company.find(params[:company_id])
-    @company.share_nominal_value_cents = params[:share_nominal_value_cents]
+    @company.share_nominal_value = params[:share_nominal_value]
     @company.save
 
     respond_to do |format|

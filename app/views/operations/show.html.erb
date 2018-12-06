@@ -1,3 +1,28 @@
+<h2>Opération <%= @operation.name %></h2>
+
+<h3>RESUME DE L'OPERATION</h3>
+<ul>
+  <li>Type : <%= @operation.category %></li>
+  <li>Statut : <%= @operation.status %></li>
+  <li>Montant visé pour l'opération : <%= money_without_cents @operation.target_amount %> euros</li>
+  <li>Valorisation prémoney : <%= money_without_cents @operation.premoney %> euros</li>
+  <li>Date de fin estimée : <%= @operation.expected_closing_date%></li>
+</ul>
+
+<h3>LE TOUR DE TABLE</h3>
+<p>Investisseurs:</p>
+<ul><%  @operation.investments.each do |invest|%>
+  <li>
+    <%= invest.user.email%> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros
+  </li>
+  <% end %>
+</ul>
+
+<p>Ajouter un nouvel investisseur ?</p>
+<%= link_to new_investor_path(params: { operation_id: @operation }) do %>
+  <button type="button" class="btn btn-success">Ajouter un investisseur</button>
+<% end %>
+
 
 <!-- =========================================== GRAPHIQUES -->
 

@@ -25,11 +25,9 @@ class OperationsController < ApplicationController
     @operation = Operation.find(params[:id])
     @s_document = SDocument.new
 
-
-
     array = []
     @operation.investments.each do |invest|
-      value = invest.number_of_shares * (@operation.company.share_nominal_value_cents + invest.share_premium_cents)
+      value = invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
       array << value
     end
 
@@ -46,8 +44,8 @@ class OperationsController < ApplicationController
     @email = params["/new_investor"][:email]
 
     # Attention aux arrondis
-    @price_per_share_operation = @operation.premoney_cents / @company.number_of_shares
-    @share_premium_cents = @price_per_share_operation - @company.share_nominal_value_cents
+    @price_per_share_operation = @operation.premoney / @company.number_of_shares
+    @share_premium = @price_per_share_operation - @company.share_nominal_value
 
     @number_of_shares = (params["/new_investor"][:amount].to_i / @price_per_share_operation).round(0)
     @final_amount = @number_of_shares * @price_per_share_operation
@@ -72,11 +70,11 @@ class OperationsController < ApplicationController
   private
 
   def operation_params
-    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date, :premoney_cents)
+    params.require(:operation).permit(:name, :category, :target_amount, :expected_closing_date, :premoney)
   end
 
   def investor_params
-    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date)
+    params.require(:operation).permit(:name, :category, :target_amount, :expected_closing_date)
   end
 
   def user_role_exist?
@@ -92,7 +90,8 @@ class OperationsController < ApplicationController
   def create_investment
     Investment.create!( user: @user,
                         operation: @operation,
-                        share_premium_cents: @share_premium_cents,
+                        share_premium: @share_premium,
+                        share_nominal_value: @company.share_nominal_value,
                         number_of_shares: @number_of_shares,
                         status: 'pending')
   end

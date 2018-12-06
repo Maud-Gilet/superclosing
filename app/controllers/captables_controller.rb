@@ -71,7 +71,7 @@ class CaptablesController < ApplicationController
     @operation = @company.operations.where(category: 'initialize-captable').first
     Investment.create!( user: @user,
                         operation: @operation,
-                        share_premium_cents: 0,
+                        share_premium: 0,
                         number_of_shares: @number_of_shares,
                         status: 'completed')
   end

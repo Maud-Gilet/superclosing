@@ -9,7 +9,7 @@
   </div>
 <% else %>
   <div id="display-nominal">
-    <p>Nominal des actions : <%= @company.share_nominal_value_cents %></p>
+    <p>Nominal des actions : <%= money_without_cents @company.share_nominal_value %></p>
   </div>
 <% end %>
 
