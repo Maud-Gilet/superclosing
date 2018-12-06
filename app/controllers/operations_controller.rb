@@ -24,6 +24,16 @@ class OperationsController < ApplicationController
   def show
     @operation = Operation.find(params[:id])
     @s_document = SDocument.new
+
+
+
+    array = []
+    @operation.investments.each do |invest|
+      value = invest.number_of_shares * (@operation.company.share_nominal_value_cents + invest.share_premium_cents)
+      array << value
+    end
+
+    @shares_values = array.sum
   end
 
   def new_investor
@@ -62,7 +72,7 @@ class OperationsController < ApplicationController
   private
 
   def operation_params
-    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date)
+    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date, :premoney_cents)
   end
 
   def investor_params
