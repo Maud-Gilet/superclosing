@@ -1,5 +1,36 @@
 <h1> Bienvenue <%= current_user.first_name %></h1>
 
+<div>
+  <h3>Vos informations</h3>
+
+  <p>Nom : <%= current_user.first_name %> <%= current_user.last_name %></p>
+
+  <% if current_user.address.nil? %>
+    <p>Adresse : à compléter </p>
+  <% else %>
+    <p>Adresse : <%= current_user.address %> </p>
+  <% end %>
+
+  <% if current_user.birthday.nil? %>
+     <p>Date de naissance : à compléter </p>
+  <% else %>
+    <p>Date de naissance : <%= current_user.birthday %> </p>
+  <% end %>
+
+  <% if current_user.birth_place.nil? %>
+    <p>Lieu de naissance : à compléter </p>
+  <% else %>
+    <p>Lieu de naissance : <%= current_user.birth_place %> </p>
+  <% end %>
+
+  <% if current_user.photo_url.file.nil? %>
+    <p>Photo : à compléter </p>
+    <% else %>
+  <p>Photo : <%= cl_image_tag current_user.photo_url, height: 150, width: 150, crop: :thumb, gravity: :face %> </p>
+  <% end %>
+  <%= link_to 'Modifier ou compléter', edit_user_registration_path %>
+</div>
+
 <% if current_user.companies.length == 0 %>
 
   <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>

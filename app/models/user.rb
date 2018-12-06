@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   after_create :send_welcome_email
 
+  mount_uploader :photo_url, PhotoUploader
+
   private
 
   def send_welcome_email
