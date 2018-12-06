@@ -8,10 +8,6 @@ Rails.application.routes.draw do
   root 'pages#landing'
 
 
-
-  get 'new_investor', to: 'operations#new_investor', as: 'new_investor'
-  post 'new_investor', to: 'operations#create_investor', as: 'create_investor'
-
   resources :companies do
     resources :captables, only: [:show, :new, :create]
     post 'new_nominal', to: 'companies#create_nominal', as: 'create_nominal'
@@ -19,6 +15,7 @@ Rails.application.routes.draw do
     resources :s_documents, only: [:index, :show, :new, :create, :destroy]
 
     resources :operations, only: [:index, :new, :create] do
+      resources :investors, only: [:index, :new, :create]
       resources :investments, only: [:index, :new, :create, :edit, :update]
       resources :d_documents, only: [:index, :show]
       resources :s_documents, only: [:index, :show, :new, :create, :destroy]

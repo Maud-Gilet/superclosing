@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newShareholderForm = document.getElementById('form-add-investor');
+  newShareholderForm.innerHTML = innerHTML;
+}
+
+function addShareholder(shareholderHTML) {
+  const addShareholder = document.getElementById('list-investors');
+  addShareholder.innerHTML = shareholderHTML;
+}
+
+<% if @investment.errors.any? %>
+  refreshForm('<%= j render "new-investor", company: @company %>');
+<% else %>
+  addShareholder('<%= j render "show-investors", company: @company %>');
+  refreshForm('<%= j render "new-investor", company: @company %>');
+<% end %>

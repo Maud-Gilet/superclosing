@@ -11,18 +11,17 @@
 
 <h3>LE TOUR DE TABLE</h3>
 <p>Investisseurs:</p>
-<ul><%  @operation.investments.each do |invest|%>
-  <li>
-    <%= invest.user.email%> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros
-  </li>
+<ul>
+  <%  @operation.investments.each do |invest|%>
+    <li>
+      <%= invest.user.email %> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros
+    </li>
   <% end %>
 </ul>
 
-<p>Ajouter un nouvel investisseur ?</p>
-<%= link_to new_investor_path(params: { operation_id: @operation }) do %>
-  <button type="button" class="btn btn-success">Ajouter un investisseur</button>
+<%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+  <button type="button" class="btn btn-success"> >>> Gérer les investisseurs <<< </button>
 <% end %>
-
 
 <!-- =========================================== GRAPHIQUES -->
 
@@ -93,23 +92,6 @@
 <br>
 <br>
 <br>
-
-<h3>LE TOUR DE TABLE</h3>
-    <p> <%= @operation.investments.count %> Investisseurs invités</p>
-
-<p>Investisseurs:</p>
-<ul><%  @operation.investments.each do |invest|%>
-  <li> <%= invest.user.email%></li>
-  <% end %>
-</ul>
-
-<p>Ajouter un nouvel investisseur ?</p>
-<%= link_to new_investor_path(params: { operation_id: @operation }) do %>
-  <button type="button" class="btn btn-success">Ajouter un investisseur</button>
-<% end %>
-
-
-
 
 
 <p>Liste des montants des investissements :</p>

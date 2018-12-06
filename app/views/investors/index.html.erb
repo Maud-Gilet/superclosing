@@ -1,0 +1,15 @@
+<div class="display-investors">
+  <%= render 'show-investors', company: @company %>
+</div>
+
+<div class="form" id="form-add-investor">
+  <%= render 'new-investor', company: @company %>
+</div>
+
+<br><br>
+
+<div class="back">
+  <%= link_to operation_path(@operation.id) do %>
+    <button type="button" class="btn btn-success"> Revenir à l'opération </button>
+  <% end %>
+</div>
