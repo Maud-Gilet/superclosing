@@ -4,15 +4,17 @@
 <ul>
   <li>Type : <%= @operation.category %></li>
   <li>Statut : <%= @operation.status %></li>
-  <li>Montant : <%= number_with_delimiter(@operation.target_amount_cents, :delimiter => " ") %> euros</li>
-  <li>Montant : <%= @operation.premoney_cents%> euros</li>
-  <li>Date de fin : <%= @operation.expected_closing_date%></li>
+  <li>Montant visé pour l'opération : <%= money_without_cents @operation.target_amount %> euros</li>
+  <li>Valorisation prémoney : <%= money_without_cents @operation.premoney %> euros</li>
+  <li>Date de fin estimée : <%= @operation.expected_closing_date%></li>
 </ul>
 
 <h3>LE TOUR DE TABLE</h3>
 <p>Investisseurs:</p>
 <ul><%  @operation.investments.each do |invest|%>
-  <li> <%= invest.user.email%></li>
+  <li>
+    <%= invest.user.email%> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros
+  </li>
   <% end %>
 </ul>
 

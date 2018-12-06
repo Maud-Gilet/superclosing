@@ -51,9 +51,9 @@ class InvestmentsController < ApplicationController
 
   def investment_params
     params.require(:operation).permit(:number_of_shares,
-                                      :share_premium_cents,
+                                      :share_premium,
                                       :share_premium_currency,
-                                      :share_nominal_value_cents,
+                                      :share_nominal_value,
                                       :status,
                                       :user_id,
                                       :operation_id)

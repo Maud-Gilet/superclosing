@@ -3,7 +3,7 @@
 <ul>
   <% @operations.each do |operation| %>
     <% unless operation.category == 'initialize-captable' %>
-      <li>Catégorie :<%= operation.category %> || Montant espéré : <%= operation.target_amount_cents %> || Date de clôture envisagée : <%= operation.expected_closing_date %> || <%= link_to 'Détails', operation_path(operation.id) %> </li>
+      <li>Catégorie : <%= operation.category %> || Montant espéré : <%= money_without_cents operation.target_amount_cents %> euros || Date de clôture envisagée : <%= operation.expected_closing_date %> || <%= link_to 'Détails', operation_path(operation.id) %> </li>
     <% end %>
   <% end %>
 </ul>
