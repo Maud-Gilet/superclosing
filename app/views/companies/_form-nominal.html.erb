@@ -1,0 +1,5 @@
+<%= simple_form_for(company, url: company_create_nominal_path(company), method: :post, remote: true) do |f| %>
+  <%= f.input :share_nominal_value_cents, placeholder: "Nominal de l'action", input_html: { name: 'share_nominal_value_cents' }, label: false %>
+
+  <%= f.button :submit, "Enregistrer le nominal des actions" %>
+<% end %>

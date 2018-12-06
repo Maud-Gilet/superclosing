@@ -20,6 +20,14 @@
 
     <div>
       <h3>Répartition du capital</h3>
+      <p>
+        Créer sa table de capitalisation (si rien n'a été renseigné)
+        <%= link_to 'Créer', company_new_captable_path(@company.id) %>
+      </p>
+      <p>
+        Ou éditer si l'information existe
+        <%= link_to 'Editer', edit_company_path(@company.id) %>
+      </p>
     </div>
 
     <div>
