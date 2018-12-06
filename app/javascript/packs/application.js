@@ -1,7 +1,7 @@
 import "bootstrap";
 
-import { displayOperationForm } from '../components/operation_creation_form';
 import { autocompleteApiSirene } from '../components/init_autocomplete_company';
+import { displayOperationForm } from '../components/operation_creation_form';
 
 import { graph } from '../components/init_operation_graph'
 import { graphsecond } from '../components/init_operation_secondgraph'
@@ -18,5 +18,4 @@ displayOperationForm();
 if(document.getElementById('company_siren')){
  autocompleteApiSirene();
 }
-
 

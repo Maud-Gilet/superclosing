@@ -25,5 +25,18 @@
   background: #474f58;
   color: white;
   text-decoration: none;
-
+}
+  
+.btn-add-company {
+  width:120px;
+  height: 120px;
+  background: white;
+  border-radius:5px;
+  border: solid 1px black;
+  white-space:normal;
+  text-align:center;
+  color: black;
+  a {
+    text-decoration: none;
+  }
 }

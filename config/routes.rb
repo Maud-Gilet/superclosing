@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   post 'new_investor', to: 'operations#create_investor', as: 'create_investor'
 
   resources :companies do
-    get 'new_captable', to: 'companies#new_captable', as: 'new_captable'
-    post 'new_captable', to: 'companies#create_captable', as: 'create_captable'
+    resources :captables, only: [:show, :new, :create]
     post 'new_nominal', to: 'companies#create_nominal', as: 'create_nominal'
 
     resources :s_documents, only: [:index, :show, :new, :create, :destroy]
-    
+
     resources :operations, only: [:index, :new, :create] do
       resources :investments, only: [:index, :new, :create, :edit, :update]
       resources :d_documents, only: [:index, :show]
