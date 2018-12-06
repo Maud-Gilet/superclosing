@@ -115,6 +115,7 @@ class CompaniesController < ApplicationController
                         operation: @operation,
                         share_premium_cents: 0,
                         number_of_shares: @number_of_shares,
+                        share_nominal_value_cents: @company.share_nominal_value_cents,
                         status: 'completed')
   end
 
