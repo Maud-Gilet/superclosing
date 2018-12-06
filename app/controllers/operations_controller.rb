@@ -62,7 +62,7 @@ class OperationsController < ApplicationController
   private
 
   def operation_params
-    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date)
+    params.require(:operation).permit(:name, :category, :target_amount_cents, :expected_closing_date, :premoney_cents)
   end
 
   def investor_params
