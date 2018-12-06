@@ -9,3 +9,21 @@
   background: $red;
   color: white;
 }
+
+.btn-superclosing {
+  background: #fc9600;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.4);
+  opacity: 0.8;
+}
+
+.btn-superclosing:hover {
+  background: #474f58;
+  color: white;
+  text-decoration: none;
+
+}
