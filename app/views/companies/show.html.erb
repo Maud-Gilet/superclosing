@@ -10,7 +10,12 @@
        <p> Nom :  <%= @company.name %> </p>
        <p> Forme sociale : <%= @company.legal_form %> </p>
        <p> Siège social :  <%= @company.address %></p>
-       <p> <%= link_to 'Modifier', edit_company_path(@company.id) %> </p>
+       <% if @company.logo_url.file == nil %>
+        <p>Logo : Ajoutez votre logo</p>
+        <% else %>
+        <p>Logo : <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
+      <% end %>
+       <p> <%= link_to 'Compléter les informations', edit_company_path(@company.id) %> </p>
     </div>
 
     <div>

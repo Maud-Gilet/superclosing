@@ -30,8 +30,46 @@
 
 <p>Total des investissements :  (faire la somme)</p>
 
+<hr>
+
+<h3>DATAROOM</h3>
+<p>Ajoutez ici les informations pour vos investisseurs</p>
+
+<ul><% @operation.s_documents.each do |s_document| %>
+    <li> <%= s_document.category  %> - <%= s_document.title  %> - <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %></li>
+  <% end %>
+
+</ul>
+
+<p>Ajouter un nouveau document :</p>
+<%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
+  <%= f.input :title, label: "Nom" %>
+  <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+  <%= f.input :d_url, as: :file, label: "Document" %>
+  <%= f.input :d_url_cache, as: :hidden %>
+  <%= f.button :submit, "Ajouter" %>
+<% end %>
+
+</div>
 
 <hr>
+
+<h3>TEMPLATES DISPONIBLES</h3>
+<div style='display: flex, padding: 15px;'>
+  <%= cl_image_tag("superclosing/bs_template",
+      width: 100, height: 150, crop: :fill) %>
+  <%= cl_image_tag("superclosing/opening_age_pv",
+      width: 100, height: 150, crop: :fill) %>
+  <%= cl_image_tag("superclosing/opening_age_presence",
+      width: 100, height: 150, crop: :fill) %>
+  <%= cl_image_tag("superclosing/dps_suppression",
+      width: 100, height: 150, crop: :fill) %>
+</div>
+
+
+
+<hr>
+
 <h3>LANCER LE CLOSING ?</h3>
 <p>Pour lancer le closing, assurez-vous que tous les investisseurs sont renseignés et que votre page personnelle est remplie à 100%.</p>
 
