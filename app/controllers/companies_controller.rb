@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
       render :new
     end
   end
- 
+
   def edit
     @company = Company.find(params[:id])
   end
@@ -34,7 +34,7 @@ class CompaniesController < ApplicationController
       render :edit
     end
   end
-  
+
   def new_captable
     @company = Company.find(params[:company_id])
   end
@@ -70,6 +70,8 @@ class CompaniesController < ApplicationController
         notice: "La valeur nominal de l'action a été fixée à #{@company.share_nominal_value_cents}"
       }
       format.js  # <-- will render `app/views/companies/create_nominal.js.erb`
+    end
+  end
 
   private
 
