@@ -10,7 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Messages", "#", class: "navbar-superclosing-item navbar-superclosing-link" %>
+      <%= link_to root_path,  class: "navbar-superclosing-item navbar-superclosing-link" do %>
+        <i class="fas fa-bell"></i>
+        <% end %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-superclosing-item">

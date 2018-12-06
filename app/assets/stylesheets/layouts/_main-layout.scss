@@ -1,7 +1,10 @@
+.body{
+
+}
 .pages-wrapper {
-    align-items: stretch;
-    display: flex;
-    width: 100%;
+  align-items: stretch;
+  display: flex;
+  width: 100%;
 }
 
 .main {
@@ -10,5 +13,22 @@
   transition: all .4s ease-in-out;
 }
 .page-content {
-  padding: 30px;
+  padding: 0px 30px;
+}
+.page-header {
+  margin-top: 16px;
+  font-size: 30px;
+  padding-left:30px;
+}
+.page-content {
+
+}
+.page-content-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.page-content-body{
+  padding-bottom: 11.5px;
+  margin-bottom:30px;
+  border-bottom: 1px solid #eeeeee;
 }
