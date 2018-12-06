@@ -23,6 +23,7 @@ class OperationsController < ApplicationController
 
   def show
     @operation = Operation.find(params[:id])
+    @s_document = SDocument.new
   end
 
   def new_investor

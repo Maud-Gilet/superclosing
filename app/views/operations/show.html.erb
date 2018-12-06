@@ -32,6 +32,28 @@
 
 <hr>
 
+<h3>DATAROOM</h3>
+<p>Ajoutez ici les informations pour vos investisseurs</p>
+
+<ul><% @operation.s_documents.each do |s_document| %>
+    <li> <%= s_document.category  %> - <%= s_document.title  %> - <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %></li>
+  <% end %>
+
+</ul>
+
+<p>Ajouter un nouveau document :</p>
+<%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
+  <%= f.input :title, label: "Nom" %>
+  <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+  <%= f.input :d_url, as: :file, label: "Document" %>
+  <%= f.input :d_url_cache, as: :hidden %>
+  <%= f.button :submit, "Ajouter" %>
+<% end %>
+
+</div>
+
+<hr>
+
 <h3>TEMPLATES DISPONIBLES</h3>
 <div style='display: flex, padding: 15px;'>
   <%= cl_image_tag("superclosing/bs_template",
