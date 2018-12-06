@@ -1,69 +1,99 @@
-<h1> Bienvenue <%= current_user.first_name %></h1>
-
-<div>
-  <h3>Vos informations</h3>
-
-  <p>Nom : <%= current_user.first_name %> <%= current_user.last_name %></p>
-
-  <% if current_user.address.nil? %>
-    <p>Adresse : à compléter </p>
-  <% else %>
-    <p>Adresse : <%= current_user.address %> </p>
-  <% end %>
-
-  <% if current_user.birthday.nil? %>
-     <p>Date de naissance : à compléter </p>
-  <% else %>
-    <p>Date de naissance : <%= current_user.birthday %> </p>
-  <% end %>
-
-  <% if current_user.birth_place.nil? %>
-    <p>Lieu de naissance : à compléter </p>
-  <% else %>
-    <p>Lieu de naissance : <%= current_user.birth_place %> </p>
-  <% end %>
-
-  <% if current_user.photo_url.file.nil? %>
-    <p>Photo : à compléter </p>
-    <% else %>
-  <p>Photo : <%= cl_image_tag current_user.photo_url, height: 150, width: 150, crop: :thumb, gravity: :face %> </p>
-  <% end %>
-  <%= link_to 'Modifier ou compléter', edit_user_registration_path %>
+<div class='page-header'>
+   Bienvenue <%= current_user.first_name %>
 </div>
 
-<% if current_user.companies.length == 0 %>
+<div class='page-content'>
+  <div class = 'page-content-header'>
+    Vos sociétés
+  </div>
 
-  <p>Vous n'avez encore enregistré aucune société sur Superclosing.</p>
+  <div class="page-content-body">
+    <% if current_user.companies.length == 0 %>
+
+      Vous n'avez encore enregistré aucune société sur SuperClosing.
+
+      <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une société</a>
+
+    <% else %>
+     <div class='company-container'>
+      <div class="company-container-header">
+        Société dans lesquelles vous êtes associé
+      </div>
+      <div class='company-container-cards'>
+        <% @associe.each do |role|%>
+          <div class="company-card">
+            <img src="https://via.placeholder.com/120x120" class="product-image hidden-xs">
+            <p> <%= link_to "#{role.company.name}", company_path(role.company) %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
 
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une société</a>
+      <div class='company-container'>
+        <div class="company-container-header">
+          Société dans lesquelles vous allez investir
+        </div>
+        <div class='company-container-cards'>
+          <% if @investisseur.length == 0 %>
+            Aucune pour l'instant
+            <% else %>
+              <% @investisseur.each do |role|%>
+               <div class="company-card">
+                <img src="https://via.placeholder.com/120x120" class="product-image hidden-xs">
+                <%= link_to "#{role.company.name}", company_path(role.company) %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='company-container'>
+        <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une nouvelle société</a>
+      </div>
 
 
-  <p> <%= link_to "Enregistrer une société", new_company_path, class: 'btn btn-success'%> </p>
 
-<% else %>
-
-  <p>
-    Sociétés dont vous êtes associé :
-  </p>
-
-  <ul>
-    <% @associe.each do |role|%>
-    <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
     <% end %>
-  </ul>
 
-    <p>Sociétés dans lesquelles vous envisagez d'investir :</p>
+  </div>
 
-  <ul><% @investisseur.each do |role|%>
-    <li> <%= link_to "#{role.company.name}", company_path(role.company) %></li>
+  <div class = 'page-content-header'>
+    Vos informations
+  </div>
+
+  <div class='page-content-body'>
+
+    <p>Nom : <%= current_user.first_name %> <%= current_user.last_name %></p>
+    <% if current_user.address.nil? %>
+      <p>Adresse : à compléter </p>
+    <% else %>
+      <p>Adresse : <%= current_user.address %> </p>
     <% end %>
-  </ul>
+
+    <% if current_user.birthday.nil? %>
+       <p>Date de naissance : à compléter </p>
+    <% else %>
+      <p>Date de naissance : <%= current_user.birthday %> </p>
+    <% end %>
+
+    <% if current_user.birth_place.nil? %>
+      <p>Lieu de naissance : à compléter </p>
+    <% else %>
+      <p>Lieu de naissance : <%= current_user.birth_place %> </p>
+    <% end %>
 
 
-<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une nouvelle société</a>
+    <% if current_user.photo_url.file.nil? %>
+      <img src="https://via.placeholder.com/150" class="avatar">
+    <% else %>
+      <%= cl_image_tag current_user.photo_url, height: 75, width: 75, crop: :thumb, gravity: :face, class: "avatar" %>
+    <% end %>
 
-<% end %>
+    <%= link_to 'Modifier ou compléter', edit_user_registration_path %>
+  </div>
+
+</div>
 
 <div class="modal fade" id="modalCompanyCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
