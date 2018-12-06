@@ -20,14 +20,20 @@
 
     <div>
       <h3>Répartition du capital</h3>
+
+      <div>
+        <p>Afficher la liste des actionnaires pour captable</p>
+      </div>
+
+      <% if @company.operations.where(category: 'initialize-captable').empty? %>
       <p>
-        Créer sa table de capitalisation (si rien n'a été renseigné)
-        <%= link_to 'Créer', company_new_captable_path(@company.id) %>
+        <%= link_to 'Créer', new_company_captable_path(@company.id) %>
       </p>
+      <% else %>
       <p>
-        Ou éditer si l'information existe
-        <%= link_to 'Editer', edit_company_path(@company.id) %>
+        <%= link_to 'Editer', new_company_captable_path(@company.id) %>
       </p>
+      <% end %>
     </div>
 
     <div>

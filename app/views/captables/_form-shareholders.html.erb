@@ -1,4 +1,4 @@
-<%= simple_form_for(company_create_captable_path(company), method: :post, remote: true) do |f| %>
+<%= simple_form_for(:query, url: company_captables_path(company), method: :post, remote: true) do |f| %>
 
   <p><strong>Identité de l'actionnaire à ajouter</strong></p>
   <%= f.input :first_name, placeholder: "Prénom", input_html: { name: 'first_name' }, label: false %>

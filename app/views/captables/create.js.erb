@@ -9,8 +9,8 @@ function displayShareholders(shareholderHTML) {
 }
 
 <% if @company.errors.any? %>
-  refreshForm('<%= j render "companies/form-shareholders", company: @company %>');
+  refreshForm('<%= j render "form-shareholders", company: @company %>');
 <% else %>
-  displayShareholders('<%= j render "companies/show-shareholders", company: @company %>');
-  refreshForm('<%= j render "companies/form-shareholders", company: @company %>');
+  displayShareholders('<%= j render "show-shareholders", company: @company %>');
+  refreshForm('<%= j render "form-shareholders", company: @company %>');
 <% end %>
