@@ -1,15 +1,77 @@
-<h2>Opération <%= @operation.name %></h2>
 
-<h3>RESUME DE L'OPERATION</h3>
-<ul>
-  <li>Type : <%= @operation.category %></li>
-  <li>Statut : <%= @operation.status %></li>
-  <li>Montant : <%= @operation.target_amount_cents%> euros</li>
-  <li>Montant : <%= @operation.premoney_cents%> euros</li>
-  <li>Date de fin : <%= @operation.expected_closing_date%></li>
-</ul>
+<!-- =========================================== GRAPHIQUES -->
+
+<div class="indicateurs position">
+  <div class="graph-container">
+    <div class="graph">
+      <p>Répartition Cible :</p>
+      <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
+      </canvas>
+    </div>
+
+    <div class="graph">
+      <p> Progression :<%= (@shares_values*100/@operation.target_amount_cents) %> %</p>
+      <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values %> ">
+      </canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- =========================================== SLIDE-->
+
+<div id="slide">
+  <h4><%= @operation.category %>
+  <br> <%= @operation.name %> </h4>
+  <p> <%= @operation.status %></p>
+  <p>Montant visé <%= @operation.target_amount_cents%>€
+  <br>Valorisation pre-money <%= @operation.premoney_cents%>€
+  <br>Date de fin : <%= @operation.expected_closing_date%>
+  </p>
+</div>
+
+<!-- =========================================== BOX-->
+<div class="boxes">
+
+  <div class="mainactionbox">
+    <h4 class="card-title">Investisseurs</h4>
+    <p class="card-text huge"> <%= @operation.investments.count %> </p>
+    <div class="card-bottom">
+      <a href="#" class="btn btn-superclosing">Voir</a>
+      <a href="#" class="btn btn-superclosing">Créer</a>
+    </div>
+  </div>
+
+  <div class="mainactionbox">
+    <h4 class="card-title">Data Room</h4>
+    <p class="card-text"> Inpiration à trouver</p>
+    <div class="card-bottom">
+      <a href="#" class="btn btn-superclosing">Voir</a>
+      <a href="#" class="btn btn-superclosing">Créer</a>
+    </div>
+  </div>
+
+
+  <div class="mainactionbox">
+    <h4 class="card-title">Modèles</h4>
+    <p class="card-text"> Inpiration à trouver</p>
+    <div class="card-bottom">
+      <a href="#" class="btn btn-superclosing">Voir</a>
+      <a href="#" class="btn btn-superclosing">Créer</a>
+    </div>
+  </div>
+
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
 
 <h3>LE TOUR DE TABLE</h3>
+    <p> <%= @operation.investments.count %> Investisseurs invités</p>
+
 <p>Investisseurs:</p>
 <ul><%  @operation.investments.each do |invest|%>
   <li> <%= invest.user.email%></li>
@@ -22,33 +84,7 @@
 <% end %>
 
 
-<!-- =========================================== CAPTABLE -->
 
-<div class="indicateurs">
-  <h3 class="leftinfobox">CAPTABLE</h3>
-  <div class="number-container">
-    <p> <%= @operation.investments.count %> Investisseurs invités</p>
-    <p> <%= (@shares_values*100/@operation.target_amount_cents) %> % d'avancement</p>
-  </div>
-  <div class="graph-container">
-    <div class="graph">
-      <p>Répartition Cible :</p>
-      <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
-      </canvas>
-    </div>
-
-    <div class="graph">
-      <p>Progession :</p>
-      <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values %> ">
-      </canvas>
-    </div>
-  </div>
-
-
-
-</div>
-
-<!-- =========================================== CAPTABLE -->
 
 
 <p>Liste des montants des investissements :</p>

@@ -1,0 +1,47 @@
+.boxes {
+  display: flex;
+  margin-top: 100px;
+}
+
+.mainactionbox {
+  display: flex;
+  border: solid 2px #fc9600;
+  background-color: #eaeaea;
+  border-radius: 8px;
+  width: 25rem;
+  box-shadow: 1px 1px 1px #fc9600;
+  flex-direction: column;
+  margin: 5px;
+  padding: 4px 8px;
+}
+.mainactionbox .card-title {
+
+  border-color:  #fc9600;
+  margin: 2px;
+  border-bottom: solid 2px #9aa0a8;
+
+
+}
+.mainactionbox .card-text {
+  text-align: center;
+  margin: 4px;
+  height: 96px;
+
+}
+.mainactionbox .card-bottom {
+
+  border-color:  #fc9600;
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 8px;
+}
+.mainactionbox .btn-superclosing{
+
+  padding: 4px 8px;
+  width: 72px;
+}
+
+.huge {
+  font-size: 60px !important;
+  font-style: bold;
+}
