@@ -20,9 +20,15 @@
 
     <div>
       <h3>Répartition du capital</h3>
-
+        <% @shareholders.each do |id, shares| %>
+          <ul>
+            <li>
+              <%= User.find(id).email %> - <%= shares %> actions
+            </li>
+          </ul>
+        <% end %>
       <div>
-        <p>Afficher la liste des actionnaires pour captable</p>
+
       </div>
 
       <% if @company.operations.where(category: 'initialize-captable').empty? %>

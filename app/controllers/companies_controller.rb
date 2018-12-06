@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    display_captable
   end
 
   def new
@@ -57,5 +58,17 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :address, :siren, :legal_form, :number_of_shares, :logo_url, :share_nominal_value_cents, :share_nominal_value_currency, :creation_date, :fiscal_date)
+  end
+
+  def display_captable
+    @investments = Investment.joins(operation: :company).where('companies.name = ? AND operations.status = ?', @company.name, 'completed')
+    @shareholders = {}
+    @investments.each do |invest|
+      if @shareholders.key?(invest.user_id)
+        @shareholders[invest.user_id] += invest.number_of_shares
+      else
+        @shareholders[invest.user_id] = invest.number_of_shares
+      end
+    end
   end
 end

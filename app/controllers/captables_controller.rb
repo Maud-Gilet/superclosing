@@ -1,10 +1,22 @@
 class CaptablesController < ApplicationController
+  before_action :set_company, only: [:show, :new, :create]
+
+  def show
+    @investments = Investment.joins(operation: :company).where('companies.name = ? AND operations.status = ?', @company.name, 'completed')
+    @captable = {}
+    @investments.each do |invest|
+      if @captable.key?(invest.user_id)
+        @captable[invest.user_id] = number_of_shares
+      else
+        @captable[invest.user_id] += number_of_shares
+      end
+    end
+  end
+
   def new
-    @company = Company.find(params[:company_id])
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @first_name = params[:first_name]
     @last_name = params[:last_name]
     @email = params[:email]
@@ -24,6 +36,10 @@ class CaptablesController < ApplicationController
   end
 
   private
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
 
   def user_role_exist?
     !@user.roles.where(category: @category, company: @company).empty?
