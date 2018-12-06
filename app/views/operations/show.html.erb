@@ -4,7 +4,7 @@
 <ul>
   <li>Type : <%= @operation.category %></li>
   <li>Statut : <%= @operation.status %></li>
-  <li>Montant : <%= @operation.target_amount_cents%> euros</li>
+  <li>Montant : <%= number_with_delimiter(@operation.target_amount_cents, :delimiter => " ") %> euros</li>
   <li>Montant : <%= @operation.premoney_cents%> euros</li>
   <li>Date de fin : <%= @operation.expected_closing_date%></li>
 </ul>

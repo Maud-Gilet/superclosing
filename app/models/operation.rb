@@ -5,4 +5,7 @@ class Operation < ApplicationRecord
   has_many :s_documents
   has_many :d_documents
   has_many :d_templates, through: :d_documents
+
+  monetize :target_amount_cents
+  monetize :premoney_cents
 end
