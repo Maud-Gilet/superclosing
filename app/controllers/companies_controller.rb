@@ -72,6 +72,7 @@ class CompaniesController < ApplicationController
       format.js  # <-- will render `app/views/companies/create_nominal.js.erb`
     end
   end
+
   private
 
   def set_company
