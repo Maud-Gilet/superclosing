@@ -22,6 +22,13 @@
 
 
 <h3>LA CAPTABLE</h3>
+
+<p>Répartition Cible :</p>
+
+<canvas id="myChart" width="40" height="40" data-share="<%= @operation.premoney_cents %> - <%= @operation.target_amount_cents %>">
+</canvas>
+
+
 <p>Liste des montants des investissements :</p>
 <ul><% @operation.investments do |investment| %>
   <li><% investment.id %> -- Montant : <% investment.number_of_shares*investment.share_premium_cents+@operation.share_nominal_value_cents %> </li>
