@@ -5,13 +5,14 @@
   <li>Type : <%= @operation.category %></li>
   <li>Statut : <%= @operation.status %></li>
   <li>Montant : <%= @operation.target_amount_cents%> euros</li>
+  <li>Montant : <%= @operation.premoney_cents%> euros</li>
   <li>Date de fin : <%= @operation.expected_closing_date%></li>
 </ul>
 
 <h3>LE TOUR DE TABLE</h3>
-<p>Liste des acteurs :</p>
-<ul><%  @operation.users do |user|%>
-  <li> <%= user.first_name %></li>
+<p>Investisseurs:</p>
+<ul><%  @operation.investments.each do |invest|%>
+  <li> <%= invest.user.email%></li>
   <% end %>
 </ul>
 
@@ -21,12 +22,33 @@
 <% end %>
 
 
-<h3>LA CAPTABLE</h3>
+<!-- =========================================== CAPTABLE -->
 
-<p>Répartition Cible :</p>
+<div class="indicateurs">
+  <h3 class="leftinfobox">CAPTABLE</h3>
+  <div class="number-container">
+    <p> <%= @operation.investments.count %> Investisseurs invités</p>
+    <p> <%= (@shares_values*100/@operation.target_amount_cents) %> % d'avancement</p>
+  </div>
+  <div class="graph-container">
+    <div class="graph">
+      <p>Répartition Cible :</p>
+      <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
+      </canvas>
+    </div>
 
-<canvas id="myChart" width="40" height="40" data-share="<%= @operation.premoney_cents %> - <%= @operation.target_amount_cents %>">
-</canvas>
+    <div class="graph">
+      <p>Progession :</p>
+      <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values %> ">
+      </canvas>
+    </div>
+  </div>
+
+
+
+</div>
+
+<!-- =========================================== CAPTABLE -->
 
 
 <p>Liste des montants des investissements :</p>
