@@ -18,9 +18,11 @@ Rails.application.routes.draw do
     post 'new_nominal', to: 'companies#create_nominal', as: 'create_nominal'
 
     resources :s_documents, only: [:index, :show, :new, :create, :destroy]
+    
     resources :operations, only: [:index, :new, :create] do
       resources :investments, only: [:index, :new, :create, :edit, :update]
       resources :d_documents, only: [:index, :show]
+      resources :s_documents, only: [:index, :show, :new, :create, :destroy]
     end
   end
 
