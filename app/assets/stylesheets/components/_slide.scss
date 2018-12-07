@@ -1,13 +1,11 @@
 #slide {
-  position: sticky;
-  top: 5px;
+  text-align: center;
+  position: fixed;
+  top: 60px;
   width: 300px;
-  margin-left: 800px;
+  margin-left: 860px;
   background-color: rgba( 234, 234, 234, 0.8 );
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
 }
 
-.position {
-  position: absolute;
-}
