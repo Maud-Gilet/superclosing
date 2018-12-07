@@ -43,8 +43,9 @@
 
         <div class = "home-card-avatar">
           <% if @company.logo_url.file == nil %>
-            <p> Ajoutez votre logo</p>
-          <% else %>
+
+              <img src="https://via.placeholder.com/120" class="logo">
+            <% else %>
             <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
           <% end %>
         </div>
