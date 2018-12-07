@@ -2,7 +2,7 @@
    <h3>Société <%= @company.name %></h3>
    <h5>Ici, vous trouverez tous les outils pour :</h5>
    <div>
-     <%= image_tag "operation-timeline.png", id: "operation-timeline-img" %>
+     <%= image_tag "company-creation-timeline.png", id: "company-creation-timeline-img" %>
    </div>
 </div>
 
@@ -25,9 +25,13 @@
             </ul>
           <% end %>
           <% if @company.operations.where(category: 'initialize-captable').empty? %>
-            <%= link_to 'Créer', new_company_captable_path(@company.id) %>
+            <%= link_to new_company_captable_path(@company.id) do %>
+              <button style="button" class="btn-transparent-small">Créer</button>
+            <% end %>
           <% else %>
-            <%= link_to 'Editer', new_company_captable_path(@company.id) %>
+            <%= link_to new_company_captable_path(@company.id) do %>
+              <button style="button" class="btn-transparent-small">Editer</button>
+            <% end %>
           <% end %>
         </div>
 
@@ -43,7 +47,6 @@
 
         <div class = "home-card-avatar">
           <% if @company.logo_url.file == nil %>
-
               <img src="https://via.placeholder.com/120" class="logo">
             <% else %>
             <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
@@ -55,7 +58,9 @@
           <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
           <p> <strong>Siège social</strong> :  <%= @company.address %></p>
           <div class='home-card-footer'>
-            <%= link_to 'Compléter les informations', edit_company_path(@company.id) %>
+            <%= link_to edit_company_path(@company.id) do %>
+              <button style="button" class="btn-transparent-small">Compléter les informations</button>
+            <% end %>
           </div>
         </div>
       </div>

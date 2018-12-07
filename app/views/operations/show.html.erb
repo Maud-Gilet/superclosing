@@ -21,6 +21,7 @@
 </div>
 
 
+<<<<<<< HEAD
 <div class='page-content'>
 
   <div class='row'>
@@ -72,6 +73,12 @@
         </div>
       </div>
     </div>
+=======
+  <div class="graph">
+    <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> </p>
+    <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
+    </canvas>
+>>>>>>> f08385c95e0fd9282356ce41e3d88e8053dac74e
   </div>
 </div>
 
