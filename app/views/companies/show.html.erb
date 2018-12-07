@@ -1,58 +1,98 @@
-<div class='company-show-container'>
+<div class='page-header'>
+   <h3>Société <%= @company.name %></h3>
+   <h5>Ici, vous trouverez tous les outils pour :</h5>
+   <div>
+     <%= image_tag "operation-timeline.png", id: "operation-timeline-img" %>
+   </div>
+</div>
 
-  <div class='company-banner-container'>
-    <h2>Société <%= @company.name %></h2>
-  </div>
+<div class='page-content'>
 
-  <div class='company-content-container'>
-    <div>
-      <h3>Infos</h3>
-       <p> Nom :  <%= @company.name %> </p>
-       <p> Forme sociale : <%= @company.legal_form %> </p>
-       <p> Siège social :  <%= @company.address %></p>
-       <% if @company.logo_url.file == nil %>
-        <p>Logo : Ajoutez votre logo</p>
-        <% else %>
-        <p>Logo : <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
-      <% end %>
-       <p> <%= link_to 'Compléter les informations', edit_company_path(@company.id) %> </p>
-    </div>
+  <div class='row'>
 
-    <div>
-      <h3>Répartition du capital</h3>
-        <% @shareholders.each do |id, shares| %>
-          <ul>
-            <li>
-              <%= User.find(id).last_name %> <%= User.find(id).first_name %> - <%= money_without_cents shares %> actions
-            </li>
-          </ul>
-        <% end %>
-      <div>
+    <div class ='col-xs-12 col-sm-8'>
+      <div class='home-card'>
+        <div class = 'home-card-header'>
+          Répartition du capital
+        </div>
+
+        <div class="home-card-body">
+          <% @shareholders.each do |id, shares| %>
+            <ul>
+              <li>
+                <%= User.find(id).last_name %> <%= User.find(id).first_name %> - <%= money_without_cents shares %> actions
+              </li>
+            </ul>
+          <% end %>
+          <% if @company.operations.where(category: 'initialize-captable').empty? %>
+            <%= link_to 'Créer', new_company_captable_path(@company.id) %>
+          <% else %>
+            <%= link_to 'Editer', new_company_captable_path(@company.id) %>
+          <% end %>
+        </div>
 
       </div>
-
-      <% if @company.operations.where(category: 'initialize-captable').empty? %>
-      <p>
-        <%= link_to 'Créer', new_company_captable_path(@company.id) %>
-      </p>
-      <% else %>
-      <p>
-        <%= link_to 'Editer', new_company_captable_path(@company.id) %>
-      </p>
-      <% end %>
     </div>
 
-    <div>
-      <h3>Opérations</h3>
-      <%= link_to 'Opérations', company_operations_path(@company.id) %>
-    </div>
+    <div class ='col-xs-12 col-sm-3 '>
+      <div class='home-card'>
 
-    <div>
-      <h3>Actionnariat</h3>
-    </div>
+        <div class = 'home-card-header'>
+          Informations
+        </div>
 
+        <div class = "home-card-avatar">
+          <% if @company.logo_url.file == nil %>
+            <p> Ajoutez votre logo</p>
+          <% else %>
+            <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
+          <% end %>
+        </div>
+
+        <div class='home-card-body'>
+          <p> <strong>Nom</strong> :  <%= @company.name %> </p>
+          <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
+          <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+          <div class='home-card-footer'>
+            <%= link_to 'Compléter les informations', edit_company_path(@company.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class='row'>
+    <div class = 'col-xs-11'>
+      <div class = 'home-card-header'>
+        Opérations
+      </div>
+      <div class = "home-card-body">
+        <%= link_to 'Opérations', company_operations_path(@company.id) %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class = 'col-xs-11'>
+      <div class = 'home-card-header'>
+        Actionnariat
+      </div>
+      <div class = "home-card-body">
+
+      </div>
+    </div>
+  </div>
+
+
+
+
 </div>
+
+
+
+
+
+
 
 
 
