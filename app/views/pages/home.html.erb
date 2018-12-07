@@ -103,7 +103,9 @@
           <% end %>
 
           <div class='home-card-footer'>
-            <%= link_to 'Modifier ou compléter', edit_user_registration_path %>
+            <%= link_to edit_user_registration_path do %>
+              <button style="button" class="btn-transparent-small">Modifier</button>
+            <% end %>
           </div>
         </div>
       </div>
