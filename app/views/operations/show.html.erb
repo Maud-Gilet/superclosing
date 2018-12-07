@@ -29,13 +29,13 @@
   <div class="graph-container">
     <div class="graph">
       <p>Répartition Cible :</p>
-      <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
+      <canvas id="myChart" data-share="<%= @operation.target_amount %>-<%= @operation.premoney %> ">
       </canvas>
     </div>
 
     <div class="graph">
-      <p> Progression :<%= (@shares_values*100/@operation.target_amount_cents) %> %</p>
-      <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values %> ">
+      <p> Progression :<%= (@shares_values*100/@operation.target_amount) %> %</p>
+      <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
       </canvas>
     </div>
   </div>
@@ -96,7 +96,7 @@
 
 <p>Liste des montants des investissements :</p>
 <ul><% @operation.investments do |investment| %>
-  <li><% investment.id %> -- Montant : <% investment.number_of_shares*investment.share_premium_cents+@operation.share_nominal_value_cents %> </li>
+  <li><% investment.id %> -- Montant : <% investment.number_of_shares * investment.share_premium + @operation.share_nominal_value %> </li>
   <% end %>
 </ul>
 
