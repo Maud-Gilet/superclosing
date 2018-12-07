@@ -13,35 +13,74 @@ body {
   background-size: cover;
   color: white;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
 #superclosing-landing-logo{
-  width: 700px;
-  margin-top: 120px;
+  margin-bottom: 40px;
+  height: 150px;
 }
+
 .banner-features {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .sc-landing-feature {
   text-align: center;
   padding: 22px 20px;
-  max-width: 300px;
-  max-height: 400px;
+  width: 380px;
+  max-height: 320px;
   background: #b5aa9a4d;
   border-radius: 4px;
-
-  i {
-    font-size:50px;
+  & i {
+    font-size: 48px;
     color: #ffac30;
+    margin-bottom: 15px;
   }
-  h5 {
+  & h5 {
     font-size:24px;
-    margin: 8px;
+    font-weight: 700px;
+    margin-bottom: 12px;
   }
+  & p {
+    font-size: 16px;
+    font-weight: 500px;
+  }
+
 }
 .landing-inner-text{
   padding: 8px;
   height:160px;
+}
+
+.landing-footer {
+  background: #b5aa9a4d;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
 }
