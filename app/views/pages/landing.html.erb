@@ -1,13 +1,23 @@
 <div class="wrapper">
   <div class="sc-banner" style="background-image: linear-gradient(-225deg, rgba(156, 149, 149, 0.3) 0%, rgba(51, 63, 43, 0.3) 70%), url(<%= asset_path "background.jpg" %>);">
 
+    <div class="signup">
+      <%= link_to new_user_session_path do %>
+        <button type="button" class="btn btn-landing-signin">Connexion</button>
+      <% end %>
+    </div>
+
+
+
     <div class="banner-content">
       <%= link_to new_user_registration_path do %>
+
         <button type="button" class="btn btn-landing-login">Connexion</button>
       <% end %>
       <%= image_tag "logo.png", id: "superclosing-landing-logo" %>
 
       <%= link_to new_user_registration_path do %>
+
         <button type="button" class="btn btn-landing-signup">Lancez-vous</button>
       <% end %>
     </div>

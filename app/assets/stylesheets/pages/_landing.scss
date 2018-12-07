@@ -1,3 +1,9 @@
+
+.signup {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+
 body {
   margin: 0;
   padding:0px;
@@ -18,12 +24,7 @@ body {
     font-size: 40px;
   }
 }
-.sc-banner .btn-rocket {
-  font-size: 18px;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgb(100, 100, 100);
-  padding: 20px 40px;
-}
+
 
 .banner-features {
   display: flex;
