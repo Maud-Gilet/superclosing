@@ -11,7 +11,7 @@
 }
 
 .btn-superclosing {
-  background: #FDBB58;
+  background: #ffac30;
   color: white;
   font-weight: 500;
   text-decoration: none;
@@ -28,9 +28,8 @@
 }
 
 .btn-landing-signup {
-  background: #FDBB58;
+  background: #ffac30;
   color: white;
-  text-shadow: 1px 1px 4px rgb(100, 100, 100);
   font-weight: 700;
   text-decoration: none;
   padding: 15px 25px;
@@ -47,7 +46,7 @@
 
 .btn-landing-signin {
   background-color: inherit;
-  border: 2px solid #FDBB58;
+  border: 2px solid #ffac30;
   color: white;
   font-size: 0.9em;
   font-weight: 500;
@@ -58,7 +57,26 @@
 }
 
 .btn-landing-signin:hover {
-  background: #FDBB58;
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-form-action {
+  background: #ffac30;
+  color: white;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+
+.btn-form-action:hover {
+  background: #ffa118;
   color: white;
   text-decoration: none;
 }
