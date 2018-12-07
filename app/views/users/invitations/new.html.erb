@@ -1,11 +1,21 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="form-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form-login">
 
-<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
-  <%= devise_error_messages! %>
+        <h2><%= t "devise.invitations.new.header" %></h2>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <%= f.input field %>
-<% end -%>
+        <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
+          <%= devise_error_messages! %>
 
-<%= f.button :submit, t("devise.invitations.new.submit_button") %>
-<% end %>
+        <% resource.class.invite_key_fields.each do |field| -%>
+          <%= f.input field %>
+        <% end -%>
+
+        <%= f.button :submit, t("devise.invitations.new.submit_button"), class: 'btn-form-action' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
