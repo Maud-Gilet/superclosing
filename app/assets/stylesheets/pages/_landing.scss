@@ -1,5 +1,64 @@
+
 .signup {
   position: absolute;
   top: 20px;
   right: 80px;
+
+body {
+  margin: 0;
+  padding:0px;
+}
+
+.sc-banner {
+  height: 100vh;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+#superclosing-landing-logo{
+  width: 600px;
+  margin-top: 150px;
+}
+.banner-content{
+  p {
+    font-size: 40px;
+  }
+}
+
+
+.banner-features {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sc-landing-feature {
+  text-align: center;
+  padding: 22px 20px;
+  max-width: 300px;
+  max-height: 400px;
+  background: #b5aa9a4d;
+  border-radius: 4px;
+  border: 1px solid #FDBB58;
+  i {
+    font-size:50px;
+    color: #FDBB58;
+  }
+  h5 {
+    font-size:20px;
+    margin: 8px;
+  }
+  p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+.btn-landing-login{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  text-decoration: none;
+  border: 1px solid #FDBB58;
+  color: #FDBB58;
 }

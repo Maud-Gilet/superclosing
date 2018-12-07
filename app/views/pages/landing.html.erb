@@ -1,27 +1,48 @@
 <div class="wrapper">
   <div class="sc-banner" style="background-image: linear-gradient(-225deg, rgba(156, 149, 149, 0.3) 0%, rgba(51, 63, 43, 0.3) 70%), url(<%= asset_path "background.jpg" %>);">
+
     <div class="signup">
       <%= link_to new_user_session_path do %>
         <button type="button" class="btn btn-landing-signin">Connexion</button>
       <% end %>
     </div>
+
+
+
     <div class="banner-content">
-      <h1>Superclosing</h1>
-      <p>Simplifiez votre levée de fonds</p>
       <%= link_to new_user_registration_path do %>
+
+        <button type="button" class="btn btn-landing-login">Connexion</button>
+      <% end %>
+      <%= image_tag "logo.png", id: "superclosing-landing-logo" %>
+
+      <%= link_to new_user_registration_path do %>
+
         <button type="button" class="btn btn-landing-signup">Lancez-vous</button>
       <% end %>
     </div>
-  </div>
-</div>
-<div class="wrapper">
-  <div class="sc-landing-feature">
-    FEATURE 1
-  </div>
-  <div class="sc-landing-feature">
-    FEATURE 2
-  </div>
-  <div class="sc-landing-feature">
-    FEATURE 3
+
+    <div class = banner-features>
+
+      <div class="sc-landing-feature">
+        <i class="fas fa-compass"></i>
+        <h5>Simplifiez votre levée de fonds</h5>
+        <p> Nous vous accompagnons étape par étape dans votre levée. <br> Chaque étape expliquée et détaillée, tous les documents adaptés à votre situation.</p>
+      </div>
+
+      <div class="sc-landing-feature">
+        <i class="fas fa-clipboard-check"></i>
+        <h5>Un processus unifié et centralisé </h5>
+        <p>Une documentation juridique unique, un partage d’information transparent avec vos investisseurs, une information toujours à jour.</p>
+      </div>
+
+      <div class="sc-landing-feature">
+        <i class="fas fa-tachometer-alt"></i>
+        <h5>Moins cher et plus rapide</h5>
+        <p>Toutes les étapes sont gérées par votre outil, pas de recours à des prestataires externes générant coûts et complexité.</p>
+      </div>
+
+    </div>
+
   </div>
 </div>
