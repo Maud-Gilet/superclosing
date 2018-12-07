@@ -1,60 +1,138 @@
-<h2>Opération <%= @operation.name %></h2>
+<div id="slide">
+  <h4><%= @operation.category %> <%= @operation.name %> </h4>
+  <p> <%= @operation.status %></p>
 
-<h3>RESUME DE L'OPERATION</h3>
-<ul>
-  <li>Type : <%= @operation.category %></li>
-  <li>Statut : <%= @operation.status %></li>
-  <li>Montant visé pour l'opération : <%= money_without_cents @operation.target_amount %> euros</li>
-  <li>Valorisation prémoney : <%= money_without_cents @operation.premoney %> euros</li>
-  <li>Date de fin estimée : <%= @operation.expected_closing_date%></li>
-</ul>
+  <h4 class="huge"><%= (money_without_cents @shares_values*10000/@operation.target_amount_cents) %> %</h4>
+  <p>des fonds collectés</p>
 
-<h3>LE TOUR DE TABLE</h3>
-<p>Investisseurs:</p>
-<ul>
-  <%  @operation.investments.each do |invest|%>
-    <li>
-      <%= invest.user.email %> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros
-    </li>
+  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
+  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
+  </p>
+
+  <button type="button" class="btn btn-superclosing"> Lancer les signatures </button>
+</div>
+
+
+<div class="haut">
+  <img id="etapes" src=<%= asset_path 'etapes.png' %> alt="etapes">
+
+</div>
+
+
+
+
+
+<div class="club">
+  <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
+</div>
+
+<div class="club-item">
+  <div>
+    <table class="tableau">
+      <tr>
+        <th class="liste">Nom</th>
+        <th class="liste">Email</th>
+        <th class="liste">Nombre d'actions</th>
+        <th class="liste">Montant investi €</th>
+        <th class="liste">Statut </th>
+      </tr>
+      <tr><%  @operation.investments.each do |invest|%>
+        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
+        <td class="liste"><%= invest.user.email %></td>
+        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
+        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
+        <td class="liste"> Invité </td>
+      </tr>
+      <%end%>
+
+    </table>
+
+    <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+      <button type="button" class="btn btn-superclosing gauche"> Ajouter un investisseur </button>
+    <% end %>
+  </div>
+
+  <div class="graph">
+    <p> Progression :<%= (@shares_values*100/@operation.target_amount_cents) %> %</p>
+    <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values * 100 %> ">
+    </canvas>
+  </div>
+</div>
+
+
+<div class="club">
+  <i class="fas fa-book"></i><h4 class="card-title">La Data Room</h4>
+</div>
+
+<p class="gauche">INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.</p>
+
+<div class="docs">
+  <div class="doccard">
+    <div> <%= cl_image_tag("superclosing/bs_template",
+    width: 100, height: 150, crop: :fill) %>
+    </div>
+    <p>Bon de souscription</p>
+  </div>
+
+  <div class="doccard">
+    <div> <%= cl_image_tag("superclosing/opening_age_pv",
+    width: 100, height: 150, crop: :fill) %>
+    </div>
+    <p>PV d'ouverture d'AG</p>
+  </div>
+
+  <div class="doccard">
+    <div> <%= cl_image_tag("superclosing/opening_age_presence",
+    width: 100, height: 150, crop: :fill) %>
+    </div>
+    <p>Ouverture d'AG</p>
+  </div>
+
+  <div class="doccard">
+    <div> <%= cl_image_tag("superclosing/dps_suppression",
+    width: 100, height: 150, crop: :fill) %>
+    </div>
+    <p>Suppression de DPS</p>
+  </div>
+
+  <% @operation.s_documents.each do |s_document| %>
+  <div class="doccard">
+    <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
+    </div>
+    <p><%= s_document.title  %></p>
+  </div>
   <% end %>
-</ul>
 
-<%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-  <button type="button" class="btn btn-success"> >>> Gérer les investisseurs <<< </button>
-<% end %>
-
-<!-- =========================================== GRAPHIQUES -->
-
-<div class="indicateurs position">
-  <div class="graph-container">
-    <div class="graph">
-      <p>Répartition Cible :</p>
-      <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
-      </canvas>
-    </div>
-
-    <div class="graph">
-      <p> Progression :<%= (@shares_values*100/@operation.target_amount_cents) %> %</p>
-      <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values %> ">
-      </canvas>
-    </div>
+  <div class="doccard">
+    <p style="width: 100; height: 150; background-color: white;"> + </p>
+    <p>Uploader un document</p>
   </div>
 
 </div>
 
-<!-- =========================================== SLIDE-->
+  <%= link_to "#" do %>
+    <button type="button" class="btn btn-superclosing gauche"> Ajouter un document</button>
+  <% end %>
 
-<div id="slide">
-  <h4><%= @operation.category %>
-  <br> <%= @operation.name %> </h4>
-  <p> <%= @operation.status %></p>
-  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Valorisation pre-money : <%= money_without_cents @operation.premoney %> €
-  <br>Date de fin : <%= @operation.expected_closing_date%>
-  </p>
+<div class="gauche">
+<%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
+  <%= f.input :title, label: "Nom" %>
+  <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+  <%= f.input :d_url, as: :file, label: "Document" %>
+  <%= f.input :d_url_cache, as: :hidden %>
+  <%= f.button :submit, "Ajouter" %>
+<% end %>
+
 </div>
 
-<!-- =========================================== BOX-->
+<br>
+
+<div class="club">
+  <i class="fas fa-pencil-alt"></i><h4 class="card-title">SIGNATURES</h4>
+</div>
+
+<p class="gauche">INFO: Avant de générer la documentation juridique pour cette opération, prenez le temps de bien vérifier les informations concernant la société (raison social, capital), les investisseurs (nom, prénom, adresse) et l'opération (montants, nombre d'actions concernées). Ne vous inquiétez pas vous pourrez revoir les documents avant leur envoi à vos investisseurs et la signature électronique.</p>
+
 <div class="boxes">
 
   <div class="mainactionbox">
@@ -66,89 +144,16 @@
     </div>
   </div>
 
-  <div class="mainactionbox">
-    <h4 class="card-title">Data Room</h4>
-    <p class="card-text"> Inpiration à trouver</p>
-    <div class="card-bottom">
-      <a href="#" class="btn btn-superclosing">Voir</a>
-      <a href="#" class="btn btn-superclosing">Créer</a>
-    </div>
+  <div class="graph">
+    <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
+    </canvas>
   </div>
 
-
-  <div class="mainactionbox">
-    <h4 class="card-title">Modèles</h4>
-    <p class="card-text"> Inpiration à trouver</p>
-    <div class="card-bottom">
-      <a href="#" class="btn btn-superclosing">Voir</a>
-      <a href="#" class="btn btn-superclosing">Créer</a>
-    </div>
-  </div>
-
-
 </div>
-
-<br>
-<br>
-<br>
-<br>
-
-
-<p>Liste des montants des investissements :</p>
-<ul><% @operation.investments do |investment| %>
-  <li><% investment.id %> -- Montant : <% investment.number_of_shares*investment.share_premium_cents+@operation.share_nominal_value_cents %> </li>
-  <% end %>
-</ul>
-
-<p>Total des investissements :  (faire la somme)</p>
-
-<hr>
-
-<h3>DATAROOM</h3>
-<p>Ajoutez ici les informations pour vos investisseurs</p>
-
-<ul><% @operation.s_documents.each do |s_document| %>
-    <li> <%= s_document.category  %> - <%= s_document.title  %> - <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %></li>
-  <% end %>
-
-</ul>
-
-<p>Ajouter un nouveau document :</p>
-<%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
-  <%= f.input :title, label: "Nom" %>
-  <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
-  <%= f.input :d_url, as: :file, label: "Document" %>
-  <%= f.input :d_url_cache, as: :hidden %>
-  <%= f.button :submit, "Ajouter" %>
-<% end %>
-
-</div>
-
-<hr>
-
-<h3>TEMPLATES DISPONIBLES</h3>
-<div style='display: flex, padding: 15px;'>
-  <%= cl_image_tag("superclosing/bs_template",
-      width: 100, height: 150, crop: :fill) %>
-  <%= cl_image_tag("superclosing/opening_age_pv",
-      width: 100, height: 150, crop: :fill) %>
-  <%= cl_image_tag("superclosing/opening_age_presence",
-      width: 100, height: 150, crop: :fill) %>
-  <%= cl_image_tag("superclosing/dps_suppression",
-      width: 100, height: 150, crop: :fill) %>
-</div>
-
-
-
-<hr>
-
-<h3>LANCER LE CLOSING ?</h3>
-<p>Pour lancer le closing, assurez-vous que tous les investisseurs sont renseignés et que votre page personnelle est remplie à 100%.</p>
 
 
 <hr>
 <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
-<br>
 <br>
 <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
 
