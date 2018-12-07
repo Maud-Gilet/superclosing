@@ -1,6 +1,6 @@
 <div class="form-container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-10 col-sm-6 col-sm-offset-3">
       <div class="form-signup">
 
         <h2><%= current_user.first_name %>, complétez votre profil </h2>
@@ -37,7 +37,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Mettre à jour" %>
+            <%= f.button :submit, "Mettre à jour", class: 'btn-form-action' %>
           </div>
         <% end %>
 

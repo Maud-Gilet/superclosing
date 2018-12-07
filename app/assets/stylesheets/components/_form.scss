@@ -1,4 +1,5 @@
 .form-login, .form-signup, .form-password-change {
+  margin-top: 35px;
   background: white;
   padding: 10px 20px;
   border-radius: 3px;
@@ -12,9 +13,6 @@
   }
   .btn {
     width: 100%;
-    margin-bottom: 20px;
-    background: $green;
-    color: white;
   }
   label {
     font-size: 16px;
@@ -23,6 +21,17 @@
 
 .form-edit-company {
   margin-top: 40px;
+  padding: 10px 20px;
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    margin: 14px;
+  }
+  .btn {
+    width: 100%;
+  }
 }
 
 .form-initialize-captable {
