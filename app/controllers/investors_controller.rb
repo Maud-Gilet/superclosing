@@ -12,8 +12,7 @@ class InvestorsController < ApplicationController
     @operation = Operation.find(params[:operation_id])
     @company = @operation.company
     @email = params[:email]
-    # Attention aux arrondis
-    @price_per_share_operation = @operation.premoney / @company.number_of_shares
+    @price_per_share_operation = (@operation.premoney / @company.number_of_shares.to_i).round(2)
     @share_premium = @price_per_share_operation - @company.share_nominal_value
 
     @number_of_shares = (params[:amount].to_i / @price_per_share_operation.to_f).round(0)

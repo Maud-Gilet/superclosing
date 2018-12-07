@@ -6,10 +6,11 @@ class CaptablesController < ApplicationController
     @captable = {}
     @investments.each do |invest|
       if @captable.key?(invest.user_id)
-        @captable[invest.user_id] = number_of_shares
+        @captable[invest.user_id] = invest.number_of_shares
       else
-        @captable[invest.user_id] += number_of_shares
+        @captable[invest.user_id] += invest.number_of_shares
       end
+      @company.number_of_shares += invest.number_of_shares
     end
   end
 

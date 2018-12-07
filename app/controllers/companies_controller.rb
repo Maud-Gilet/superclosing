@@ -63,12 +63,15 @@ class CompaniesController < ApplicationController
   def display_captable
     @investments = Investment.joins(operation: :company).where('companies.name = ? AND operations.status = ?', @company.name, 'completed')
     @shareholders = {}
+    @company.number_of_shares = 0
     @investments.each do |invest|
       if @shareholders.key?(invest.user_id)
         @shareholders[invest.user_id] += invest.number_of_shares
       else
         @shareholders[invest.user_id] = invest.number_of_shares
       end
+      @company.number_of_shares += invest.number_of_shares
+      @company.save
     end
   end
 end
