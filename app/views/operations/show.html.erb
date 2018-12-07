@@ -35,28 +35,32 @@
         <th class="liste">Email</th>
         <th class="liste">Nombre d'actions</th>
         <th class="liste">Montant investi €</th>
-        <th class="liste">Statut </th>
+        <th class="liste">Statut</th>
       </tr>
       <tr><%  @operation.investments.each do |invest|%>
         <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
         <td class="liste"><%= invest.user.email %></td>
         <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
         <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
-        <td class="liste"> Invité </td>
+        <td class="liste">
+          <% if invest.status == 'pending' %>
+            Invité
+          <% end %>
+        </td>
       </tr>
       <%end%>
 
     </table>
 
     <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-      <button type="button" class="btn btn-superclosing gauche"> Ajouter un investisseur </button>
+      <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
     <% end %>
 
   </div>
 
   <div class="graph">
-    <p> Progression :<%= (@shares_values*100/@operation.target_amount_cents) %> %</p>
-    <canvas id="mySecondChart" data-share="<%= @operation.target_amount_cents %> - <%= @shares_values * 100 %> ">
+    <p> Progression :<%= (@shares_values * 100/@operation.target_amount) %> %</p>
+    <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
     </canvas>
   </div>
 </div>
