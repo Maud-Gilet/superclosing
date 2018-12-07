@@ -1,17 +1,5 @@
-.btn-create-operation {
-  margin-top: 20px;
-  background: $green;
-  color: white;
-}
-
-.btn-cancel-operation {
-  margin-top: 20px;
-  background: $red;
-  color: white;
-}
-
 .btn-superclosing {
-  background: #fc9600;
+  background: #ffac30;
   color: white;
   font-weight: 500;
   text-decoration: none;
@@ -26,7 +14,104 @@
   color: white;
   text-decoration: none;
 }
-  
+
+.btn-landing-signup {
+  background: #ffac30;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+  opacity: 1;
+  position: relative;
+  bottom: 24px;
+}
+
+.btn-landing-signup:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-landing-signin {
+  background-color: inherit;
+  border: 2px solid #ffac30;
+  color: white;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+}
+
+.btn-landing-signin:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-form-action {
+  background: #ffac30;
+  color: white;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+
+.btn-form-action:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-transparent {
+  background-color: inherit;
+  border: 2px solid #ffac30;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #ffac30;
+  font-size: 1em;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+}
+
+.btn-transparent:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-transparent-small {
+  background-color: inherit;
+  border: 1px solid #ffac30;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #ffac30;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+}
+
+.btn-transparent-small:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
 .btn-add-company {
   width:120px;
   height: 120px;
@@ -39,4 +124,38 @@
   a {
     text-decoration: none;
   }
+}
+
+.buttons-new-operation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-create-operation {
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: $green;
+  color: white;
+}
+
+.btn-cancel-operation {
+  margin-top: 20px;
+  margin-left: 30px;
+  background: inherit;
+  border: 1px solid $red;
+  color: $red;
+}
+
+.btn-create-operation:hover {
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}
+
+.btn-cancel-operation:hover {
+  text-decoration: none;
+  color: $red;
+  background-color: #fdecec;
 }

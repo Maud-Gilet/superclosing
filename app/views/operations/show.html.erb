@@ -13,6 +13,7 @@
 </div>
 
 
+
 <div class="haut">
   <img id="etapes" src=<%= asset_path 'etapes.png' %> alt="etapes">
 
@@ -50,6 +51,7 @@
     <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
       <button type="button" class="btn btn-superclosing gauche"> Ajouter un investisseur </button>
     <% end %>
+
   </div>
 
   <div class="graph">
@@ -95,12 +97,14 @@
     <p>Suppression de DPS</p>
   </div>
 
+
   <% @operation.s_documents.each do |s_document| %>
   <div class="doccard">
     <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
     </div>
     <p><%= s_document.title  %></p>
   </div>
+
   <% end %>
 
   <div class="doccard">

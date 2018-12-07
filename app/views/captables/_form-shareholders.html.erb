@@ -1,3 +1,4 @@
+
 <%= simple_form_for(:query, url: company_captables_path(company), method: :post, remote: true) do |f| %>
 
   <p><strong>Identité de l'actionnaire à ajouter</strong></p>
@@ -6,5 +7,11 @@
   <%= f.input :email, placeholder: "email", input_html: { name: 'email' }, label: false %>
   <%= f.input :number_of_shares, placeholder: "Nombre d'actions détenues", input_html: { name: 'number_of_shares' }, label: false %>
   <%= f.input :category, collection: ['Associé', 'Président', 'Investisseur'], input_html: { name: 'category' }, label: "Qualité de l'actionnaire" %>
-  <%= f.button :submit, "Ajouter l'actionnaire" %>
+
+  <div class="text-align-center">
+    <%= f.button :submit, "Ajouter l'actionnaire", class: 'btn btn-form-action' %>
+  </div>
+
 <% end %>
+
+

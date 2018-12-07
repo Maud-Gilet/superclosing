@@ -14,14 +14,19 @@
 }
 .page-content {
   padding: 0px 30px;
+  .row {
+    display: flex;
+  }
 }
 .page-header {
   margin-top: 16px;
   font-size: 30px;
   padding-left:30px;
-}
-.page-content {
-
+  padding-bottom: 30px;
+  h5 {
+    padding-top: 20px;
+    color: #2C3C4C;
+  }
 }
 .page-content-header {
   font-size: 24px;
