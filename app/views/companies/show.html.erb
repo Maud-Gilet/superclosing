@@ -23,7 +23,7 @@
         <% @shareholders.each do |id, shares| %>
           <ul>
             <li>
-              <%= User.find(id).email %> - <%= shares %> actions
+              <%= User.find(id).last_name %> <%= User.find(id).first_name %> - <%= money_without_cents shares %> actions
             </li>
           </ul>
         <% end %>

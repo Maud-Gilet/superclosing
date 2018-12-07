@@ -48,8 +48,8 @@
   <h4><%= @operation.category %>
   <br> <%= @operation.name %> </h4>
   <p> <%= @operation.status %></p>
-  <p>Montant visé <%= @operation.target_amount_cents%>€
-  <br>Valorisation pre-money <%= @operation.premoney_cents%>€
+  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
+  <br>Valorisation pre-money : <%= money_without_cents @operation.premoney %> €
   <br>Date de fin : <%= @operation.expected_closing_date%>
   </p>
 </div>
