@@ -8,9 +8,31 @@
   padding: 14px 0px;
   display: block;
 }
+.sidebar-nav{
+  margin-top: 50px;
+}
+.sidebar-item {
+  display: flex;
+  min-width: 220px;
+  max-width: 220px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 30px;
+  i {
+    color: white;
+    font-size: 24px;
+    padding-right: 12px;
+  }
+  // :hover{
+  //   color: #FDBB58;
+  // }
+}
 .sidebar a {
   color: #ffffffab;
   text-decoration: none;
+  :hover {
+    color: #FDBB58;
+  }
 }
 #superclosing-logo{
   max-width: 200px;
@@ -20,23 +42,6 @@
 }
 .sidebar > a {
   font-size: 24px;
-  margin-left: 20px;
+  // margin-left: 20px;
   color: white;
-}
-
-.sidebar ul {
-  list-style: none;
-  display: block;
-  padding-inline-start: 4px;
-  margin-top: 50px;
-  font-size: 14px;
-  li {
-    padding: 20px 0px;
-    display: list-item;
-    a i {
-      padding: 20px;
-      font-size: 30px;
-      color: white;
-    }
-  }
 }
