@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Superclosing</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Superclosing : la façon la plus simple et la plus rapide de gérer votre levée de fonds</title>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+
+    <!-- page's intelligence (metadata) -->
+      <meta name="description" content="Facilitez vos levées de fonds">
+      <meta property="og:title" content="Superclosing">
+      <meta property="og:url" content="http://www.superclosing.com">
+      <meta property="og:image" content="image">
+      <meta property="og:description" content="Une plateforme juridique complète pour vous accompagner dans vos levées de fonds">
+      <meta property="og:site_name" content="superclosing.com">
   </head>
   <body>
     <% if !user_signed_in? %>
