@@ -17,13 +17,14 @@
         </div>
 
         <div class="home-card-body">
-          <% @shareholders.each do |id, shares| %>
-            <ul>
+          <ul>
+            <% @shareholders.each do |id, shares| %>
               <li>
                 <%= User.find(id).last_name %> <%= User.find(id).first_name %> - <%= money_without_cents shares %> actions
               </li>
-            </ul>
-          <% end %>
+            <% end %>
+            <li>Total : <%= money_without_cents @company.number_of_shares %> actions</li>
+          </ul>
           <% if @company.operations.where(category: 'initialize-captable').empty? %>
             <%= link_to 'Créer', new_company_captable_path(@company.id) %>
           <% else %>

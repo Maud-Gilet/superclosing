@@ -59,7 +59,7 @@
   </div>
 
   <div class="graph">
-    <p> Progression :<%= (@shares_values * 100/@operation.target_amount) %> %</p>
+    <p> Progression :<%= (@shares_values * 100 / @operation.target_amount.to_f).round(0) %> %</p>
     <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
     </canvas>
   </div>
