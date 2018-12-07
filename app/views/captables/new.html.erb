@@ -1,26 +1,42 @@
-<h1>Initialiser la table de capitalisation</h1>
-
-<div id="form-nominal">
-  <%= render 'companies/form-nominal', company: @company %>
-</div>
-<% if @company.share_nominal_value_cents.nil? %>
-  <div id="display-nominal">
-
+<div class="container form-initialize-captable">
+  <div class="text-align-center">
+    <h1>Initialiser la table de capitalisation</h1>
   </div>
-<% else %>
-  <div id="display-nominal">
-    <p>Nominal des actions : <%= money_without_cents @company.share_nominal_value %></p>
+
+    <div id="form-nominal">
+      <%= render 'companies/form-nominal', company: @company %>
+    </div>
+
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-align-center">
+      <% if @company.share_nominal_value_cents.nil? %>
+        <div id="display-nominal">
+
+        </div>
+      <% else %>
+        <div id="display-nominal">
+          <p>Nominal des actions : <%= money_without_cents @company.share_nominal_value %> euros</p>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+<hr>
 
 <br>
 
-<div id="form-shareholders">
-  <%= render 'form-shareholders', company: @company %>
-</div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-8 col-sm-offset-2">
+      <div id="form-shareholders">
+        <%= render 'form-shareholders', company: @company %>
+      </div>
 
-<div id="display-shareholders">
-  <%= render 'show-shareholders', company: @company %>
-</div>
+      <div id="display-shareholders">
+        <%= render 'show-shareholders', company: @company %>
+      </div>
 
-<%= link_to 'Terminer', company_path(@company) %>
+      <%= link_to 'Terminer', company_path(@company) %>
+    </div>
+  </div>
+
+</div>
