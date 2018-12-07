@@ -2,7 +2,7 @@ class CaptablesController < ApplicationController
   before_action :set_company, only: [:show, :new, :create]
 
   def show
-    @investments = Investment.joins(operation: :company).where('companies.name = ? AND operations.status = ?', @company.name, 'completed')
+    @investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @company.id, 'completed')
     @captable = {}
     @investments.each do |invest|
       if @captable.key?(invest.user_id)
@@ -83,7 +83,7 @@ class CaptablesController < ApplicationController
   def create_initialize_captable_operation
     Operation.create!(company: @company,
                       category: 'initialize-captable',
-                      status: 'initialize',
+                      status: 'completed',
                       name: 'Initialisation de la table de capitalisation')
   end
 end

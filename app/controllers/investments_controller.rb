@@ -40,7 +40,7 @@ class InvestmentsController < ApplicationController
 
   def destroy
     # Protection for Operations with 'Completed' status
-    @investment.destroy if @investment.operation.status == 'completed'
+    @investment.destroy if (@investment.operation.status != 'completed' || @investment.operation.category == 'initialize-captable')
   end
 
   private
