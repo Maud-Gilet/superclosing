@@ -13,55 +13,65 @@
 </div>
 
 
-
-<div class="haut">
-  <img id="etapes" src=<%= asset_path 'etapes.png' %> alt="etapes">
-
-</div>
-
-
-
-
-
-<div class="club">
-  <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
-</div>
-
-<div class="club-item">
-  <div>
-    <table class="tableau">
-      <tr>
-        <th class="liste">Nom</th>
-        <th class="liste">Email</th>
-        <th class="liste">Nombre d'actions</th>
-        <th class="liste">Montant investi €</th>
-        <th class="liste">Statut</th>
-      </tr>
-      <tr><%  @operation.investments.each do |invest|%>
-        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
-        <td class="liste"><%= invest.user.email %></td>
-        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
-        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
-        <td class="liste">
-          <% if invest.status == 'pending' %>
-            Invité
-          <% end %>
-        </td>
-      </tr>
-      <%end%>
-
-    </table>
-
-    <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-      <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
-    <% end %>
+<div class='page-header'>
+  <div class="haut">
+    <img id="etapes" src=<%= asset_path 'etapes.png' %> alt="etapes">
 
   </div>
+</div>
 
-  <div class="graph">
-    <p> Progression :<%= (@shares_values * 100/@operation.target_amount) %> %</p>
-    <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
-    </canvas>
+
+<div class='page-content'>
+
+  <div class='row'>
+
+    <div class ='col-xs-12 col-sm-8'>
+      <div class='home-card'>
+        <div class = 'home-card-header'>
+          <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
+        </div>
+
+        <div class="home-card-body">
+          <div class="club-item">
+            <div>
+              <table class="tableau">
+                <tr>
+                  <th class="liste">Nom</th>
+                  <th class="liste">Email</th>
+                  <th class="liste">Nombre d'actions</th>
+                  <th class="liste">Montant investi €</th>
+                  <th class="liste">Statut</th>
+                </tr>
+                <tr><%  @operation.investments.each do |invest|%>
+                  <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
+                  <td class="liste"><%= invest.user.email %></td>
+                  <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
+                  <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
+                  <td class="liste">
+                    <% if invest.status == 'pending' %>
+                      Invité
+                    <% end %>
+                  </td>
+                </tr>
+                <%end%>
+
+              </table>
+
+              <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+                <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
+              <% end %>
+
+            </div>
+
+            <div class="graph">
+              <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f).round(0) %> </p>
+              <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
