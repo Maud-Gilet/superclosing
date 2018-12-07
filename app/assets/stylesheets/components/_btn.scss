@@ -11,7 +11,7 @@
 }
 
 .btn-superclosing {
-  background: #fc9600;
+  background: #FDBB58;
   color: white;
   font-weight: 500;
   text-decoration: none;
@@ -26,7 +26,43 @@
   color: white;
   text-decoration: none;
 }
-  
+
+.btn-landing-signup {
+  background: #FDBB58;
+  color: white;
+  text-shadow: 1px 1px 4px rgb(100, 100, 100);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+
+.btn-landing-signup:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-landing-signin {
+  background-color: inherit;
+  border: 2px solid #FDBB58;
+  color: white;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
+}
+
+.btn-landing-signin:hover {
+  background: #FDBB58;
+  color: white;
+  text-decoration: none;
+}
+
 .btn-add-company {
   width:120px;
   height: 120px;
