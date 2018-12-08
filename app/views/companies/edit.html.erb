@@ -6,7 +6,7 @@
       <%= f.input :name, label: 'Nom'%>
       <%= f.input :address, label: 'Adresse'%>
       <%= f.input :legal_form, label: 'Forme sociale' %>
-      <%= f.input :creation_date, as: :string, label: "Date d'immatriculation"%>
+      <%= f.input :creation_date, as: :string, label: "Date d'immatriculation", as: :string, input_html: { class: "datepicker", style: "background-color: white;"} %>
       <%= f.input :share_nominal_value, as: :string, label: "Valeur nominale de l'action"%>
       <%= f.input :logo_url, as: :file, label: "Logo" %>
       <%= f.input :logo_url_cache, as: :hidden %>
