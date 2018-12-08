@@ -23,7 +23,6 @@
   padding: 15px 25px;
   border-radius: 6px;
   box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.4);
-  opacity: 1;
   position: relative;
   bottom: 24px;
 }
@@ -39,7 +38,7 @@
   border: 2px solid #ffac30;
   color: white;
   font-size: 0.9em;
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -47,7 +46,7 @@
 }
 
 .btn-landing-signin:hover {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
