@@ -26,12 +26,12 @@
           <% else %>
            <div class='company-container'>
             <div class='company-container-cards'>
-              <% @associe.each do |role|%>
+              <% @distinct_companies.each do |company|%>
                 <div class="company-card">
-                  <%= link_to company_path(role.company) do %>
+                  <%= link_to company_path(company) do %>
                       <%= image_tag 'ca.png', width: 120, height: 120, class:"product-image" %>
                   <% end %>
-                  <p><%=  role.company.name %></p>
+                  <p><%=  company.name %></p>
                 </div>
               <% end %>
                 <div class="company-card">

@@ -6,24 +6,47 @@
 
   <div class="sidebar-nav">
 
-    <div class="sidebar-item">
-      <%= link_to root_path, class: "sidebar-link" do %>
-        <i class="fas fa-columns"></i> Dashboard
-      <% end %>
-    </div>
+    <% if current_user.roles.first.company.nil? %>
+      <div class="sidebar-item">
+        <%= link_to root_path, class: "sidebar-link" do %>
+          <i class="fas fa-columns"></i> Dashboard
+        <% end %>
+      </div>
+    <% else %>
+      <div class="sidebar-item">
+        <%= link_to company_path(id: current_user.roles.first.company), class: "sidebar-link" do %>
+          <i class="fas fa-columns"></i> Dashboard
+        <% end %>
+      </div>
+    <% end %>
 
-    <div class="sidebar-item">
-      <%= link_to root_path, class: "sidebar-link" do %>
-        <i class="fas fa-chart-pie"></i> Cap Table
-      <% end %>
-    </div>
+    <% if current_user.roles.first.company.nil? %>
+      <div class="sidebar-item">
+        <%= link_to root_path, class: "sidebar-link" do %>
+          <i class="fas fa-chart-pie"></i> Cap Table
+        <% end %>
+      </div>
+    <% else %>
+      <div class="sidebar-item">
+        <%= link_to company_captable_path(company_id: current_user.roles.first.company, id: 1), class: "sidebar-link" do %>
+          <i class="fas fa-chart-pie"></i> Cap Table
+        <% end %>
+      </div>
+    <% end %>
 
-
-    <div class="sidebar-item">
-      <%= link_to root_path, class: "sidebar-link" do %>
-        <i class="fas fa-rocket"></i> Opérations
-      <% end %>
-    </div>
+    <% if current_user.roles.first.company.nil? %>
+      <div class="sidebar-item">
+        <%= link_to root_path, class: "sidebar-link" do %>
+          <i class="fas fa-rocket"></i> Opérations
+        <% end %>
+      </div>
+    <% else %>
+      <div class="sidebar-item">
+        <%= link_to company_operations_path(company_id: current_user.roles.first.company), class: "sidebar-link" do %>
+          <i class="fas fa-rocket"></i> Opérations
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="sidebar-item">
       <%= link_to root_path, class: "sidebar-link" do %>
