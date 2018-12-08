@@ -2,6 +2,7 @@ import "bootstrap";
 
 // Datepicker for form (import from Node package)
 import flatpickr from 'flatpickr';
+import { French } from "flatpickr/dist/l10n/fr.js"
 import 'flatpickr/dist/flatpickr.min.css';
 
 // Autofilling fields (adding a company) when typing SIREN number of this company
@@ -21,7 +22,10 @@ import { loadDynamicBannerText } from '../components/typed_landing';
 
 if(document.querySelector('.datepicker')) {
   flatpickr(".datepicker", {
-
+    "locale": French,
+    altInput: true,
+    altFormat: "d-m-Y",
+    dateFormat: "Y-m-d",
   });
 }
 

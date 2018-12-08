@@ -19,7 +19,7 @@
             <%= f.input :first_name, label: "Prénom" %>
             <%= f.input :last_name, label: "Nom de famille" %>
             <%= f.input :address, label: "Adresse"  %>
-            <%= f.input :birthday, label: "Date de naissance", as: :string, input_html: { class: "datepicker"} %>
+            <%= f.input :birthday, label: "Date de naissance", as: :string, input_html: { class: "datepicker", style: "background-color: white;"} %>
             <%= f.input :birth_place, label: "Lieu de naissance"%>
             <%= f.input :photo_url, as: :file, label: "Photo" %>
             <%= f.input :photo_url_cache, as: :hidden %>
