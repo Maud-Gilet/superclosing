@@ -1,0 +1,13 @@
+.operation-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.operation-list:hover {
+  background: rgb(240, 240, 240);
+}
+
