@@ -55,3 +55,8 @@ $border-radius-small: 2px;
 .btn:hover {
   color: none;
 }
+
+// Override grey field for flatpickr fields
+.form-control[readonly] {
+  background-color: white !important;
+}

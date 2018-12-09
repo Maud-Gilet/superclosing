@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_133824) do
     t.string "logo_url"
     t.integer "number_of_shares"
     t.integer "share_nominal_value_cents", default: 0, null: false
-    t.string "share_nominal_value_currency", default: "USD", null: false
+    t.string "share_nominal_value_currency", default: "EUR", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_133824) do
     t.bigint "operation_id"
     t.integer "number_of_shares"
     t.integer "share_premium_cents", default: 0, null: false
-    t.string "share_premium_currency", default: "USD", null: false
+    t.string "share_premium_currency", default: "EUR", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2018_12_06_133824) do
     t.bigint "company_id"
     t.string "category"
     t.integer "target_amount_cents", default: 0, null: false
-    t.string "target_amount_currency", default: "USD", null: false
+    t.string "target_amount_currency", default: "EUR", null: false
     t.date "expected_closing_date"
     t.string "status"
     t.integer "premoney_cents", default: 0, null: false
-    t.string "premoney_currency", default: "USD", null: false
+    t.string "premoney_currency", default: "EUR", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

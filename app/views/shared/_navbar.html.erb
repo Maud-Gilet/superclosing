@@ -34,6 +34,7 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
+      <!-- Doesn't work in this website because landing is customed without navbar/sidebar, and you have to be log in right after the landing! -->
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-superclosing-item navbar-superclosing-link" %>
     <% end %>
   </div>
