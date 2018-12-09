@@ -9,7 +9,13 @@
 
       <%= simple_form_for [@company, @operation] do |f| %>
         <%= f.input :name, label: 'Donnez un nom à cette opération'  %>
-        <%= f.input :category, collection: ["Attribution gratuite d'actions", 'Levée de fonds', 'Emission de BSPCE', 'Emission de BSA'], label: 'Quelle opération voulez-vous réaliser ?', prompt: "Type d'opération ..." %>
+
+        <%= f.input :category, collection: ["Attribution gratuite d'actions", 'Levée de fonds', 'Emission de BSPCE', 'Emission de BSA'], label: 'Quelle opération voulez-vous réaliser ?' %>
+
+        <div id="form-fundraising" class="hidden">
+          <%= render 'form-fundraising', company: @company, operation: @operation %>
+        </div>
+
       <% end %>
     </div>
   </div>
