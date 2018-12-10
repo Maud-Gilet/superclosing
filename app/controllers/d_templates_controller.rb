@@ -1,11 +1,13 @@
 class DTemplatesController < ApplicationController
-  before_action :set_d_template, only: [:show, :edit, :update]
+  before_action :set_d_template, only: [:edit, :update]
 
   def index
     @d_templates = DTemplate.all
   end
 
   def show
+    render pdf: "file_name",
+          layout: "document"  # Excluding ".pdf" extension.
   end
 
   def new

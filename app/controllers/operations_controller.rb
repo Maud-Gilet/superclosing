@@ -25,6 +25,8 @@ class OperationsController < ApplicationController
     @operation = Operation.find(params[:id])
     @s_document = SDocument.new
 
+    @d_document = DDocument.new
+
     array = []
     @operation.investments.each do |invest|
       value = invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
