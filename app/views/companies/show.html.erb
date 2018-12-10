@@ -1,10 +1,11 @@
 <div class='operation-step-description'>
+    <h3><strong><%= @company.name %></strong> </h3>
    <h4>Les étapes de votre levée de fonds :</h4>
   <div class="container-fluid progressbar-container">
-    <ul class="progressbar">
-        <li >Renseignez les informations relatives à votre capital</li>
-        <li class="active">Créez une nouvelle opération</li>
-        <li>Créez un nouvelle opération</li>
+    <ul class="progressbar progressbar-1">
+        <li class="active">Renseignez les informations relatives à votre société</li>
+        <li >Renseignez les informations relatives à votre société</li>
+        <li>Créez une opération</li>
         <li>Passez aux signatures !</li>
     </ul>
   </div>
@@ -102,13 +103,13 @@
                 </div>
               </strong></li>
             </ul>
-            
+
             <% if @company.operations.where(category: 'initialize-captable').empty? %>
               <%= link_to new_company_captable_path(@company.id) do %>
                 <button style="button" class="btn-transparent-small">Initialiser le capital</button>
               <% end %>
             <% end %>
-            
+
             <div class="graph">
             <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= "<%= User.find(1).first_name %>">
             </canvas>
@@ -117,7 +118,7 @@
         </div>
       </div>
     </div>
-    
+
   <div class='row'>
     <div class = 'col col-xs-12'>
       <div class = 'home-card-header'>
