@@ -1,9 +1,15 @@
 .home-card-header {
+  text-align: left;
   border-bottom-width: 1px;
   padding: 12px;
   background-color: #fff;
   border-bottom: 2px solid #FDBB58;
-  text-align: center;
+  & h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 .home-card-body {
   p {
