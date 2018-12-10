@@ -1,4 +1,51 @@
-#operation-timeline-img{
-  padding-top: 24px;
-  width: 700px;
+#edit-company-info {
+  font-size: 18px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+#company-info-card {
+  .home-card-header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border:none;
+    h5 {
+      padding: 0px;
+    }
+  }
+}
+.company-show-header{
+  padding: 0px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items:center;
+}
+.company-show-logo {
+  width: 150px;
+  flex: none;
+}
+.company-show-infos{
+  width: 300px;
+  margin-left: 200px;
+}
+.operation-step-description {
+  margin-bottom: 100px;
+  padding-left: 36px;
+}
+.operation-step-container{
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.step-card {
+  width: 150px;
+  margin-left: 50px;
+}
+.step-bubble h4 {
+  padding:30px;
+  background: $green;
+  color:white;
+  border-radius: 50%;
 }
