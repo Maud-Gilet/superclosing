@@ -17,12 +17,19 @@ Rails.application.routes.draw do
     resources :operations, only: [:index, :new, :create] do
       resources :investors, only: [:index, :new, :create]
       resources :investments, only: [:index, :new, :create, :edit, :update]
-      resources :d_documents, only: [:index, :show]
       resources :s_documents, only: [:index, :show, :new, :create, :destroy]
     end
   end
 
-  resources :operations, only: :show
+
+  resources :operations, only: :show do
+    member do
+      post "create_documents", to: "d_documents#create_documents"
+      # post "/operations/:id/create_documents", to: "d_documents#create_documents"
+    end
+    resources :d_documents, only: [:index]
+  end
+  resources :d_documents, only: :show
   resources :investments, only: [:show, :destroy]
   resources :d_templates
   resources :roles

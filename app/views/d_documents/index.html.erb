@@ -1,0 +1,11 @@
+<h1>Liste des documents dynamiques générés</h1>
+
+<ul>
+  <% @d_documents.each do |d_document| %>
+    <li>
+      <%= link_to d_document.title, d_document_path(d_document) %>
+
+    </li>
+  <% end %>
+</ul>
+
