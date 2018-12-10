@@ -104,7 +104,7 @@
 }
 
 .investor-list-header-name {
-  flex: 0 0 30%;
+  flex: 0 0 25%;
   text-align: center;
 }
 .investor-list-header-email {
@@ -122,6 +122,17 @@
 .investor-list-header-status {
   flex: 0 0 10%;
   text-align: center;
+}
+.investor-list-header-delete {
+  flex: 0 0 5%;
+  text-align: center;
+  & i {
+    color: #ffac30;
+  }
+  & i:hover {
+    color: #ffa118;
+    opacity: 0.5;
+  }
 }
 
 .investor-list-add {

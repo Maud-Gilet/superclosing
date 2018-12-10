@@ -1,7 +1,32 @@
-<ul id="list-investors">
-  <%  @operation.investments.each do |invest|%>
-    <li data-investment-id="<%= invest.id %>">
-      <%= invest.user.email%> - <%= money_without_cents invest.number_of_shares %> actions - Investissement : <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) ) %> euros - <%= invest.status %> - <%= link_to "Delete", investment_path(invest), method: :delete, remote: true %>
-    </li>
-  <% end %>
-</ul>
+
+  <ul id="list-investors">
+    <% @operation.investments.each do |invest|%>
+      <li data-investment-id="<%= invest.id %>">
+        <div class="investor-list-content">
+          <div class="investor-list-header-name">
+            <%= invest.user.first_name %> <%= invest.user.last_name %>
+          </div>
+          <div class="investor-list-header-email">
+            <%= invest.user.email %>
+          </div>
+          <div class="investor-list-header-amount">
+            <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%> euros
+          </div>
+          <div class="investor-list-header-shares">
+            <%= money_without_cents invest.number_of_shares %>
+          </div>
+          <div class="investor-list-header-status">
+            <% if invest.status == 'pending' %>
+              Invité
+            <% end %>
+          </div>
+          <div class="investor-list-header-delete">
+            <%= link_to investment_path(invest), method: :delete, remote: true do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+

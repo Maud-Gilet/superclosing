@@ -1,15 +1,44 @@
-<div class="display-investors">
-  <%= render 'show-investors', company: @company %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="investor-list">
 
-<div class="form" id="form-add-investor">
-  <%= render 'new-investor', company: @company %>
-</div>
+        <div class="investor-list-header">
+          <div class="investor-list-header-name">
+            <span>Nom</span>
+          </div>
+          <div class="investor-list-header-email">
+            <span>Email</span>
+          </div>
+          <div class="investor-list-header-amount">
+            <span>Investissement</span>
+          </div>
+          <div class="investor-list-header-shares">
+            <span># Actions</span>
+          </div>
+          <div class="investor-list-header-status">
+            <span>Status</span>
+          </div>
+          <div class="investor-list-header-delete">
+          </div>
+        </div>
 
-<br><br>
+        <div class="display-investors">
+          <%= render 'show-investors', company: @company %>
+        </div>
+      </div>
 
-<div class="back">
-  <%= link_to operation_path(@operation.id) do %>
-    <button type="button" class="btn btn-success"> Revenir à l'opération </button>
-  <% end %>
+      <div class="form" id="form-add-investor">
+        <%= render 'new-investor', company: @company %>
+      </div>
+
+      <br><br>
+
+      <div class="text-align-center">
+        <%= link_to operation_path(@operation.id) do %>
+          <button type="button" class="btn btn-transparent-small"> Revenir à l'opération </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
