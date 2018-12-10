@@ -1,1 +1,99 @@
-<%= @d_document.title %>
+<div style="text-align: center">
+
+  <h1><mark><%= @operation.company.name %></mark></h1>
+  <br>
+  <p><mark> <%= @operation.company.legal_form %> </mark>au capital de<mark> <%= @operation.company.number_of_shares * @operation.company.share_nominal_value_cents / 100 %> </mark>euros 
+  <br>
+  Siège social :<mark><%= @operation.company.address %></mark></p>
+  <p>(ci-après la « Société »)</p>
+
+
+  <h4>PROCÈS-VERBAL DE L'ASSEMBLÉE GÉNÉRALE EXTRAORDINAIRE DU <mark><%= Time.new.day %>
+  /<%= Time.new.month %>/<%= Time.new.year %></mark></h4>
+
+</div>
+
+<p>
+L'an <mark><%= Time.new.year %>, le <%= Time.new.day %>/<%= Time.new.month %> à <%= Time.new.hour %> heures</mark>,
+<br>
+Les associés de la Société se sont réunis au siège social en assemblée générale, sur convocation qui leur a été faite par le président (l’« Assemblée Générale »).
+<br>
+L'Assemblée Générale est présidée par <mark><%= current_user.first_name %> <%= current_user.last_name %></mark>, en sa qualité de président de la Société (le « Président »).
+<br>
+Le Président déclare que l'Assemblée Générale est régulièrement constituée et peut valablement délibérer et adopter les résolutions proposées dans les conditions fixées par les statuts.
+<br>
+Le Président rappelle à l'Assemblée Générale qu'elle est réunie pour délibérer sur l'ordre du jour suivant :
+<br>
+<ul>
+  <li>Augmentation de capital par émission d’Actions ;</li>
+  <li>Renonciation par les associés à l’exercice de leur droit préférentiel de souscription ;</li>
+  <li>Pouvoirs pour les formalités.</li>
+</ul>
+<br>
+La discussion est ouverte.
+<br>
+Personne ne demandant la parole, le Président met successivement aux voix les résolutions inscrites à l’ordre du jour.
+<br>
+</p>
+
+<div style="text-align: center">
+  <h4>PREMIERE RESOLUTION</h4>
+  <p>(Augmentation de capital par émission d’Actions)</p>
+</div>
+
+<p>
+<br>
+<br>
+L’Assemblée Générale statuant aux conditions de quorum et de majorité requises par les statuts, conformément aux articles L. 225-129 et suivants du code de commerce et après avoir pris connaissance du rapport du Président,
+<br>
+Décide d’augmenter le capital social de la Société d’un montant de <mark> <%= @capital_augmentation %> euros </mark>, par l’émission de <mark><%= @total_of_shares %>
+ actions ordinaires</mark> (les « Actions ») d’une valeur nominale de<mark></mark> <%= @nominal %> euros </mark> chacune assorties d’une prime d’émission unitaire de<mark> <%= @emit_prime %> euros</mark>, pour un prix global, prime d’émission comprise, s’élevant à <mark><%= @global_price %> euros </mark>par action (ci-après l’« Augmentation de Capital ») ;
+<br>
+Cette résolution est adoptée à l’unanimité.
+<br>
+</p>
+
+<div style="text-align: center">
+  <h4>DEUXIEME RESOLUTION</h4>
+  <p>(Renonciation des associés à l’exercice de leur droit préférentiel de souscription)</p>
+</div>
+<p>
+
+<br>
+<br>
+L’Assemblée Générale constate la renonciation des associés à l’exercice de leur droit préférentiel de souscription au profit des souscripteurs listés en Annexe A et décide en conséquence de l’attribution de <mark><%= @number_of_shares%> </mark>Actions nouvelles au profit de ces mêmes souscripteurs.
+<br>
+<br>
+</p>
+<div style="text-align: center">
+  <h4>TROISIEME RESOLUTION</h4>
+  <p>(Pouvoirs pour les formalités)</p>
+</div>
+
+<p>
+<br>
+<br>
+L’Assemblée Générale délègue tous pouvoirs au porteur d’un original, d’une copie ou d’un extrait des présentes à l’effet d’accomplir toutes formalités légales.
+<br>
+Cette résolution est adoptée à l’unanimité.
+<br>
+L'ordre du jour étant épuisé et plus personne ne demandant la parole, la séance est levée à<mark> <%= Time.new.hour + 1 %>heures </mark>et il a été dressé le présent procès-verbal.
+</p>
+<br>
+____________________________
+<br>
+Le/a Président(e)
+<br>
+<mark><%= current_user.first_name %> <%= current_user.last_name %></mark>
+<br>
+<br>
+<br>
+<br>
+<br>
+Annexe A
+<br>
+
+Liste des bénéficiaires de la renonciation des associés à l’exercice de leur droit préférentiel de souscription
+
+
+

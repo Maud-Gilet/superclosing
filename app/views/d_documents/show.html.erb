@@ -1,5 +1,11 @@
-<h1>Voici mon template de document dynamique</h1>
-
-<% if @d_document %>
+<% if @d_document.title == "PV d'Assemblée Générale de #{@operation.company.name}" %>
   <%= render 'pv' %>
+<% elsif
+  @d_document.operation.investments.each do |investment|
+    @d_document.title == "Bon de souscription / #{investment.user.last_name}" %>
+    <%= render 'bs' %>
+  <% end %>
+<% else @d_document.title == "PV de sortie" %>
+  <%= render 'pvs' %>
+
 <% end %>
