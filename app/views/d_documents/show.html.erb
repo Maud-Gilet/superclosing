@@ -1,11 +1,7 @@
-<% if @d_document.title == "PV d'Assemblée Générale de #{@operation.company.name}" %>
+<% if @d_document.title.include? "Assemblée Générale" %>
   <%= render 'pv' %>
-<% elsif
-  @d_document.operation.investments.each do |investment|
-    @d_document.title == "Bon de souscription / #{investment.user.last_name}" %>
-    <%= render 'bs' %>
-  <% end %>
+<% elsif @d_document.title.include? "souscription" %>
+  <%= render 'bs' %>
 <% else @d_document.title == "PV de sortie" %>
   <%= render 'pvs' %>
-
 <% end %>

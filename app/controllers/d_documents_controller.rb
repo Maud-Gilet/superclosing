@@ -3,11 +3,20 @@ class DDocumentsController < ApplicationController
 
   def index
     @operation = Operation.find(params[:operation_id])
-    @d_documents = @operation.d_documents
+    @subscription_bunds = @operation.d_documents.select do |d_d|
+      d_d.title.include? "souscription"
+
+    end
+    @users = @operation.users
+
+    @other_documents = @operation.d_documents.select do |d_d|
+      !d_d.title.include?("souscription")
+    end
   end
 
   def show
     @d_document = DDocument.find(params[:id])
+    @user = User.find(params[:user_id])
     @operation = @d_document.operation
 
     @capital_augmentation = capital_augmentation
@@ -63,8 +72,6 @@ class DDocumentsController < ApplicationController
       @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} ", operation: @operation, d_template: DTemplate.first)
       @d_document.save!
     end
-
-
 
     redirect_to operation_d_documents_path(@operation)
   end

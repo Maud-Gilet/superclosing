@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :companies, through: :roles
   has_many :investments
   has_many :operations, through: :investments
+  has_many :d_documents
 
   validates :email, presence: true, uniqueness: true
 
