@@ -14,7 +14,6 @@
   <div class='company-show-infos'>
     <div class='home-card' id='company-info-card'>
 
-
       <div class='home-card-body'>
         <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
         <p> <strong>Siège social</strong> :  <%= @company.address %></p>
@@ -22,11 +21,8 @@
           <i class="far fa-edit" id='edit-company-info'>Complétez les informations</i>
         <% end %>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
 <div class='operation-step-description'>
@@ -42,27 +38,34 @@
 </div>
 
 
-</div>
-
-
 <div class='container-fluid page-content'>
 
   <div class='row'>
-
     <div class ='col col-xs-12'>
-
       <div class='home-card'>
-
         <div class = 'home-card-header'>
           <h3>Répartition du capital</h3>
         </div>
 
-        <div class="home-card-body">
-          <div class="captable-card-list">
+        <div class="home-card-body captable-body">
+          <div class="captable-list-card">
             <ul>
+              <li>
+                <div class="captable-list-header">
+                  <div class="captable-list-name">
+                    <span>Nom</span>
+                  </div>
+                  <div class="captable-list-shares">
+                    <span># Actions</span>
+                  </div>
+                  <div class="captable-list-shares-pourcent">
+                    <span>% du capital</span>
+                  </div>
+                </div>
+              </li>
               <% @shareholders.each do |id, shares| %>
                 <li>
-                  <div class="captable-list">
+                  <div class="captable-list-content">
                     <div class="captable-list-name">
                       <%= User.find(id).last_name %> <%= User.find(id).first_name %>
                     </div>
@@ -70,27 +73,44 @@
                       <%= money_without_cents shares %> actions
                     </div>
                     <div class="captable-list-shares-pourcent">
-                      <%= ( (shares.to_f / @company.number_of_shares.to_f).round(2) * 100).round(0) %> %
+                      <%= ( (shares.to_f / (money_without_cents @company.number_of_shares).to_f).round(2) * 100).round(0) %> %
                     </div>
                   </div>
                 </li>
               <% end %>
-              <li>Total : <%= money_without_cents @company.number_of_shares %> actions</li>
+              <li><strong>
+                <div class="captable-list-header">
+                  <div class="captable-list-name">
+                    Total
+                  </div>
+                  <div class="captable-list-shares">
+                    <%= money_without_cents @company.number_of_shares %> actions
+                  </div>
+                  <div class="captable-list-shares-pourcent">
+                    100 %
+                  </div>
+                </div>
+              </strong></li>
             </ul>
-          </div>
-          <% if @company.operations.where(category: 'initialize-captable').empty? %>
-            <%= link_to new_company_captable_path(@company.id) do %>
-              <button style="button" class="btn-transparent-small">Initialiser le capital</button>
-            <% end %>
-          <% else %>
-            <%= link_to new_company_captable_path(@company.id) do %>
-              <button style="button" class="btn-transparent-small">Editer</button>
-            <% end %>
-          <% end %>
-        </div>
 
+            <% if @company.operations.where(category: 'initialize-captable').empty? %>
+              <%= link_to new_company_captable_path(@company.id) do %>
+                <button style="button" class="btn-transparent-small">Initialiser le capital</button>
+              <% end %>
+            <% else %>
+              <%= link_to new_company_captable_path(@company.id) do %>
+                <button style="button" class="btn-transparent-small">Editer</button>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="captable-card-show">
+
+          </div>
+        </div>
       </div>
     </div>
+
+
 
         <div class = 'home-card-header'>
           <h3>Informations</h3>
@@ -116,7 +136,6 @@
         </div>
       </div>
     </div>
-  </div>
 
   <div class='row'>
     <div class = 'col col-xs-11'>

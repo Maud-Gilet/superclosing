@@ -1,9 +1,33 @@
-.captable-list {
+.captable-list-header {
+  margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  padding: 4px 7px;
+  border-top: 1px solid #ffac30;
+  border-bottom: 1px solid #ffac30;
+  & span {
+    font-size: 0.9em;
+    font-style: italic;
+  }
 }
-
+.captable-list-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  padding: 2px 7px;
+}
+.captable-list-name {
+  flex: 0 0 40%;
+}
+.captable-list-shares {
+  flex: 0 0 40%;
+}
+.captable-list-pourcent {
+  flex: 0 0 20%;
+  justify-content: flex-end;
+}
 
 
 .operation-list {
