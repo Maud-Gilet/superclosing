@@ -61,7 +61,7 @@ class CompaniesController < ApplicationController
   end
 
   def display_captable
-    @investments = Investment.joins(operation: :company).where('companies.name = ? AND operations.status = ?', @company.name, 'completed')
+    @investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @company.id, 'completed')
     @shareholders = {}
     @company.number_of_shares = 0
     @investments.each do |invest|

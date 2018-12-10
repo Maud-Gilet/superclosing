@@ -5,9 +5,10 @@ class PagesController < ApplicationController
   end
 
   def home
-      @associe = current_user.roles.where(category: 'Associe')
-      @investisseur = current_user.roles.where(category: 'Investisseur')
-      @company = Company.new
+    @partner = current_user.roles.where('roles.category = ? ', 'Associe')
+    @president = current_user.roles.where('roles.category = ?', 'Président')
+    @investisseur = current_user.roles.where(category: 'Investisseur')
+    @distinct_companies = Company.joins(:roles).where('roles.user_id = ?', current_user).sort.uniq
+    @company = Company.new
   end
-
 end
