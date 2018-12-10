@@ -39,17 +39,17 @@
       z-index: -1;
   }
   .progressbar li:first-child:after {
-      content: none;
+      content: #FDBB58;
   }
   .progressbar li.active {
-      color: green;
+      color: #FDBB58;
   }
   .progressbar li.active:before {
-      border-color: #55b776;
+      border-color: #FDBB58;
   }
   .progressbar li.active:before {
-      border-color: #55b776;
+      border-color: #FDBB58;
   }
   .progressbar li.active + li:after {
-      background-color: #55b776;
+      background-color: #FDBB58;
   }

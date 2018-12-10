@@ -47,9 +47,12 @@
 }
 .step-card {
   width: 220px;
+  background: #fff;
+  box-shadow: 1px 3px 4px 0px #2c3c4c2b;
   .step-card-header{
     text-align: center;
     font-weight: bolder;
+    padding: 10px;
   }
   .step-card-body{
     text-align: justify;

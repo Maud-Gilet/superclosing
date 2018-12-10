@@ -1,30 +1,3 @@
-<div class='page-header container-fluid company-show-header'>
-  <div class='company-show-logo'>
-    <% if @company.logo_url.file == nil %>
-        <img src="https://via.placeholder.com/120" class="logo">
-      <% else %>
-      <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
-    <% end %>
-
-  </div>
-  <div>
-    <h3><strong><%= @company.name %></strong> </h3>
-  </div>
-
-  <div class='company-show-infos'>
-    <div class='home-card' id='company-info-card'>
-
-      <div class='home-card-body'>
-        <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
-        <p> <strong>Siège social</strong> :  <%= @company.address %></p>
-        <%= link_to edit_company_path(@company.id) do %>
-          <i class="far fa-edit" id='edit-company-info'>Complétez les informations</i>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class='operation-step-description'>
    <h4>Les étapes de votre levée de fonds :</h4>
   <div class="container-fluid progressbar-container">
@@ -37,14 +10,51 @@
   </div>
 </div>
 
-
 <div class='container-fluid page-content'>
 
   <div class='row'>
-    <div class ='col col-xs-12'>
+
+    <div class ='col col-xs-12 col-sm-6'>
+
+      <div class='home-card'>
+
+        <div class = 'home-card-header' id='comp'>
+          <h4>Informations</h4>
+          <%= link_to edit_company_path(@company.id) do %>
+            <i class="far fa-edit" id='edit-company-info'></i>
+          <% end %>
+        </div>
+
+        <div class='home-card-body' id='company-card'>
+          <div class='company-show-logo'>
+            <h3><strong><%= @company.name %></strong> </h3>
+            <% if @company.logo_url.file == nil %>
+              <img src="https://via.placeholder.com/120" class="logo">
+            <% else %>
+            <p> <%= cl_image_tag @company.logo_url, height: 100, width: 100, crop: :fit %></p>
+              <% end %>
+          </div>
+          <div class='company-show-infos'>
+            <div class='home-card' id='company-info-card'>
+              <p> <strong>SIREN</strong> : <%= @company.siren %> </p>
+              <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
+              <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class ='col col-xs-12 col-sm-6'>
       <div class='home-card'>
         <div class = 'home-card-header'>
-          <h3>Répartition du capital</h3>
+          <h4>Répartition du capital</h4>
+          <%= link_to new_company_captable_path(@company.id) do %>
+            <i class="far fa-edit" id='edit-company-info'></i>
+          <% end %>
         </div>
 
         <div class="home-card-body captable-body">
@@ -92,55 +102,26 @@
                 </div>
               </strong></li>
             </ul>
-
+            
             <% if @company.operations.where(category: 'initialize-captable').empty? %>
               <%= link_to new_company_captable_path(@company.id) do %>
                 <button style="button" class="btn-transparent-small">Initialiser le capital</button>
               <% end %>
-            <% else %>
-              <%= link_to new_company_captable_path(@company.id) do %>
-                <button style="button" class="btn-transparent-small">Editer</button>
-              <% end %>
             <% end %>
-          </div>
-          <div class="captable-card-show">
-
+            
+            <div class="graph">
+            <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= "<%= User.find(1).first_name %>">
+            </canvas>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
-
-        <div class = 'home-card-header'>
-          <h3>Informations</h3>
-        </div>
-
-        <div class = "home-card-avatar">
-          <% if @company.logo_url.file == nil %>
-              <img src="https://via.placeholder.com/120" class="logo">
-            <% else %>
-            <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
-          <% end %>
-        </div>
-
-        <div class='home-card-body'>
-          <p> <strong>Nom</strong> :  <%= @company.name %> </p>
-          <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
-          <p> <strong>Siège social</strong> :  <%= @company.address %></p>
-          <div class='home-card-footer'>
-            <%= link_to edit_company_path(@company.id) do %>
-              <button style="button" class="btn-transparent-small">Compléter les informations</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
   <div class='row'>
-    <div class = 'col col-xs-11'>
+    <div class = 'col col-xs-12'>
       <div class = 'home-card-header'>
-        <h3>Opérations</h3>
+        <h4>Opérations</h4>
       </div>
       <div class = "home-card-body">
         <ul>
@@ -225,6 +206,7 @@
     </div>
   </div>
 </div>
+
 
 
 
