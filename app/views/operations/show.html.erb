@@ -1,6 +1,8 @@
 <div id="slide">
-  <h4><%= @operation.category %> <%= @operation.name %> </h4>
-  <p> <%= @operation.status %></p>
+  <h4><%= @operation.name %> </h4>
+   <%if @operation.status == 'Pending' %>
+    <p>En cours</p>
+    <% end %>
 
   <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
   <p>des fonds collectés</p>
@@ -13,12 +15,17 @@
 </div>
 
 <div class='page-header'>
-   <h3>Opération <%= @operation.name %></h3>
+   <h3><strong><%= @operation.name %></strong> </h3>
 
-   <h4>4 étapes pour une opération réussie :</h4>
-   <div>
-     <%= image_tag "etapes.png", id: "operation-timeline-img" %>
-   </div>
+   <h4>Vous y êtes presque !</h4>
+   <div class="container-fluid progressbar-container">
+       <ul class="progressbar progressbar-2">
+          <li id = 'step-done'>Capital</li>
+          <li class="active" id='step-done'>Opération</li>
+          <li>Invitez vos investisseurs</li>
+          <li>Passez aux signatures !</li>
+       </ul>
+     </div>
 </div>
 
 <div class='container-fluid page-content'>
@@ -29,7 +36,7 @@
 
       <div class='home-card'>
         <div class = 'home-card-header'>
-          <i class="fas fa-coffee"></i><h3 class="card-title">Le club des Investisseurs</h3>
+          <h4 class="card-title">Le club des Investisseurs</h4>
         </div>
         <div class="investors-corner">
           <div class="investor-list">
@@ -106,7 +113,7 @@
 
       <div class='home-card'>
         <div class = 'home-card-header'>
-          <i class="fas fa-book"></i><h3 class="card-title">La Data Room</h3>
+          <h4 class="card-title">La Data Room</h4>
         </div>
         <div class="operation-card-body-text">
           INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
@@ -183,7 +190,7 @@
 
       <div class='home-card'>
         <div class = 'home-card-header'>
-           <i class="fas fa-pencil-alt"></i><h4 class="card-title">SIGNATURES</h4>
+          <h4 class="card-title">SIGNATURES</h4>
         </div>
 
         <div class="operation-card-body">
