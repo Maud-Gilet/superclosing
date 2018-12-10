@@ -1,19 +1,20 @@
 <div class='page-header'>
    <h3>Bienvenue <%= current_user.first_name %></h3>
-   <h5>Votre opération, en 4 étapes :</h5>
+
+   <h4>4 étapes pour une opération réussie :</h4>
    <div>
      <%= image_tag "company-creation-timeline.png", id: "creation-timeline-img" %>
    </div>
 </div>
 
-<div class='page-content'>
+<div class='container-fluid page-content'>
 
   <div class='row'>
 
     <div class ='col-xs-12 col-sm-8'>
       <div class='home-card'>
         <div class = 'home-card-header'>
-          Vos sociétés
+          <h5>Vos sociétés</h5>
           </div>
 
         <div class="home-card-body">
@@ -21,7 +22,7 @@
 
             Vous n'avez encore enregistré aucune société sur SuperClosing.
 
-            <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une société</a>
+            <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">AJOUTER UNE SOCIETE</a>
 
           <% else %>
            <div class='company-container'>
@@ -35,11 +36,12 @@
                 </div>
               <% end %>
                 <div class="company-card">
-                <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">Enregistrer une nouvelle société</a>
+                <a href="" class="btn btn-add-company" data-toggle="modal" data-target="#modalCompanyCreation">AJOUTER UNE SOCIETE</a>
               </div>
             </div>
 
           </div>
+            <% end %>
         </div>
 
        <!--    <div class='company-container'>
@@ -60,17 +62,15 @@
             </div>
           </div> -->
 
-        <% end %>
-
       </div>
 
     </div>
 
-    <div class ='col-xs-12 col-sm-3'>
+    <div class ='col-xs-12 col-sm-3 '>
       <div class='home-card'>
 
         <div class = 'home-card-header'>
-          Vos informations
+          <h5>Vos informations</h5>
         </div>
 
         <div class = "home-card-avatar">
@@ -111,8 +111,6 @@
       </div>
 
     </div>
-
-
   </div>
 
 </div>
@@ -121,7 +119,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Nouvelle société</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Ajouter une société</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

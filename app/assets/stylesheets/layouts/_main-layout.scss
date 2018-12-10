@@ -1,6 +1,4 @@
-.body{
 
-}
 .pages-wrapper {
   align-items: stretch;
   display: flex;
@@ -14,9 +12,9 @@
 }
 .page-content {
   padding: 0px 30px;
-  .row {
-    display: flex;
-  }
+  // .row {
+  //   display: flex;
+  // }
 }
 .page-header {
   margin-top: 16px;
@@ -36,4 +34,7 @@
   padding-bottom: 11.5px;
   margin-bottom:30px;
   border-bottom: 1px solid #eeeeee;
+}
+.col{
+  margin-bottom: 32px;
 }
