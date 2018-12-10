@@ -38,3 +38,22 @@
 
   width: 700px;
 }
+.home-step-description {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0px;
+  margin-bottom: 40px;
+}
+.step-card {
+  width: 220px;
+  .step-card-header{
+    text-align: center;
+    font-weight: bolder;
+  }
+  .step-card-body{
+    text-align: justify;
+    font-size: 14px;
+    padding: 16px;
+  }
+}
