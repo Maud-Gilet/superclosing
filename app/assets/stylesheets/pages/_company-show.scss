@@ -1,8 +1,6 @@
 #edit-company-info {
   font-size: 18px;
-  position: absolute;
-  top: 5px;
-  right: 10px;
+
 }
 #company-info-card {
   .home-card-header {
@@ -16,10 +14,13 @@
   }
 }
 .company-show-header{
-  padding: 0px;
+  padding: 40px 0px 40px 40px;
   margin-bottom: 40px;
   display: flex;
+  justify-content:space-between;
   align-items:center;
+  padding-left:50px;
+  background: white;
 }
 .company-show-logo {
   width: 150px;
@@ -33,19 +34,4 @@
   margin-bottom: 100px;
   padding-left: 36px;
 }
-.operation-step-container{
-  display: flex;
-  text-align: center;
-  flex-wrap: wrap;
-}
 
-.step-card {
-  width: 150px;
-  margin-left: 50px;
-}
-.step-bubble h4 {
-  padding:30px;
-  background: $green;
-  color:white;
-  border-radius: 50%;
-}

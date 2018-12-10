@@ -5,24 +5,22 @@
       <% else %>
       <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
     <% end %>
-  </div>
 
-  <div class="company-show-name">
-    <h3>Société <%= @company.name %></h3>
+  </div>
+  <div>
+    <h3><strong><%= @company.name %></strong> </h3>
   </div>
 
   <div class='company-show-infos'>
     <div class='home-card' id='company-info-card'>
-      <div class='home-card-header'>
-        <h5>Informations</h5>
-        <%= link_to edit_company_path(@company.id) do %>
-          <i class="far fa-edit" id='edit-company-info'></i>
-        <% end %>
-      </div>
+
 
       <div class='home-card-body'>
         <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
         <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+        <%= link_to edit_company_path(@company.id) do %>
+          <i class="far fa-edit" id='edit-company-info'>Complétez les informations</i>
+        <% end %>
       </div>
 
     </div>
@@ -33,45 +31,17 @@
 
 <div class='operation-step-description'>
    <h4>Les étapes de votre levée de fonds :</h4>
-   <div class='container-fluid operation-step-container'>
-    <div class='step-card'>
-      <div class='step-bubble'>
-        <h4>1</h4>
-      </div>
-      <div class="step-description">
-        <p>Renseignez les informations relatives à votre capital</p>
-      </div>
-    </div>
-
-    <div class='step-card'>
-      <div class='step-bubble'>
-       <h4>2</h4>
-      </div>
-      <div class="step-description">
-        <p>Créez un nouvelle opération</p>
-      </div>
-    </div>
-
-    <div class='step-card'>
-      <div class='step-bubble'>
-        <h4>3</h4>
-      </div>
-      <div class="step-description">
-        <p>Ajoutez des investisseurs</p>
-      </div>
-    </div>
-
-    <div class='step-card'>
-      <div class='step-bubble'>
-        <h4>4</h4>
-      </div>
-      <div class="step-description">
-        <p>Passez aux signatures !</p>
-      </div>
-    </div>
+  <div class="container-fluid progressbar-container">
+    <ul class="progressbar">
+        <li >Renseignez les informations relatives à votre capital</li>
+        <li class="active">Créez une nouvelle opération</li>
+        <li>Créez un nouvelle opération</li>
+        <li>Passez aux signatures !</li>
+    </ul>
+  </div>
+</div>
 
 
-   </div>
 </div>
 
 
