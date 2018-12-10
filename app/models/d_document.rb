@@ -7,7 +7,7 @@ class DDocument < ApplicationRecord
 
   private
 
-  def d_document_is_a_subscription_bund?
-    document_type == "subscription_bund"
-  end
+  # def d_document_is_a_subscription_bund?
+  #   document_type == "subscription_bund"
+  # end
 end
