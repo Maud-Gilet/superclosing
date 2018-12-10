@@ -1,3 +1,11 @@
+.captable-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
 .operation-list {
   flex: 1 0 auto;
   display: flex;
@@ -17,6 +25,7 @@
 .operation-list-category {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -30,6 +39,7 @@
 .operation-list-amount {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -43,6 +53,8 @@
 .operation-list-closing-date {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
+  flex: 0 1 auto;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -55,6 +67,7 @@
 .operation-list-status {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;
