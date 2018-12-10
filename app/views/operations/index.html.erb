@@ -1,13 +1,23 @@
 <h3> Toutes les opérations pour <%= @company.name %></h3>
 
+<%= link_to new_company_operation_path(@company) do %>
+  <button style="button" class="btn-transparent-small">Nouvelle opération</button>
+<% end %>
+
 <ul>
   <% @operations.each do |operation| %>
     <% unless operation.category == 'initialize-captable' %>
-      <li>Catégorie : <%= operation.category %> || Montant visé : <%= money_without_cents operation.target_amount %> euros || Date de clôture envisagée : <%= operation.expected_closing_date %> || Status : <%= operation.status %> || <%= link_to 'Détails', operation_path(operation.id) %> </li>
+      <li>
+        <div class="operation-list">
+          Catégorie : <%= operation.category %> || Montant visé : <%= money_without_cents operation.target_amount %> euros || Date de clôture envisagée : <%= operation.expected_closing_date %> || Status : <%= operation.status %> ||
+
+          <%= link_to operation_path(operation.id) do %>
+            <button style="button" class="btn-transparent-small">Détails</button>
+          <% end %>
+
+        </div>
+      </li>
     <% end %>
   <% end %>
 </ul>
 
-
-
-<%= link_to 'Nouvelle opération', new_company_operation_path(@company)  %>
