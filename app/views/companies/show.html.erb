@@ -19,14 +19,26 @@
         </div>
 
         <div class="home-card-body">
-          <ul>
-            <% @shareholders.each do |id, shares| %>
-              <li>
-                <%= User.find(id).last_name %> <%= User.find(id).first_name %> - <%= money_without_cents shares %> actions
-              </li>
-            <% end %>
-            <li>Total : <%= money_without_cents @company.number_of_shares %> actions</li>
-          </ul>
+          <div class="captable-card-list">
+            <ul>
+              <% @shareholders.each do |id, shares| %>
+                <li>
+                  <div class="captable-list">
+                    <div class="captable-list-name">
+                      <%= User.find(id).last_name %> <%= User.find(id).first_name %>
+                    </div>
+                    <div class="captable-list-shares">
+                      <%= money_without_cents shares %> actions
+                    </div>
+                    <div class="captable-list-shares-pourcent">
+                      <%= ( (shares.to_f / @company.number_of_shares.to_f).round(2) * 100).round(0) %> %
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+              <li>Total : <%= money_without_cents @company.number_of_shares %> actions</li>
+            </ul>
+          </div>
           <% if @company.operations.where(category: 'initialize-captable').empty? %>
             <%= link_to new_company_captable_path(@company.id) do %>
               <button style="button" class="btn-transparent-small">Créer</button>
@@ -150,6 +162,11 @@
             <% end %>
           <% end %>
         </ul>
+      <div class="text-align-center">
+        <%= link_to new_company_operation_path(@company) do %>
+          <button style="button" class="btn btn-form-action">Ajouter une opération</button>
+        <% end %>
+      </div>
       </div>
     </div>
   </div>
