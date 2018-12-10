@@ -1,16 +1,16 @@
-function refreshForm(innerHTML) {
-  const newShareholderForm = document.getElementById('form-add-investor');
-  newShareholderForm.innerHTML = innerHTML;
+function closeForm() {
+  const formField = document.getElementById("form-add-investor-toggle");
+  formField.className = "hidden";
 }
 
-function addShareholder(shareholderHTML) {
-  const addShareholder = document.getElementById('list-investors');
-  addShareholder.innerHTML = shareholderHTML;
+function refreshInvestors(shareholderHTML) {
+  const refreshInvestors = document.getElementById('investor-list-partial');
+  refreshInvestors.innerHTML = shareholderHTML;
 }
 
 <% if @investment.errors.any? %>
-  refreshForm('<%= j render "new-investor", company: @company %>');
+  closeForm();
 <% else %>
-  addShareholder('<%= j render "show-investors", company: @company %>');
-  refreshForm('<%= j render "new-investor", company: @company %>');
+  refreshInvestors('<%= j render "investors/show-investors", operation: @operation %>');
+  closeForm();
 <% end %>

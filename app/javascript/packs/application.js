@@ -10,6 +10,9 @@ import { autocompleteApiSirene } from '../components/init_autocomplete_company';
 // Display subform when adding new operation
 import { displayOperationForm } from '../components/operation_creation_form';
 
+// Display subform when adding new investor
+import { displayInvestorForm } from '../components/operation-show_add_investor';
+
 // Display graphs
 import { graph } from '../components/init_operation_graph'
 import { graphsecond } from '../components/init_operation_secondgraph'
@@ -35,6 +38,10 @@ if(document.getElementById('company_siren')){
 
 if(document.getElementById("operation_category")){
   displayOperationForm();
+}
+
+if(document.getElementById("btn-add-investor")){
+  displayInvestorForm();
 }
 
 if(document.getElementById('myChart')){

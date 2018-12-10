@@ -33,61 +33,18 @@
         </div>
         <div class="investors-corner">
           <div class="investor-list">
-            <div class="investor-list-header">
-              <div class="investor-list-header-name">
-                <span>Nom</span>
-              </div>
-              <div class="investor-list-header-email">
-                <span>Email</span>
-              </div>
-              <div class="investor-list-header-amount">
-                <span>Investissement</span>
-              </div>
-              <div class="investor-list-header-shares">
-                <span># Actions</span>
-              </div>
-              <div class="investor-list-header-status">
-                <span>Status</span>
-              </div>
-              <div class="investor-list-header-delete">
-              </div>
+
+            <div id="investor-list-partial">
+              <%= render 'investors/show-investors', operation: @operation %>
             </div>
 
-            <ul>
-              <% @operation.investments.each do |invest|%>
-                <li data-investment-id="<%= invest.id %>">
-                  <div class="investor-list-content">
-                    <div class="investor-list-header-name">
-                      <%= invest.user.first_name %> <%= invest.user.last_name %>
-                    </div>
-                    <div class="investor-list-header-email">
-                      <%= invest.user.email %>
-                    </div>
-                    <div class="investor-list-header-amount">
-                      <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%> €
-                    </div>
-                    <div class="investor-list-header-shares">
-                      <%= money_without_cents invest.number_of_shares %>
-                    </div>
-                    <div class="investor-list-header-status">
-                      <% if invest.status == 'pending' %>
-                        Invité
-                      <% end %>
-                    </div>
-                    <div class="investor-list-header-delete">
-                      <%= link_to investment_path(invest), method: :delete, remote: true do %>
-                        <i class="fas fa-trash"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-
             <div class="investor-list-add">
-              <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-                <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
-              <% end %>
+
+              <button type="button" class="btn-transparent" id="btn-add-investor"> Ajouter un investisseur</button>
+
+              <div id="form-add-investor-toggle" class="hidden">
+                <%= render 'form-add-investor', company: @company, operation: @operation %>
+              </div>
             </div>
           </div>
 
