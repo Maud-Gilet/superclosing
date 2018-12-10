@@ -1,0 +1,8 @@
+<h1>This is your Investor's Page ! Welcome</h1>
+<ul>
+  <% current_user.investments.each do |invest| %>
+    <li>
+      <%= invest.id %> - <%= invest.operation.company.name %>
+    </li>
+  <% end %>
+</ul>

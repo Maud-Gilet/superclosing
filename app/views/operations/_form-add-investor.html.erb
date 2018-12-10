@@ -1,0 +1,10 @@
+<div id="form-shareholders">
+  <%= simple_form_for(:query, url: company_operation_investors_path(operation.company, operation), method: :post, remote: true) do |f| %>
+
+    <%= f.input :email, placeholder: "Email de l'investisseur", input_html: { name: 'email' }, label: false %>
+    <%= f.input :amount, as: :integer, placeholder: "Montant de l'investissement envisagé", input_html: { name: 'amount' }, label: false %>
+    <div class="text-align-center">
+      <%= f.button :submit, "Ajouter", class: 'btn-form-action', id: 'submit-add-investor' %>
+    </div>
+  <% end %>
+</div>
