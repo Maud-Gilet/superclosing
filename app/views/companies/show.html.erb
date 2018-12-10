@@ -1,21 +1,60 @@
-<div class='page-header'>
-   <h3>Société <%= @company.name %></h3>
-   <h4>Ici, vous trouverez tous les outils pour :</h4>
-   <div>
-     <%= image_tag "company-creation-timeline.png", id: "creation-timeline-img" %>
-   </div>
+<div class='page-header container-fluid company-show-header'>
+  <div class='company-show-logo'>
+    <% if @company.logo_url.file == nil %>
+        <img src="https://via.placeholder.com/120" class="logo">
+      <% else %>
+      <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
+    <% end %>
+
+  </div>
+  <div>
+    <h3><strong><%= @company.name %></strong> </h3>
+  </div>
+
+  <div class='company-show-infos'>
+    <div class='home-card' id='company-info-card'>
+
+
+      <div class='home-card-body'>
+        <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
+        <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+        <%= link_to edit_company_path(@company.id) do %>
+          <i class="far fa-edit" id='edit-company-info'>Complétez les informations</i>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+<div class='operation-step-description'>
+   <h4>Les étapes de votre levée de fonds :</h4>
+  <div class="container-fluid progressbar-container">
+    <ul class="progressbar">
+        <li >Renseignez les informations relatives à votre capital</li>
+        <li class="active">Créez une nouvelle opération</li>
+        <li>Créez un nouvelle opération</li>
+        <li>Passez aux signatures !</li>
+    </ul>
+  </div>
+</div>
+
+
+</div>
+
 
 <div class='container-fluid page-content'>
 
   <div class='row'>
 
-    <div class ='col col-xs-12 col-sm-8'>
+    <div class ='col col-xs-12'>
 
       <div class='home-card'>
 
         <div class = 'home-card-header'>
-          <h5>Répartition du capital</h5>
+          <h3>Répartition du capital</h3>
         </div>
 
         <div class="home-card-body">
@@ -29,7 +68,7 @@
           </ul>
           <% if @company.operations.where(category: 'initialize-captable').empty? %>
             <%= link_to new_company_captable_path(@company.id) do %>
-              <button style="button" class="btn-transparent-small">Créer</button>
+              <button style="button" class="btn-transparent-small">Initialiser le capital</button>
             <% end %>
           <% else %>
             <%= link_to new_company_captable_path(@company.id) do %>
@@ -41,39 +80,13 @@
       </div>
     </div>
 
-    <div class ='col col-xs-12 col-sm-3'>
-      <div class='home-card'>
 
-        <div class = 'home-card-header'>
-          <h5>Informations</h5>
-        </div>
-
-        <div class = "home-card-avatar">
-          <% if @company.logo_url.file == nil %>
-              <img src="https://via.placeholder.com/120" class="logo">
-            <% else %>
-            <p> <%= cl_image_tag @company.logo_url, height: 120, width: 220, crop: :fit %></p>
-          <% end %>
-        </div>
-
-        <div class='home-card-body'>
-          <p> <strong>Nom</strong> :  <%= @company.name %> </p>
-          <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
-          <p> <strong>Siège social</strong> :  <%= @company.address %></p>
-          <div class='home-card-footer'>
-            <%= link_to edit_company_path(@company.id) do %>
-              <button style="button" class="btn-transparent-small">Compléter les informations</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class='row'>
     <div class = 'col col-xs-11'>
       <div class = 'home-card-header'>
-        Opérations
+        <h3>Opérations</h3>
       </div>
       <div class = "home-card-body">
         <ul>
@@ -153,20 +166,6 @@
       </div>
     </div>
   </div>
-
-  <div class='row'>
-    <div class = 'col col-xs-11'>
-      <div class = 'home-card-header'>
-        Actionnariat
-      </div>
-      <div class = "home-card-body">
-
-      </div>
-    </div>
-  </div>
-
-
-
 
 </div>
 

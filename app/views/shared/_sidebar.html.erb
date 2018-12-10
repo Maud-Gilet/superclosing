@@ -6,7 +6,7 @@
 
   <div class="sidebar-nav">
 
-    <% if current_user.roles.first.company.nil? %>
+    <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
           <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color"><strong>D</strong></span>ashboard</span></i>
@@ -20,7 +20,7 @@
       </div>
     <% end %>
 
-    <% if current_user.roles.first.company.nil? %>
+    <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
           <i class="fas fa-chart-pie"><span id="sidebar-item-2"><span class="sidebar-letter-color"><strong>C</strong></span>ap Table</span></i>
@@ -34,7 +34,7 @@
       </div>
     <% end %>
 
-    <% if current_user.roles.first.company.nil? %>
+    <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
           <i class="fas fa-rocket"><span id="sidebar-item-3"><span class="sidebar-letter-color"><strong>O</strong></span>pérations</span></i>
