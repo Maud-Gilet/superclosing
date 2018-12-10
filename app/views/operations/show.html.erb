@@ -55,7 +55,7 @@
 
             <ul>
               <% @operation.investments.each do |invest|%>
-                <li>
+                <li data-investment-id="<%= invest.id %>">
                   <div class="investor-list-content">
                     <div class="investor-list-header-name">
                       <%= invest.user.first_name %> <%= invest.user.last_name %>
