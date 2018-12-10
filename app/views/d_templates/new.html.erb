@@ -1,0 +1,8 @@
+<h1>Création d'un nouveau template dynamique</h1>
+
+
+      <%= simple_form_for @d_template do |dt| %>
+      <%= dt.input :category, label: 'Catégorie du document'%>
+      <%= dt.input :version, label: 'Version'%>
+      <%= dt.submit 'Créer', class: 'btn btn-form-action' %>
+      <% end %>

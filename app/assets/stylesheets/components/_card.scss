@@ -1,20 +1,22 @@
+.home-card{
+    background-color: #fff;
+  }
+
 .home-card-header {
   text-align: left;
   border-bottom-width: 1px;
   padding: 12px;
-  background-color: #fff;
   border-bottom: 2px solid #FDBB58;
-  & h3 {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-top: 0px;
-    margin-bottom: 0px;
+  text-align: center;
+  margin-bottom:22px;
+  h4 {
+    font-weight:bolder;
   }
 }
 .home-card-body {
   p {
     font-size: 14px;
-    padding:0px 0px 10px 0px;
+    padding:0px 20px 10px 20px;
     margin: 0px;
   }
 }
@@ -36,4 +38,22 @@
 }
 .operation-card-body {
   display: flex;
+}
+.captable-body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.captable-list-card {
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  padding-left: 15px;
+}
+.captable-card-show {
+  height: 300px;
+  width: 500px;
+  background-color: blue;
+  margin-top: 5px;
 }

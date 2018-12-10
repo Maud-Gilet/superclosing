@@ -1,0 +1,7 @@
+<% if @d_document.title.include? "Assemblée Générale" %>
+  <%= render 'pv' %>
+<% elsif @d_document.title.include? "souscription" %>
+  <%= render 'bs' %>
+<% else @d_document.title == "PV de sortie" %>
+  <%= render 'pvs' %>
+<% end %>

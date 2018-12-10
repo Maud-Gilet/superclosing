@@ -22,6 +22,9 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'postmark-rails'
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '0.12.3.1'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
