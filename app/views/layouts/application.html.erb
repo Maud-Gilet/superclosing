@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Superclosing : la façon la plus simple et la plus rapide de gérer votre levée de fonds</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -16,12 +17,21 @@
     <%= favicon_link_tag %>
 
     <!-- page's intelligence (metadata) -->
-      <meta name="description" content="Facilitez vos levées de fonds">
-      <meta property="og:title" content="Superclosing">
-      <meta property="og:url" content="http://www.superclosing.com">
-      <meta property="og:image" content="image">
-      <meta property="og:description" content="Une plateforme juridique complète pour vous accompagner dans vos levées de fonds">
-      <meta property="og:site_name" content="superclosing.com">
+      <!-- Facebook Open Graph data -->
+      <meta property="og:title" content="<%= meta_title %>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="<%= request.original_url %>" />
+      <meta property="og:image" content="<%= meta_image %>" />
+      <meta property="og:description" content="<%= meta_description %>" />
+      <meta property="og:site_name" content="<%= meta_title %>" />
+
+      <!-- Twitter Card data -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:title" content="<%= meta_title %>">
+      <meta name="twitter:description" content="<%= meta_description %>">
+      <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:image:src" content="<%= meta_image %>">
   </head>
   <body>
     <% if !user_signed_in? %>

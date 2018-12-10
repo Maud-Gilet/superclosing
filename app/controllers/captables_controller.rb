@@ -3,12 +3,12 @@ class CaptablesController < ApplicationController
 
   def show
     @investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @company.id, 'completed')
-    @captable = {}
+    @shareholders = {}
     @investments.each do |invest|
-      if @captable.key?(invest.user_id)
-        @captable[invest.user_id] = invest.number_of_shares
+      if @shareholders.key?(invest.user_id)
+        @shareholders[invest.user_id] += invest.number_of_shares
       else
-        @captable[invest.user_id] += invest.number_of_shares
+        @shareholders[invest.user_id] = invest.number_of_shares
       end
       @company.number_of_shares += invest.number_of_shares
     end
