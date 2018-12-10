@@ -5,9 +5,61 @@
   padding: 10px;
   transition: all 0.3s ease;
   border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .operation-list:hover {
   background: rgb(240, 240, 240);
 }
 
+.operation-list-category {
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-style: italic;
+    font-size: 0.7em;
+  }
+  & h5 {
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+}
+
+.operation-list-amount {
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-style: italic;
+    font-size: 0.7em;
+  }
+  & h5 {
+    font-size: 1em;
+    margin-top: 4px;
+  }
+}
+
+.operation-list-closing-date {
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-style: italic;
+    font-size: 0.7em;
+  }
+  & h5 {
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+}
+.operation-list-status {
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-style: italic;
+    font-size: 0.7em;
+  }
+  & h5 {
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+}
