@@ -23,36 +23,61 @@
   <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
 </div>
 
-<div class="club-item">
-  <div>
-    <table class="tableau">
-      <tr>
-        <th class="liste">Nom</th>
-        <th class="liste">Email</th>
-        <th class="liste">Nombre d'actions</th>
-        <th class="liste">Montant investi €</th>
-        <th class="liste">Statut</th>
-      </tr>
-      <tr><%  @operation.investments.each do |invest|%>
-        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
-        <td class="liste"><%= invest.user.email %></td>
-        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
-        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
-        <td class="liste">
-          <% if invest.status == 'pending' %>
-            Invité
-          <% end %>
-        </td>
-      </tr>
-      <%end%>
+<div class="investors-corner">
+  <div class="investor-list">
+    <div class="investor-list-header">
+      <div class="investor-list-header-name">
+        <span>Nom</span>
+      </div>
+      <div class="investor-list-header-email">
+        <span>Email</span>
+      </div>
+      <div class="investor-list-header-amount">
+        <span>Montant investi</span>
+      </div>
+      <div class="investor-list-header-shares">
+        <span>Nombre d'actions</span>
+      </div>
+      <div class="investor-list-header-status">
+        <span>Status</span>
+      </div>
+    </div>
 
-    </table>
+      <ul>
+        <% @operation.investments.each do |invest|%>
+          <li>
+            <div class="investor-list-content">
+              <div class="investor-list-header-name">
+                <%= invest.user.first_name %> <%= invest.user.last_name %>
+              </div>
+              <div class="investor-list-header-email">
+                <%= invest.user.email %>
+              </div>
+              <div class="investor-list-header-amount">
+                <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%> euros
+              </div>
+              <div class="investor-list-header-shares">
+                <%= money_without_cents invest.number_of_shares %>
+              </div>
+              <div class="investor-list-header-status">
+                <% if invest.status == 'pending' %>
+                  Invité
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
 
-    <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-      <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
-    <% end %>
 
+
+    <div class="investor-list-add">
+      <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+        <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
+      <% end %>
+    </div>
   </div>
+
 
   <div class="graph">
     <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> </p>
@@ -161,3 +186,36 @@
 <br>
 <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
 
+
+
+
+  <div class="investor-list">
+    <table>
+      <tr class="investor-list-header">
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Nombre d'actions</th>
+        <th>Montant investi €</th>
+        <th>Statut</th>
+      </tr>
+      <tr><%  @operation.investments.each do |invest|%>
+        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
+        <td class="liste"><%= invest.user.email %></td>
+        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
+        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
+        <td class="liste">
+          <% if invest.status == 'pending' %>
+            Invité
+          <% end %>
+        </td>
+      </tr>
+      <%end%>
+
+    </table>
+
+    <div class="investor-list-add">
+      <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+        <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
+      <% end %>
+    </div>
+  </div>
