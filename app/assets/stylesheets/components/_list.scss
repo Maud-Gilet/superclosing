@@ -1,3 +1,35 @@
+.captable-list-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px 7px;
+  border-top: 1px solid #ffac30;
+  border-bottom: 1px solid #ffac30;
+  & span {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
+.captable-list-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  padding: 2px 7px;
+}
+.captable-list-name {
+  flex: 0 0 40%;
+}
+.captable-list-shares {
+  flex: 0 0 40%;
+}
+.captable-list-pourcent {
+  flex: 0 0 20%;
+  justify-content: flex-end;
+}
+
+
 .operation-list {
   flex: 1 0 auto;
   display: flex;
@@ -17,6 +49,7 @@
 .operation-list-category {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -30,6 +63,7 @@
 .operation-list-amount {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -43,6 +77,8 @@
 .operation-list-closing-date {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
+  flex: 0 1 auto;
   & span {
     font-style: italic;
     font-size: 0.7em;
@@ -55,6 +91,7 @@
 .operation-list-status {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   & span {
     font-style: italic;
     font-size: 0.7em;

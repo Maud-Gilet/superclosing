@@ -3,6 +3,7 @@
   }
 
 .home-card-header {
+  text-align: left;
   border-bottom-width: 1px;
   padding: 12px;
   border-bottom: 2px solid #FDBB58;
@@ -37,4 +38,22 @@
 }
 .operation-card-body {
   display: flex;
+}
+.captable-body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.captable-list-card {
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  padding-left: 15px;
+}
+.captable-card-show {
+  height: 300px;
+  width: 500px;
+  background-color: blue;
+  margin-top: 5px;
 }

@@ -2,7 +2,7 @@
   <h4><%= @operation.category %> <%= @operation.name %> </h4>
   <p> <%= @operation.status %></p>
 
-  <h4 class="huge"><%= (money_without_cents @shares_values*10000/@operation.target_amount_cents) %> %</h4>
+  <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
   <p>des fonds collectés</p>
 
   <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
@@ -29,7 +29,7 @@
 
       <div class='home-card'>
         <div class = 'home-card-header'>
-          <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
+          <i class="fas fa-coffee"></i><h3 class="card-title">Le club des Investisseurs</h3>
         </div>
         <div class="investors-corner">
           <div class="investor-list">
@@ -64,7 +64,7 @@
                       <%= invest.user.email %>
                     </div>
                     <div class="investor-list-header-amount">
-                      <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%> euros
+                      <%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%> €
                     </div>
                     <div class="investor-list-header-shares">
                       <%= money_without_cents invest.number_of_shares %>
@@ -92,7 +92,7 @@
           </div>
 
           <div class="graph">
-            <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> </p>
+            <p> Progression : <%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> %</p>
             <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
             </canvas>
           </div>
@@ -106,7 +106,7 @@
 
       <div class='home-card'>
         <div class = 'home-card-header'>
-          <i class="fas fa-book"></i><h4 class="card-title">La Data Room</h4>
+          <i class="fas fa-book"></i><h3 class="card-title">La Data Room</h3>
         </div>
         <div class="operation-card-body-text">
           INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
@@ -203,37 +203,3 @@
 <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
 <br>
 <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
-
-
-
-
-  <div class="investor-list">
-    <table>
-      <tr class="investor-list-header">
-        <th>Nom</th>
-        <th>Email</th>
-        <th>Nombre d'actions</th>
-        <th>Montant investi €</th>
-        <th>Statut</th>
-      </tr>
-      <tr><%  @operation.investments.each do |invest|%>
-        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
-        <td class="liste"><%= invest.user.email %></td>
-        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
-        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
-        <td class="liste">
-          <% if invest.status == 'pending' %>
-            Invité
-          <% end %>
-        </td>
-      </tr>
-      <%end%>
-
-    </table>
-
-    <div class="investor-list-add">
-      <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-        <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
-      <% end %>
-    </div>
-  </div>
