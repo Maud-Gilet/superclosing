@@ -20,31 +20,45 @@
   padding-top: 25px;
   padding-bottom: 30px;
   padding-left: 30px;
+  letter-spacing: 1px;
   i {
     color: white;
     font-size: 32px;
+    font-family: 'Barlow', sans-serif !important;
     & span {
-      font-size: 0.7em;
+      font-size: 0.6em;
       font-weight: 500;
       padding-bottom: 2px;
     }
     & #sidebar-item-1, #sidebar-item-3 {
       padding-left: 10px;
+      position: relative;
+      bottom: 4px;
     }
     & #sidebar-item-2 {
       padding-left: 7.5px;
+      position: relative;
+      bottom: 4px;
     }
     & #sidebar-item-4 {
       padding-left: 13px;
+      position: relative;
+      bottom: 4px;
     }
     & span .sidebar-letter-color {
       font-size: 1.1em;
-      color: #ffac30;
+      color: #FDBB58;
     }
   }
   // :hover{
   //   color: #FDBB58;
   // }
+}
+.fas:before {
+  font-family: "Font Awesome 5 Free";
+}
+.far:before {
+  font-family: "Font Awesome 5 Free";
 }
 .sidebar a {
   color: #ffffffab;

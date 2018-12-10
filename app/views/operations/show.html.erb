@@ -12,148 +12,164 @@
   <button type="button" class="btn btn-superclosing"> Lancer les signatures </button>
 </div>
 
+<div class='page-header'>
+   <h3>Opération <%= @operation.name %></h3>
 
-
-<div class="haut">
-  <img id="etapes" src=<%= asset_path 'etapes.png' %> alt="etapes">
+   <h4>4 étapes pour une opération réussie :</h4>
+   <div>
+     <%= image_tag "etapes.png", id: "operation-timeline-img" %>
+   </div>
 </div>
 
+<div class='container-fluid page-content'>
 
-<div class="club">
-  <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
-</div>
+  <div class='row'>
 
-<div class="club-item">
-  <div>
-    <table class="tableau">
-      <tr>
-        <th class="liste">Nom</th>
-        <th class="liste">Email</th>
-        <th class="liste">Nombre d'actions</th>
-        <th class="liste">Montant investi €</th>
-        <th class="liste">Statut</th>
-      </tr>
-      <tr><%  @operation.investments.each do |invest|%>
-        <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
-        <td class="liste"><%= invest.user.email %></td>
-        <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
-        <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
-        <td class="liste">
-          <% if invest.status == 'pending' %>
-            Invité
+    <div class ='col-xs-10'>
+
+      <div class='home-card'>
+        <div class = 'home-card-header'>
+          <i class="fas fa-coffee"></i><h4 class="card-title">Le club des Investisseurs</h4>
+        </div>
+        <div class="operation-card-body">
+          <table class="tableau">
+            <tr>
+              <th class="liste">Nom</th>
+              <th class="liste">Email</th>
+              <th class="liste">Nombre d'actions</th>
+              <th class="liste">Montant investi €</th>
+              <th class="liste">Statut</th>
+            </tr>
+            <tr><%  @operation.investments.each do |invest|%>
+              <td class="liste"><%= invest.user.first_name %> <%= invest.user.last_name %></td>
+              <td class="liste"><%= invest.user.email %></td>
+              <td class="liste"><%= money_without_cents invest.number_of_shares %></td>
+              <td class="liste"><%= money_without_cents (invest.number_of_shares * ( invest.share_premium + invest.share_nominal_value ) )%></td>
+              <td class="liste">
+                <% if invest.status == 'pending' %>
+                  Invité
+                <% end %>
+              </td>
+            </tr>
+            <%end%>
+
+          </table>
+          <div class="graph">
+            <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> </p>
+            <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
+            </canvas>
+          </div>
+        </div>
+        <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
+          <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
           <% end %>
-        </td>
-      </tr>
-      <%end%>
 
-    </table>
-
-    <%= link_to company_operation_investors_path(@operation.company.id, @operation.id) do %>
-      <button type="button" class="btn btn-form-action gauche"> Ajouter un investisseur </button>
-    <% end %>
-
-  </div>
-
-  <div class="graph">
-    <p> Progression :<%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> </p>
-    <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
-    </canvas>
-  </div>
-</div>
-
-
-<div class="club">
-  <i class="fas fa-book"></i><h4 class="card-title">La Data Room</h4>
-</div>
-
-<p class="gauche">INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.</p>
-
-<div class="docs">
-  <div class="doccard">
-    <div> <%= cl_image_tag("superclosing/bs_template",
-    width: 100, height: 150, crop: :fill) %>
-    </div>
-    <p>Bon de souscription</p>
-  </div>
-
-  <div class="doccard">
-    <div> <%= cl_image_tag("superclosing/opening_age_pv",
-    width: 100, height: 150, crop: :fill) %>
-    </div>
-    <p>PV d'ouverture d'AG</p>
-  </div>
-
-  <div class="doccard">
-    <div> <%= cl_image_tag("superclosing/opening_age_presence",
-    width: 100, height: 150, crop: :fill) %>
-    </div>
-    <p>Ouverture d'AG</p>
-  </div>
-
-  <div class="doccard">
-    <div> <%= cl_image_tag("superclosing/dps_suppression",
-    width: 100, height: 150, crop: :fill) %>
-    </div>
-    <p>Suppression de DPS</p>
-  </div>
-
-
-  <% @operation.s_documents.each do |s_document| %>
-  <div class="doccard">
-    <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
-    </div>
-    <p><%= s_document.title  %></p>
-  </div>
-
-  <% end %>
-
-  <div class="doccard">
-    <p style="width: 100; height: 150; background-color: white;"> + </p>
-    <p>Uploader un document</p>
-  </div>
-
-</div>
-
-  <%= link_to "#" do %>
-    <button type="button" class="btn btn-superclosing gauche"> Ajouter un document</button>
-  <% end %>
-
-<div class="gauche">
-<%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
-  <%= f.input :title, label: "Nom" %>
-  <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
-  <%= f.input :d_url, as: :file, label: "Document" %>
-  <%= f.input :d_url_cache, as: :hidden %>
-  <%= f.button :submit, "Ajouter" %>
-<% end %>
-
-</div>
-
-<br>
-
-<div class="club">
-  <i class="fas fa-pencil-alt"></i><h4 class="card-title">SIGNATURES</h4>
-</div>
-
-<p class="gauche">INFO: Avant de générer la documentation juridique pour cette opération, prenez le temps de bien vérifier les informations concernant la société (raison social, capital), les investisseurs (nom, prénom, adresse) et l'opération (montants, nombre d'actions concernées). Ne vous inquiétez pas vous pourrez revoir les documents avant leur envoi à vos investisseurs et la signature électronique.</p>
-
-<div class="boxes">
-
-  <div class="mainactionbox">
-    <h4 class="card-title">Investisseurs</h4>
-    <p class="card-text huge"> <%= @operation.investments.count %> </p>
-    <div class="card-bottom">
-      <a href="#" class="btn btn-superclosing">Voir</a>
-      <a href="#" class="btn btn-superclosing">Créer</a>
+      </div>
     </div>
   </div>
 
-  <div class="graph">
-    <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
-    </canvas>
-  </div>
+  <div class='row'>
+    <div class ='col-xs-10'>
 
+      <div class='home-card'>
+        <div class = 'home-card-header'>
+          <i class="fas fa-book"></i><h4 class="card-title">La Data Room</h4>
+        </div>
+        <div class="operation-card-body-text">
+          INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
+        </div>
+
+        <div class="operation-card-body">
+
+
+          <div class="container-fluid docs-container">
+            <div class="doccard">
+              <div> <%= cl_image_tag("superclosing/bs_template",
+              width: 100, height: 150, crop: :fill) %>
+              </div>
+              <p>Bon de souscription</p>
+            </div>
+
+
+            <div class="doccard">
+              <div> <%= cl_image_tag("superclosing/opening_age_pv",
+              width: 100, height: 150, crop: :fill) %>
+              </div>
+              <p>PV d'ouverture d'AG</p>
+            </div>
+
+            <div class="doccard">
+              <div> <%= cl_image_tag("superclosing/opening_age_presence",
+              width: 100, height: 150, crop: :fill) %>
+              </div>
+              <p>Ouverture d'AG</p>
+            </div>
+
+            <div class="doccard">
+              <div> <%= cl_image_tag("superclosing/dps_suppression",
+              width: 100, height: 150, crop: :fill) %>
+              </div>
+              <p>Suppression de DPS</p>
+            </div>
+
+
+            <% @operation.s_documents.each do |s_document| %>
+            <div class="doccard">
+              <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
+              </div>
+              <p><%= s_document.title  %></p>
+            </div>
+
+            <% end %>
+
+            <div class="doccard">
+              <p style="width: 100; height: 150; background-color: white;"> + </p>
+              <p>Uploader un document</p>
+            </div>
+
+          </div>
+        </div>
+        <%= link_to "#" do %>
+          <button type="button" class="btn btn-superclosing gauche"> Ajouter un document</button>
+        <% end %>
+        <div class="gauche">
+          <%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
+            <%= f.input :title, label: "Nom" %>
+            <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+            <%= f.input :d_url, as: :file, label: "Document" %>
+            <%= f.input :d_url_cache, as: :hidden %>
+            <%= f.button :submit, "Ajouter" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+
+    <div class ='col-xs-10'>
+
+      <div class='home-card'>
+        <div class = 'home-card-header'>
+           <i class="fas fa-pencil-alt"></i><h4 class="card-title">SIGNATURES</h4>
+        </div>
+
+        <div class="operation-card-body">
+          <div class="operation-card-body-text">
+            INFO: Avant de générer la documentation juridique pour cette opération, prenez le temps de bien vérifier les informations concernant la société (raison social, capital), les investisseurs (nom, prénom, adresse) et l'opération (montants, nombre d'actions concernées). Ne vous inquiétez pas vous pourrez revoir les documents avant leur envoi à vos investisseurs et la signature électronique.
+          </div>
+
+
+          <div class="graph">
+            <canvas id="myChart" data-share="<%= @operation.target_amount_cents %>-<%= @operation.premoney_cents %> ">
+            </canvas>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 
 <hr>
