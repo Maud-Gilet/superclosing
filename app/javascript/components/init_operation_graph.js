@@ -6,18 +6,18 @@ const graph = ()=>{
   var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-          labels: ["Levée", "Pre-money"],
+          labels: ["Associé 1", "Associé 2"],
           datasets: [{
               label: '# of Votes',
               data: shares,
               backgroundColor: [
                   'rgba(252, 150, 0, 0.8)',
-                  'rgba(71, 79, 88, 0.8)'
+                  '#2D3D4D'
 
               ],
               borderColor: [
                   'rgba(252, 150, 0, 1)',
-                  'rgba(71, 79, 88, 1)'
+                  '#2D3D4D'
               ],
               borderWidth: 1
           }]

@@ -1,37 +1,31 @@
 #edit-company-info {
-  font-size: 18px;
-
+  font-size: 16px;
+  position: absolute;
+  top: 14px;
+  right: 30px;
+  color: #FDBB58;
 }
-#company-info-card {
-  .home-card-header {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border:none;
-    h5 {
-      padding: 0px;
-    }
-  }
-}
-.company-show-header{
-  padding: 40px 0px 40px 40px;
-  margin-bottom: 40px;
+#company-card{
   display: flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-left:50px;
-  background: white;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .company-show-logo {
   width: 150px;
   flex: none;
+  text-align: center;
+  h3 {
+    font-size: 24px;
+    margin-top: 0px !important;
+  }
 }
-.company-show-infos{
-  width: 300px;
-  margin-left: 200px;
+.company-show-infos {
+  width: 50%;
+  text-align: justify;
 }
 .operation-step-description {
   margin-bottom: 100px;
   padding-left: 36px;
 }
+
 
