@@ -16,7 +16,7 @@ class DDocumentsController < ApplicationController
 
   def show
     @d_document = DDocument.find(params[:id])
-    @user = User.find(params[:user_id])
+    #@user = User.find(params[:user_id])
     @operation = @d_document.operation
 
     @capital_augmentation = capital_augmentation
