@@ -111,11 +111,10 @@
             <% end %>
 
             <div class="graph">
-              <% if @shareholders.any? %>
-                <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
-                </canvas>
-              <% else %>
-                <p> Renseignez vos actionnaires </p>
+
+              <% unless @shareholders.length == 0 %>
+              <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
+              </canvas>
               <% end %>
             </div>
 
