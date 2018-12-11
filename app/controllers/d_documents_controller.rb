@@ -29,6 +29,8 @@ class DDocumentsController < ApplicationController
     @emit_prime = (@total_of_investments / @total_of_shares) - @nominal
     @global_price = @nominal + @emit_prime
 
+    list_shareholders
+
     render pdf: "file_nam", layout: "document", formats: :html, encoding: 'utf8'
   end
 
@@ -56,7 +58,7 @@ class DDocumentsController < ApplicationController
     @operation.investments.each do |investment|
       array_of_shares << investment.share_premium_cents
     end
-    @total_of_investments = (array_of_shares.sum )/ 10
+    @total_of_investments = (array_of_shares.sum)/ 10
   end
 
   def create_documents
@@ -85,5 +87,20 @@ class DDocumentsController < ApplicationController
 
   def set_d_document
     @d_document = DDocument.find(params[:id])
+  end
+
+  def list_shareholders
+    @investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @operation.company.id, 'completed')
+    @shareholders = {}
+    @operation.company.number_of_shares = 0
+    @investments.each do |invest|
+      if @shareholders.key?(invest.user_id)
+        @shareholders[invest.user_id] += invest.number_of_shares
+      else
+        @shareholders[invest.user_id] = invest.number_of_shares
+      end
+      @operation.company.number_of_shares += invest.number_of_shares
+    end
+    @shareholders
   end
 end

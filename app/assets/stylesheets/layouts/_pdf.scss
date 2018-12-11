@@ -1,0 +1,63 @@
+#pdf-body {
+  text-align: justify;
+  font-family: 'Helvetica' !important;
+  color: black !important;
+  line-height: 14pt !important;
+  margin: 40pt;
+  margin-top: 60pt;
+  p{
+    font-size: 9pt;
+  }
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 6pt;
+  }
+  h2 {
+    font-size: 15pt;
+  }
+  h3 {
+    font-size: 11pt ;
+    margin-bottom: 0pt;
+    line-height: 2pt !important;
+  }
+  h4 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 4pt;
+  }
+  h5 {
+    font-size: 10pt;
+    font-style: italic;
+    font-weight:bolder;
+    margin-top: 0pt;
+  }
+  ul {
+    font-size: 9pt;
+    list-style-type: circle;
+    list-style-position: outside;
+    margin-left: 20pt;
+    margin-top: 0pt;
+    li {
+      margin-left: 12pt;
+    }
+  }
+  mark {
+    background-color: #ffc460;
+  }
+}
+#pdf-investors-table{
+  width: 100%;
+  word-wrap:break-word;
+  th {
+    border: 1px solid black;
+    font-size: 10pt !important;
+    text-align: center;
+    padding: 2pt;
+  }
+  td {
+    font-size: 8pt;
+    border: 1px solid lightgrey;
+    text-align: center;
+    padding: 4pt;
+  }
+}

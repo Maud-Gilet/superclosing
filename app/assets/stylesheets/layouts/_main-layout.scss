@@ -1,3 +1,6 @@
+.main-width {
+  width: 65vw;
+}
 
 .pages-wrapper {
   align-items: stretch;
@@ -37,4 +40,25 @@
 }
 .col{
   margin-bottom: 32px;
+}
+
+#home-loop-eclair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-eclair {
+  height: 80px;
+  padding-top: 20px;
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate3d(0,0,0,0deg);
+    }
+    to {
+        -webkit-transform: rotate3d(0,1,0,359deg);
+    }
 }
