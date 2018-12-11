@@ -24,7 +24,6 @@ class OperationsController < ApplicationController
   def show
     @operation = Operation.find(params[:id])
     @s_document = SDocument.new
-
     @d_document = DDocument.new
 
     @shares_values = 0
