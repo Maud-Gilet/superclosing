@@ -1,8 +1,92 @@
-<h1>This is your Investor's Page ! Welcome</h1>
+<div>
+  <h3>Vous avez été invité à rejoindre les opérations suivantes :</h3>
+</div>
+
 <ul>
   <% current_user.investments.each do |invest| %>
-    <li>
-      <%= invest.id %> - <%= invest.operation.company.name %>
-    </li>
+    <% unless invest.operation.category == 'initialize-captable' %>
+      <li>
+        <div class="operation-list">
+          <div class="operation-list-category">
+            <div>
+              <span>Catégorie</span>
+            </div>
+            <div>
+              <h5><%= invest.operation.category %></h5>
+            </div>
+          </div>
+          <div class="operation-list-amount">
+            <% if invest.operation.status == 'completed' %>
+              <div>
+                <span>Montant de l'opération</span>
+              </div>
+              <div>
+                <h5><strong><%= money_without_cents invest.operation.target_amount %> euros</strong></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Montant visé</span>
+              </div>
+              <div>
+                <h5><strong><%= money_without_cents invest.operation.target_amount %> euros</strong></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-closing-date">
+            <% if invest.operation.status == 'completed' %>
+              <div>
+                <span>Date de réalisation</span>
+              </div>
+              <div>
+                <h5><%= invest.operation.expected_closing_date %></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Date de réalisation estimée</span>
+              </div>
+              <div>
+                <h5><%= invest.operation.expected_closing_date %></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-status">
+            <div>
+              <span>Status de votre investissement</span>
+            </div>
+            <div>
+              <% if invest.status == 'pending' %>
+                <h5 class="pending-invest"><strong>Non confirmé</strong></h5>
+              <% elsif invest.status == 'confirmed' %>
+                <h5 class="confirmed-invest"><strong>Confirmé</strong></h5>
+              <% elsif invest.status == 'refused' %>
+                <h5 class="refused-invest"><strong>Refusé</strong></h5>
+              <% end %>
+            </div>
+          </div>
+          <div class="operation-list-status">
+            <% if invest.operation.status == 'completed' %>
+              <div>
+                <span>Status de l'opération</span>
+              </div>
+              <div>
+                <h5><strong>Finalisée</strong></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Status de l'opération</span>
+              </div>
+              <div>
+                <h5><strong>En cours</strong></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-link">
+            <%= link_to investment_path(invest) do %>
+              <button style="button" class="btn-transparent-small">Détails</button>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 </ul>

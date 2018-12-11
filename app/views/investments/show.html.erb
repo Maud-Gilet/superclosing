@@ -1,0 +1,36 @@
+<div>
+  <h1>Voici le détail de l'investissement</h1>
+</div>
+
+<div>
+  <h3>Caractéristiques de l'opération:</h3>
+  <p>Société : <%= @investment.operation.company.name %></p>
+  <p>Valorisation de la société : <%= money_without_cents @investment.operation.target_amount %> €</p>
+  <p>Montant de l'opération : <%= money_without_cents @investment.operation.target_amount %> €</p>
+  <p>Prix par action : <%= humanized_money @investment.share_nominal_value + @investment.share_premium %> €</p>
+</div>
+
+<div>
+  <h3>Caractéristiques de votre investissement:</h3>
+  <p>Montant de votre investissement : <%= humanized_money @investment.number_of_shares * ( @investment.share_premium + @investment.share_nominal_value) %> €</p>
+  <p>Nombre de titres : <%= money_without_cents @investment.number_of_shares %> €</p>
+</div>
+
+<div>
+  <%= link_to edit_investment_path(@investment) do %>
+    <button type="button" class="btn btn-form-action">Editer votre investissement</button>
+  <% end %>
+</div>
+
+<div>
+  <br><br>
+  Lien vers la dataroom
+  <br>
+</div>
+
+<div>
+  <br><br>
+  <%= link_to root_path do %>
+    <button type="button" class="btn btn-transparent-small">Revenir à vos investissements</button>
+  <% end %>
+</div>
