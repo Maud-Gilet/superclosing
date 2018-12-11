@@ -103,11 +103,11 @@
                 </div>
               </div>
             </li>
-            <% @shareholders.each do |id, shares| %>
+            <% @shareholders.each do |name, shares| %>
               <li>
                 <div class="captable-list-content">
                   <div class="captable-list-name">
-                    <%= User.find(id).last_name %> <%= User.find(id).first_name %>
+                    <%= name %>
                   </div>
                   <div class="captable-list-shares">
                     <%= money_without_cents shares %> actions

@@ -13,7 +13,7 @@
 <div>
   <h3>Caractéristiques de votre investissement :</h3>
   <p>Montant de votre investissement : <%= humanized_money @investment.number_of_shares * ( @investment.share_premium + @investment.share_nominal_value) %> €</p>
-  <p>Nombre de titres : <%= money_without_cents @investment.number_of_shares %> €</p>
+  <p>Nombre de titres : <%= money_without_cents @investment.number_of_shares %></p>
 </div>
 
 <div>

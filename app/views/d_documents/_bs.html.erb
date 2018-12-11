@@ -18,21 +18,21 @@
 
 <br>
 
-<p><mark><%= @user.gender %></mark> <mark><%= @user.first_name %></mark> <mark><%= @user.last_name %></mark>, né(e) le <mark><%= @user.birthday %></mark>, domilicié(e) <mark><%= @user.address %></mark></p>
+<p><mark><%= @user.gender %></mark> <mark><%= @user.first_name %></mark> <mark><%= @user.last_name %></mark>, né(e) le <mark><%= @user.birthday %></mark>, domilicié(e)  <mark><%= @user.address %></mark></p>
 
 
 <p><strong>Après avoir pris connaissance :</strong></p>
 <ul>
   <li>des statuts de la Société ;</li>
-  <li>de la décision d’augmentation de capital prise par l’assemblée générale extraordinaire de la Société en date du <mark><%= @pv_opening.last.created_at.day %> / <%= @pv_opening.last.created_at.month %> / <%= @pv_opening.last.created_at.year %></mark>, par l’émission de <mark><%= @total_of_shares %></mark> actions ordinaires d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune assorties d’une prime d’émission unitaire de <mark><%= humanized_money @user_investment.share_premium %></mark> euros (les « <strong>Actions Emises</strong> ») ;</li>
-  <li>de la renonciation écrite des associés à leur exercice du droit préférentiel de souscription ;</li>
+  <li>de la décision d’augmentation de capital prise par l’assemblée générale extraordinaire de la Société en date du <mark><%= @pv_opening.last.created_at.day %> / <%= @pv_opening.last.created_at.month %> / <%= @pv_opening.last.created_at.year %></mark>, par l’émission de  <mark><%= @total_of_shares %></mark> actions ordinaires d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune assorties d’une prime d’émission unitaire de <mark><%= humanized_money @user_investment.share_premium %></mark> euros (les « <strong>Actions Emises</strong> ») ;</li>
+  <li>de la renonciation écrite des associés de la Société à leur exercice du droit préférentiel de souscription ;</li>
 </ul>
 
 <br>
 <p><strong>Déclare avoir été parfaitement informé :</strong></p>
 <ul>
   <li>de l’émission des Actions Emises par la Société ; </li>
-  <li>du fait que le prix d’émission sera payable en numéraire et devra être libéré intégralement dans un délai de cinq jours à compter des présentes ;</li>
+  <li>du fait que le prix d’émission sera payable en numéraire et devra être libéré intégralement dans un délai de cinq jours à compter de la signature du présent bulletin ;</li>
 </ul>
 <br>
 <p>Et exerçant les droits de souscription dont je suis titulaire,</p>
@@ -40,8 +40,8 @@
 <p><strong>Déclare :</strong></p>
 
 <ul>
-  <li>souscrire à <mark><%= humanized_money @user_investment.number_of_shares %></mark> actions ordinaires sur les <mark><%= humanized_money @total_of_shares %></mark> Actions Emises au titre de l’Augmentation de Capital ;</li>
-  <li>s’engager à libérer la souscription par virement bancaire sur le compte bancaire de la Société pour un montant de <mark><%= humanized_money @user_investment.number_of_shares * (@nominal + @user_investment.share_premium) %></mark> euros, correspondant au prix total de souscription des actions, dont  <mark><%= humanized_money @user_investment.share_premium * @user_investment.number_of_shares %></mark> euros de prime d’émission,</li>
+  <li>souscrire à <mark><%= humanized_money @user_investment.number_of_shares %></mark> actions ordinaires sur les  <mark><%= humanized_money @total_of_shares %></mark> Actions Emises au titre de l’augmentation de capital ;</li>
+  <li>s’engager à libérer la souscription par virement bancaire sur le compte de la Société pour un montant de <mark><%= humanized_money @user_investment.number_of_shares * (@nominal + @user_investment.share_premium) %></mark> euros, correspondant au prix total de souscription des actions, dont  <mark><%= humanized_money @user_investment.share_premium * @user_investment.number_of_shares %></mark> euros de prime d’émission.</li>
 </ul>
 <br>
 <p>Je reconnais qu’un exemplaire en version électronique du présent bulletin m'a été remis.</p>

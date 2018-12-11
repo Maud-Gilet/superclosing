@@ -63,7 +63,7 @@ class DDocumentsController < ApplicationController
 
     @operation.investments.each do |investment|
       @user = investment.user
-      @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} ", document_type: 'subscription_bund', operation: @operation, user: @user)
+      @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} #{investment.user.first_name} ", document_type: 'subscription_bund', operation: @operation, user: @user)
       @d_document.save!
     end
 
