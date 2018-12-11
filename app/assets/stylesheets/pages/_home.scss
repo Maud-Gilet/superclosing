@@ -35,15 +35,19 @@
 }
 #creation-timeline-img{
   padding-top: 24px;
-
   width: 700px;
 }
-.home-step-description {
+.home-steps {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 0px;
   margin-bottom: 40px;
+}
+.home-steps-header{
+  font-family: 'Barlow', sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
 }
 .step-card {
   width: 220px;
