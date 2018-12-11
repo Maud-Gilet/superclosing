@@ -53,7 +53,7 @@
               <div class="graph">
 
                 <% unless @shareholders.length == 0 %>
-                <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
+                <canvas id="myChart" data-share="<%= @shareholders.values.join(",") %>" data-label= "<%= @shareholders.keys.join(",") %>">
                 </canvas>
                 <% end %>
               </div>
