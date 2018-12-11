@@ -1,3 +1,10 @@
+.graph {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
 #myChart {
   height: 200px !important;
   width: 400px !important;
@@ -40,8 +47,4 @@
   display: flex;
 }
 
-.graph {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+
