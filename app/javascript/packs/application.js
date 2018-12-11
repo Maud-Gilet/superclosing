@@ -15,7 +15,8 @@ import { displayInvestorForm } from '../components/operation-show_add_investor';
 
 // Display graphs
 import { graph } from '../components/init_operation_graph'
-import { graphsecond } from '../components/init_operation_secondgraph'
+// import { graphsecond } from '../components/init_operation_secondgraph'
+import { graphthird } from '../components/init_operation_thirdgraph'
 
 // Dynamic text for landing page banner
 import { loadDynamicBannerText } from '../components/typed_landing';
@@ -47,10 +48,15 @@ if(document.getElementById("btn-add-investor")){
 if(document.getElementById('myChart')){
  graph();
 }
-if(document.getElementById('mySecondChart')){
- graphsecond();
+// if(document.getElementById('mySecondChart')){
+//  graphsecond();
+// }
+// window.graphsecond = graphsecond;
+
+if(document.getElementById('chart-third')){
+ graphthird();
 }
-window.graphsecond = graphsecond;
+window.graphthird = graphthird;
 
 if(document.getElementById('typed_text')){
   loadDynamicBannerText();
