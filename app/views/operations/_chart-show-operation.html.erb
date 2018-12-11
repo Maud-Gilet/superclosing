@@ -1,0 +1,6 @@
+<div class="graph">
+  <p> Progression : <%= (@shares_values * 100 / @operation.target_amount.to_f.round(0)) %> %</p>
+  <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %>" style="display: block;" width="200" height="100" class="chartjs-render-monitor" >
+  </canvas>
+</div>
+

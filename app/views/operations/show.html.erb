@@ -59,11 +59,8 @@
               </div>
             </div>
           </div>
-
-          <div class="graph">
-            <p> Progression : <%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> %</p>
-            <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
-            </canvas>
+          <div id="chart-operation-show">
+             <%= render 'chart-show-operation', operation: @operation %>
           </div>
         </div>
       </div>

@@ -27,13 +27,10 @@ class OperationsController < ApplicationController
 
     @d_document = DDocument.new
 
-    array = []
+    @shares_values = 0
     @operation.investments.each do |invest|
-      value = invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
-      array << value
+      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
     end
-
-    @shares_values = array.sum
   end
 
   private

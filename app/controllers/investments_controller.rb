@@ -44,6 +44,12 @@ class InvestmentsController < ApplicationController
   def destroy
     # Protection for Operations with 'Completed' status
     @investment.destroy if @investment.operation.status != 'completed' || @investment.operation.category == 'initialize-captable'
+
+    @operation = @investment.operation
+    @shares_values = 0
+    @operation.investments.each do |invest|
+      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
+    end
   end
 
   private

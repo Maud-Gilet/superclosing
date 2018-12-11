@@ -1,2 +1,14 @@
-document.querySelector("[data-investment-id='<%= @investment.id %>']")
+function deleteInvestor () {
+  document.querySelector("[data-investment-id='<%= @investment.id %>']")
   .remove();
+};
+
+function refreshChartShow(chartHTML) {
+  const chart = document.getElementById('chart-operation-show');
+  console.log(chartHTML);
+  chart.innerHTML = chartHTML;
+}
+
+deleteInvestor();
+refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');
+graphsecond();
