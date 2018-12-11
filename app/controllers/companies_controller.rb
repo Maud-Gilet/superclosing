@@ -73,5 +73,8 @@ class CompaniesController < ApplicationController
       @company.number_of_shares += invest.number_of_shares
       @company.save
     end
+
+    # Sort hash by number_of_shares
+    @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort_by { |_k, v| v }.reverse.to_h
   end
 end
