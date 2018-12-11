@@ -50,6 +50,7 @@ if(document.getElementById('myChart')){
 if(document.getElementById('mySecondChart')){
  graphsecond();
 }
+window.graphsecond = graphsecond;
 
 if(document.getElementById('typed_text')){
   loadDynamicBannerText();

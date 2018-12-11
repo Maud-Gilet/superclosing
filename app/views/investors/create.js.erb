@@ -3,14 +3,36 @@ function closeForm() {
   formField.className = "hidden";
 }
 
+function refreshForm() {
+  const email = document.getElementById("query_email");
+  const amount = document.getElementById("query_amount");
+  email.value = "";
+  amount.value = "";
+}
+
 function refreshInvestors(shareholderHTML) {
   const refreshInvestors = document.getElementById('investor-list-partial');
   refreshInvestors.innerHTML = shareholderHTML;
 }
 
+function refreshChartShow(chartHTML) {
+  const chart = document.getElementById('chart-operation-show');
+  chart.innerHTML = chartHTML;
+}
+
+function refreshSlide(slideHTML) {
+  const slide = document.getElementById('slide-show-operation');
+  slide.innerHTML = slideHTML;
+}
+
+
 <% if @investment.errors.any? %>
   closeForm();
 <% else %>
   refreshInvestors('<%= j render "investors/show-investors", operation: @operation %>');
+  refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');
+  refreshSlide('<%= j render "operations/slide-show-operation", operation: @operation %>');
+  graphsecond();
   closeForm();
+  refreshForm();
 <% end %>
