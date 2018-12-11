@@ -44,6 +44,8 @@ Personne ne demandant la parole, le Président met successivement aux voix les r
 <br>
 <br>
 </p>
+<br>
+<br>
 
 <div style="text-align: center">
   <h4>Première résolution</h4>
@@ -55,13 +57,15 @@ Personne ne demandant la parole, le Président met successivement aux voix les r
 L’Assemblée Générale, statuant aux conditions de quorum et de majorité requises par les statuts, conformément aux articles L. 225-129 et suivants du code de commerce et après avoir pris connaissance du rapport du Président,
 <br>
 <br>
-Décide d’augmenter le capital social de la Société d’un montant de <mark><%= @capital_augmentation %></mark> euros, par l’émission de <mark><%= @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong>») d’une valeur nominale de<mark><%= @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= @emit_prime %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à <mark><%= @global_price %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
+Décide d’augmenter le capital social de la Société d’un montant de <mark><%= @capital_augmentation %></mark> euros, par l’émission de <mark><%= @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong>») d’une valeur nominale de <mark><%= @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= @emit_prime %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à <mark><%= @global_price %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
 <br>
 <br>
 Cette résolution est adoptée à l’unanimité.
 <br>
 <br>
 </p>
+<br>
+<br>
 
 <div style="text-align: center">
   <h4>Deuxième résolution</h4>
@@ -75,6 +79,8 @@ L’Assemblée Générale constate la renonciation des Associés à l’exercice
 <br>
 <br>
 </p>
+<br>
+<br>
 <div style="text-align: center">
   <h4>Troisième résolution</h4>
   <h5>Pouvoirs pour les formalités</h5>
@@ -123,10 +129,10 @@ ____________________________
     </tr>
     <% @operation.investments.each do |investment| %>
       <tr >
-        <td ><%= investment.user.first_name %> <% investment.user.last_name %></td>
-        <td><%= investment.number_of_shares * @global_price %> € </td>
-        <td ><%= investment.number_of_shares  %></td>
-        <td><%= investment.user.address %></td>
+        <td ><mark><%= investment.user.first_name %> <% investment.user.last_name %></mark></td>
+        <td><mark><%= investment.number_of_shares * @global_price %></mark> € </td>
+        <td ><mark><%= investment.number_of_shares  %></mark></td>
+        <td><mark><%= investment.user.address %></mark></td>
       </tr>
     <% end %>
   </table>
@@ -158,9 +164,9 @@ ____________________________
     </tr>
     <% @shareholders.each do |id, number_of_shares| %>
       <tr >
-        <td ><%= User.find(id).first_name %> <% User.find(id).last_name %></td>
-        <td><%= number_of_shares %></td>
-        <td ><%= (((number_of_shares * 100).to_f /  @operation.company.number_of_shares).to_f).round(2) %></td>
+        <td ><mark><%= User.find(id).first_name %> <% User.find(id).last_name %></mark></td>
+        <td><mark><%= number_of_shares %></mark></td>
+        <td ><mark><%= (((number_of_shares * 100).to_f /  @operation.company.number_of_shares).to_f).round(2) %></mark></td>
         <td></td>
       </tr>
     <% end %>
