@@ -24,6 +24,8 @@ import { loadDynamicBannerText } from '../components/typed_landing';
 
 // Functions calls
 
+
+
 if(document.querySelector('.datepicker')) {
   flatpickr(".datepicker", {
     "locale": French,
@@ -61,3 +63,4 @@ window.graphthird = graphthird;
 if(document.getElementById('typed_text')){
   loadDynamicBannerText();
 }
+

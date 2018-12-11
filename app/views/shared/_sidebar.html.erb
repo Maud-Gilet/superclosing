@@ -15,7 +15,7 @@
     <% else %>
       <div class="sidebar-item">
         <%= link_to company_path(id: current_user.roles.first.company), class: "sidebar-link" do %>
-          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color"><strong>S</strong></span>ociété</span></i>
+          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color">S</span>ociété</span></i>
         <% end %>
       </div>
     <% end %>
@@ -23,13 +23,13 @@
     <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
-          <i class="fas fa-chart-pie"><span id="sidebar-item-2"><span class="sidebar-letter-color"><strong>C</strong></span>ap Table</span></i>
+          <i class="fas fa-chart-pie"><span id="sidebar-item-2"><span class="sidebar-letter-color">C</span>ap Table</span></i>
         <% end %>
       </div>
     <% else %>
       <div class="sidebar-item">
         <%= link_to company_captable_path(company_id: current_user.roles.first.company, id: 1), class: "sidebar-link" do %>
-          <i class="fas fa-chart-pie"><span id="sidebar-item-2"><span class="sidebar-letter-color"><strong>C</strong></span>ap Table</span></i>
+          <i class="fas fa-chart-pie"><span id="sidebar-item-2"><span class="sidebar-letter-color">C</span>ap Table</span></i>
         <% end %>
       </div>
     <% end %>
@@ -37,20 +37,20 @@
     <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
-          <i class="fas fa-rocket"><span id="sidebar-item-3"><span class="sidebar-letter-color"><strong>O</strong></span>pérations</span></i>
+          <i class="fas fa-rocket"><span id="sidebar-item-3"><span class="sidebar-letter-color">O</span>pérations</span></i>
         <% end %>
       </div>
     <% else %>
       <div class="sidebar-item">
         <%= link_to company_operations_path(company_id: current_user.roles.first.company), class: "sidebar-link" do %>
-          <i class="fas fa-rocket"><span id="sidebar-item-3"><span class="sidebar-letter-color"><strong>O</strong></span>pérations</span></i>
+          <i class="fas fa-rocket"><span id="sidebar-item-3"><span class="sidebar-letter-color">O</span>pérations</span></i>
         <% end %>
       </div>
     <% end %>
 
     <div class="sidebar-item">
       <%= link_to root_path, class: "sidebar-link" do %>
-        <i class="far fa-calendar-alt"><span id="sidebar-item-4"><span class="sidebar-letter-color"><strong>A</strong></span>genda</span></i>
+        <i class="far fa-calendar-alt"><span id="sidebar-item-4"><span class="sidebar-letter-color">A</span>genda</span></i>
       <% end %>
     </div>
   </div>

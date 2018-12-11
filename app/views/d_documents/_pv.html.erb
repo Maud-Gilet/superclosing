@@ -1,11 +1,12 @@
 
 <div class="pv_header" style="text-align: center">
+  <br>
 
-  <h1><mark><%= @operation.company.name %></mark></h1>
+  <h1><strong><mark><%= @operation.company.name %></mark></strong></h1>
 
-  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= @operation.company.number_of_shares * @operation.company.share_nominal_value_cents / 100 %></mark> euros  </h3>
+  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= humanized_money @operation.company.number_of_shares * @operation.company.share_nominal_value %></mark> euros  </h3>
   <h3>Siège social : <mark><%= @operation.company.address %></mark></h3>
-  <h3>SIREN : <mark><%= @operation.company.siren %></mark></h3>
+  <h3>SIREN : <mark><%= humanized_money @operation.company.siren %></mark></h3>
   <br>
   <h3>(ci-après la « <strong>Société</strong> »)</h3>
 
@@ -41,14 +42,11 @@ Le Président rappelle à l'Assemblée Générale qu'elle est réunie pour déli
 <br>
 <br>
 Personne ne demandant la parole, le Président met successivement aux voix les résolutions inscrites à l’ordre du jour.
-<br>
-<br>
 </p>
-<br>
 <br>
 
 <div style="text-align: center">
-  <h4>Première résolution</h4>
+  <h4><strong>Première résolution</strong></h4>
   <h5>Augmentation de capital par émission d’actions</h5>
 </div>
 
@@ -57,7 +55,7 @@ Personne ne demandant la parole, le Président met successivement aux voix les r
 L’Assemblée Générale, statuant aux conditions de quorum et de majorité requises par les statuts, conformément aux articles L. 225-129 et suivants du code de commerce et après avoir pris connaissance du rapport du Président,
 <br>
 <br>
-Décide d’augmenter le capital social de la Société d’un montant de <mark><%= @capital_augmentation %></mark> euros, par l’émission de <mark><%= @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong>») d’une valeur nominale de <mark><%= @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= @emit_prime %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à <mark><%= @global_price %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
+Décide d’augmenter le capital social de la Société d’un montant de <mark><%= humanized_money @capital_augmentation %></mark> euros, par l’émission de <mark><%= humanized_money @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong>») d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= humanized_money @operation.investments.last.share_premium %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à   <mark><%=humanized_money @nominal + @operation.investments.last.share_premium %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
 <br>
 <br>
 Cette résolution est adoptée à l’unanimité.
@@ -65,24 +63,21 @@ Cette résolution est adoptée à l’unanimité.
 <br>
 </p>
 <br>
-<br>
 
 <div style="text-align: center">
-  <h4>Deuxième résolution</h4>
+  <h4><strong>Deuxième résolution</strong></h4>
   <h5>Renonciation des Associés à l’exercice de leur droit préférentiel de souscription</h5>
 </div>
 <p>
 
-<br>
 <br>
 L’Assemblée Générale constate la renonciation des Associés à l’exercice de leur droit préférentiel de souscription au profit des souscripteurs listés en Annexe A et décide en conséquence de l’attribution des <mark><%= @total_of_shares %></mark> Actions au profit de ces mêmes souscripteurs, selon les proportions établies dans ladite annexe.
 <br>
 <br>
 </p>
 <br>
-<br>
 <div style="text-align: center">
-  <h4>Troisième résolution</h4>
+  <h4><strong>Troisième résolution</strong></h4>
   <h5>Pouvoirs pour les formalités</h5>
 </div>
 
@@ -112,9 +107,8 @@ ____________________________
 
 <div style="text-align: center; page-break-before: always;">
 <br>
-<br>
 
-  <h4 >ANNEXE A</h4>
+  <h2 >ANNEXE A</h2>
 
   <h4>Liste des bénéficiaires de la renonciation des Associés à l’exercice de leur droit préférentiel de souscription</h4>
   <br>
@@ -130,8 +124,8 @@ ____________________________
     <% @operation.investments.each do |investment| %>
       <tr >
         <td ><mark><%= investment.user.first_name %> <% investment.user.last_name %></mark></td>
-        <td><mark><%= investment.number_of_shares * @global_price %></mark> € </td>
-        <td ><mark><%= investment.number_of_shares  %></mark></td>
+        <td><mark><%= humanized_money investment.number_of_shares * (@nominal + investment.share_premium) %></mark> € </td>
+        <td ><mark><%= humanized_money investment.number_of_shares  %></mark></td>
         <td><mark><%= investment.user.address %></mark></td>
       </tr>
     <% end %>
@@ -140,15 +134,15 @@ ____________________________
 
 <div style="text-align: center; page-break-before: always;">
   <br>
-  <br>
 
-  <h1><mark><%= @operation.company.name %></mark></h1>
+  <h1><strong><mark><%= @operation.company.name %></mark></strong></h1>
 
-  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= @operation.company.number_of_shares * @operation.company.share_nominal_value_cents / 100 %></mark> euros  </h3>
+  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= humanized_money @operation.company.number_of_shares * @nominal %></mark> euros  </h3>
   <h3>Siège social : <mark><%= @operation.company.address %></mark></h3>
-  <h3>SIREN : <mark><%= @operation.company.siren %></mark></h3>
+  <h3>SIREN : <mark><%= humanized_money @operation.company.siren %></mark></h3>
   <br>
   <h3>(ci-après la « <strong>Société</strong> »)</h3>
+  <br>
 
   <h2>FEUILLE DE PRÉSENCE DE L'ASSEMBLÉE GÉNÉRALE EXTRAORDINAIRE DU <mark><%= @day %> <%= @month.upcase %> <%= @year %></mark></h2>
 
@@ -165,8 +159,8 @@ ____________________________
     <% @shareholders.each do |id, number_of_shares| %>
       <tr >
         <td ><mark><%= User.find(id).first_name %> <% User.find(id).last_name %></mark></td>
-        <td><mark><%= number_of_shares %></mark></td>
-        <td ><mark><%= (((number_of_shares * 100).to_f /  @operation.company.number_of_shares).to_f).round(2) %></mark></td>
+        <td><mark><%= humanized_money number_of_shares %></mark></td>
+        <td ><mark><%= humanized_money number_of_shares.to_f / (@operation.company.number_of_shares.to_f).round(1) %></mark></td>
         <td></td>
       </tr>
     <% end %>
@@ -174,7 +168,7 @@ ____________________________
 <br>
 <br>
 
-<p style='text-align: justify;'>La présente feuille de présence faisant apparaître que les associés, titulaires de  <mark><%= @shareholders.values.sum %></mark> actions composant le capital social de la Société et auxquelles sont attachées 100 % des voix sont présents ou représentés, a été arrêtée et certifiée exacte par le Président.</p>
+<p style='text-align: justify;'>La présente feuille de présence faisant apparaître que les associés, titulaires de  <mark><%= humanized_money @shareholders.values.sum %></mark> actions composant le capital social de la Société et auxquelles sont attachées 100 % des voix sont présents ou représentés, a été arrêtée et certifiée exacte par le Président.</p>
 
 </div>
 

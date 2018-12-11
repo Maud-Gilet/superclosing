@@ -1,0 +1,40 @@
+<div class="investor-list-header">
+  <div class="doc-list-header-name">
+    <span>Titre</span>
+  </div>
+  <div class="investor-list-header-amount">
+    <span>Type</span>
+  </div>
+
+</div>
+
+
+<ul>
+  <% @operation.s_documents.each do |doc|%>
+    <li>
+      <div class="investor-list-content">
+        <div class="doc-list-header-name">
+          <%= doc.title %>
+        </div>
+        <div class="investor-list-header-amount">
+          <%= doc.category %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @operation.d_documents.each do |doc|%>
+    <li>
+      <div class="investor-list-content">
+        <div class="doc-list-header-name">
+          <%= doc.title %>
+        </div>
+        <div class="investor-list-header-amount">
+          A signer
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
