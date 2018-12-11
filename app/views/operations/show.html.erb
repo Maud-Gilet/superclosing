@@ -9,7 +9,7 @@
       <p>1</p>
     </div>
   <!--  Si société remplie à moitié -->
-  <% elsif @operation.company.share_nominal_value_cents == 0 %>
+  <% elsif @operation.company.share_nominal_value == 0 %>
       <div style="background: repeating-linear-gradient(
           -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="un" class="rectangle">
       </div>
@@ -36,7 +36,7 @@
 
   <!--  Si le montant envisagé est égal à la sommes des investissements -->
 
-  <% if @operation.target_amount_cents == @shares_values %>
+  <% if @operation.target_amount == @shares_values %>
     <div style="background-color: #F3BE69;" id="trois" class="rectangle">
     </div>
     <div style="background-color: #F3BE69; color: black;" id="trois" class="rond">
