@@ -111,11 +111,13 @@
             <% end %>
 
             <div class="graph">
+
               <% unless @shareholders.length == 0 %>
               <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
               </canvas>
               <% end %>
             </div>
+
           </div>
         </div>
       </div>
