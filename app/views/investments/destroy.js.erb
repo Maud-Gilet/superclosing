@@ -1,2 +1,20 @@
-document.querySelector("[data-investment-id='<%= @investment.id %>']")
+function deleteInvestor () {
+  document.querySelector("[data-investment-id='<%= @investment.id %>']")
   .remove();
+};
+
+function refreshChartShow(chartHTML) {
+  const chart = document.getElementById('chart-operation-show');
+  chart.innerHTML = chartHTML;
+}
+
+function refreshSlide(slideHTML) {
+  const slide = document.getElementById('slide-show-operation');
+  slide.innerHTML = slideHTML;
+}
+
+deleteInvestor();
+refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');
+refreshSlide('<%= j render "operations/slide-show-operation", operation: @operation %>');
+graphsecond();
+
