@@ -95,7 +95,12 @@
                 <% @distinct_companies.each do |company|%>
                   <div class="company-card">
                     <%= link_to company_path(company) do %>
-                        <%= image_tag 'ca.png', width: 120, height: 120, class:"product-image" %>
+                        <% if company.logo_url.file == nil %>
+
+                            <%= image_tag 'eclair.png', width: 120, height: 120, class: "logo" %>
+                        <% else %>
+                            <p> <%= cl_image_tag company.logo_url, height: 100, width: 100, crop: :fit %></p>
+                        <% end %>
                     <% end %>
                     <p><%=  company.name %></p>
                   </div>
@@ -109,52 +114,41 @@
               <% end %>
           </div>
 
-         <!--    <div class='company-container'>
-              <div class="company-container-header">
-                Société dans lesquelles vous allez investir
-              </div>
-              <div class='company-container-cards'>
-                <%# if @investisseur.length == 0 %>
-                  Aucune pour l'instant
-                  <%# else %>
-                    <%# @investisseur.each do |role|%>
-                     <div class="company-card">
-                      <img src="https://via.placeholder.com/120x120" class="product-image hidden-xs">
-                      <%#= link_to "#{role.company.name}", company_path(role.company) %>
-                    </div>
-                  <%# end %>
-                <%# end %>
-              </div>
-            </div> -->
-
         </div>
+
       </div>
     </div>
 
   </div>
 
-  <div class="modal fade" id="modalCompanyCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title w-100 font-weight-bold"><strong>Ajouter une société</strong></h4>
-        </div>
-        <div class="modal-body mx-3">
-          <p>Entrez votre numéro SIREN (9 chiffres - sans espace)</p>
-            <%= simple_form_for @company, method: :post do |f| %>
-            <%= f.input :siren %>
-            <%= f.input :name, label: 'Nom'%>
-            <%= f.input :address, label: 'Adresse'%>
-            <%= f.input :legal_form, label: 'Forme sociale' %>
-            <%= f.input :creation_date, as: :string, label: "Date d'immatriculation"%>
-            <div class="text-align-center">
-              <%= f.submit 'Créer', class: 'btn btn-form-action' %>
-            </div>
-          <% end %>
-        </div>
+<div class="modal fade" id="modalCompanyCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title w-100 font-weight-bold"><strong>Ajouter une société</strong></h4>
+      </div>
+      <div class="modal-body mx-3">
+        <p>Entrez votre numéro SIREN (9 chiffres - sans espace)</p>
+          <%= simple_form_for @company, method: :post do |f| %>
+          <%= f.input :siren %>
+          <%= f.input :name, label: 'Nom'%>
+          <%= f.input :address, label: 'Adresse'%>
+          <%= f.input :legal_form, label: 'Forme sociale' %>
+          <%= f.input :creation_date, as: :string, label: "Date d'immatriculation"%>
+          <label for="user_role">Votre rôle dans la Société ?</label>
+          <select class="form-control is-valid select optional" name="role" id="user_role">
+            <option value=""></option>
+            <option selected="selected" value="Président">Président</option>
+            <option value="Associé">Associé</option>
+          </select>
+          <div class="text-align-center">
+            <%= f.submit 'Créer', class: 'btn btn-form-action' %>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>

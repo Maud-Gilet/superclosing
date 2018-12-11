@@ -28,6 +28,7 @@ function refreshSlide(slideHTML) {
 
 <% if @investment.errors.any? %>
   closeForm();
+  refreshForm();
 <% else %>
   refreshInvestors('<%= j render "investors/show-investors", operation: @operation %>');
   refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');

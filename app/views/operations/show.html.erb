@@ -1,20 +1,5 @@
-<div id="slide">
-  <h4><%= @operation.name %> </h4>
-   <%if @operation.status == 'Pending' %>
-    <p>En cours</p>
-    <% end %>
-
-  <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
-  <p>des fonds collectés</p>
-
-  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
-  </p>
-
-  <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
-    <%= f.submit 'Lancer les signatures', class: 'btn btn-form-action' %>
-  <% end %>
-
+<div id="slide-show-operation">
+  <%= render 'slide-show-operation', company: @company, operation: @operation %>
 </div>
 
 <!-- ============================= DIV MAIN WIDTH : ne pas TOUCHER SVP -->
@@ -32,7 +17,7 @@
         <p>1</p>
       </div>
     <!--  Si société remplie à moitié -->
-    <% elsif @operation.company.share_nominal_value_cents == 0 %>
+    <% elsif @operation.company.share_nominal_value == 0 %>
         <div style="background: repeating-linear-gradient(
             -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); box-shadow: 1px 1px 5px grey;" id="un" class="rectangle">
         </div>
@@ -59,7 +44,7 @@
 
     <!--  Si le montant envisagé est égal à la sommes des investissements -->
 
-    <% if @operation.target_amount_cents == @shares_values %>
+    <% if @operation.target_amount == @shares_values %>
       <div style="background-color: #F3BE69; box-shadow: 1px 1px 5px grey;" id="trois" class="rectangle">
       </div>
       <div style="background-color: #F3BE69; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="trois" class="rond">
@@ -128,10 +113,8 @@
             </div>
           </div>
         </div>
-        <div class="graph">
-          <p> Progression : <%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> %</p>
-          <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
-          </canvas>
+        <div id="chart-operation-show">
+          <%= render 'chart-show-operation', operation: @operation %>
         </div>
       </div>
     </div>
