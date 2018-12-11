@@ -13,16 +13,12 @@ const graphthird = () => {
         {
           label: '',
           data: [data1],
-          backgroundColor: [
-            'rgba(252, 150, 0, 0.8)',
-            'rgba(205, 116, 74, 1)'],
+          backgroundColor: ['rgba(252, 150, 0, 0.8)'],
         },
         {
           label: '',
           data: [data2],
-          borderColor: [
-            'rgba(252, 150, 0, 1)',
-            'rgba(205, 116, 74, 1)'],
+          backgroundColor: ['rgba(205, 116, 74, 1)'],
         },
       ],
     },
