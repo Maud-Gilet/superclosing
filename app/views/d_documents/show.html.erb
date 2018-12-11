@@ -1,7 +1,50 @@
-<% if @d_document.title.include? "Assemblée Générale" %>
-  <%= render 'pv' %>
-<% elsif @d_document.title.include? "souscription" %>
-  <%= render 'bs' %>
-<% else @d_document.title == "PV de sortie" %>
-  <%= render 'pvs' %>
-<% end %>
+<% @day = Time.new.day %>
+<% case Time.new.month
+    when 1
+      @month = 'janvier'
+    when 2
+      @month = 'février'
+    when 3
+      @month = 'mars'
+    when 4
+      @month = 'avril'
+    when 5
+      @month = 'mai'
+    when 6
+      @month = 'juin'
+    when 7
+      @month = 'juillet'
+    when 8
+      @month = 'août'
+    when 9
+      @month = 'septembre'
+    when 10
+      @month = 'octobre'
+    when 11
+      @month = 'novembre'
+    when 12
+      @month = 'décembre'
+    end
+    %>
+<% @year = Time.new.year %>
+<% @time = Time.new.hour %>
+
+<!DOCTYPE html>
+  <html>
+  <head>
+    <%= wicked_pdf_stylesheet_link_tag "application" -%>
+  </head>
+
+  <body id='pdf-body'>
+
+    <% if @d_document.title.include? "Assemblée Générale" %>
+      <%= render 'pv' %>
+    <% elsif @d_document.title.include? "souscription" %>
+      <%= render 'bs' %>
+    <% else @d_document.title == "PV de sortie" %>
+      <%= render 'pvs' %>
+    <% end %>
+  </body>
+</html>
+
+
