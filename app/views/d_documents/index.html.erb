@@ -3,7 +3,7 @@
 <ul>
   <% @other_documents.each do |d_document| %>
     <li>
-      <%= link_to d_document.title, d_document_path(d_document) %>
+      <%= link_to d_document.title, d_document_path(d_document), target: :_blank %>
     </li>
   <% end %>
 </ul>
@@ -16,7 +16,7 @@
   <% @users.each_with_index do |user, i| %>
     <% subscription_bund = @subscription_bunds[i] %>
     <li>
-      <%= link_to "#{subscription_bund.title}", d_document_path(subscription_bund, user_id: user) %>
+      <%= link_to "#{subscription_bund.title}", d_document_path(subscription_bund, user_id: user), target: :_blank %>
     </li>
   <% end %>
 </ul>
