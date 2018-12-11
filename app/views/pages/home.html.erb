@@ -1,5 +1,9 @@
-<% if current_user.roles.first.category == 'Investisseur' %>
-  <%= render 'home-investor' %>
+<% unless current_user.roles.empty? %>
+  <% if current_user.roles.first.category == 'Investisseur' %>
+    <%= render 'home-investor' %>
+  <% else %>
+    <%= render 'home-main' %>
+  <% end %>
 <% else %>
   <%= render 'home-main' %>
 <% end %>

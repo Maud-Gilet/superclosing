@@ -87,24 +87,6 @@
             <% end %>
         </div>
 
-       <!--    <div class='company-container'>
-            <div class="company-container-header">
-              Société dans lesquelles vous allez investir
-            </div>
-            <div class='company-container-cards'>
-              <%# if @investisseur.length == 0 %>
-                Aucune pour l'instant
-                <%# else %>
-                  <%# @investisseur.each do |role|%>
-                   <div class="company-card">
-                    <img src="https://via.placeholder.com/120x120" class="product-image hidden-xs">
-                    <%#= link_to "#{role.company.name}", company_path(role.company) %>
-                  </div>
-                <%# end %>
-              <%# end %>
-            </div>
-          </div> -->
-
       </div>
     </div>
   </div>
@@ -128,6 +110,12 @@
           <%= f.input :address, label: 'Adresse'%>
           <%= f.input :legal_form, label: 'Forme sociale' %>
           <%= f.input :creation_date, as: :string, label: "Date d'immatriculation"%>
+          <label for="user_role">Votre rôle dans la Société ?</label>
+          <select class="form-control is-valid select optional" name="role" id="user_role">
+            <option value=""></option>
+            <option selected="selected" value="Président">Président</option>
+            <option value="Associé">Associé</option>
+          </select>
           <div class="text-align-center">
             <%= f.submit 'Créer', class: 'btn btn-form-action' %>
           </div>
