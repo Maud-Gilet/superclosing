@@ -11,5 +11,8 @@
   <br>Date de fin prévue : <%= @operation.expected_closing_date%>
   </p>
 
-  <button type="button" class="btn btn-superclosing"> Lancer les signatures </button>
+  <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
+    <%= f.submit 'Lancer les signatures', class: 'btn btn-form-action' %>
+
+  <% end %>
 </div>
