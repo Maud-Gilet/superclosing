@@ -148,97 +148,13 @@
     </div>
   </div>
 
-  <div class='home-card'>
-    <div class = 'home-card-header'>
-      <h4>Opérations</h4>
-    </div>
-    <div class = "home-card-body">
-      <ul>
-        <% @company.operations.each do |operation| %>
-          <% unless operation.category == 'initialize-captable' %>
-            <li>
-              <div class="operation-list">
-                <div class="operation-list-category">
-                  <div>
-                    <span>Catégorie</span>
-                  </div>
-                  <div>
-                    <h5><%= operation.category %></h5>
-                  </div>
-                </div>
-                <div class="operation-list-amount">
-                  <% if operation.status == 'completed' %>
-                    <div>
-                      <span>Montant de l'opération</span>
-                    </div>
-                    <div>
-                      <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-                    </div>
-                  <% else %>
-                    <div>
-                      <span>Montant visé</span>
-                    </div>
-                    <div>
-                      <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="operation-list-closing-date">
-                  <% if operation.status == 'completed' %>
-                    <div>
-                      <span>Date de réalisation</span>
-                    </div>
-                    <div>
-                      <h5><%= operation.expected_closing_date %></h5>
-                    </div>
-                  <% else %>
-                    <div>
-                      <span>Date de réalisation estimée</span>
-                    </div>
-                    <div>
-                      <h5><%= operation.expected_closing_date %></h5>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="operation-list-status">
-                  <% if operation.status == 'completed' %>
-                    <div>
-                      <span>Status</span>
-                    </div>
-                    <div>
-                      <h5><strong>Finalisée</strong></h5>
-                    </div>
-                  <% else %>
-                    <div>
-                      <span>Status</span>
-                    </div>
-                    <div>
-                      <h5><strong>En cours</strong></h5>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="operation-list-link">
-                  <%= link_to operation_path(operation) do %>
-                    <button style="button" class="btn-transparent-small">Détails</button>
-                  <% end %>
-                </div>
-              </div>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
+  <%= render 'show-captable' %>
 
-    <div class="text-align-center">
-      <%= link_to new_company_operation_path(@company) do %>
-        <button style="button" class="btn btn-form-action">Ajouter une opération</button>
-      <% end %>
-    </div>
   </div>
-
-
 </div>
 
+
+<%= render 'show-operations' %>
 
 
 

@@ -1,0 +1,61 @@
+<div class="home-card-body captable-body">
+            <div class="captable-list-card">
+              <ul >
+                <li>
+                  <div class="captable-list-header">
+                    <div class="captable-list-name">
+                      <span>Nom</span>
+                    </div>
+                    <div class="captable-list-shares">
+                      <span># Actions</span>
+                    </div>
+                    <div class="captable-list-shares-pourcent">
+                      <span>% du capital</span>
+                    </div>
+                  </div>
+                </li>
+                <% @shareholders.each do |full_name, shares| %>
+                  <li>
+                    <div class="captable-list-content">
+                      <div class="captable-list-name">
+                        <%= full_name %>
+                      </div>
+                      <div class="captable-list-shares">
+                        <%= money_without_cents shares %> actions
+                      </div>
+                      <div class="captable-list-shares-pourcent">
+                        <%= ( shares.to_f / (@company.number_of_shares) * 100).round(0) %> %
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+                <li><strong>
+                  <div class="captable-list-header">
+                    <div class="captable-list-name">
+                      Total
+                    </div>
+                    <div class="captable-list-shares">
+                      <%= money_without_cents @company.number_of_shares %> actions
+                    </div>
+                    <div class="captable-list-shares-pourcent">
+                      100 %
+                    </div>
+                  </div>
+                </strong></li>
+              </ul>
+
+              <% if @company.operations.where(category: 'initialize-captable').empty? %>
+                <%= link_to new_company_captable_path(@company.id) do %>
+                  <button style="button" class="btn-transparent-small">Initialiser le capital</button>
+                <% end %>
+              <% end %>
+
+              <div class="graph">
+
+                <% unless @shareholders.length == 0 %>
+                <canvas id="myChart" data-share="<%= @shareholders.values.join(",") %>" data-label= "<%= @shareholders.keys.join(",") %>">
+                </canvas>
+                <% end %>
+              </div>
+            </div>
+          </div>
