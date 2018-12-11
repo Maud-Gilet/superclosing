@@ -74,7 +74,7 @@ class CompaniesController < ApplicationController
       @company.save
     end
 
-    # Sort hash by last_name
-    @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort.to_h
+    # Sort hash by number_of_shares
+    @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort_by { |_k, v| v }.reverse.to_h
   end
 end
