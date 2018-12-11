@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      Role.create(user: current_user, company_id: @company.id, category: "Associe")
+      Role.create(user: current_user, company_id: @company.id, category: params[:role])
       redirect_to company_path(@company), notice: 'Complétez les informations de votre société !'
     else
       render :new
