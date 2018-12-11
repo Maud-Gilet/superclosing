@@ -16,7 +16,9 @@ class DDocumentsController < ApplicationController
 
   def show
     @d_document = DDocument.find(params[:id])
-    #@user = User.find(params[:user_id])
+    if @d_document.document_type == 'subscription_bunds'
+      @user = User.find(params[:user_id])
+    end
     @operation = @d_document.operation
 
     @capital_augmentation = capital_augmentation
@@ -61,15 +63,15 @@ class DDocumentsController < ApplicationController
     @operation = Operation.find(params[:id])
     DDocument.destroy_all
 
-    @d_document = DDocument.new(title: "PV d'Assemblée Générale de #{@operation.company.name}", operation: @operation, d_template: DTemplate.first)
+    @d_document = DDocument.new(title: "PV d'Assemblée Générale de #{@operation.company.name}", document_type: 'pv_closing', operation: @operation)
     @d_document.save!
 
-    @d_document = DDocument.new(title: "PV de sortie", operation: @operation, d_template: DTemplate.first)
+    @d_document = DDocument.new(title: "PV de sortie", document_type: 'pv_closing', operation: @operation)
     @d_document.save!
-
 
     @operation.investments.each do |investment|
-      @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} ", operation: @operation, d_template: DTemplate.first)
+      @user = investment.user
+      @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} ", document_type: 'subscription_bund', operation: @operation, user: @user)
       @d_document.save!
     end
 
