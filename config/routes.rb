@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   end
   resources :d_documents, only: :show
   resources :investments, only: [:show, :edit, :update, :destroy]
-  resources :d_templates
   resources :roles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

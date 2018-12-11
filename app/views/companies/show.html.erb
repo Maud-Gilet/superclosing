@@ -71,10 +71,10 @@
             <div class='company-show-logo'>
               <h3><strong><%= @company.name %></strong> </h3>
               <% if @company.logo_url.file == nil %>
-                <img src="https://via.placeholder.com/120" class="logo">
+                <%= image_tag 'eclair.png', width: 120, height: 120, class: "logo" %>
               <% else %>
-              <p> <%= cl_image_tag @company.logo_url, height: 100, width: 100, crop: :fit %></p>
-                <% end %>
+                <p> <%= cl_image_tag @company.logo_url, height: 100, width: 100, crop: :fit %></p>
+              <% end %>
             </div>
             <div class='company-show-infos'>
               <div class='home-card' id='company-info-card'>

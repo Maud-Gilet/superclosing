@@ -95,7 +95,12 @@
                 <% @distinct_companies.each do |company|%>
                   <div class="company-card">
                     <%= link_to company_path(company) do %>
-                        <%= image_tag 'ca.png', width: 120, height: 120, class:"product-image" %>
+                        <% if company.logo_url.file == nil %>
+
+                            <%= image_tag 'eclair.png', width: 120, height: 120, class: "logo" %>
+                        <% else %>
+                            <p> <%= cl_image_tag company.logo_url, height: 100, width: 100, crop: :fit %></p>
+                        <% end %>
                     <% end %>
                     <p><%=  company.name %></p>
                   </div>
@@ -108,6 +113,9 @@
             </div>
               <% end %>
           </div>
+
+        </div>
+
       </div>
     </div>
 
