@@ -7,7 +7,7 @@
           <%= label_tag(:amount, "Veuillez confirmer le montant de votre investissement") %>
         </div>
           <%= number_field_tag :amount, nil, class: "form-control" %>
-        <%= f.input :status, collection: ["Non confirmé", "Confirmé", "Refusé"], label: 'Status' %>
+        <%= f.input :status, collection: ["Non confirmé", "Confirmé", "Refusé"], label: 'Statut' %>
         <%= f.submit 'Confirmer', class: 'btn btn-form-action' %>
       <% end %>
 

@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <h3>Caractéristiques de l'opération:</h3>
+  <h3>Caractéristiques de l'opération :</h3>
   <p>Société : <%= @investment.operation.company.name %></p>
   <p>Valorisation de la société : <%= money_without_cents @investment.operation.target_amount %> €</p>
   <p>Montant de l'opération : <%= money_without_cents @investment.operation.target_amount %> €</p>
@@ -11,7 +11,7 @@
 </div>
 
 <div>
-  <h3>Caractéristiques de votre investissement:</h3>
+  <h3>Caractéristiques de votre investissement :</h3>
   <p>Montant de votre investissement : <%= humanized_money @investment.number_of_shares * ( @investment.share_premium + @investment.share_nominal_value) %> €</p>
   <p>Nombre de titres : <%= money_without_cents @investment.number_of_shares %> €</p>
 </div>
@@ -24,7 +24,7 @@
 
 <div>
   <br><br>
-  Lien vers la dataroom
+  Lien vers la Dataroom
   <br>
 </div>
 

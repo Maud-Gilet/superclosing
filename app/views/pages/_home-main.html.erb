@@ -95,7 +95,12 @@
                 <% @distinct_companies.each do |company|%>
                   <div class="company-card">
                     <%= link_to company_path(company) do %>
-                        <%= image_tag 'ca.png', width: 120, height: 120, class:"product-image" %>
+                        <% if company.logo_url.file == nil %>
+
+                            <%= image_tag 'eclair.png', width: 120, height: 120, class: "logo" %>
+                        <% else %>
+                            <p> <%= cl_image_tag company.logo_url, height: 100, width: 100, crop: :fit %></p>
+                        <% end %>
                     <% end %>
                     <p><%=  company.name %></p>
                   </div>
@@ -108,25 +113,6 @@
             </div>
               <% end %>
           </div>
-
-         <!--    <div class='company-container'>
-              <div class="company-container-header">
-                Société dans lesquelles vous allez investir
-              </div>
-              <div class='company-container-cards'>
-                <%# if @investisseur.length == 0 %>
-                  Aucune pour l'instant
-                  <%# else %>
-                    <%# @investisseur.each do |role|%>
-                     <div class="company-card">
-                      <img src="https://via.placeholder.com/120x120" class="product-image hidden-xs">
-                      <%#= link_to "#{role.company.name}", company_path(role.company) %>
-                    </div>
-                  <%# end %>
-                <%# end %>
-              </div>
-            </div> -->
-
         </div>
       </div>
     </div>
