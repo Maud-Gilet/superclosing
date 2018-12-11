@@ -1,0 +1,26 @@
+<div class="container form-edit-company">
+  <div class="row">
+    <div class="col-xs-6 col-sm-8 col-sm-offset-2">
+
+      <%= simple_form_for @investment, method: :patch do |f| %>
+        <div class="form-group select optional form-group-valid">
+          <%= label_tag(:amount, "Veuillez confirmer le montant de votre investissement") %>
+        </div>
+          <%= number_field_tag :amount, nil, class: "form-control" %>
+        <%= f.input :status, collection: ["Non confirmé", "Confirmé", "Refusé"], label: 'Status' %>
+        <%= f.submit 'Confirmer', class: 'btn btn-form-action' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="container">
+  <div class="row text-align-center">
+    <div class="col-xs-6 col-sm-8 col-sm-offset-2">
+      <%= link_to investment_path(@investment) do %>
+        <button type="button" class="btn btn-transparent-small">Revenir</button>
+      <% end %>
+    </div>
+  </div>
+</div>

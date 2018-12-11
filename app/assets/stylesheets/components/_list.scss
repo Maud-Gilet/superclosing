@@ -29,7 +29,6 @@
   justify-content: flex-end;
 }
 
-
 .operation-list {
   flex: 1 0 auto;
   display: flex;
@@ -130,7 +129,6 @@
     font-style: italic;
   }
 }
-
 .investor-list-content {
   display: flex;
   flex-direction: row;
@@ -171,7 +169,6 @@
     opacity: 0.5;
   }
 }
-
 .investor-list-add {
   margin-top: 20px;
   & button {

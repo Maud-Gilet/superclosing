@@ -30,9 +30,12 @@ class InvestmentsController < ApplicationController
   end
 
   def update
-    @investment.update(investment_params)
-    if @investment.update(investment_params)
-      redirect_to current_user_dashboard_path, notice: 'Votre investissement a bien été mis à jour.'
+    set_new_status
+
+    set_new_amount
+
+    if @investment.update(@changes)
+      redirect_to investment_path(@investment), notice: 'Votre investissement a bien été mis à jour.'
     else
       render :edit
     end
@@ -40,7 +43,7 @@ class InvestmentsController < ApplicationController
 
   def destroy
     # Protection for Operations with 'Completed' status
-    @investment.destroy if (@investment.operation.status != 'completed' || @investment.operation.category == 'initialize-captable')
+    @investment.destroy if @investment.operation.status != 'completed' || @investment.operation.category == 'initialize-captable'
   end
 
   private
@@ -57,5 +60,20 @@ class InvestmentsController < ApplicationController
                                       :status,
                                       :user_id,
                                       :operation_id)
+  end
+
+  def set_new_status
+    if params[:investment][:status] == "Non confirmé"
+      @changes = { status: "pending" }
+    elsif params[:investment][:status] == "Confirmé"
+      @changes = { status: "confirmed" }
+    elsif params[:investment][:status] == "Refusé"
+      @changes = { status: "refused" }
+    end
+  end
+
+  def set_new_amount
+    number_of_shares = (params[:amount].to_i / (@investment.share_premium.to_f + @investment.share_nominal_value.to_f)).round(0)
+    @changes[:number_of_shares] = number_of_shares
   end
 end

@@ -1,23 +1,83 @@
-<h3> Toutes les opérations pour <%= @company.name %></h3>
-
-<%= link_to new_company_operation_path(@company) do %>
-  <button style="button" class="btn-transparent-small">Nouvelle opération</button>
-<% end %>
+<div>
+  <h3> Toutes les opérations pour <%= @company.name %></h3>
+</div>
+<div>
+  <%= link_to new_company_operation_path(@company) do %>
+    <button style="button" class="btn-transparent-small">Nouvelle opération</button>
+  <% end %>
+</div>
 
 <ul>
   <% @operations.each do |operation| %>
     <% unless operation.category == 'initialize-captable' %>
       <li>
         <div class="operation-list">
-          Catégorie : <%= operation.category %> || Montant visé : <%= money_without_cents operation.target_amount %> euros || Date de clôture envisagée : <%= operation.expected_closing_date %> || Status : <%= operation.status %> ||
-
-          <%= link_to operation_path(operation.id) do %>
-            <button style="button" class="btn-transparent-small">Détails</button>
-          <% end %>
-
+          <div class="operation-list-category">
+            <div>
+              <span>Catégorie</span>
+            </div>
+            <div>
+              <h5><%= operation.category %></h5>
+            </div>
+          </div>
+          <div class="operation-list-amount">
+            <% if operation.status == 'completed' %>
+              <div>
+                <span>Montant de l'opération</span>
+              </div>
+              <div>
+                <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Montant visé</span>
+              </div>
+              <div>
+                <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-closing-date">
+            <% if operation.status == 'completed' %>
+              <div>
+                <span>Date de réalisation</span>
+              </div>
+              <div>
+                <h5><%= operation.expected_closing_date %></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Date de réalisation estimée</span>
+              </div>
+              <div>
+                <h5><%= operation.expected_closing_date %></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-status">
+            <% if operation.status == 'completed' %>
+              <div>
+                <span>Status</span>
+              </div>
+              <div>
+                <h5><strong>Finalisée</strong></h5>
+              </div>
+            <% else %>
+              <div>
+                <span>Status</span>
+              </div>
+              <div>
+                <h5><strong>En cours</strong></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="operation-list-link">
+            <%= link_to operation_path(operation) do %>
+              <button style="button" class="btn-transparent-small">Détails</button>
+            <% end %>
+          </div>
         </div>
       </li>
     <% end %>
   <% end %>
 </ul>
-
