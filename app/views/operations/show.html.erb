@@ -3,20 +3,8 @@
   <%= f.submit 'Générer les documents du closing', class: 'btn btn-form-action' %>
 <% end %>
 
-<div id="slide">
-  <h4><%= @operation.name %> </h4>
-   <%if @operation.status == 'Pending' %>
-    <p>En cours</p>
-    <% end %>
-
-  <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
-  <p>des fonds collectés</p>
-
-  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
-  </p>
-
-  <button type="button" class="btn btn-superclosing"> Lancer les signatures </button>
+<div id="slide-show-operation">
+  <%= render 'slide-show-operation', operation: @operation %>
 </div>
 
 <div class='page-header'>

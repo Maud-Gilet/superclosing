@@ -45,11 +45,7 @@ class InvestmentsController < ApplicationController
     # Protection for Operations with 'Completed' status
     @investment.destroy if @investment.operation.status != 'completed' || @investment.operation.category == 'initialize-captable'
 
-    @operation = @investment.operation
-    @shares_values = 0
-    @operation.investments.each do |invest|
-      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
-    end
+    refresh_values_for_ajax
   end
 
   private
@@ -81,5 +77,13 @@ class InvestmentsController < ApplicationController
   def set_new_amount
     number_of_shares = (params[:amount].to_i / (@investment.share_premium.to_f + @investment.share_nominal_value.to_f)).round(0)
     @changes[:number_of_shares] = number_of_shares
+  end
+
+  def refresh_values_for_ajax
+    @operation = @investment.operation
+    @shares_values = 0
+    @operation.investments.each do |invest|
+      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
+    end
   end
 end

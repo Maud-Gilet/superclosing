@@ -34,6 +34,9 @@ class InvestorsController < ApplicationController
       end
     else
       create_investment
+
+      refresh_values_for_ajax
+
       respond_to do |format|
         format.html { redirect_to operation_path(@operation), alert: 'Cet investisseur a été ajouté à cette opération' }
         format.js  # <-- will render `app/views/investors/create.js.erb`
@@ -68,5 +71,12 @@ class InvestorsController < ApplicationController
 
   def investment_exist?
     !@operation.investments.where(user: @user).empty?
+  end
+
+  def refresh_values_for_ajax
+    @shares_values = 0
+    @operation.investments.each do |invest|
+      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
+    end
   end
 end
