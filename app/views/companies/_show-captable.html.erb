@@ -24,7 +24,7 @@
                         <%= money_without_cents shares %> actions
                       </div>
                       <div class="captable-list-shares-pourcent">
-                        <%= ( (shares.to_f / (money_without_cents @company.number_of_shares).to_f).round(2) * 100).round(0) %> %
+                        <%= ( shares.to_f / (@company.number_of_shares) * 100).round(0) %> %
                       </div>
                     </div>
                   </li>
