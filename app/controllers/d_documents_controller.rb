@@ -21,25 +21,15 @@ class DDocumentsController < ApplicationController
     end
     @operation = @d_document.operation
 
-    @capital_augmentation = capital_augmentation
-    @total_of_shares = total_of_shares_number
-    @nominal = @operation.company.share_nominal_value_cents / 100
+    @nominal = @operation.company.share_nominal_value
 
-    @total_of_investments = total_of_investments
-    @emit_prime = (@total_of_investments / @total_of_shares) - @nominal
-    @global_price = @nominal + @emit_prime
+    @total_of_shares = total_of_shares_number
+
+    @capital_augmentation = @total_of_shares * @nominal
 
     list_shareholders
 
     render pdf: "file_nam", layout: "document", formats: :html, encoding: 'utf8'
-  end
-
-  def capital_augmentation
-    array = []
-    @operation.investments.each do |investment|
-      array << investment.share_premium_cents
-    end
-    @capital_augmentation = (array.sum) / 10
   end
 
 
@@ -53,19 +43,19 @@ class DDocumentsController < ApplicationController
   end
 
   def total_of_investments
-    array_of_shares = []
+    array_of_investments = []
 
     @operation.investments.each do |investment|
-      array_of_shares << investment.share_premium_cents
+      array_of_shares << investment.share_premium
     end
-    @total_of_investments = (array_of_shares.sum)/ 10
+    @total_of_investments = array_of_investments.sum
   end
 
   def create_documents
     @operation = Operation.find(params[:id])
     DDocument.destroy_all
 
-    @d_document = DDocument.new(title: "PV d'Assemblée Générale de #{@operation.company.name}", document_type: 'pv_closing', operation: @operation)
+    @d_document = DDocument.new(title: "PV d'Assemblée Générale de #{@operation.company.name}", document_type: 'pv_opening', operation: @operation)
     @d_document.save!
 
     @d_document = DDocument.new(title: "PV de sortie", document_type: 'pv_closing', operation: @operation)
