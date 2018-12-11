@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_133824) do
+ActiveRecord::Schema.define(version: 2018_12_11_095632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,15 +38,11 @@ ActiveRecord::Schema.define(version: 2018_12_06_133824) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "document_type"
+    t.bigint "user_id"
     t.index ["d_template_id"], name: "index_d_documents_on_d_template_id"
     t.index ["operation_id"], name: "index_d_documents_on_operation_id"
-  end
-
-  create_table "d_templates", force: :cascade do |t|
-    t.string "category"
-    t.string "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_d_documents_on_user_id"
   end
 
   create_table "investments", force: :cascade do |t|
@@ -132,8 +128,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_133824) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "d_documents", "d_templates"
   add_foreign_key "d_documents", "operations"
+  add_foreign_key "d_documents", "users"
   add_foreign_key "investments", "operations"
   add_foreign_key "investments", "users"
   add_foreign_key "operations", "companies"
