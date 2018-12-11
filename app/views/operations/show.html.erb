@@ -1,240 +1,219 @@
-<!-- =================================Bar de progression ci-dessous -->
+<div id="slide">
+  <h4><%= @operation.name %> </h4>
+   <%if @operation.status == 'Pending' %>
+    <p>En cours</p>
+    <% end %>
 
-<div class="progress">
+  <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
+  <p>des fonds collectés</p>
 
-  <% if @operation.company.name == nil  %>
-    <div id="un" class="rectangle">
-    </div>
-    <div id="un" class="rond">
-      <p>1</p>
-    </div>
-  <!--  Si société remplie à moitié -->
-  <% elsif @operation.company.share_nominal_value_cents == 0 %>
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="un" class="rectangle">
+  <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
+  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
+  </p>
+
+  <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
+    <%= f.submit 'Lancer les signatures', class: 'btn btn-form-action' %>
+  <% end %>
+
+</div>
+
+<!-- ============================= DIV MAIN WIDTH : ne pas TOUCHER SVP -->
+<div class="main-width">
+
+
+  <!-- =================================Bar de progression ci-dessous -->
+
+  <div class="progress">
+    <div class="start-end"></div>
+    <% if @operation.company.name == nil %>
+      <div id="un" class="rectangle">
       </div>
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="un" class="rond">
+      <div id="un" class="rond">
         <p>1</p>
       </div>
-  <!--  Si société remplie complètement -->
-  <% else %>
-    <div style="background-color: #F3BE69;" id="un" class="rectangle">
-    </div>
-    <div style="background-color: #F3BE69; color: black;" id="un" class="rond">
-      <p>1</p>
-    </div>
-  <% end %>
-
-
-  <!--  Opération créee (normal, on est dans la show d'opération-->
-  <div style="background-color: #F3BE69;" id="deux" class="rectangle">
-  </div>
-  <div style="background-color: #F3BE69; color: black;" id="deux" class="rond">
-    <p>2</p>
-  </div>
-
-  <!--  Si le montant envisagé est égal à la sommes des investissements -->
-
-  <% if @operation.target_amount_cents == @shares_values %>
-    <div style="background-color: #F3BE69;" id="trois" class="rectangle">
-    </div>
-    <div style="background-color: #F3BE69; color: black;" id="trois" class="rond">
-      <p>3</p>
-    </div>
-
-      <!--  Si le montant envisagé n'est pas égal à la sommes des investissements -->
-
-  <% else %>
-    <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="trois" class="rectangle">
-    </div>
-    <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="trois" class="rond">
-      <p>3</p>
-    </div>
-  <% end %>
-
-
-  <!--  Si des ddocuments ont été générés -->
-<% if @operation.d_documents.last == nil %>
-  <div id="quatre" class="rectangle">
-  </div>
-  <div id="quatre" class="rond">
-    <p>4</p>
-  </div>
-  <div id="quatre" class="rectangle">
-  </div>
-
-    <!--  Si des ddocuments n'ont pas été générés -->
-<% else %>
-  <div style="background-color: #F3BE69;" id="quatre" class="rectangle">
-  </div>
-  <div id="quatre" class="rond">
-    <p>4</p>
-  </div>
-  <div style="background-color: #F3BE69; color: black;" id="quatre" class="rectangle">
-  </div>
-<% end %>
-
-
-
-
-
-</div>
-
-
-
-<!-- ================================= -->
-
-<%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
-  <%= f.submit 'Générer les documents du closing', class: 'btn btn-form-action' %>
-<% end %>
-
-<div id="slide-show-operation">
-  <%= render 'slide-show-operation', operation: @operation %>
-</div>
-
-<div class='page-header'>
-   <h3><strong><%= @operation.name %></strong> </h3>
-
-   <h4>Vous y êtes presque !</h4>
-
-</div>
-
-<div class='container-fluid page-content'>
-
-  <div class='row'>
-
-    <div class ='col-xs-10'>
-
-      <div class='home-card'>
-        <div class = 'home-card-header'>
-          <h4 class="card-title">Le club des Investisseurs</h4>
+    <!--  Si société remplie à moitié -->
+    <% elsif @operation.company.share_nominal_value_cents == 0 %>
+        <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); box-shadow: 1px 1px 5px grey;" id="un" class="rectangle">
         </div>
-        <div class="investors-corner">
-          <div class="investor-list">
+        <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;  box-shadow: 1px 1px 5px grey;" id="un" class="rond">
+          <p>1</p>
+        </div>
+    <!--  Si société remplie complètement -->
+    <% else %>
+      <div style=" box-shadow: 1px 1px 5px grey; background-color: #F3BE69;" id="un" class="rectangle">
+      </div>
+      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey;" id="un" class="rond">
+        <p>1</p>
+      </div>
+    <% end %>
 
-            <div id="investor-list-partial">
-              <%= render 'investors/show-investors', operation: @operation %>
-            </div>
 
-            <div class="investor-list-add">
+    <!--  Opération créee (normal, on est dans la show d'opération-->
+    <div style="background-color: #F3BE69; box-shadow: 1px 1px 5px grey;" id="deux" class="rectangle">
+    </div>
+    <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey;" id="deux" class="rond">
+      <p>2</p>
+    </div>
 
-              <button type="button" class="btn-transparent" id="btn-add-investor"> Ajouter un investisseur</button>
+    <!--  Si le montant envisagé est égal à la sommes des investissements -->
 
-              <div id="form-add-investor-toggle" class="hidden">
-                <%= render 'form-add-investor', company: @company, operation: @operation %>
-              </div>
+    <% if @operation.target_amount_cents == @shares_values %>
+      <div style="background-color: #F3BE69; box-shadow: 1px 1px 5px grey;" id="trois" class="rectangle">
+      </div>
+      <div style="background-color: #F3BE69; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="trois" class="rond">
+        <p style="font-weight: bold; font-size: 20px;">3</p>
+      </div>
+
+        <!--  Si le montant envisagé n'est pas égal à la sommes des investissements -->
+
+    <% else %>
+      <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); box-shadow: 1px 1px 5px grey;" id="trois" class="rectangle">
+      </div>
+      <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="trois" class="rond">
+        <p style="font-weight: bold; font-size: 20px;">3</p>
+      </div>
+    <% end %>
+
+
+    <!--  Si des ddocuments ont été générés -->
+    <% if @operation.d_documents.last == nil %>
+      <div id="quatre" class="rectangle">
+      </div>
+      <div id="quatre" class="rond">
+        <p>4</p>
+      </div>
+      <div id="quatre" class="rectangle">
+
+      </div>
+
+        <!--  Si des ddocuments n'ont pas été générés -->
+    <% else %>
+      <div style="background-color: #F3BE69;" id="quatre" class="rectangle">
+      </div>
+      <div id="quatre" class="rond">
+        <p>4</p>
+      </div>
+      <div style="background-color: #F3BE69; color: black;" id="quatre" class="rectangle">
+      </div>
+    <% end %>
+    <div class="start-end"></div>
+
+  </div>
+
+  <!-- ================================= -->
+
+  <div class='page-header'>
+     <h4>Vous y êtes presque !</h4>
+  </div>
+
+  <div>
+    <div class='home-card'>
+      <div class = 'home-card-header'>
+        <h4 class="card-title">Le club des Investisseurs</h4>
+      </div>
+      <div class="investors-corner">
+        <div class="investor-list">
+          <div id="investor-list-partial">
+            <%= render 'investors/show-investors', operation: @operation %>
+          </div>
+          <div class="investor-list-add">
+            <button type="button" class="btn-transparent" id="btn-add-investor"> Ajouter un investisseur</button>
+
+            <div id="form-add-investor-toggle" class="hidden">
+              <%= render 'form-add-investor', company: @company, operation: @operation %>
             </div>
           </div>
-          <div id="chart-operation-show">
-             <%= render 'chart-show-operation', operation: @operation %>
-          </div>
+        </div>
+        <div class="graph">
+          <p> Progression : <%= (@shares_values * 100/@operation.target_amount.to_f.round(0)) %> %</p>
+          <canvas id="mySecondChart" data-share="<%= @operation.target_amount %> - <%= @shares_values %> ">
+          </canvas>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class='row'>
-    <div class ='col-xs-10'>
-
-      <div class='home-card'>
-        <div class = 'home-card-header'>
-          <h4 class="card-title">La Data Room</h4>
-        </div>
-        <div class="operation-card-body-text">
-          INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
-        </div>
-
-        <div class="operation-card-body">
-
-
-          <div class="container-fluid docs-container">
-            <div class="doccard">
-              <div> <%= cl_image_tag("superclosing/bs_template",
-              width: 100, height: 150, crop: :fill) %>
-              </div>
-              <p>Bon de souscription</p>
+    <div class='home-card'>
+      <div class = 'home-card-header'>
+        <h4 class="card-title">La Data Room</h4>
+      </div>
+      <div class="operation-card-body-text">
+        INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
+      </div>
+      <div class="operation-card-body">
+        <div class="container-fluid docs-container">
+          <div class="doccard">
+            <div> <%= cl_image_tag("superclosing/bs_template",
+            width: 100, height: 150, crop: :fill) %>
             </div>
-
-
-            <div class="doccard">
-              <div> <%= cl_image_tag("superclosing/opening_age_pv",
-              width: 100, height: 150, crop: :fill) %>
-              </div>
-              <p>PV d'ouverture d'AG</p>
-            </div>
-
-            <div class="doccard">
-              <div> <%= cl_image_tag("superclosing/opening_age_presence",
-              width: 100, height: 150, crop: :fill) %>
-              </div>
-              <p>Ouverture d'AG</p>
-            </div>
-
-            <div class="doccard">
-              <div> <%= cl_image_tag("superclosing/dps_suppression",
-              width: 100, height: 150, crop: :fill) %>
-              </div>
-              <p>Suppression de DPS</p>
-            </div>
-
-
-            <% @operation.s_documents.each do |s_document| %>
-            <div class="doccard">
-              <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
-              </div>
-              <p><%= s_document.title  %></p>
-            </div>
-
-            <% end %>
-
-            <div class="doccard">
-              <p style="width: 100; height: 150; background-color: white;"> + </p>
-              <p>Uploader un document</p>
-            </div>
-
+            <p>Bon de souscription</p>
           </div>
-        </div>
-        <%= link_to "#" do %>
-          <button type="button" class="btn btn-superclosing gauche"> Ajouter un document</button>
-        <% end %>
-        <div class="gauche">
-          <%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
-            <%= f.input :title, label: "Nom" %>
-            <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
-            <%= f.input :d_url, as: :file, label: "Document" %>
-            <%= f.input :d_url_cache, as: :hidden %>
-            <%= f.button :submit, "Ajouter" %>
+          <div class="doccard">
+            <div> <%= cl_image_tag("superclosing/opening_age_pv",
+            width: 100, height: 150, crop: :fill) %>
+            </div>
+            <p>PV d'ouverture d'AG</p>
+          </div>
+          <div class="doccard">
+            <div> <%= cl_image_tag("superclosing/opening_age_presence",
+            width: 100, height: 150, crop: :fill) %>
+            </div>
+            <p>Ouverture d'AG</p>
+          </div>
+          <div class="doccard">
+            <div> <%= cl_image_tag("superclosing/dps_suppression",
+            width: 100, height: 150, crop: :fill) %>
+            </div>
+            <p>Suppression de DPS</p>
+          </div>
+          <% @operation.s_documents.each do |s_document| %>
+          <div class="doccard">
+            <div> <%= cl_image_tag @s_document.d_url, height: 100, width: 70, crop: :fill  %>
+            </div>
+            <p><%= s_document.title  %></p>
+          </div>
           <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class='row'>
-
-    <div class ='col-xs-10'>
-
-      <div class='home-card'>
-        <div class = 'home-card-header'>
-          <h4 class="card-title">SIGNATURES</h4>
-        </div>
-
-        <div class="operation-card-body">
-          <div class="operation-card-body-text">
-            INFO: Avant de générer la documentation juridique pour cette opération, prenez le temps de bien vérifier les informations concernant la société (raison social, capital), les investisseurs (nom, prénom, adresse) et l'opération (montants, nombre d'actions concernées). Ne vous inquiétez pas vous pourrez revoir les documents avant leur envoi à vos investisseurs et la signature électronique.
+          <div class="doccard">
+            <p style="width: 100; height: 150; background-color: white;"> + </p>
+            <p>Uploader un document</p>
           </div>
+        </div>
+      </div>
+      <%= link_to "#" do %>
+        <button type="button" class="btn btn-superclosing gauche"> Ajouter un document</button>
+      <% end %>
+      <div class="gauche">
+        <%= simple_form_for [@operation.company, @operation, @s_document], method: :post do |f| %>
+          <%= f.input :title, label: "Nom" %>
+          <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+          <%= f.input :d_url, as: :file, label: "Document" %>
+          <%= f.input :d_url_cache, as: :hidden %>
+          <%= f.button :submit, "Ajouter" %>
+        <% end %>
+      </div>
+    </div>
 
+    <div class='home-card'>
+      <div class = 'home-card-header'>
+        <h4 class="card-title">SIGNATURES</h4>
+      </div>
+      <div class="operation-card-body">
+        <div class="operation-card-body-text">
+          INFO: Avant de générer la documentation juridique pour cette opération, prenez le temps de bien vérifier les informations concernant la société (raison social, capital), les investisseurs (nom, prénom, adresse) et l'opération (montants, nombre d'actions concernées). Ne vous inquiétez pas vous pourrez revoir les documents avant leur envoi à vos investisseurs et la signature électronique.
         </div>
       </div>
     </div>
+
   </div>
+
+  <hr>
+  <div style="text-align: center;">
+    <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
+    <br>
+    <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
+  </div>
+
 </div>
-
-
-
-<hr>
-<%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
-<br>
-<%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>

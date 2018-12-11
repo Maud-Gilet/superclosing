@@ -1,253 +1,256 @@
-<!-- =================================== Bar de progression ci-dessous -->
+<div class="main-width">
 
-<div class="progress">
+  <!-- =================================== Bar de progression ci-dessous -->
 
-  <% if @company.name == nil  %>
-    <div id="un" class="rectangle">
-    </div>
-    <div id="un" class="rond">
-      <p>1</p>
-    </div>
-  <!--  Si société remplie à moitié -->
-  <% elsif @company.share_nominal_value_cents == 0 %>
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="un" class="rectangle">
+  <div class="progress">
+    <div class="start-end"></div>
+    <% if @company.name == nil  %>
+      <div id="un" class="rectangle">
       </div>
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="un" class="rond">
+      <div id="un" class="rond">
         <p>1</p>
       </div>
-  <!--  Si société remplie complètement -->
-  <% else %>
-    <div style="background-color: #F3BE69;" id="un" class="rectangle">
-    </div>
-    <div style="background-color: #F3BE69; color: black;" id="un" class="rond">
-      <p>1</p>
-    </div>
-  <% end %>
-
-  <div id="deux" class="rectangle">
-  </div>
-  <div id="deux" class="rond">
-    <p>2</p>
-  </div>
-  <div id="trois" class="rectangle">
-  </div>
-  <div id="trois" class="rond">
-    <p>3</p>
-  </div>
-  <div id="quatre" class="rectangle">
-  </div>
-  <div id="quatre" class="rond">
-    <p>4</p>
-  </div>
-  <div id="quatre" class="rectangle">
-  </div>
-
-</div>
-
-
-<!-- =================================== Bar de progression ci-dessus -->
-
-<div class='container-fluid page-content'>
-
-  <div class='row'>
-
-    <div class ='col col-xs-12 col-sm-6'>
-
-      <div class='home-card'>
-
-        <div class = 'home-card-header' id='comp'>
-          <h4>Informations</h4>
-          <%= link_to edit_company_path(@company.id) do %>
-            <i class="far fa-edit" id='edit-company-info'></i>
-          <% end %>
+    <!--  Si société remplie à moitié -->
+    <% elsif @company.share_nominal_value_cents == 0 %>
+        <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);  box-shadow: 1px 1px 5px grey;" id="un" class="rectangle">
         </div>
+        <div style="background: repeating-linear-gradient(
+            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rond">
+          <p style="font-weight: bold; font-size: 20px;">1</p>
+        </div>
+    <!--  Si société remplie complètement -->
+    <% else %>
+      <div style="background-color: #F3BE69;  box-shadow: 1px 1px 5px grey;" id="un" class="rectangle">
+      </div>
+      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rond">
+        <p style="font-weight: bold; font-size: 20px;">1</p>
+      </div>
+    <% end %>
 
-        <div class='home-card-body' id='company-card'>
-          <div class='company-show-logo'>
-            <h3><strong><%= @company.name %></strong> </h3>
-            <% if @company.logo_url.file == nil %>
-              <img src="https://via.placeholder.com/120" class="logo">
-            <% else %>
-            <p> <%= cl_image_tag @company.logo_url, height: 100, width: 100, crop: :fit %></p>
-              <% end %>
+    <div id="deux" class="rectangle">
+    </div>
+    <div id="deux" class="rond">
+      <p>2</p>
+    </div>
+    <div id="trois" class="rectangle">
+    </div>
+    <div id="trois" class="rond">
+      <p>3</p>
+    </div>
+    <div id="quatre" class="rectangle">
+    </div>
+    <div id="quatre" class="rond">
+      <p>4</p>
+    </div>
+    <div id="quatre" class="rectangle">
+    </div>
+    <div class="start-end"></div>
+
+  </div>
+
+
+  <!-- =================================== Bar de progression ci-dessus -->
+
+  <div class='container-fluid'>
+
+    <div class='row'>
+
+      <div class ='col col-xs-12 col-sm-6'>
+
+        <div class='home-card'>
+
+          <div class = 'home-card-header' id='comp'>
+            <h4>Informations</h4>
+            <%= link_to edit_company_path(@company.id) do %>
+              <i class="far fa-edit" id='edit-company-info'></i>
+            <% end %>
           </div>
-          <div class='company-show-infos'>
-            <div class='home-card' id='company-info-card'>
-              <p> <strong>SIREN</strong> : <%= @company.siren %> </p>
-              <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
-              <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+
+          <div class='home-card-body' id='company-card'>
+            <div class='company-show-logo'>
+              <h3><strong><%= @company.name %></strong> </h3>
+              <% if @company.logo_url.file == nil %>
+                <img src="https://via.placeholder.com/120" class="logo">
+              <% else %>
+              <p> <%= cl_image_tag @company.logo_url, height: 100, width: 100, crop: :fit %></p>
+                <% end %>
+            </div>
+            <div class='company-show-infos'>
+              <div class='home-card' id='company-info-card'>
+                <p> <strong>SIREN</strong> : <%= @company.siren %> </p>
+                <p> <strong>Forme sociale</strong> : <%= @company.legal_form %> </p>
+                <p> <strong>Siège social</strong> :  <%= @company.address %></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class ='col col-xs-12 col-sm-6'>
-      <div class='home-card'>
-        <div class = 'home-card-header'>
-          <h4>Répartition du capital</h4>
-          <%= link_to new_company_captable_path(@company.id) do %>
-            <i class="far fa-edit" id='edit-company-info'></i>
-          <% end %>
-        </div>
+      <div class ='col col-xs-12 col-sm-6'>
+        <div class='home-card'>
+          <div class = 'home-card-header'>
+            <h4>Répartition du capital</h4>
+            <%= link_to new_company_captable_path(@company.id) do %>
+              <i class="far fa-edit" id='edit-company-info'></i>
+            <% end %>
+          </div>
 
-        <div class="home-card-body captable-body">
-          <div class="captable-list-card">
-            <ul >
-              <li>
-                <div class="captable-list-header">
-                  <div class="captable-list-name">
-                    <span>Nom</span>
-                  </div>
-                  <div class="captable-list-shares">
-                    <span># Actions</span>
-                  </div>
-                  <div class="captable-list-shares-pourcent">
-                    <span>% du capital</span>
-                  </div>
-                </div>
-              </li>
-              <% @shareholders.each do |id, shares| %>
+          <div class="home-card-body captable-body">
+            <div class="captable-list-card">
+              <ul >
                 <li>
-                  <div class="captable-list-content">
+                  <div class="captable-list-header">
                     <div class="captable-list-name">
-                      <%= User.find(id).last_name %> <%= User.find(id).first_name %>
+                      <span>Nom</span>
                     </div>
                     <div class="captable-list-shares">
-                      <%= money_without_cents shares %> actions
+                      <span># Actions</span>
                     </div>
                     <div class="captable-list-shares-pourcent">
-                      <%= ( (shares.to_f / (money_without_cents @company.number_of_shares).to_f).round(2) * 100).round(0) %> %
+                      <span>% du capital</span>
+                    </div>
+                  </div>
+                </li>
+                <% @shareholders.each do |id, shares| %>
+                  <li>
+                    <div class="captable-list-content">
+                      <div class="captable-list-name">
+                        <%= User.find(id).last_name %> <%= User.find(id).first_name %>
+                      </div>
+                      <div class="captable-list-shares">
+                        <%= money_without_cents shares %> actions
+                      </div>
+                      <div class="captable-list-shares-pourcent">
+                        <%= ( (shares.to_f / (money_without_cents @company.number_of_shares).to_f).round(2) * 100).round(0) %> %
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+                <li><strong>
+                  <div class="captable-list-header">
+                    <div class="captable-list-name">
+                      Total
+                    </div>
+                    <div class="captable-list-shares">
+                      <%= money_without_cents @company.number_of_shares %> actions
+                    </div>
+                    <div class="captable-list-shares-pourcent">
+                      100 %
+                    </div>
+                  </div>
+                </strong></li>
+              </ul>
+
+              <% if @company.operations.where(category: 'initialize-captable').empty? %>
+                <%= link_to new_company_captable_path(@company.id) do %>
+                  <button style="button" class="btn-transparent-small">Initialiser le capital</button>
+                <% end %>
+              <% end %>
+
+              <div class="graph">
+
+                <% unless @shareholders.length == 0 %>
+                <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
+                </canvas>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class='row'>
+      <div class = 'col col-xs-12'>
+        <div class = 'home-card-header'>
+          <h4>Opérations</h4>
+        </div>
+        <div class = "home-card-body">
+          <ul>
+            <% @company.operations.each do |operation| %>
+              <% unless operation.category == 'initialize-captable' %>
+                <li>
+                  <div class="operation-list">
+                    <div class="operation-list-category">
+                      <div>
+                        <span>Catégorie</span>
+                      </div>
+                      <div>
+                        <h5><%= operation.category %></h5>
+                      </div>
+                    </div>
+                    <div class="operation-list-amount">
+                      <% if operation.status == 'completed' %>
+                        <div>
+                          <span>Montant de l'opération</span>
+                        </div>
+                        <div>
+                          <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
+                        </div>
+                      <% else %>
+                        <div>
+                          <span>Montant visé</span>
+                        </div>
+                        <div>
+                          <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="operation-list-closing-date">
+                      <% if operation.status == 'completed' %>
+                        <div>
+                          <span>Date de réalisation</span>
+                        </div>
+                        <div>
+                          <h5><%= operation.expected_closing_date %></h5>
+                        </div>
+                      <% else %>
+                        <div>
+                          <span>Date de réalisation estimée</span>
+                        </div>
+                        <div>
+                          <h5><%= operation.expected_closing_date %></h5>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="operation-list-status">
+                      <% if operation.status == 'completed' %>
+                        <div>
+                          <span>Status</span>
+                        </div>
+                        <div>
+                          <h5><strong>Finalisée</strong></h5>
+                        </div>
+                      <% else %>
+                        <div>
+                          <span>Status</span>
+                        </div>
+                        <div>
+                          <h5><strong>En cours</strong></h5>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="operation-list-link">
+                      <%= link_to operation_path(operation) do %>
+                        <button style="button" class="btn-transparent-small">Détails</button>
+                      <% end %>
                     </div>
                   </div>
                 </li>
               <% end %>
-              <li><strong>
-                <div class="captable-list-header">
-                  <div class="captable-list-name">
-                    Total
-                  </div>
-                  <div class="captable-list-shares">
-                    <%= money_without_cents @company.number_of_shares %> actions
-                  </div>
-                  <div class="captable-list-shares-pourcent">
-                    100 %
-                  </div>
-                </div>
-              </strong></li>
-            </ul>
-
-            <% if @company.operations.where(category: 'initialize-captable').empty? %>
-              <%= link_to new_company_captable_path(@company.id) do %>
-                <button style="button" class="btn-transparent-small">Initialiser le capital</button>
-              <% end %>
             <% end %>
-
-            <div class="graph">
-
-              <% unless @shareholders.length == 0 %>
-              <canvas id="myChart" data-share="<%= @company.number_of_shares %>-<%= @shareholders.first[1] %> " data-label= " ">
-              </canvas>
-              <% end %>
-            </div>
-
-          </div>
+          </ul>
+        <div class="text-align-center">
+          <%= link_to new_company_operation_path(@company) do %>
+            <button style="button" class="btn btn-form-action">Ajouter une opération</button>
+          <% end %>
         </div>
       </div>
     </div>
-
-  <div class='row'>
-    <div class = 'col col-xs-12'>
-      <div class = 'home-card-header'>
-        <h4>Opérations</h4>
-      </div>
-      <div class = "home-card-body">
-        <ul>
-          <% @company.operations.each do |operation| %>
-            <% unless operation.category == 'initialize-captable' %>
-              <li>
-                <div class="operation-list">
-                  <div class="operation-list-category">
-                    <div>
-                      <span>Catégorie</span>
-                    </div>
-                    <div>
-                      <h5><%= operation.category %></h5>
-                    </div>
-                  </div>
-                  <div class="operation-list-amount">
-                    <% if operation.status == 'completed' %>
-                      <div>
-                        <span>Montant de l'opération</span>
-                      </div>
-                      <div>
-                        <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-                      </div>
-                    <% else %>
-                      <div>
-                        <span>Montant visé</span>
-                      </div>
-                      <div>
-                        <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="operation-list-closing-date">
-                    <% if operation.status == 'completed' %>
-                      <div>
-                        <span>Date de réalisation</span>
-                      </div>
-                      <div>
-                        <h5><%= operation.expected_closing_date %></h5>
-                      </div>
-                    <% else %>
-                      <div>
-                        <span>Date de réalisation estimée</span>
-                      </div>
-                      <div>
-                        <h5><%= operation.expected_closing_date %></h5>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="operation-list-status">
-                    <% if operation.status == 'completed' %>
-                      <div>
-                        <span>Status</span>
-                      </div>
-                      <div>
-                        <h5><strong>Finalisée</strong></h5>
-                      </div>
-                    <% else %>
-                      <div>
-                        <span>Status</span>
-                      </div>
-                      <div>
-                        <h5><strong>En cours</strong></h5>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="operation-list-link">
-                    <%= link_to operation_path(operation) do %>
-                      <button style="button" class="btn-transparent-small">Détails</button>
-                    <% end %>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-      <div class="text-align-center">
-        <%= link_to new_company_operation_path(@company) do %>
-          <button style="button" class="btn btn-form-action">Ajouter une opération</button>
-        <% end %>
-      </div>
-    </div>
   </div>
+
 </div>
-
-
 
 
 

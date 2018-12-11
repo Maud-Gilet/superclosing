@@ -18,37 +18,44 @@
 
 /* --- Fonts --- */
 body {
-  font-family: 'Nanum Gothic', sans-serif !important;
+  font-family: 'Barlow', sans-serif !important;
 }
 h1 {
   font-size: 36px;
+  font-family: 'Barlow', sans-serif !important;
 }
 
 h2 {
   font-size: 24px;
   font-weight: normal;
+  font-family: 'Barlow', sans-serif !important;
 }
 h3 {
   font-size: 20px;
   margin-bottom: 14px;
+  font-family: 'Barlow', sans-serif !important;
 }
 h4 {
   font-size: 20px;
   font-weight: normal;
+  font-family: 'Barlow', sans-serif !important;
 }
 h5 {
   font-size: 16px;
   font-weight: normal;
   margin: 0px;
+  font-family: 'Barlow', sans-serif !important;
 }
 p {
   font-size: 16px;
   font-weight: normal;
+  font-family: 'Barlow', sans-serif !important;
   /* Il faudrait une version à 300 */
 }
 a {
   color: #2C3C4C;
   text-decoration: none;
+  font-family: 'Barlow', sans-serif !important;
 }
 
 a:hover {
