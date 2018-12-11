@@ -1,15 +1,53 @@
-<div class='operation-step-description'>
-    <h3><strong><%= @company.name %></strong> </h3>
-   <h4>Les étapes de votre levée de fonds :</h4>
-  <div class="container-fluid progressbar-container">
-    <ul class="progressbar progressbar-1">
-        <li class="active">Renseignez les informations relatives à votre société</li>
-        <li >Renseignez les informations relatives à votre opération</li>
-        <li>Investisseurs</li>
-        <li>Passez aux signatures !</li>
-    </ul>
+<!-- =================================== Bar de progression ci-dessous -->
+
+<div class="progress">
+
+  <% if @company.name == nil  %>
+    <div id="un" class="rectangle">
+    </div>
+    <div id="un" class="rond">
+      <p>1</p>
+    </div>
+  <!--  Si société remplie à moitié -->
+  <% elsif @company.share_nominal_value_cents == 0 %>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="un" class="rectangle">
+      </div>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="un" class="rond">
+        <p>1</p>
+      </div>
+  <!--  Si société remplie complètement -->
+  <% else %>
+    <div style="background-color: #F3BE69;" id="un" class="rectangle">
+    </div>
+    <div style="background-color: #F3BE69; color: black;" id="un" class="rond">
+      <p>1</p>
+    </div>
+  <% end %>
+
+  <div id="deux" class="rectangle">
   </div>
+  <div id="deux" class="rond">
+    <p>2</p>
+  </div>
+  <div id="trois" class="rectangle">
+  </div>
+  <div id="trois" class="rond">
+    <p>3</p>
+  </div>
+  <div id="quatre" class="rectangle">
+  </div>
+  <div id="quatre" class="rond">
+    <p>4</p>
+  </div>
+  <div id="quatre" class="rectangle">
+  </div>
+
 </div>
+
+
+<!-- =================================== Bar de progression ci-dessus -->
 
 <div class='container-fluid page-content'>
 

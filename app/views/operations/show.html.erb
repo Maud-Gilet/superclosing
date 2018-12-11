@@ -1,3 +1,91 @@
+<!-- =================================Bar de progression ci-dessous -->
+
+<div class="progress">
+
+  <% if @operation.company.name == nil  %>
+    <div id="un" class="rectangle">
+    </div>
+    <div id="un" class="rond">
+      <p>1</p>
+    </div>
+  <!--  Si société remplie à moitié -->
+  <% elsif @operation.company.share_nominal_value_cents == 0 %>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="un" class="rectangle">
+      </div>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="un" class="rond">
+        <p>1</p>
+      </div>
+  <!--  Si société remplie complètement -->
+  <% else %>
+    <div style="background-color: #F3BE69;" id="un" class="rectangle">
+    </div>
+    <div style="background-color: #F3BE69; color: black;" id="un" class="rond">
+      <p>1</p>
+    </div>
+  <% end %>
+
+
+  <!--  Opération créee (normal, on est dans la show d'opération-->
+  <div style="background-color: #F3BE69;" id="deux" class="rectangle">
+  </div>
+  <div style="background-color: #F3BE69; color: black;" id="deux" class="rond">
+    <p>2</p>
+  </div>
+
+  <!--  Si le montant envisagé est égal à la sommes des investissements -->
+
+  <% if @operation.target_amount_cents == @shares_values %>
+    <div style="background-color: #F3BE69;" id="trois" class="rectangle">
+    </div>
+    <div style="background-color: #F3BE69; color: black;" id="trois" class="rond">
+      <p>3</p>
+    </div>
+
+      <!--  Si le montant envisagé n'est pas égal à la sommes des investissements -->
+
+  <% else %>
+    <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px);" id="trois" class="rectangle">
+    </div>
+    <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: black;" id="trois" class="rond">
+      <p>3</p>
+    </div>
+  <% end %>
+
+
+  <!--  Si des ddocuments ont été générés -->
+<% if @operation.d_documents.last == nil %>
+  <div id="quatre" class="rectangle">
+  </div>
+  <div id="quatre" class="rond">
+    <p>4</p>
+  </div>
+  <div id="quatre" class="rectangle">
+  </div>
+
+    <!--  Si des ddocuments n'ont pas été générés -->
+<% else %>
+  <div style="background-color: #F3BE69;" id="quatre" class="rectangle">
+  </div>
+  <div id="quatre" class="rond">
+    <p>4</p>
+  </div>
+  <div style="background-color: #F3BE69; color: black;" id="quatre" class="rectangle">
+  </div>
+<% end %>
+
+
+
+
+
+</div>
+
+
+
+<!-- ================================= -->
 
 
 <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
@@ -24,14 +112,7 @@
    <h3><strong><%= @operation.name %></strong> </h3>
 
    <h4>Vous y êtes presque !</h4>
-   <div class="container-fluid progressbar-container">
-       <ul class="progressbar progressbar-2">
-          <li id = 'step-done'>Capital</li>
-          <li class="active" id='step-done'>Opération</li>
-          <li>Invitez vos investisseurs</li>
-          <li>Passez aux signatures !</li>
-       </ul>
-     </div>
+
 </div>
 
 <div class='container-fluid page-content'>
