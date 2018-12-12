@@ -6,8 +6,8 @@ class DocusignService
   def init_envelope
     content = ApplicationController.render(
       formats: :html,
-      template: 'documents/show.pdf.erb',
-      assigns: { document: @document }
+      template: 'd_documents/test.html.erb',
+      assigns: { document: @d_document, operation: @operation }
     )
 
     pdf = WickedPdf.new.pdf_from_string(content)
