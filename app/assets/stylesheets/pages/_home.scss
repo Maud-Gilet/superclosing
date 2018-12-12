@@ -40,8 +40,8 @@
 .home-steps {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0px 20px 0px 20px;
+  justify-content: space-evenly;
+  padding: 0px;
   margin-bottom: 40px;
 }
 .home-steps-header{
@@ -52,6 +52,7 @@
 .step-card {
   flex: 1 1 0;
   margin:10px;
+  min-width: 180px;
   background: #fff;
   box-shadow: 1px 3px 4px 0px #2c3c4c2b;
   .step-card-header{
