@@ -53,10 +53,10 @@ Personne ne demandant la parole, le Président met successivement aux voix les r
 L’Assemblée Générale, statuant aux conditions de quorum et de majorité requises par les statuts, conformément aux articles L. 225-129 et suivants du code de commerce et après avoir pris connaissance du rapport du Président,
 <br>
 <br>
-Décide d’augmenter le capital social de la Société d’un montant de <mark><%= humanized_money @capital_augmentation %></mark> euros, par l’émission de  <mark><%= humanized_money @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong> ») d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= humanized_money @operation.investments.last.share_premium %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à   <mark><%=humanized_money @nominal + @operation.investments.last.share_premium %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
+Décide d’augmenter le capital social de la Société d’un montant en numéraire de <mark><%= humanized_money @capital_augmentation %></mark> euros, par l’émission de  <mark><%= humanized_money @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong> ») d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= humanized_money @operation.investments.last.share_premium %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à   <mark><%=humanized_money @nominal + @operation.investments.last.share_premium %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
 <br>
 <br>
-Cette résolution est adoptée à l’unanimité.
+<strong>Cette résolution est adoptée à l’unanimité.</strong>
 <br>
 <br>
 </p>
@@ -84,7 +84,7 @@ L’Assemblée Générale constate la renonciation des Associés à l’exercice
 L’Assemblée Générale délègue tous pouvoirs au porteur d’un original, d’une copie ou d’un extrait des présentes à l’effet d’accomplir toutes formalités légales.
 <br>
 <br>
-Cette résolution est adoptée à l’unanimité.
+<strong>Cette résolution est adoptée à l’unanimité.</strong>
 <br>
 <br>
 L'ordre du jour étant épuisé et plus personne ne demandant la parole, la séance est levée à <mark><%= @time + 1 %> heures</mark> ; il en a été dressé le présent procès-verbal.
