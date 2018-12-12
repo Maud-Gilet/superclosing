@@ -15,7 +15,7 @@
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :gender, collection: ["M.", "Mme"], label: ""  %>
+            <%= f.input :gender, collection: ["M.", "Mme"], label: "Genre"  %>
             <%= f.input :first_name, label: "Prénom" %>
             <%= f.input :last_name, label: "Nom de famille" %>
             <%= f.input :address, label: "Adresse"  %>
