@@ -4,11 +4,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
      <meta charset="UTF-8">
 
 
     <style>
+
      * {
          -moz-box-sizing:border-box;
          -webkit-box-sizing:border-box;
@@ -72,7 +74,7 @@
     </style>
     <style>
   .plain.error-page-wrapper {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Barlow', sans-serif;
     background-color:#6355bc;
     padding:0 5%;
     position:relative;
@@ -129,6 +131,7 @@
     margin-top:12px;
   }
   .plain.error-page-wrapper .buttons-container {
+    display: flex;
     margin-top: 45px;
     overflow: hidden;
   }
@@ -143,6 +146,7 @@
     padding:8px 30px 9px;
     display: inline-block;
     float:left;
+    text-align: center;
   }
   .plain.error-page-wrapper .buttons-container a:hover {
     background-color:rgba(255,255,255,.05);
@@ -192,7 +196,7 @@
 
 
     .primary-text-color {
-      color: rgba(154, 160, 168, 1) !important;
+      color: #eee !important;
     }
 
     .secondary-text-color {
@@ -217,27 +221,22 @@
   </head>
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
-  <div class="head-line secondary-text-color">
-    404
-  </div>
+
   <div class="subheader primary-text-color">
     <img src="/images/eclair.png" alt="Superclosing" height="42" width="42">
-    SUPERCLOSING <br>Désolé.La page n'existe pas!<br>
-    Oops, the page you're <br>
-    looking for does not exist.
+    SUPERCLOSING <br>
   </div>
   <hr>
   <div class="clearfix"></div>
   <div class="context primary-text-color">
     <!-- doesn't use context_content because it's ALWAYS the same thing -->
-    <p>
-      You may want to head back to the homepage.<br />
-      If you think something is broken, report a problem.
-    </p>
+     Oups, cette page <br>
+    n'existe pas.
+
   </div>
   <div class="buttons-container">
-    <a class="border-button" href="http://www.superclosing.com" target="_blank">Go To Homepage</a>
-    <a class="border-button" href="mailto:support@superclosing.com" target="_blank">Report A Problem</a>
+    <a class="border-button" href="http://www.superclosing.com" target="_blank">Retour à la page d'accueil</a>
+    <a class="border-button" href="mailto:support@superclosing.com" target="_blank">Nous faire part d'un problème</a>
   </div>
 </div>
 
