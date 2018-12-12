@@ -28,7 +28,7 @@ class OperationsController < ApplicationController
 
     @shares_values = 0
     @operation.investments.each do |invest|
-      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
+      @shares_values += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
     end
   end
 

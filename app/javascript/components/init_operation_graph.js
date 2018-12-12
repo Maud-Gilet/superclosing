@@ -17,7 +17,6 @@ const graph = ()=>{
                   '#40a8c4',
                   '#cce490',
                   '#a6cb12'
-
               ],
               borderColor: [
                   '#0d627a',
@@ -44,6 +43,15 @@ const graph = ()=>{
                   }
 
               }]
+          },
+          legend: {
+            position: 'right',
+            labels: {
+              padding: 20,
+              fontFamily: 'Barlow',
+              fontSize: 16
+            }
+
           }
       }
   });
