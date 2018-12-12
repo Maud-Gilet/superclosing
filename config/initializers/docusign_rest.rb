@@ -9,7 +9,7 @@ DocusignRest.configure do |config|
   config.password       = ENV['DOCUSIGN_ACCOUNT_PW']
   config.integrator_key = ENV['DOCUSIGN_API_KEY']
   config.account_id     = '7458607'
-  config.endpoint       = 'https://docusign.net/restapi'
+  config.endpoint       = 'https://demo.docusign.net/restapi'
   config.api_version    = 'v2'
   config.open_timeout   = 2 # default value is 5
   config.read_timeout   = 5 # default value is 10
