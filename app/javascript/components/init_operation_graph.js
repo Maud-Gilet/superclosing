@@ -12,18 +12,18 @@ const graph = ()=>{
               label: '# of Votes',
               data: shares,
               backgroundColor: [
-                  '#0d627a',
-                  '#0c907d',
-                  '#40a8c4',
-                  '#cce490',
-                  '#a6cb12'
+                  '#2D3D4D',
+                  '#52708d',
+                  '#6b8fb2',
+                  '#8bb8e5',
+                  '#bfddfb'
               ],
               borderColor: [
-                  '#0d627a',
-                  '#0c907d',
-                  '#40a8c4',
-                  '#cce490',
-                  '#a6cb12'
+                  '#2D3D4D',
+                  '#52708d',
+                  '#6b8fb2',
+                  '#8bb8e5',
+                  '#bfddfb'
               ],
               borderWidth: 1
           }]
