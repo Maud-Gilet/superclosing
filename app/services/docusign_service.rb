@@ -7,7 +7,8 @@ class DocusignService
     name = 'test.pdf'
     content = ApplicationController.render(
       formats: :html,
-      template: "d_documents/#{name}.erb"
+      template: "d_documents/#{name}.erb",
+      assigns: { document: @document }
     )
 
     pdf = WickedPdf.new.pdf_from_string(content)
@@ -16,7 +17,7 @@ class DocusignService
     File.open(file, 'wb') do |f|
       f << pdf
     end
-    { path: file.path, name: name }
+    files = [{ path: file.path, name: name }]
   end
 
   def send_envelope(files)
