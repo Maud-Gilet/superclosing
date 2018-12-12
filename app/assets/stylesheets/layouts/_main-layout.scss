@@ -9,15 +9,11 @@
 }
 
 .main {
-  width: 100%;
+  width: calc(100vw-220px);
   min-height: 100vh;
   transition: all .4s ease-in-out;
-}
-.page-content {
-  padding: 0px 30px;
-  // .row {
-  //   display: flex;
-  // }
+  margin-left:220px;
+  padding-left: 20px;
 }
 .page-header {
   margin-top: 16px;
