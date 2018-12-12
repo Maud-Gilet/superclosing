@@ -50,7 +50,7 @@
       <% end %>
     <% end %>
 
-    <div class="graph">
+    <div class="graph graph-captable">
 
       <% unless @shareholders.length == 0 %>
       <canvas id="myChart" data-share="<%= @shareholders.values.join(",") %>" data-label= "<%= @shareholders.keys.join(",") %>">

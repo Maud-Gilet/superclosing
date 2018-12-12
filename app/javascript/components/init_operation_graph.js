@@ -12,12 +12,18 @@ const graph = ()=>{
               label: '# of Votes',
               data: shares,
               backgroundColor: [
-                  'rgba(252, 150, 0, 0.8)',
-                  '#2D3D4D'
+                  '#0d627a',
+                  '#0c907d',
+                  '#40a8c4',
+                  '#cce490',
+                  '#a6cb12'
               ],
               borderColor: [
-                  'rgba(252, 150, 0, 1)',
-                  '#2D3D4D'
+                  '#0d627a',
+                  '#0c907d',
+                  '#40a8c4',
+                  '#cce490',
+                  '#a6cb12'
               ],
               borderWidth: 1
           }]
@@ -37,6 +43,15 @@ const graph = ()=>{
                   }
 
               }]
+          },
+          legend: {
+            position: 'right',
+            labels: {
+              padding: 20,
+              fontFamily: 'Barlow',
+              fontSize: 16
+            }
+
           }
       }
   });

@@ -4,6 +4,9 @@
   align-content: center;
   align-items: center;
 }
+.graph-captable {
+  margin: 20px 0px;
+}
 
 #myChart {
   height: 200px !important;
@@ -14,9 +17,14 @@
   height: 200px !important;
   width: 200px !important;
 }
-
-
-
+.graph-third {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+#chart-third {
+  width: 500px !important;
+  height: 60px !important;
+}
 .indicateurs {
   display: flex;
   // border: solid 2px #fc9600;

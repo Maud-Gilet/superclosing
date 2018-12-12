@@ -18,7 +18,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new(investment_params)
     @investment.operation = Operation.find(params[:operation_id])
     # @investment.user = current_user
-    @investment.status = "Pending"
+    @investment.status = "pending"
     if @investment.save!
       redirect_to company_investment_path(params[:company_id], @investment.id)
     else

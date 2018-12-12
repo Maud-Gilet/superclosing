@@ -1,5 +1,5 @@
-<div class="graph">
-  <p> Progression : <%= (@shares_values * 100 / @operation.target_amount.to_f.round(0)) %> %</p>
+<div class="graph graph-third">
+  <p> <strong>Progression : </strong><%= (@shares_values * 100 / @operation.target_amount.to_f.round(0)) %> %</p>
 
   <canvas id="chart-third" data-share="<%= @shares_values %> - <%= (@operation.target_amount - @shares_values) %>">
   </canvas>

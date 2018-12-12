@@ -6,19 +6,19 @@ const graphthird = () => {
   var data2 = document.getElementById("chart-third").dataset.share.split("-")[1];
 
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
       labels: ['Suivi levée'],
       datasets: [
         {
           label: '',
           data: [data1],
-          backgroundColor: ['rgba(252, 150, 0, 0.8)'],
+          backgroundColor: ['#0c907d'],
         },
         {
           label: '',
           data: [data2],
-          backgroundColor: ['rgba(205, 116, 74, 1)'],
+          backgroundColor: ['#add2c9'],
         },
       ],
     },
