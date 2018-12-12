@@ -40,11 +40,62 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.operation-list-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 7px;
+  border-top: 1px solid #ffac30;
+  border-bottom: 1px solid #ffac30;
+  & span {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
+.operation-list-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  padding: 2px 7px;
+}
+.operation-list-name {
+  flex: 0 0 20%;
+}
+.operation-list-category {
+  flex: 0 0 17%;
+}
+.operation-list-amount {
+  flex: 0 0 18%;
+}
+.operation-list-date {
+  flex: 0 0 22%;
+}
+.operation-list-status {
+  flex: 0 0 13%;
+}
+.operation-list-btn {
+  flex: 0 0 10%;
+  justify-content: flex-end;
+}
 
 .operation-list:hover {
   background: #ececec;
 }
 
+.operation-list-name {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  & span {
+    font-style: italic;
+    font-size: 0.7em;
+  }
+  & h5 {
+    font-size: 0.9em;
+  }
+}
 .operation-list-category {
   display: flex;
   flex-direction: column;
@@ -55,7 +106,6 @@
   }
   & h5 {
     font-size: 0.9em;
-    margin-top: 4px;
   }
 }
 
@@ -68,23 +118,21 @@
     font-size: 0.7em;
   }
   & h5 {
-    font-size: 1em;
-    margin-top: 4px;
+    font-size: 0.9em;
+
   }
 }
 
-.operation-list-closing-date {
+.operation-list-date {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  flex: 0 1 auto;
   & span {
     font-style: italic;
     font-size: 0.7em;
   }
   & h5 {
     font-size: 0.9em;
-    margin-top: 4px;
   }
 }
 .operation-list-status {
@@ -97,7 +145,6 @@
   }
   & h5 {
     font-size: 0.9em;
-    margin-top: 4px;
   }
 }
 

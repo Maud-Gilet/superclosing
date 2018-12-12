@@ -131,6 +131,27 @@ input[type="submit"] {
   text-decoration: none;
 }
 
+.btn-transparent-xtra-small {
+  background-color: inherit;
+  border: 1px solid #ffac30;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #ffac30;
+  font-size: 0.7em;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.18);
+}
+
+.btn-transparent-xtra-small:hover {
+  background: #ffa118;
+  color: white;
+  text-decoration: none;
+}
+
+
 .btn-add-company {
   width:100px;
   height: 100px;
