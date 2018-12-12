@@ -4,7 +4,7 @@
 
   <h1><strong><mark><%= @operation.company.name %></mark></strong></h1>
 
-  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= humanized_money @operation.company.number_of_shares * @operation.company.share_nominal_value %></mark> euros  </h3>
+  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de <mark><%= humanized_money @operation.company.number_of_shares * @operation.company.share_nominal_value %></mark> euros </h3>
   <h3>Siège social : <mark><%= @operation.company.address %></mark></h3>
   <h3>SIREN : <mark><%= humanized_money @operation.company.siren %></mark></h3>
   <br>
@@ -31,13 +31,11 @@ Le Président déclare que l'Assemblée Générale est régulièrement constitu�
 <br>
 <br>
 Le Président rappelle à l'Assemblée Générale qu'elle est réunie pour délibérer sur l'ordre du jour suivant :</p>
-<br>
 <ul>
   <li>Augmentation de capital par émission d’actions ;</li>
   <li>Renonciation par les associés à l’exercice de leur droit préférentiel de souscription ;</li>
   <li>Pouvoirs pour les formalités.</li>
 </ul>
-<br>
 <p>La discussion est ouverte.
 <br>
 <br>
@@ -55,10 +53,10 @@ Personne ne demandant la parole, le Président met successivement aux voix les r
 L’Assemblée Générale, statuant aux conditions de quorum et de majorité requises par les statuts, conformément aux articles L. 225-129 et suivants du code de commerce et après avoir pris connaissance du rapport du Président,
 <br>
 <br>
-Décide d’augmenter le capital social de la Société d’un montant de <mark><%= humanized_money @capital_augmentation %></mark> euros, par l’émission de <mark><%= humanized_money @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong>») d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= humanized_money @operation.investments.last.share_premium %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à   <mark><%=humanized_money @nominal + @operation.investments.last.share_premium %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
+Décide d’augmenter le capital social de la Société d’un montant en numéraire de <mark><%= humanized_money @capital_augmentation %></mark> euros, par l’émission de  <mark><%= humanized_money @total_of_shares %></mark> actions ordinaires (les « <strong>Actions</strong> ») d’une valeur nominale de  <mark><%= humanized_money @nominal %></mark> euros chacune, assorties d’une prime d’émission unitaire de <mark><%= humanized_money @operation.investments.last.share_premium %></mark> euros, pour un prix global, prime d’émission comprise, s’élevant à   <mark><%=humanized_money @nominal + @operation.investments.last.share_premium %></mark> euros par Action (l’« <strong>Augmentation de Capital</strong> ») ;
 <br>
 <br>
-Cette résolution est adoptée à l’unanimité.
+<strong>Cette résolution est adoptée à l’unanimité.</strong>
 <br>
 <br>
 </p>
@@ -86,7 +84,7 @@ L’Assemblée Générale constate la renonciation des Associés à l’exercice
 L’Assemblée Générale délègue tous pouvoirs au porteur d’un original, d’une copie ou d’un extrait des présentes à l’effet d’accomplir toutes formalités légales.
 <br>
 <br>
-Cette résolution est adoptée à l’unanimité.
+<strong>Cette résolution est adoptée à l’unanimité.</strong>
 <br>
 <br>
 L'ordre du jour étant épuisé et plus personne ne demandant la parole, la séance est levée à <mark><%= @time + 1 %> heures</mark> ; il en a été dressé le présent procès-verbal.
@@ -123,7 +121,7 @@ ____________________________
     </tr>
     <% @operation.investments.each do |investment| %>
       <tr >
-        <td ><mark><%= investment.user.first_name %> <% investment.user.last_name %></mark></td>
+        <td ><mark><%= investment.user.first_name %> <%= investment.user.last_name %></mark></td>
         <td><mark><%= humanized_money investment.number_of_shares * (@nominal + investment.share_premium) %></mark> € </td>
         <td ><mark><%= humanized_money investment.number_of_shares  %></mark></td>
         <td><mark><%= investment.user.address %></mark></td>
@@ -137,7 +135,7 @@ ____________________________
 
   <h1><strong><mark><%= @operation.company.name %></mark></strong></h1>
 
-  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de<mark><%= humanized_money @operation.company.number_of_shares * @nominal %></mark> euros  </h3>
+  <h3><mark> <%= @operation.company.legal_form %></mark> au capital de <mark><%= humanized_money @operation.company.number_of_shares * @nominal %></mark> euros  </h3>
   <h3>Siège social : <mark><%= @operation.company.address %></mark></h3>
   <h3>SIREN : <mark><%= humanized_money @operation.company.siren %></mark></h3>
   <br>
@@ -158,9 +156,9 @@ ____________________________
     </tr>
     <% @shareholders.each do |id, number_of_shares| %>
       <tr >
-        <td ><mark><%= User.find(id).first_name %> <% User.find(id).last_name %></mark></td>
+        <td ><mark><%= User.find(id).first_name %> <%= User.find(id).last_name %></mark></td>
         <td><mark><%= humanized_money number_of_shares %></mark></td>
-        <td ><mark><%= humanized_money number_of_shares.to_f / (@operation.company.number_of_shares.to_f).round(1) %></mark></td>
+        <td ><mark><%= humanized_money (number_of_shares.to_f / (@operation.company.number_of_shares.to_f).round(1))*100 %></mark> %</td>
         <td></td>
       </tr>
     <% end %>

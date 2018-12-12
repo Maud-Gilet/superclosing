@@ -9,7 +9,7 @@
     <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
-          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color"><strong>S</strong></span>ociété</span></i>
+          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color">S</span>ociété</span></i>
         <% end %>
       </div>
     <% else %>
