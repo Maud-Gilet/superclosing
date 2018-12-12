@@ -1,5 +1,6 @@
 class DDocumentsController < ApplicationController
   before_action :set_d_document, only: [:show]
+  skip_before_action :authenticate_user, only: [:show]
 
   def index
     @operation = Operation.find(params[:operation_id])

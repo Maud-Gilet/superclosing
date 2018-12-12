@@ -4,10 +4,10 @@ class DocusignService
   end
 
   def init_envelope
+    name = 'test.pdf'
     content = ApplicationController.render(
       formats: :html,
-      template: 'd_documents/test.html.erb',
-      assigns: { document: @d_document, operation: @operation }
+      template: "d_documents/#{name}.erb"
     )
 
     pdf = WickedPdf.new.pdf_from_string(content)
@@ -16,9 +16,10 @@ class DocusignService
     File.open(file, 'wb') do |f|
       f << pdf
     end
+    { path: file.path, name: name }
   end
 
-  def send_envelope
+  def send_envelope(files)
     document_envelope_response = @client.create_envelope_from_document(
       email: {
         subject: "TEST TEST TEST",
@@ -41,7 +42,7 @@ class DocusignService
           ]
         }
       ],
-      files: [ { path: 'lib/assets/test.pdf', name: 'test.pdf' } ],
+      files: files,
       status: 'sent'
     )
   end
