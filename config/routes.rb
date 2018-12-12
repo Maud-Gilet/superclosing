@@ -12,12 +12,10 @@ Rails.application.routes.draw do
     resources :captables, only: [:show, :new, :create]
     post 'new_nominal', to: 'companies#create_nominal', as: 'create_nominal'
 
-    resources :s_documents, only: [:index, :show, :new, :create, :destroy]
 
     resources :operations, only: [:index, :new, :create] do
       resources :investors, only: [:index, :new, :create]
       resources :investments, only: [:index, :new, :create]
-      resources :s_documents, only: [:index, :show, :new, :create, :destroy]
     end
   end
 
@@ -28,7 +26,9 @@ Rails.application.routes.draw do
       # post "/operations/:id/create_documents", to: "d_documents#create_documents"
     end
     resources :d_documents, only: [:index]
+    resources :s_documents, only: [:index, :show, :new, :create, :destroy]
   end
+
   resources :d_documents, only: :show
   resources :investments, only: [:show, :edit, :update, :destroy]
   resources :roles

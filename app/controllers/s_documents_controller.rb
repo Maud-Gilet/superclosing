@@ -1,12 +1,15 @@
 class SDocumentsController < ApplicationController
-  before_action :set_s_document, only: [:show, :edit, :update]
+  before_action :set_s_documents, only: [:show, :edit, :update]
 
   def index
     @operation = Operation.find(params[:operation_id])
     @s_documents = SDocument.all.where(operation: @operation)
+    @s_document = SDocument.new
+
   end
 
   def show
+    # @s_document = SDocument.find(params[:s_document_id])
   end
 
   def new
@@ -18,7 +21,7 @@ class SDocumentsController < ApplicationController
     @s_document = SDocument.new(s_document_params)
     @s_document.operation = Operation.find(params[:operation_id])
     if @s_document.save
-      redirect_to operation_path(@operation.id), notice: 'Votre document a bien été créé.'
+      redirect_to operation_s_documents_path(@operation.id), notice: 'Votre document a bien été créé.'
     else
       render :new
     end
