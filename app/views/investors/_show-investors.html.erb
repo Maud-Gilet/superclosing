@@ -37,6 +37,10 @@
         <div class="investor-list-header-status">
           <% if invest.status == 'pending' %>
             Invité
+          <% elsif invest.status == 'confirmed' %>
+            Confirmé
+          <% elsif invest.status == 'refused' %>
+            Refusé
           <% end %>
         </div>
         <div class="investor-list-header-delete">
@@ -48,3 +52,21 @@
     </li>
   <% end %>
 </ul>
+
+<div class="investor-list-header">
+  <div class="investor-list-header-name">
+  </div>
+  <div class="investor-list-header-email">
+    <span><strong>Total</strong></span>
+  </div>
+  <div class="investor-list-header-amount">
+    <span><strong>SOMME</strong></span>
+  </div>
+  <div class="investor-list-header-shares">
+    <span><strong>SOMME</strong></span>
+  </div>
+  <div class="investor-list-header-status">
+  </div>
+  <div class="investor-list-header-delete">
+  </div>
+</div>
