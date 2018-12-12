@@ -8,6 +8,11 @@ function refreshChartShow(chartHTML) {
   chart.innerHTML = chartHTML;
 }
 
+function refreshCaptableShow(captableHTML) {
+  const captable = document.getElementById('new-captable-operation');
+  captable.innerHTML = captableHTML;
+}
+
 function refreshSlide(slideHTML) {
   const slide = document.getElementById('slide-show-operation');
   slide.innerHTML = slideHTML;
@@ -15,6 +20,8 @@ function refreshSlide(slideHTML) {
 
 deleteInvestor();
 refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');
+refreshCaptableShow('<%= j render "operations/chart-new-captable-operation", shareholders: @shareholders %>');
 refreshSlide('<%= j render "operations/slide-show-operation", operation: @operation %>');
 graphthird();
+graphfourth();
 
