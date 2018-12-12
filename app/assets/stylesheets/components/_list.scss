@@ -1,7 +1,6 @@
 .captable-list-header {
   margin-top: 20px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   padding: 4px 7px;
   border-top: 1px solid #ffac30;
@@ -108,21 +107,19 @@
 }
 
 .investor-list {
-  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 5px 50px;
+  padding: 5px 15px;
   min-width: 690px;
 }
 
 .investor-list-header {
-  border: 1px solid #323D4E;
-  border-radius: 4px;
+  margin-top: 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  padding: 4px 7px;
+  border-top: 1px solid #ffac30;
+  border-bottom: 1px solid #ffac30;
   & span {
     font-size: 0.8em;
     font-style: italic;
@@ -168,14 +165,39 @@
     opacity: 0.5;
   }
 }
+.investor-list-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .investor-list-add {
-  margin-top: 20px;
+  text-align: center;
+  width: 300px;
+  height: 180px;
+  margin-top: 30px;
+  margin-left: 20px;
   & button {
-    margin-left: 0px;
   }
 }
 
+@media(max-width: 1356px) {
+  .investor-list-add {
+    height: auto;
+  }
+}
 
+.investor-new-captable {
+  width: 450px;
+  margin-top: 30px;
+  margin-right: 15px;
+}
+
+@media(max-width: 1356px) {
+  .investor-list-add {
+    width: auto;
+  }
+}
 
 .doc-list-header-name {
   flex: 1 0 25%;

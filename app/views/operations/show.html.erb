@@ -122,11 +122,16 @@
           <div id="investor-list-partial">
             <%= render 'investors/show-investors', operation: @operation %>
           </div>
-          <div class="investor-list-add">
-            <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
+          <div class="investor-list-footer">
+            <div class="investor-new-captable" id="new-captable-operation">
+              <%= render 'chart-new-captable-operation', shareholders: @shareholders %>
+            </div>
+            <div class="investor-list-add">
+              <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
 
-            <div id="form-add-investor-toggle" class="hidden">
-              <%= render 'form-add-investor', company: @company, operation: @operation %>
+              <div id="form-add-investor-toggle" class="hidden">
+                <%= render 'form-add-investor', operation: @operation %>
+              </div>
             </div>
           </div>
         </div>
