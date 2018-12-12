@@ -107,15 +107,15 @@
           <div id="investor-list-partial">
             <%= render 'investors/show-investors', operation: @operation %>
           </div>
-          <div id="chart-operation-show">
-            <%= render 'chart-show-operation', operation: @operation %>
-          </div>
           <div class="investor-list-add">
-            <button type="button" class="btn-transparent" id="btn-add-investor"> Ajouter un investisseur</button>
+            <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
 
             <div id="form-add-investor-toggle" class="hidden">
               <%= render 'form-add-investor', company: @company, operation: @operation %>
             </div>
+          </div>
+          <div id="chart-operation-show">
+            <%= render 'chart-show-operation', operation: @operation %>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@
 
           <div>
             <%= link_to "" do %>
-              <button style="button" class="btn-transparent">Voir la DataRoom</button>
+              <button style="button" class="btn-transparent-small" id='btn-dataroom'>Accéder à la DataRoom</button>
             <% end %>
           </div>
         </div>
