@@ -145,10 +145,10 @@
           <div id="investor-list-partial">
             <%= render 'dataroom-list', operation: @operation %>
           </div>
-
           <div>
-            <%= link_to "" do %>
-              <button style="button" class="btn-transparent-small" id='btn-dataroom'>Accéder à la DataRoom</button>
+            <%= link_to  operation_s_documents_path(@operation) do %>
+              <button style="button" class="btn-transparent-small">Aller à la DataRoom</button>
+
             <% end %>
           </div>
         </div>
