@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-10 col-sm-4 col-sm-offset-4">
       <div class="form-signup">
-        <h2>Forgot your password?</h2>
+        <h2>Vous avez oublié votre mot de passe ?</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <%= f.error_notification %>
@@ -15,7 +15,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Send me reset password instructions", class: 'btn-form-action' %>
+            <%= f.button :submit, "Envoyez moi les instructions pour obtenir un nouveau mot de passe", class: 'btn-form-action' %>
           </div>
         <% end %>
 

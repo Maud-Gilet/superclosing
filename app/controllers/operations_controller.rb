@@ -12,7 +12,7 @@ class OperationsController < ApplicationController
   def create
     @operation = Operation.new(operation_params)
     @operation.company = Company.find(params[:company_id])
-    @operation.status = "Pending"
+    @operation.status = "pending"
 
     if @operation.save!
       redirect_to operation_path(@operation)
