@@ -1,3 +1,8 @@
+#Info-Rep-inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #edit-company-info {
   font-size: 16px;
   position: absolute;
@@ -11,21 +16,41 @@
   align-items: flex-start;
 }
 .company-show-logo {
-  width: 150px;
+  width: 200px;
   flex: none;
   text-align: center;
-  h3 {
-    font-size: 24px;
-    margin-top: 0px !important;
+  margin-right: auto;
+  margin-left: auto;
+  img {
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
+
 }
 .company-show-infos {
-  width: 50%;
-  text-align: justify;
+  width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .operation-step-description {
   margin-bottom: 100px;
   padding-left: 36px;
+}
+.company-info-card{
+  background-color: #fff;
+  margin-bottom: 20px;
+  min-width: 200px;
+  flex: 1 1 0;
+  margin-right: 20px;
+}
+.company-info-card-body {
+  text-align: center;
+}
+.company-captable-card{
+  background-color: #fff;
+  margin-bottom: 20px;
+  flex: 1 1 0;
 }
 
 
