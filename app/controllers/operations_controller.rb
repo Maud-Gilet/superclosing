@@ -41,9 +41,17 @@ class OperationsController < ApplicationController
 
   def variables_for_charts
     # Defines the total amount of the operation (progression chart)
+    ## Confirmed + Invited
     @shares_values = 0
-    @operation.investments.each do |invest|
+    investments_unconfirmed = Investment.joins(:operation).where("operations.id = ? AND (investments.status = 'confirmed' OR investments.status = 'pending')", @operation.id)
+    investments_unconfirmed.each do |invest|
       @shares_values += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
+    end
+
+    @shares_values_confirmed = 0
+    investments_confirmed = Investment.joins(:operation).where("operations.id = ? AND investments.status = 'confirmed'", @operation.id)
+    investments_confirmed.each do |invest|
+      @shares_values_confirmed += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
     end
 
     # Defines the list of shareholders (dynamic captable with current investments of the operation)
@@ -59,7 +67,7 @@ class OperationsController < ApplicationController
     end
     ## New shareholders
     if @operation.status != 'completed'
-      new_investments = Investment.joins(:operation).where("operations.id = 5 AND (investments.status = 'confirmed' OR investments.status = 'pending')")
+      new_investments = Investment.joins(:operation).where("operations.id = ? AND (investments.status = 'confirmed' OR investments.status = 'pending')", @operation.id)
       new_investments.each do |invest|
         if @shareholders.key?(invest.user_id)
           @shareholders[invest.user_id] += invest.number_of_shares
