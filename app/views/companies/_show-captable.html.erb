@@ -38,7 +38,11 @@
             <%= money_without_cents @company.number_of_shares %> actions
           </div>
           <div class="captable-list-shares-pourcent">
-            100 %
+            <% if @company.number_of_shares == 0 %>
+              -
+            <% else %>
+              100 %
+            <% end %>
           </div>
         </div>
       </strong></li>
