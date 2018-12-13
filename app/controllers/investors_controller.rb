@@ -101,7 +101,7 @@ class InvestorsController < ApplicationController
     end
     ## New shareholders
     if @operation.status != 'completed'
-      new_investments = Investment.joins(:operation).where("operations.id = 5 AND (investments.status = 'confirmed' OR investments.status = 'pending')")
+      new_investments = Investment.joins(:operation).where("operations.id = ? AND (investments.status = ? OR investments.status = ?)", @operation.company.id, 'completed', 'pending')
       new_investments.each do |invest|
         if @shareholders.key?(invest.user_id)
           @shareholders[invest.user_id] += invest.number_of_shares
