@@ -8,7 +8,7 @@
   <p>des fonds collectés</p>
 
   <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
+  <br>Date de fin prévue : <%= @operation.expected_closing_date.strftime( "%d/%m/%Y")%>
   </p>
 
   <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
