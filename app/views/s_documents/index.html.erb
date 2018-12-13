@@ -11,34 +11,37 @@
 
 
   <h1>Data Room</h1>
-  <p>Opération de <%= @operation.category %> : <%= @operation.name %></p>
+  <p>Opération : <%= @operation.category %> - <%= @operation.name %></p>
+  <hr>
 
-  <div class="doc-container">
-    <% @operation.s_documents.each do |sdoc| %>
-      <%= link_to operation_s_document_path(@operation, sdoc) do %>
-        <div class="doc-card partition">
-          <div class="doc-card-body">
-            <div class="doc-card-avatar"><i class="fas fa-file-pdf"></i></div>
-            <div class="doc-card-header"><%= sdoc.title %></div>
+  <div class= "container-add-sdocument" style='display: flex; justify-content: space-between;'>
+    <div class="doc-container">
+      <% @operation.s_documents.each do |sdoc| %>
+        <%= link_to operation_s_document_path(@operation, sdoc), target: :_blank do %>
+          <div class="doc-card partition">
+            <div class="doc-card-body">
+              <div class="doc-card-avatar"><i class="fas fa-file-pdf"></i></div>
+              <div class="doc-card-header"><%= sdoc.title %></div>
+            </div>
           </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class='home-card'>
-    <div class = 'home-card-header'>
-      <h4 class="card-title">Ajouter un nouveau document</h4>
-    </div>
-    <div>
-      <%= simple_form_for [@operation, @s_document] do |f| %>
-       <%= f.input :title, label: "Titre" %>
-       <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
-       <%= f.input :d_url, as: :file, label: "Document (jpg ou pdf)" %>
-       <%= f.input :d_url_cache, as: :hidden %>
-       <%= f.button :submit, "Ajouter" %>
+        <% end %>
       <% end %>
     </div>
-  </div>
 
+    <div class='home-card form-add-sdocument'>
+      <div class = 'home-card-header'>
+        <h4 class="card-title">Ajouter un nouveau document</h4>
+      </div>
+      <div>
+        <%= simple_form_for [@operation, @s_document] do |f| %>
+         <%= f.input :title, label: "Titre" %>
+         <%= f.input :category, collection: ["Statuts", "Kbis", "Pitch", "Comptes", "Autre"], label: "Catégorie" %>
+         <%= f.input :d_url, as: :file, label: "Document (jpg ou pdf)" %>
+         <%= f.input :d_url_cache, as: :hidden %>
+         <%= f.button :submit, "Ajouter" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
