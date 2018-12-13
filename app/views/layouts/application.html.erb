@@ -42,11 +42,8 @@
       <div class='pages-wrapper'>
         <%= render 'shared/sidebar' %>
         <div class='main'>
-          <%= render 'shared/navbar' %>
           <%= render 'shared/flashes' %>
-          <div class = 'page-content'>
-            <%= yield %>
-          </div>
+          <%= yield %>
         </div>
       </div>
 

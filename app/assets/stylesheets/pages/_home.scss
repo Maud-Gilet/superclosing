@@ -50,17 +50,21 @@
   margin-bottom: 30px;
 }
 .step-card {
-  width: 16vw;
+  flex: 1 1 0;
+  margin:10px;
+  min-width: 180px;
   background: #fff;
   box-shadow: 1px 3px 4px 0px #2c3c4c2b;
   .step-card-header{
     text-align: center;
     font-weight: bolder;
     padding: 10px;
+    word-break:break-word;
   }
   .step-card-body{
     text-align: justify;
     font-size: 14px;
     padding: 16px;
+    word-break:break-word;
   }
 }

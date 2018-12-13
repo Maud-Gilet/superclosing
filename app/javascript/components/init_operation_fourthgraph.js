@@ -1,9 +1,9 @@
 import Chart from "chart.js"
 
-const graph = ()=>{
-  var ctx = document.getElementById("myChart").getContext('2d');
-  var shares = document.getElementById("myChart").dataset.share.split(",");
-  var labels = document.getElementById("myChart").dataset.label.split(",");
+const graphfourth = ()=>{
+  var ctx = document.getElementById("chart-fourth").getContext('2d');
+  var shares = document.getElementById("chart-fourth").dataset.share.split(",");
+  var labels = document.getElementById("chart-fourth").dataset.label.split(",");
   var myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
@@ -12,23 +12,24 @@ const graph = ()=>{
               label: '# of Votes',
               data: shares,
               backgroundColor: [
-                  '#2D3D4D',
-                  '#52708d',
-                  '#6b8fb2',
-                  '#8bb8e5',
-                  '#bfddfb'
+                  '#0d627a',
+                  '#0c907d',
+                  '#40a8c4',
+                  '#cce490',
+                  '#a6cb12'
               ],
               borderColor: [
-                  '#2D3D4D',
-                  '#52708d',
-                  '#6b8fb2',
-                  '#8bb8e5',
-                  '#bfddfb'
+                  '#0d627a',
+                  '#0c907d',
+                  '#40a8c4',
+                  '#cce490',
+                  '#a6cb12'
               ],
               borderWidth: 1
           }]
       },
       options: {
+          responsive: true,
           scales: {
               yAxes: [{
                   gridLines: {
@@ -47,9 +48,9 @@ const graph = ()=>{
           legend: {
             position: 'right',
             labels: {
-              padding: 20,
+              padding: 14,
               fontFamily: 'Barlow',
-              fontSize: 16
+              fontSize: 12
             }
 
           }
@@ -57,5 +58,4 @@ const graph = ()=>{
   });
 };
 
-export { graph };
-
+export { graphfourth };

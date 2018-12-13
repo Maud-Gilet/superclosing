@@ -1,27 +1,28 @@
-<h1>Liste des documents dynamiques générés</h1>
-
-<ul>
-  <% @other_documents.each do |d_document| %>
-    <li>
-      <%= link_to d_document.title, d_document_path(d_document), target: :_blank %>
-    </li>
-  <% end %>
-</ul>
-
-<ul>
-  <%# @users.each do |user| %>
-    <%#= link_to "#{user.subscription_bund.title}", d_document_path(user.subscription_bund) %>
-  <%# end %>
-
-  <% @users.each_with_index do |user, i| %>
-    <% subscription_bund = @subscription_bunds[i] %>
-    <li>
-      <%= link_to "#{subscription_bund.title}", d_document_path(subscription_bund, user_id: user), target: :_blank %>
-    </li>
-  <% end %>
-</ul>
+<div class="main-width">
 
 
-<%= link_to send_signatures_path do %>
-  <button style="button" class="btn-transparent-small">Lancer les signatures</button>
-<% end %>
+  <h1>Documents à Signer</h1>
+  <p>Opération de <%= @operation.category %> : <%= @operation.name %></p>
+
+  <div class="doc-container">
+    <% @operation.d_documents.each do |ddoc| %>
+      <%= link_to d_document_path(@operation, ddoc) do %>
+        <div class="doc-card partition">
+          <div class="sign-card-logo">
+            <i class="fas fa-edit"></i>
+          </div>
+          <div class="doc-card-body">
+            <div class="doc-card-avatar">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="sign-card-header">
+              <%= ddoc.title %>
+              <i class="fas fa-envelope"></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

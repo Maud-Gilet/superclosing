@@ -31,7 +31,7 @@
 }
 
 .btn-landing-signup:hover {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
@@ -53,23 +53,36 @@
   color: white;
   text-decoration: none;
 }
-
-.btn-form-action {
+input[type="submit"] {
   background: #ffac30;
   color: white;
   font-size: 0.8em;
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: none;
-  padding: 8px 20px;
+  padding: 10px 20px;
   margin-top: 10px;
   margin-bottom: 15px;
   border-radius: 4px;
   box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.4);
   opacity: 1;
 }
+.btn-form-action {
+  background: #ffac30;
+  color: white;
+  font-size: 0.8em !important;
+  font-weight: 500 !important;
+  text-decoration: none;
+  border-radius: 6px !important;
+  border: 2px solid #ffac30;
+  padding: 6px 12px !important;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
 
 .btn-form-action:hover {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
@@ -89,12 +102,12 @@
 }
 
 .btn-transparent:hover {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
 .btn-transparent:active {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
@@ -114,10 +127,31 @@
 }
 
 .btn-transparent-small:hover {
-  background: #ffa118;
+  background: #ffac30;
   color: white;
   text-decoration: none;
 }
+
+.btn-transparent-xtra-small {
+  background-color: inherit;
+  border: 1px solid #ffac30;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #ffac30;
+  font-size: 0.7em;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.18);
+}
+
+.btn-transparent-xtra-small:hover {
+  background: #ffac30;
+  color: white;
+  text-decoration: none;
+}
+
 
 .btn-add-company {
   width:100px;
@@ -168,4 +202,27 @@
   text-decoration: none;
   color: $red;
   background-color: #fdecec;
+}
+.btn-slide {
+  width: 160px;
+  color: white;
+  background: #ffac30;
+  border-radius: 6px !important;
+  font-size: 0.8em !important;
+  font-weight:500 !important;
+  padding: 6px 12px !important;
+  margin-top: 12px !important;
+  margin-bottom :0px !important;
+  border: 2px solid #ffac30;
+  .fas:before {
+    font-family: "Font Awesome 5 Free";
+    margin-left: 7px;
+    font-size: 0.8em !important;
+  }
+}
+.btn-slide:hover {
+  text-decoration: none;
+  color: #ffac30 !important;
+  border: 2px solid #ffac30 ;
+  background: white;
 }

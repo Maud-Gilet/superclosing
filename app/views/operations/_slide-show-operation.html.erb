@@ -8,11 +8,12 @@
   <p>des fonds collectés</p>
 
   <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Date de fin prévue : <%= @operation.expected_closing_date%>
+  <br>Date de fin prévue : <%= @operation.expected_closing_date.strftime( "%d/%m/%Y")%>
   </p>
 
   <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
-    <%= f.submit 'Lancer les signatures', class: 'btn btn-form-action small' %>
+    <%= f.submit 'Lancer les signatures', class: 'btn-slide' %>
+     <i class="fas fa-file-signature"></i>
 
   <% end %>
 </div>

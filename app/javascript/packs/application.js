@@ -17,6 +17,7 @@ import { displayInvestorForm } from '../components/operation-show_add_investor';
 import { graph } from '../components/init_operation_graph'
 // import { graphsecond } from '../components/init_operation_secondgraph'
 import { graphthird } from '../components/init_operation_thirdgraph'
+import { graphfourth } from '../components/init_operation_fourthgraph'
 
 // Dynamic text for landing page banner
 import { loadDynamicBannerText } from '../components/typed_landing';
@@ -59,6 +60,11 @@ if(document.getElementById('chart-third')){
  graphthird();
 }
 window.graphthird = graphthird;
+
+if(document.getElementById('new-captable-operation')){
+ graphfourth();
+}
+window.graphfourth = graphfourth;
 
 if(document.getElementById('typed_text')){
   loadDynamicBannerText();
