@@ -1,9 +1,9 @@
-<div style= 'text-align: center; margin-bottom: 40px; margin-top:20px;'>
+<div style= 'text-align: center; margin-top: 40px;'>
   <h3> Toutes les opérations pour <%= @company.name %></h3>
 </div>
 
 
-<div class='home-card' id='show-operations-card'>
+<div class='home-card' id='show-operations-card' >
 
   <div class="home-card-body operation-body">
     <div class="operation-list-card">
@@ -34,7 +34,7 @@
             <li>
               <div class="operation-list-content">
                 <div class="operation-list-name">
-                  <h5><%= operation.name %></h5>
+                  <h5><strong><%= operation.name %></strong></h5>
                 </div>
                 <div class="operation-list-category">
                   <h5><%= operation.category %></h5>
@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<div style="text-align: right;">
+<div style="text-align: right; ">
   <a href="" class="btn btn-transparent-small" data-toggle="modal" data-target="#modalOperationCreation">Nouvelle opération</a>
 </div>
 
