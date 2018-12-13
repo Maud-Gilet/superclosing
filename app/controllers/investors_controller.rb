@@ -9,37 +9,44 @@ class InvestorsController < ApplicationController
   end
 
   def create
-    @operation = Operation.find(params[:operation_id])
-    @company = @operation.company
-    @email = params[:email]
-    @price_per_share_operation = (@operation.premoney / @company.number_of_shares.to_i).round(2)
-    @share_premium = @price_per_share_operation - @company.share_nominal_value
-
-    @number_of_shares = (params[:amount].to_i / @price_per_share_operation.to_f).round(0)
-    @final_amount = @number_of_shares * @price_per_share_operation
-
-    if @user = User.find_by(email: @email)
-
-      create_role_investor unless user_role_exist?
-
-    # Edit a mail to the Investor
-    else
-      @user = User.invite!(email: @email)
-      create_role_investor
-    end
-    if investment_exist?
+    if params[:email] == ''
       respond_to do |format|
-        format.html { redirect_to operation_path(@operation), alert: 'Cet investisseur a déjà été ajouté à cette opération' }
+        format.html { redirect_to operation_path(@operation), alert: "Attention, aucune adresse mail n'a été renseignée" }
         format.js # <-- will render `app/views/investors/create.js.erb`
       end
     else
-      create_investment
+      @operation = Operation.find(params[:operation_id])
+      @company = @operation.company
+      @email = params[:email]
+      @price_per_share_operation = (@operation.premoney / @company.number_of_shares.to_i).round(2)
+      @share_premium = @price_per_share_operation - @company.share_nominal_value
 
-      refresh_values_for_ajax
+      @number_of_shares = (params[:amount].to_i / @price_per_share_operation.to_f).round(0)
+      @final_amount = @number_of_shares * @price_per_share_operation
 
-      respond_to do |format|
-        format.html { redirect_to operation_path(@operation), alert: 'Cet investisseur a été ajouté à cette opération' }
-        format.js  # <-- will render `app/views/investors/create.js.erb`
+      if @user = User.find_by(email: @email)
+
+        create_role_investor unless user_role_exist?
+
+      # Edit a mail to the Investor
+      else
+        @user = User.invite!(email: @email)
+        create_role_investor
+      end
+      if investment_exist?
+        respond_to do |format|
+          format.html { redirect_to operation_path(@operation), alert: 'Cet investisseur a déjà été ajouté à cette opération' }
+          format.js # <-- will render `app/views/investors/create.js.erb`
+        end
+      else
+        create_investment
+
+        refresh_values_for_ajax
+
+        respond_to do |format|
+          format.html { redirect_to operation_path(@operation), alert: 'Cet investisseur a été ajouté à cette opération' }
+          format.js  # <-- will render `app/views/investors/create.js.erb`
+        end
       end
     end
   end
