@@ -20,10 +20,11 @@
 .graph-third {
   margin-top: 10px;
   margin-bottom: 30px;
+  margin-right: 10px;
 }
 #chart-third {
-  width: 500px !important;
-  height: 60px !important;
+  width: 100%;
+  height: 30px !important;
 }
 .indicateurs {
   display: flex;
@@ -54,5 +55,20 @@
 .graph-container {
   display: flex;
 }
-
+.investor-new-captable {
+  width: 400px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+#chart-fourth{
+  height: 225px;
+  width: auto;
+}
+.investors-corner {
+  display: block !important;
+}
+.investor-list-footer {
+  display: flex;
+}
 
