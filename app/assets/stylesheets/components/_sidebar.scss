@@ -19,9 +19,9 @@
   align-items: center;
 }
 .sidebar-bottom{
-  margin-top: 28vh;
-  left: 0px;
-  bottom: 28px;
+  position: sticky;
+
+  top: 92vh;
   color: #e2e2e4;
   font-weight: 300;
   font-family: 'Barlow';

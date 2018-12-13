@@ -2,12 +2,34 @@
   <h4>Lancez une nouvelle opération !</h4>
 
   <div class="text-align-center">
-    <%= link_to new_company_operation_path(@company) do %>
-      <button style="button" class="btn btn-slide">Lancer    <i class="fas fa-rocket"></i></button>
-    <% end %>
+
+     <a href="" class="btn btn-slide" data-toggle="modal" data-target="#modalOperationCreation">Lancer <i class="fas fa-rocket"></i></a>
   </div>
 
 </div>
 
 
 
+<div class="modal fade" id="modalOperationCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header text-center">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title w-100 font-weight-bold"><strong>Nouvelle opération</strong></h4>
+    </div>
+    <div class="modal-body mx-3">
+      <%= simple_form_for [@company, @ope = Operation.new] do |f| %>
+        <%= f.input :name, label: 'Donnez un nom à cette opération'  %>
+
+        <%= f.input :category, collection: ["Attribution gratuite d'actions", 'Levée de fonds', 'Emission de BSPCE', 'Emission de BSA'], label: 'Quelle opération voulez-vous réaliser ?' %>
+
+        <div id="form-fundraising" class="hidden">
+          <%= render 'operations/form-fundraising', company: @company, operation: @ope %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

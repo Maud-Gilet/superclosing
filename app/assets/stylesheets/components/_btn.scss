@@ -117,7 +117,7 @@ input[type="submit"] {
   border: 1px solid #ffac30;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #ffac30;
+  color: #ffac30 !important;
   font-size: 0.8em;
   font-weight: 300;
   text-decoration: none;
@@ -128,7 +128,7 @@ input[type="submit"] {
 
 .btn-transparent-small:hover {
   background: #ffac30;
-  color: white;
+  color: white !important;
   text-decoration: none;
 }
 
@@ -180,28 +180,36 @@ input[type="submit"] {
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  background: $green;
+  border: 2px solid #ffac30;
+  background: #ffac30 ;
   color: white;
+  border-radius: 4px;
 }
 
 .btn-cancel-operation {
   margin-top: 20px;
   margin-left: 30px;
   background: inherit;
-  border: 1px solid $red;
-  color: $red;
+  opacity: 0.6;
+  border: 2px solid #2D3D4D;
+  color: #2D3D4D;
+  border-radius: 4px;
 }
 
 .btn-create-operation:hover {
   text-decoration: none;
-  color: white;
-  opacity: 0.8;
+  color: #ffac30;
+  border: 2px solid #ffac30;
+  background-color: white;
+  cursor: pointer;
 }
 
 .btn-cancel-operation:hover {
   text-decoration: none;
-  color: $red;
-  background-color: #fdecec;
+  color:  #2D3D4D;
+  opacity: 1;
+  border: 2px solid #2D3D4D;
+  cursor: pointer;
 }
 .btn-slide {
   width: 160px;

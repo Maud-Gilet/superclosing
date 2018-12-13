@@ -1,83 +1,95 @@
-<div>
+<div style= 'text-align: center; margin-bottom: 40px; margin-top:20px;'>
   <h3> Toutes les opérations pour <%= @company.name %></h3>
 </div>
-<div>
-  <%= link_to new_company_operation_path(@company) do %>
-    <button style="button" class="btn-transparent-small">Nouvelle opération</button>
-  <% end %>
-</div>
 
-<ul>
-  <% @operations.each do |operation| %>
-    <% unless operation.category == 'initialize-captable' %>
-      <li>
-        <div class="operation-list">
-          <div class="operation-list-category">
-            <div>
+
+<div class='home-card' id='show-operations-card'>
+
+  <div class="home-card-body operation-body">
+    <div class="operation-list-card">
+      <ul >
+        <li>
+          <div class="operation-list-header">
+            <div class="operation-list-name">
+              <span>Nom</span>
+            </div>
+            <div class="operation-list-category">
               <span>Catégorie</span>
             </div>
-            <div>
-              <h5><%= operation.category %></h5>
+            <div class="operation-list-amount">
+              <span>Montant visé</span>
+            </div>
+            <div class="operation-list-date">
+              <span>Date de réalisation estimée</span>
+            </div>
+            <div class="operation-list-status">
+              <span>Statut</span>
+            </div>
+            <div class="operation-list-btn">
             </div>
           </div>
-          <div class="operation-list-amount">
-            <% if operation.status == 'completed' %>
-              <div>
-                <span>Montant de l'opération</span>
+        </li>
+        <% @company.operations.each do |operation| %>
+          <% unless operation.category == 'initialize-captable' %>
+            <li>
+              <div class="operation-list-content">
+                <div class="operation-list-name">
+                  <h5><%= operation.name %></h5>
+                </div>
+                <div class="operation-list-category">
+                  <h5><%= operation.category %></h5>
+                </div>
+                <div class="operation-list-amount">
+                  <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
+                </div>
+                <div class="operation-list-date">
+                   <h5><%= operation.expected_closing_date.strftime("%d/%m/%Y") %></h5>
+                </div>
+                <div class="operation-list-status">
+                  <% if operation.status == 'completed' %>
+                    <h5><strong>Finalisée</strong></h5>
+                  <% else %>
+                    <h5><strong>En cours</strong></h5>
+                  <% end %>
+                </div>
+                <div class="operation-list-btn">
+                  <%= link_to operation_path(operation) do %>
+                    <button style="button" class="btn-transparent-xtra-small">Détails</button>
+                  <% end %>
+                </div>
               </div>
-              <div>
-                <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-              </div>
-            <% else %>
-              <div>
-                <span>Montant visé</span>
-              </div>
-              <div>
-                <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
-              </div>
-            <% end %>
-          </div>
-          <div class="operation-list-closing-date">
-            <% if operation.status == 'completed' %>
-              <div>
-                <span>Date de réalisation</span>
-              </div>
-              <div>
-                <h5><%= operation.expected_closing_date %></h5>
-              </div>
-            <% else %>
-              <div>
-                <span>Date de réalisation estimée</span>
-              </div>
-              <div>
-                <h5><%= operation.expected_closing_date %></h5>
-              </div>
-            <% end %>
-          </div>
-          <div class="operation-list-status">
-            <% if operation.status == 'completed' %>
-              <div>
-                <span>Status</span>
-              </div>
-              <div>
-                <h5><strong>Finalisée</strong></h5>
-              </div>
-            <% else %>
-              <div>
-                <span>Status</span>
-              </div>
-              <div>
-                <h5><strong>En cours</strong></h5>
-              </div>
-            <% end %>
-          </div>
-          <div class="operation-list-link">
-            <%= link_to operation_path(operation) do %>
-              <button style="button" class="btn-transparent-small">Détails</button>
-            <% end %>
-          </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="text-align: right;">
+  <a href="" class="btn btn-transparent-small" data-toggle="modal" data-target="#modalOperationCreation">Nouvelle opération</a>
+</div>
+
+<div class="modal fade" id="modalOperationCreation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header text-center">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title w-100 font-weight-bold"><strong>Nouvelle opération</strong></h4>
+    </div>
+    <div class="modal-body mx-3">
+      <%= simple_form_for [@company, @ope = Operation.new] do |f| %>
+        <%= f.input :name, label: 'Donnez un nom à cette opération'  %>
+
+        <%= f.input :category, collection: ["Attribution gratuite d'actions", 'Levée de fonds', 'Emission de BSPCE', 'Emission de BSA'], label: 'Quelle opération voulez-vous réaliser ?' %>
+
+        <div id="form-fundraising" class="hidden">
+          <%= render 'form-fundraising', company: @company, operation: @ope %>
         </div>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+
+      <% end %>
+    </div>
+  </div>
+</div>
