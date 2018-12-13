@@ -4,11 +4,14 @@
     <p>En cours</p>
     <% end %>
 
-  <h4 class="huge"><%= (money_without_cents @shares_values * 10000 / @operation.target_amount_cents) %> %</h4>
-  <p>des fonds collectés</p>
-
+  <% unless @operation.target_amount %>
+    <h4 class="huge"><%= (money_without_cents @shares_values * 100 / @operation.target_amount) %> %</h4>
+    <p>des fonds collectés</p>
+  <% end %>
   <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
-  <br>Date de fin prévue : <%= @operation.expected_closing_date.strftime( "%d/%m/%Y")%>
+  <% unless @operation.expected_closing_date.nil? %>
+    <br>Date de fin prévue : <%= @operation.expected_closing_date.strftime( "%d/%m/%Y")%>
+  <% end %>
   </p>
 
   <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>

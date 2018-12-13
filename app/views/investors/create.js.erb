@@ -3,6 +3,18 @@ function closeForm() {
   formField.className = "hidden";
 }
 
+function regenerateButton() {
+  const buttonAddDiv = document.getElementById("add-investor-btn-show");
+  buttonAddDiv.insertAdjacentHTML('afterbegin', '<button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>');
+  const buttonAdd = document.getElementById("btn-add-investor");
+  const formField = document.getElementById("form-add-investor-toggle");
+  buttonAdd.addEventListener('click', (event) => {
+    buttonAddDiv.innerHTML = "";
+    formField.className = "";
+  });
+};
+
+
 function refreshForm() {
   const email = document.getElementById("query_email");
   const amount = document.getElementById("query_amount");
@@ -33,6 +45,7 @@ function refreshSlide(slideHTML) {
 
 <% if @investment.errors.any? %>
   closeForm();
+  regenerateButton();
   refreshForm();
 <% else %>
   refreshInvestors('<%= j render "investors/show-investors", operation: @operation %>');
@@ -42,5 +55,6 @@ function refreshSlide(slideHTML) {
   graphthird();
   graphfourth();
   closeForm();
+  regenerateButton();
   refreshForm();
 <% end %>

@@ -3,6 +3,11 @@ function deleteInvestor () {
   .remove();
 };
 
+function refreshInvestors(shareholderHTML) {
+  const refreshInvestors = document.getElementById('investor-list-partial');
+  refreshInvestors.innerHTML = shareholderHTML;
+}
+
 function refreshChartShow(chartHTML) {
   const chart = document.getElementById('chart-operation-show');
   chart.innerHTML = chartHTML;
@@ -19,6 +24,7 @@ function refreshSlide(slideHTML) {
 }
 
 deleteInvestor();
+refreshInvestors('<%= j render "investors/show-investors", operation: @operation %>');
 refreshChartShow('<%= j render "operations/chart-show-operation", operation: @operation %>');
 refreshCaptableShow('<%= j render "operations/chart-new-captable-operation", shareholders: @shareholders %>');
 refreshSlide('<%= j render "operations/slide-show-operation", operation: @operation %>');

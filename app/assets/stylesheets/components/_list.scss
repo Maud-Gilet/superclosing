@@ -214,7 +214,7 @@
 }
 .investor-list-footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -225,12 +225,6 @@
   margin-top: 30px;
   margin-left: 20px;
   & button {
-  }
-}
-
-@media(max-width: 1356px) {
-  .investor-list-add {
-    height: auto;
   }
 }
 
