@@ -24,6 +24,7 @@ gem 'postmark-rails'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '0.12.3.1'
+gem 'docusign_rest'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

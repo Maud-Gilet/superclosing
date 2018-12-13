@@ -76,6 +76,9 @@ GEM
     devise_invitable (1.7.5)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
+    docusign_rest (0.4.4)
+      json
+      multipart-post (>= 1.2)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.5.0)
@@ -130,6 +133,7 @@ GEM
       railties (>= 3.0)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
@@ -260,6 +264,7 @@ DEPENDENCIES
   cloudinary (~> 1.9.1)
   devise (~> 4.2)
   devise_invitable (~> 1.7.0)
+  docusign_rest
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
   jbuilder (~> 2.0)
