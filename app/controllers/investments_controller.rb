@@ -101,7 +101,7 @@ class InvestmentsController < ApplicationController
     @s_document = SDocument.new
     @d_document = DDocument.new
 
-    ## Historic shareholders
+   ## Historic shareholders
     investments = Investment.joins(operation: :company).where("companies.id = ? AND operations.status = 'completed'", @operation.company.id)
     @shareholders = {}
     investments.each do |invest|
