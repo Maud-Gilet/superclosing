@@ -4,30 +4,33 @@ const graphthird = () => {
   var ctx = document.getElementById('chart-third');
   var data1 = document.getElementById("chart-third").dataset.share.split("-")[0];
   var data2 = document.getElementById("chart-third").dataset.share.split("-")[1];
+  var data3 = document.getElementById("chart-third").dataset.share.split("-")[2];
 
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
-      labels: ['Suivi levée'],
+      labels: ['Confirmé', 'Invité'],
       datasets: [
         {
-          label: '',
+          label: 'Confirmé',
           data: [data1],
           backgroundColor: ['#0c907d'],
         },
         {
-          label: '',
+          label: 'Invité',
           data: [data2],
           backgroundColor: ['#add2c9'],
+        },
+        {
+          label: '',
+          data: [data3],
+          backgroundColor: ['red'],
         },
       ],
     },
     options: {
       tooltips:{
         enabled: false
-      },
-      legend:{
-        display: false
       },
       scales: {
         xAxes: [{
@@ -56,6 +59,9 @@ const graphthird = () => {
             }
           },
         }],
+      },
+      legend: {
+        labels: false
       }
     },
   });
