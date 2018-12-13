@@ -1,5 +1,5 @@
 <div class="graph graph-third">
-  <p> <strong>Progression : </strong><%= (@shares_values_confirmed * 100 / @operation.target_amount.to_f.round(0)) %> % (confirmés) - <%= (@shares_values * 100 / @operation.target_amount.to_f.round(0)) %> % (avec invités)</p>
+  <p> <strong>Progression : </strong><%= (@shares_values * 100 / @operation.target_amount.to_f.round(0)) %> %</p>
 
   <canvas id="chart-third" data-share="<%= @shares_values_confirmed %> - <%= @shares_values - @shares_values_confirmed %> - <%= (@operation.target_amount - @shares_values) %>">
   </canvas>
