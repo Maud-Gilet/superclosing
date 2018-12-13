@@ -40,10 +40,9 @@
     margin-bottom: 30px;
   }
 }
-
 #form-fundraising.hidden {
   display: none;
 }
-.flatpickr-calendar {
-  z-index: 4000;
+.flatpickr-calendar.open {
+  z-index: 9999 !important;
 }
