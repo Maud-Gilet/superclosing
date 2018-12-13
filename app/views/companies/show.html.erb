@@ -1,87 +1,52 @@
-<div id="slide-show-company">
-  <%= render 'slide-show-company', company: @company, operation: @operation %>
-</div>
+<div class="main-width">
 
-  <!-- =================================== Bar de progression ci-dessous -->
+  <div id="slide-show-company">
+    <%= render 'slide-show-company', company: @company, operation: @operation %>
+  </div>
 
 
-  <div class="progress">
-    <div class="start-end"></div>
-
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rectangle">
-
+  <div id="Info-Rep-inline">
+    <div class='company-info-card'>
+      <div class = 'home-card-header' id='comp'>
+        <h4>Informations</h4>
+        <%= link_to edit_company_path(@company.id) do %>
+          <i class="far fa-edit" id='edit-company-info'></i>
+        <% end %>
       </div>
-      <div style="background: repeating-linear-gradient(
-          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rond">
-        <p style="font-weight: bold; font-size: 20px; color: #2D3D4D">1</p>
-      </div>
+      <div class='company-info-card-body'>
+        <div class='company-show-logo'>
+          <strong><%= @company.name %></strong>
+          <% if @company.logo_url.file == nil %>
+            <img src="https://via.placeholder.com/120" class="logo">
+          <% else %>
+          <p> <%= cl_image_tag @company.logo_url, height: 120, width: 120, crop: :fit %></p>
+            <% end %>
+        </div>
+        <div class='company-show-infos'>
+          <div class='home-card' id='company-info-card'>
+            <p> <strong>SIREN</strong> <br> <%= @company.siren %> </p>
+            <p> <strong>Forme sociale</strong> <br> <%= @company.legal_form %> </p>
+            <p> <strong>Siège social</strong> <br>  <%= @company.address %></p>
 
-    <div id="deux" class="rectangle">
-
-    </div>
-    <div id="deux" class="rond">
-      <p >2</p>
-    </div>
-
-    <div id="trois" class="rectangle">
-    </div>
-    <div id="trois" class="rond">
-      <p>3</p>
-    </div>
-    <div id="quatre" class="rectangle">
-    </div>
-
-    <div class="start-end"></div>
-
-</div>
-
-
-<!-- =================================== Bar de progression ci-dessus -->
-
-<div id="Info-Rep-inline">
-  <div class='company-info-card'>
-    <div class = 'home-card-header' id='comp'>
-      <h4>Informations</h4>
-      <%= link_to edit_company_path(@company.id) do %>
-        <i class="far fa-edit" id='edit-company-info'></i>
-      <% end %>
-    </div>
-    <div class='company-info-card-body'>
-      <div class='company-show-logo'>
-        <strong><%= @company.name %></strong>
-        <% if @company.logo_url.file == nil %>
-          <img src="https://via.placeholder.com/120" class="logo">
-        <% else %>
-        <p> <%= cl_image_tag @company.logo_url, height: 120, width: 120, crop: :fit %></p>
-          <% end %>
-      </div>
-      <div class='company-show-infos'>
-        <div class='home-card' id='company-info-card'>
-          <p> <strong>SIREN</strong> <br> <%= @company.siren %> </p>
-          <p> <strong>Forme sociale</strong> <br> <%= @company.legal_form %> </p>
-          <p> <strong>Siège social</strong> <br>  <%= @company.address %></p>
-
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class='company-captable-card'>
-    <div class = 'home-card-header'>
-      <h4>Répartition du capital</h4>
-      <%= link_to new_company_captable_path(@company.id) do %>
-        <i class="far fa-edit" id='edit-company-info'></i>
-      <% end %>
+    <div class='company-captable-card'>
+      <div class = 'home-card-header'>
+        <h4>Répartition du capital</h4>
+        <%= link_to new_company_captable_path(@company.id) do %>
+          <i class="far fa-edit" id='edit-company-info'></i>
+        <% end %>
+      </div>
+
+      <%= render 'show-captable' %>
     </div>
-
-    <%= render 'show-captable' %>
   </div>
+
+
 </div>
-
-<%= render 'show-operations' %>
-
-
 
 
 
