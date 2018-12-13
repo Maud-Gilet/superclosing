@@ -1,5 +1,6 @@
 class DDocumentsController < ApplicationController
-  before_action :set_d_document, only: [:show, :sign_documents]
+  before_action :set_d_document, only: [:show]
+  before_action :set_operation, only: [:create_documents, :sign_documents]
 
   def index
     @operation = Operation.find(params[:operation_id])
@@ -31,8 +32,7 @@ class DDocumentsController < ApplicationController
   end
 
   def create_documents
-    @operation = Operation.find(params[:id])
-    DDocument.destroy_all
+    DDocument.where(operation_id: @operation).delete_all
 
     @d_document = DDocument.new(title: "PV d'Assemblée Générale de #{@operation.company.name}", document_type: 'pv_opening', operation: @operation, status: 'unsigned')
     @d_document.save!
@@ -82,6 +82,10 @@ class DDocumentsController < ApplicationController
 
   def set_d_document
     @d_document = DDocument.find(params[:id])
+  end
+
+  def set_operation
+    @operation = Operation.find(params[:id])
   end
 
   def list_shareholders
