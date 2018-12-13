@@ -4,114 +4,112 @@
   <%= render 'slide-show-operation', company: @company, operation: @operation %>
 </div>
 
-<!-- ============================= DIV MAIN WIDTH : ne pas TOUCHER SVP -->
-<div class="main-width">
 
 
-  <!-- =================================Bar de progression ci-dessous -->
-
-  <div class="progress">
-    <div class="start-end"></div>
 
 
-      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; id="un" class="rectangle">
+<!-- =================================Bar de progression ci-dessous -->
+
+<div class="progress">
+  <div class="start-end"></div>
+
+
+    <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; id="un" class="rectangle">
+    </div>
+    <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rond">
+      <p style="font-weight: bold; font-size: 20px; color: #2D3D4D;">1</p>
+    </div>
+
+    <% if (@operation.target_amount - @shares_values).positive? %>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rectangle">
       </div>
-      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="un" class="rond">
-        <p style="font-weight: bold; font-size: 20px; color: #2D3D4D;">1</p>
+      <div style="background: repeating-linear-gradient(
+          -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rond">
+        <p style="font-weight: bold; font-size: 20px; color: #2D3D4D">2</p>
       </div>
+    <% else %>
+      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; id="deux" class="rectangle">
+      </div>
+      <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rond">
+        <p style="font-weight: bold; font-size: 20px; color: #2D3D4D;">2</p>
+      </div>
+    <% end %>
 
-      <% if (@operation.target_amount - @shares_values).positive? %>
-        <div style="background: repeating-linear-gradient(
-            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rectangle">
-        </div>
-        <div style="background: repeating-linear-gradient(
-            -45deg, #FFECCA, #FFECCA 8px, #F3BE69 8px, #F3BE69 16px); color: white;box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rond">
-          <p style="font-weight: bold; font-size: 20px; color: #2D3D4D">2</p>
-        </div>
-      <% else %>
-        <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; id="deux" class="rectangle">
-        </div>
-        <div style="background-color: #F3BE69; color: white; box-shadow: 1px 1px 5px grey; padding-top: 5px;" id="deux" class="rond">
-          <p style="font-weight: bold; font-size: 20px; color: #2D3D4D;">2</p>
-        </div>
-      <% end %>
-
-    <div id="trois" class="rectangle">
-    </div>
-    <div id="trois" class="rond">
-      <p>3</p>
-    </div>
-    <div id="quatre" class="rectangle">
-    </div>
-
-
-    <div class="start-end"></div>
-
+  <div id="trois" class="rectangle">
   </div>
-  <!-- ================================= -->
-
-  <div class='page-header'>
-     <h4>Vous y êtes presque !</h4>
+  <div id="trois" class="rond">
+    <p>3</p>
+  </div>
+  <div id="quatre" class="rectangle">
   </div>
 
-  <div>
-    <div class='home-card'>
-      <div class = 'home-card-header'>
-        <h4 class="card-title">Le club des Investisseurs</h4>
-      </div>
-      <div class="investors-corner">
-        <div class="investor-list">
-          <div id="chart-operation-show">
-            <%= render 'chart-show-operation', operation: @operation %>
-          </div>
-          <div id="investor-list-partial">
-            <%= render 'investors/show-investors', operation: @operation %>
-          </div>
-          <div class="investor-list-footer">
-            <div class="investor-new-captable" id="new-captable-operation">
-              <%= render 'chart-new-captable-operation', shareholders: @shareholders %>
-            </div>
-            <div class="investor-list-add">
-              <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
 
-              <div id="form-add-investor-toggle" class="hidden">
-                <%= render 'form-add-investor', operation: @operation %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='home-card'>
-      <div class = 'home-card-header'>
-        <h4 class="card-title">La Data Room</h4>
-      </div>
-      <div class="operation-card-body-text">
-        INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
-      </div>
-      <div class="investors-corner">
-        <div class="investor-list">
-          <div id="investor-list-partial">
-            <%= render 'dataroom-list', operation: @operation %>
-          </div>
-          <div>
-            <%= link_to  operation_s_documents_path(@operation) do %>
-              <button style="button" class="btn-transparent-small">Aller à la DataRoom</button>
-
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <hr>
-  <div style="text-align: center;">
-    <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
-    <br>
-    <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
-  </div>
+  <div class="start-end"></div>
 
 </div>
+<!-- ================================= -->
+
+<div class='page-header'>
+   <h4>Vous y êtes presque !</h4>
+</div>
+
+
+<div class='home-card'>
+  <div class = 'home-card-header'>
+    <h4 class="card-title">Le club des Investisseurs</h4>
+  </div>
+  <div class="investors-corner">
+
+    <div id="chart-operation-show">
+      <%= render 'chart-show-operation', operation: @operation %>
+    </div>
+    <div id="investor-list-partial">
+      <%= render 'investors/show-investors', operation: @operation %>
+    </div>
+    <div class="investor-list-footer">
+      <div class="investor-new-captable" id="new-captable-operation">
+        <%= render 'chart-new-captable-operation', shareholders: @shareholders %>
+      </div>
+      <div class="investor-list-add">
+        <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
+
+        <div id="form-add-investor-toggle" class="hidden">
+          <%= render 'form-add-investor', operation: @operation %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class='home-card'>
+  <div class = 'home-card-header'>
+    <h4 class="card-title">La Data Room</h4>
+  </div>
+  <div class="operation-card-body-text">
+    INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
+  </div>
+  <div class="investors-corner">
+    <div class="investor-list">
+      <div id="investor-list-partial">
+        <%= render 'dataroom-list', operation: @operation %>
+      </div>
+      <div>
+        <%= link_to  operation_s_documents_path(@operation) do %>
+          <button style="button" class="btn-transparent-small">Aller à la DataRoom</button>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div style="text-align: center;">
+  <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
+  <br>
+  <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
+</div>
+
+
