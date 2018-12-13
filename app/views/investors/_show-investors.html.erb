@@ -60,10 +60,10 @@
     <span><strong>Total</strong></span>
   </div>
   <div class="investor-list-header-amount">
-    <span><strong>SOMME</strong></span>
+    <span><strong><%= money_without_cents (@total_number_of_shares_operation * @price_per_share_operation) %> €</strong></span>
   </div>
   <div class="investor-list-header-shares">
-    <span><strong>SOMME</strong></span>
+    <span><strong><%= @total_number_of_shares_operation %></strong></span>
   </div>
   <div class="investor-list-header-status">
   </div>

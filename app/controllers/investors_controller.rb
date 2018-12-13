@@ -74,23 +74,27 @@ class InvestorsController < ApplicationController
   end
 
   def refresh_values_for_ajax
+    # Defines the total amount of the operation (progression chart)
+    ## Confirmed + Invited
     @shares_values = 0
+    @price_per_share_operation = 0
     investments_unconfirmed = Investment.joins(:operation).where("operations.id = ? AND (investments.status = 'confirmed' OR investments.status = 'pending')", @operation.id)
     investments_unconfirmed.each do |invest|
-      @shares_values += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
+      @price_per_share_operation = (invest.share_nominal_value + invest.share_premium)
+      @shares_values += (invest.number_of_shares * @price_per_share_operation)
     end
 
     @shares_values_confirmed = 0
     investments_confirmed = Investment.joins(:operation).where("operations.id = ? AND investments.status = 'confirmed'", @operation.id)
     investments_confirmed.each do |invest|
-      @shares_values_confirmed += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
+      @shares_values_confirmed += (invest.number_of_shares * @price_per_share_operation)
     end
 
     @s_document = SDocument.new
     @d_document = DDocument.new
 
     ## Historic shareholders
-    investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @operation.company.id, 'completed')
+    investments = Investment.joins(operation: :company).where("companies.id = ? AND operations.status = 'completed'", @operation.company.id)
     @shareholders = {}
     @total_number_of_shares_company = 0
     investments.each do |invest|
@@ -115,6 +119,13 @@ class InvestorsController < ApplicationController
     end
     ## Sort hash by number_of_shares
     @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort_by { |_k, v| v }.reverse.to_h
+
     @shareholders_with_pourcent = @shareholders.map { |k, value| [k, "#{k} - #{(value / @total_number_of_shares_company * 100)}%"] }.to_h
+
+    # Totals from the operation
+    @total_number_of_shares_operation = 0
+    new_investments.each do |invest|
+      @total_number_of_shares_operation += invest.number_of_shares
+    end
   end
 end

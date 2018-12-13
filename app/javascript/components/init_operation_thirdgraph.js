@@ -19,12 +19,12 @@ const graphthird = () => {
         {
           label: 'Invité',
           data: [data2],
-          backgroundColor: ['#2D3D4D'],
+          backgroundColor: ['#425e7f'],
         },
         {
           label: '',
           data: [data3],
-          backgroundColor: ['#7990a682'],
+          backgroundColor: ['#d4e0ef70'],
         },
       ],
     },
