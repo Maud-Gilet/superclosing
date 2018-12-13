@@ -1,10 +1,9 @@
 class DocusignService
   def initialize(document_id, user_id)
     @client = DocusignRest::Client.new
-    @document_id, @user_id = document_id, user_id
-    @d_document = DDocument.find(@document_id)
+    @d_document = DDocument.find(document_id)
     @operation = @d_document.operation
-    @user = User.find(@user_id)
+    @user = User.find(user_id)
     @pv_opening = DDocument.where(operation: @operation, document_type: "pv_opening")
   end
 
@@ -13,7 +12,8 @@ class DocusignService
     @user_first_name = @user.first_name
 
     name = 'show.html'
-    content = ApplicationController.render(
+    content = ApplicationController.render_with_signed_in_user(
+      @user,
       formats: :html,
       template: "d_documents/#{name}.erb",
       assigns: {  d_document: @d_document,
