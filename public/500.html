@@ -4,6 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+    <link href="https://fonts.googleapis.com/css?family=Barlow:300" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <meta charset="UTF-8">
 
@@ -72,10 +73,11 @@
     </style>
     <style>
   .plain.error-page-wrapper {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Barlow', sans-serif;
     background-color:#6355bc;
     padding:0 5%;
     position:relative;
+    font-weight: 300;
   }
 
   .plain.error-page-wrapper .content-container {
@@ -91,8 +93,11 @@
   }
 
   .plain.error-page-wrapper .content-container.in {
-    left: 0px;
+    margin-left: auto;
+    top: 108px;
+    margin-right: auto;
     opacity:1;
+    text-align: center;
   }
 
   .plain.error-page-wrapper .head-line {
@@ -113,7 +118,7 @@
     height:1px;
     background-color: rgba(255,255,255,.2);
     border:none;
-    width:250px;
+    width:400px;
     margin:35px 0;
   }
   .plain.error-page-wrapper .context {
@@ -129,17 +134,19 @@
     margin-top:12px;
   }
   .plain.error-page-wrapper .buttons-container {
-    margin-top: 45px;
-    overflow: hidden;
+    display: flex;
+    margin-top: 55px;
+    justify-content: center;
   }
   .plain.error-page-wrapper .buttons-container a {
     transition: color .2s linear, border-color .2s linear;
     font-size:14px;
     text-transform: uppercase;
+    max-width: 180px;
     text-decoration: none;
     color:#fff;
     border:2px solid white;
-    border-radius: 99px;
+    border-radius: 4px;
     padding:8px 30px 9px;
     display: inline-block;
     float:left;
@@ -147,9 +154,7 @@
   .plain.error-page-wrapper .buttons-container a:hover {
     background-color:rgba(255,255,255,.05);
   }
-  .plain.error-page-wrapper .buttons-container a:first-child {
-    margin-right:25px;
-  }
+
 
   @media screen and (max-width: 485px) {
     .plain.error-page-wrapper .header {
@@ -178,9 +183,6 @@
       width:45%;
       text-align: center;
     }
-    .plain.error-page-wrapper .buttons-container a:first-child {
-      margin-right:10%;
-    }
   }
 </style>
 
@@ -192,7 +194,7 @@
 
 
     .primary-text-color {
-      color: rgba(154, 160, 168, 1) !important;
+      color: #eee !important;
     }
 
     .secondary-text-color {
@@ -217,29 +219,23 @@
   </head>
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
-  <div class="head-line secondary-text-color">
-    500
-  </div>
-  <div class="subheader primary-text-color">
+    <div class="subheader primary-text-color">
     <img src="/images/eclair.png" alt="Superclosing" height="42" width="42">
-    SUPERCLOSING<br>
-    Nos serveurs sont fatigués.<br>
-    Looks like we're having <br>
-    some server issues.
+    SUPERCLOSING<br><br>
+    Nos serveurs sont un peu fatigués...<br>
   </div>
     <hr>
     <div class="clearfix"></div>
     <div class="context primary-text-color">
 
     <p>
-      Go back to the previous page and try again.
-      If you think something is broken, report a problem.
+      Revenez à la page précédente ; et n'hésitez pas à nous faire part d'un quelconque problème.
     </p>
 
 
     </div>
   <div class="buttons-container">
-    <a class="border-button" href="mailto:support@superclosing.com" target="_blank">Report A Problem</a>
+    <a class="border-button" href="mailto:support@superclosing.com" target="_blank">Nous contacter</a>
   </div>
 </div>
 
