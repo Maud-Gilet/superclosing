@@ -7,7 +7,7 @@
 
 
 
-  <div>
+  <div class= operation-page-content>
     <div class='home-card'>
       <div class = 'home-card-header'>
         <h4 class="card-title">Le club des Investisseurs</h4>
@@ -34,54 +34,36 @@
           </div>
         </div>
       </div>
-
     </div>
-    <div id="investor-list-partial">
-      <%= render 'investors/show-investors', operation: @operation %>
-    </div>
-    <div class="investor-list-footer">
-      <div class="investor-new-captable" id="new-captable-operation">
-        <%= render 'chart-new-captable-operation', shareholders: @shareholders %>
-      </div>
-      <div class="investor-list-add">
-        <button type="button" class="btn-transparent-small" id="btn-add-investor"> Ajouter un investisseur</button>
-
-        <div id="form-add-investor-toggle" class="hidden">
-          <%= render 'form-add-investor', operation: @operation %>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+
 
 <div class='home-card'>
   <div class = 'home-card-header'>
     <h4 class="card-title">La Data Room</h4>
   </div>
   <div class="operation-card-body-text">
-    INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : Pitch, Business Plan, Etats financiers, documents juridiques... Ils seront accessibles pour vos investisseurs.
+    INFO : Retrouvez ici l'ensemble des documents relatifs à l'opération en cours : pitch, business plan, états financiers, documents juridiques... <strong>Vos investisseurs y auront accès.</strong>
   </div>
   <div class="investors-corner">
     <div class="investor-list">
       <div id="investor-list-partial">
         <%= render 'dataroom-list', operation: @operation %>
       </div>
-      <div>
+      <div style="text-align: center;">
         <%= link_to  operation_s_documents_path(@operation) do %>
-          <button style="button" class="btn-transparent-small">Aller à la DataRoom</button>
-
+          <button style="button" class="btn-transparent-small">Aller à la Data Room</button>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
+<!--
 <hr>
-<div style="text-align: center;">
-  <%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id) %>
+<div style="text-align: center; margin-bottom: 20px;">
+  <=%= link_to 'Retour à la liste des opérations', company_operations_path(@operation.company.id), style: "text-decoration: none;" %>
   <br>
-  <%= link_to 'Retour au menu principal', company_path(@operation.company.id) %>
-</div>
+  <=%= link_to 'Retour au menu de la société', company_path(@operation.company.id), style: "text-decoration: none;" %>
+</div> -->
 
 
