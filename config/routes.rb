@@ -32,5 +32,7 @@ Rails.application.routes.draw do
   resources :d_documents, only: :show
   resources :investments, only: [:show, :edit, :update, :destroy]
   resources :roles
+
+  get "send_signatures", to: "docusigns#send_envelope", as: 'send_signatures'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,7 +1,3 @@
-<% @user = User.find(params[:user_id]) %>
-<% @pv_opening = DDocument.where(operation_id: @operation.id, document_type: "pv_opening") %>
-<% @user_investment = @user.investments.where(operation_id: @operation.id).last %>
-
 <div class="pv_header" style="text-align: center">
   <br>
 
@@ -52,6 +48,7 @@
 
 
 ____________________________
+<p> You should sign here: </p>
 
 <p><%= @user.first_name %> <%= @user.last_name %></p>
 
