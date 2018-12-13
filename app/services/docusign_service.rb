@@ -1,18 +1,33 @@
 class DocusignService
-  def initialize
+  def initialize(document_id, user_id)
     @client = DocusignRest::Client.new
+    @document_id, @user_id = document_id, user_id
+    @d_document = DDocument.find(@document_id)
+    @operation = @d_document.operation
+    @user = User.find(@user_id)
+    @pv_opening = DDocument.where(operation: @operation, document_type: "pv_opening")
   end
 
-  def init_envelope
-    name = 'test.pdf'
+  def init_envelope_bs
+    bs_variables_for_show
+    @user_first_name = @user.first_name
+
+    name = 'show.html'
     content = ApplicationController.render(
       formats: :html,
       template: "d_documents/#{name}.erb",
-      assigns: { document: @document }
+      assigns: {  d_document: @d_document,
+                  operation: @operation,
+                  user: @user,
+                  user_investment: @user_investment,
+                  pv_opening: @pv_opening,
+                  nominal: @nominal,
+                  total_of_shares: @total_of_shares,
+                  capital_augmentation: @capital_augmentation }
     )
 
     pdf = WickedPdf.new.pdf_from_string(content)
-    file = Tempfile.new(["contract", ".pdf"])
+    file = Tempfile.new([@d_document.title.to_s, ".pdf"])
 
     File.open(file, 'wb') do |f|
       f << pdf
@@ -46,5 +61,26 @@ class DocusignService
       files: files,
       status: 'sent'
     )
+  end
+
+  private
+
+  def total_of_shares_number
+    array_of_shares = []
+
+    @operation.investments.each do |investment|
+      array_of_shares << investment.number_of_shares
+    end
+    @total_of_shares = array_of_shares.sum
+  end
+
+  def bs_variables_for_show
+    @user_investment = @user.investments.where(operation_id: @operation.id).last
+
+    @nominal = @operation.company.share_nominal_value
+
+    total_of_shares_number
+
+    @capital_augmentation = @total_of_shares * @nominal
   end
 end
