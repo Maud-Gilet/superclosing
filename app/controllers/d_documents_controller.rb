@@ -14,6 +14,7 @@ class DDocumentsController < ApplicationController
   end
 
   def show
+
     @d_document = DDocument.find(params[:id])
     @operation = @d_document.operation
     if @d_document.document_type == 'subscription_bund'
