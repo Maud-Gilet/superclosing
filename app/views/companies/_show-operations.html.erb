@@ -42,7 +42,7 @@
                   <h5><strong><%= money_without_cents operation.target_amount %> euros</strong></h5>
                 </div>
                 <div class="operation-list-date">
-                   <h5><%= operation.expected_closing_date.strftime("%d/%m/%Y") %></h5>
+                   <h5><%= operation.expected_closing_date %></h5>
                 </div>
                 <div class="operation-list-status">
                   <% if operation.status == 'completed' %>
