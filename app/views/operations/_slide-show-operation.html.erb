@@ -12,7 +12,8 @@
   </p>
 
   <%= simple_form_for @d_document, url: create_documents_operation_path(@operation), method: "post" do |f| %>
-    <%= f.submit 'Lancer les signatures', class: 'btn btn-form-action small' %>
+    <%= f.submit 'Lancer les signatures', class: 'btn-slide' %>
+     <i class="fas fa-file-signature"></i>
 
   <% end %>
 </div>
