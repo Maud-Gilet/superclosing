@@ -6,7 +6,7 @@
 
   <div class="doc-container">
     <% @operation.d_documents.each do |ddoc| %>
-      <%= link_to d_document_path(@operation, ddoc) do %>
+      <%= link_to d_document_path(ddoc) do %>
         <div class="doc-card partition">
           <div class="sign-card-logo">
             <i class="fas fa-edit"></i>

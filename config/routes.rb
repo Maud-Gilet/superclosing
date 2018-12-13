@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :operations, only: :show do
     member do
       post "create_documents", to: "d_documents#create_documents"
+      post "sign_documents", to: "d_documents#sign_documents"
       # post "/operations/:id/create_documents", to: "d_documents#create_documents"
     end
     resources :d_documents, only: [:index]
