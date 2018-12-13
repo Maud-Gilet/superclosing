@@ -75,9 +75,17 @@ class InvestorsController < ApplicationController
 
   def refresh_values_for_ajax
     @shares_values = 0
-    @operation.investments.each do |invest|
-      @shares_values += invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium)
+    investments_unconfirmed = Investment.joins(:operation).where("operations.id = ? AND (investments.status = 'confirmed' OR investments.status = 'pending')", @operation.id)
+    investments_unconfirmed.each do |invest|
+      @shares_values += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
     end
+
+    @shares_values_confirmed = 0
+    investments_confirmed = Investment.joins(:operation).where("operations.id = ? AND investments.status = 'confirmed'", @operation.id)
+    investments_confirmed.each do |invest|
+      @shares_values_confirmed += (invest.number_of_shares * (@operation.company.share_nominal_value + invest.share_premium))
+    end
+
     @s_document = SDocument.new
     @d_document = DDocument.new
 
