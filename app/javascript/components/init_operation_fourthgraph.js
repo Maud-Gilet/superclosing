@@ -12,18 +12,19 @@ const graphfourth = ()=>{
               label: '# of Votes',
               data: shares,
               backgroundColor: [
-                  '#0d627a',
-                  '#0c907d',
-                  '#40a8c4',
-                  '#cce490',
-                  '#a6cb12'
+                  '#6b8fb2',
+                  '#2D3D4D',
+                  '#E57C04',
+                  '#FC9E4F',
+                  '#FBB02D'
               ],
               borderColor: [
-                  '#0d627a',
-                  '#0c907d',
-                  '#40a8c4',
-                  '#cce490',
-                  '#a6cb12'
+                  '#6b8fb2',
+                  '#2D3D4D',
+                  '#E57C04',
+                  '#FC9E4F',
+                  '#FBB02D'
+
               ],
               borderWidth: 1
           }]

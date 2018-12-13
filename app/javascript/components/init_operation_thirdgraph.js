@@ -14,17 +14,17 @@ const graphthird = () => {
         {
           label: 'Confirmé',
           data: [data1],
-          backgroundColor: ['#0c907d'],
+          backgroundColor: ['#2D3D4D'],
         },
         {
           label: 'Invité',
           data: [data2],
-          backgroundColor: ['#add2c9'],
+          backgroundColor: ['#2D3D4D'],
         },
         {
           label: '',
           data: [data3],
-          backgroundColor: ['red'],
+          backgroundColor: ['#7990a682'],
         },
       ],
     },

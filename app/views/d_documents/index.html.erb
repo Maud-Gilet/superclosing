@@ -12,7 +12,7 @@
         <li>
           <div class="doc-list-header">
             <div class="sign-list-name" style="width: 800px !important;">
-              <span>Procés Verbal d'ouverture - Décision des associés historiques de procéder à la levée</span>
+              <span>Procès-verbal d'ouverture - Décision des associés historiques de procéder à la levée</span>
             </div>
           </div>
         </li>
@@ -29,7 +29,7 @@
 
                   <div class="sign-card-body">
 
-                  <%= link_to d_document_path(@operation.d_documents.first) do %>
+                  <%= link_to d_document_path(@operation.d_documents.first), target: :_blank do %>
                       <div class="sign-card-avatar">
                         <i class="fas fa-file-pdf"></i>
                       </div>
@@ -59,7 +59,7 @@
         <li>
           <div class="doc-list-header">
             <div class="sign-list-name" style="width: 800px !important;">
-              <span>Bons de souscription - Chaque nouvel associé confirme sa souscription</span>
+              <span>Bulletins de souscription - Chaque nouvel associé confirme sa souscription</span>
             </div>
           </div>
         </li>
@@ -78,7 +78,7 @@
 
                   <div class="sign-card-body">
 
-                  <%= link_to d_document_path(ddoc) do %>
+                  <%= link_to d_document_path(ddoc), target: :_blank do %>
                       <div class="sign-card-avatar">
                         <i class="fas fa-file-pdf"></i>
                       </div>
@@ -110,7 +110,7 @@
         <li>
           <div class="doc-list-header">
             <div class="sign-list-name" style="width: 800px !important;">
-              <span>Procés Verbal de fermeture - Les associés (anciens et nouveaux) constatent la levée</span>
+              <span>Procès-verbal de clôture - Les associés (anciens et nouveaux) constatent la levée</span>
             </div>
           </div>
         </li>
@@ -127,7 +127,7 @@
 
                   <div class="sign-card-body">
 
-                  <%= link_to d_document_path(@operation.d_documents.second) do %>
+                  <%= link_to d_document_path(@operation.d_documents.second), target: :_blank do %>
                       <div class="sign-card-avatar">
                         <i class="fas fa-file-pdf"></i>
                       </div>

@@ -39,12 +39,12 @@ class DDocumentsController < ApplicationController
 
     @pv_opening = DDocument.where(operation_id: @operation.id, document_type: "pv_opening")
 
-    @d_document = DDocument.new(title: "PV de sortie", document_type: 'pv_closing', operation: @operation, status: 'unsigned')
+    @d_document = DDocument.new(title: "PV de closing", document_type: 'pv_closing', operation: @operation, status: 'unsigned')
     @d_document.save!
 
     @operation.investments.each do |investment|
       @user = investment.user
-      @d_document = DDocument.new(title: "Bon de souscription / #{investment.user.last_name} #{investment.user.first_name} ", document_type: 'subscription_bund', operation: @operation, user: @user, status: 'unsigned')
+      @d_document = DDocument.new(title: "Bulletin de souscription / #{investment.user.last_name} #{investment.user.first_name} ", document_type: 'subscription_bund', operation: @operation, user: @user, status: 'unsigned')
       @d_document.save!
     end
 
