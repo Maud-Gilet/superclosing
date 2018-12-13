@@ -32,8 +32,7 @@
     <% if current_user.roles.first.nil? %>
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-link" do %>
-          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color"></span>ociétés</span><span class="sidebar-letter-color">S</span>ociétés</span></i>
-        <% end %>
+          <i class="fas fa-columns"><span id="sidebar-item-1"><span class="sidebar-letter-color">S</span>ociétés</span></i>
       </div>
     <% else %>
       <div class="sidebar-item">
