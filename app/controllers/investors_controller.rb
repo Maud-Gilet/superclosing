@@ -92,25 +92,29 @@ class InvestorsController < ApplicationController
     ## Historic shareholders
     investments = Investment.joins(operation: :company).where('companies.id = ? AND operations.status = ?', @operation.company.id, 'completed')
     @shareholders = {}
+    @total_number_of_shares_company = 0
     investments.each do |invest|
       if @shareholders.key?(invest.user_id)
         @shareholders[invest.user_id] += invest.number_of_shares
       else
         @shareholders[invest.user_id] = invest.number_of_shares
       end
+      @total_number_of_shares_company += invest.number_of_shares
     end
     ## New shareholders
     if @operation.status != 'completed'
-      new_investments = Investment.joins(:operation).where("operations.id = 5 AND (investments.status = 'confirmed' OR investments.status = 'pending')")
+      new_investments = Investment.joins(:operation).where("operations.id = ? AND (investments.status = 'confirmed' OR investments.status = 'pending')", @operation.id)
       new_investments.each do |invest|
         if @shareholders.key?(invest.user_id)
           @shareholders[invest.user_id] += invest.number_of_shares
         else
           @shareholders[invest.user_id] = invest.number_of_shares
         end
+        @total_number_of_shares_company += invest.number_of_shares
       end
     end
     ## Sort hash by number_of_shares
     @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort_by { |_k, v| v }.reverse.to_h
+    @shareholders_with_pourcent = @shareholders.map { |k, value| [k, "#{k} - #{(value / @total_number_of_shares_company * 100)}%"] }.to_h
   end
 end

@@ -49,9 +49,9 @@ const graphfourth = ()=>{
           legend: {
             position: 'right',
             labels: {
-              padding: 14,
+              padding: 12,
               fontFamily: 'Barlow',
-              fontSize: 12
+              fontSize: 14
             }
 
           }
