@@ -28,3 +28,25 @@
   position: relative;
   font-size: 12px !important;
 }
+
+.doc-list-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 4px 7px;
+  border-top: 1px solid #ffac30;
+  border-bottom: 1px solid #ffac30;
+  & span {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
+
+.sign-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+

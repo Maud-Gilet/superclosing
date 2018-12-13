@@ -1,30 +1,135 @@
+<div id="slide-info-fin">
+  <%= render 'slide-info-fin', company: @company, operation: @operation %>
+</div>
 
 <div class="main-width">
 
-
-  <h1>Documents à Signer</h1>
-  <p>Opération de <%= @operation.category %> : <%= @operation.name %></p>
-
-  <div class="doc-container">
-    <% @operation.d_documents.each do |ddoc| %>
-      <%= link_to d_document_path(@operation, ddoc) do %>
-        <div class="doc-card partition">
-          <div class="sign-card-logo">
-            <i class="fas fa-edit"></i>
-          </div>
-          <div class="doc-card-body">
-            <div class="doc-card-avatar">
-              <i class="fas fa-file-pdf"></i>
-            </div>
-            <div class="sign-card-header">
-              <%= ddoc.title %>
-              <i class="fas fa-envelope"></i>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+  <!--   <div class='row'> -->
+      <!-- <div class = 'col col-xs-12'> -->
+<div class='home-card' id='show-operations-card'>
+  <div class = 'home-card-header'>
+    <h4>Documents à signer</h4><p>Opération de <%= @operation.category %> : <%= @operation.name %></p>
   </div>
+  <div class="home-card-body operation-body">
+    <div class="operation-list-card">
+      <ul >
+        <li>
+          <div class="doc-list-header">
+            <div class="sign-list-name" style="width: 800px !important;">
+              <span>Procés Verbal d'ouverture - Décision des associés historiques de procéder à la levée</span>
+            </div>
+          </div>
+        </li>
+
+            <li>
+              <div class="sign-container">
+                <div class="doc-card partition">
+                  <div class="sign-card-logo">
+                    <i class="fas fa-edit"></i>
+                  </div>
+                  <div class="doc-card-body">
+                    <div class="doc-card-avatar">
+                      <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="sign-card-header">
+                      <%= @operation.d_documents.first.title %>
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="home-card-body operation-body">
+    <div class="operation-list-card">
+      <ul >
+        <li>
+          <div class="doc-list-header">
+            <div class="sign-list-name" style="width: 800px !important;">
+              <span>Bons de souscription - Chaque nouvel associé confirme sa souscription</span>
+            </div>
+          </div>
+        </li>
+
+            <li>
+              <div class="sign-container">
+                  <% @operation.d_documents.each do |ddoc| %>
+                    <% if ddoc.title.include?("souscription") %>
+                    <%= link_to d_document_path(ddoc) do %>
+                      <div class="doc-card partition">
+                        <div class="sign-card-logo">
+                          <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="doc-card-body">
+                          <div class="doc-card-avatar">
+                            <i class="fas fa-file-pdf"></i>
+                          </div>
+                          <div class="sign-card-header">
+                            <%= ddoc.title %>
+                            <i class="fas fa-envelope"></i>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="home-card-body operation-body">
+    <div class="operation-list-card">
+      <ul >
+        <li>
+          <div class="doc-list-header">
+            <div class="sign-list-name" style="width: 800px !important;">
+              <span>Procés Verbal de fermeture - Les associés (anciens et nouveaux) constatent la levée</span>
+            </div>
+          </div>
+        </li>
+
+            <li>
+              <div class="sign-container">
+              <div class="doc-card partition">
+                <div class="sign-card-logo">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <div class="doc-card-body">
+                  <div class="doc-card-avatar">
+                    <i class="fas fa-file-pdf"></i>
+                  </div>
+                  <div class="sign-card-header">
+                    <%= @operation.d_documents.second.title %>
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+ <!--  </div> -->
+<!-- </div> -->
+
+
+
+
+
+
+
+
 
 
 

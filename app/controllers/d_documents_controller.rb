@@ -15,7 +15,6 @@ class DDocumentsController < ApplicationController
   end
 
   def show
-    @d_document = DDocument.find(params[:id])
     if @d_document.document_type == 'subscription_bunds'
       @user = User.find(params[:user_id])
     end
