@@ -5,7 +5,7 @@
     <% end %>
 
   <% unless @operation.target_amount.nil? %>
-    <h4 class="huge"><%= (money_without_cents @shares_values * 100 / @operation.target_amount) %> %</h4>
+    <h4 class="huge"><%= (money_without_cents @shares_values * 100 / @operation.target_amount.to_f).to_f.round(0) %> %</h4>
     <p>des fonds collectés</p>
   <% end %>
   <p>Montant visé : <%= money_without_cents @operation.target_amount %> €
