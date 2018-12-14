@@ -46,6 +46,10 @@ puts 'Deleting all Companies'
 
 Company.destroy_all
 
+puts 'Deleting all Operations'
+
+Operation.destroy_all
+
 puts 'Creating 1 Company for the demo ...................'
 
 new_companies = [
