@@ -23,9 +23,15 @@
         <li>
           <div class="sign-container">
             <div class="doc-card partition-sign">
-              <div class="sign-card-logo" style="color: #C4E0CE !important;">
-                <i class="far fa-check-circle"></i>
-              </div>
+              <% if @operation.d_documents.first.status == 'sent' %>
+                <div class="sign-card-logo" style="color: $green !important;">
+                  <i class="far fa-check-circle" style="font-size: 1.3em;"></i>
+                </div>
+              <% else %>
+                <div class="sign-card-logo" style="color: #C4E0CE !important;">
+                  <i class="far fa-check-circle"></i>
+                </div>
+              <% end %>
               <div class="sign-card-body">
                 <%= link_to d_document_path(@operation.d_documents.first), target: :_blank do %>
                   <div class="sign-card-avatar">
@@ -37,7 +43,7 @@
                   </div>
                 <% end %>
 
-                <%= link_to  do %>
+                <%= link_to operation_d_document_sign_documents_path(@operation, @operation.d_documents.first) do %>
                   <div class="sign-send">
                     <i class="fas fa-paper-plane"></i>
                   </div>
@@ -65,9 +71,15 @@
             <% @operation.d_documents.each do |ddoc| %>
               <% if ddoc.title.include?("souscription") %>
                 <div class="doc-card partition-sign">
-                  <div class="sign-card-logo" style="color: #C4E0CE !important;">
-                    <i class="far fa-check-circle"></i>
-                  </div>
+                  <% if ddoc.status == 'sent' %>
+                    <div class="sign-card-logo" style="color: $green !important;">
+                      <i class="far fa-check-circle" style="font-size: 1.3em;"></i>
+                    </div>
+                  <% else %>
+                    <div class="sign-card-logo" style="color: #C4E0CE !important;">
+                      <i class="far fa-check-circle"></i>
+                    </div>
+                  <% end %>
                   <div class="sign-card-body">
                     <%= link_to d_document_path(ddoc), target: :_blank do %>
                       <div class="sign-card-avatar">
@@ -78,7 +90,7 @@
                       </div>
                     <% end %>
 
-                    <%= link_to  do %>
+                    <%= link_to operation_d_document_sign_documents_path(@operation, ddoc) do %>
                       <div class="sign-send">
                         <i class="fas fa-paper-plane"></i>
                       </div>
@@ -106,9 +118,15 @@
         <li>
           <div class="sign-container">
             <div class="doc-card partition-sign">
-              <div class="sign-card-logo" style="color: #C4E0CE !important;">
-                <i class="far fa-check-circle"></i>
-              </div>
+              <% if @operation.d_documents.second.status == 'sent' %>
+                <div class="sign-card-logo" style="color: $green !important;">
+                  <i class="far fa-check-circle" style="font-size: 1.3em;"></i>
+                </div>
+              <% else %>
+                <div class="sign-card-logo" style="color: #C4E0CE !important;">
+                  <i class="far fa-check-circle"></i>
+                </div>
+              <% end %>
               <div class="sign-card-body">
                 <%= link_to d_document_path(@operation.d_documents.second), target: :_blank do %>
                   <div class="sign-card-avatar">
@@ -118,7 +136,7 @@
                     <%= @operation.d_documents.second.title %>
                   </div>
                 <% end %>
-                <%= link_to  do %>
+                <%= link_to operation_d_document_sign_documents_path(@operation, @operation.d_documents.first) do %>
                   <div class="sign-send">
                     <i class="fas fa-paper-plane"></i>
                   </div>
