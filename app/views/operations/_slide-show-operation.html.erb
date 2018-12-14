@@ -4,7 +4,7 @@
     <p>En cours</p>
     <% end %>
 
-  <% unless @operation.target_amount %>
+  <% unless @operation.target_amount.nil? %>
     <h4 class="huge"><%= (money_without_cents @shares_values * 100 / @operation.target_amount) %> %</h4>
     <p>des fonds collectés</p>
   <% end %>

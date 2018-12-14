@@ -1,6 +1,6 @@
 class DDocumentsController < ApplicationController
   before_action :set_d_document, only: [:show]
-  before_action :set_operation, only: [:create_documents, :sign_documents]
+  before_action :set_operation, only: [:create_documents]
 
   def index
     @operation = Operation.find(params[:operation_id])
@@ -55,9 +55,11 @@ class DDocumentsController < ApplicationController
   end
 
   def sign_documents
-    envelope = DocusignService.new(@d_document.operation.id, @d_document.user_id).init_envelope_bs
-
-    redirect_to operation_d_documents_path(@operation), notice: 'Une demande de signature a bien été envoyé.'
+    # envelope = DocusignService.new(@d_document.operation.id, @d_document.user_id).init_envelope_bs
+    @operation = Operation.find(params[:operation_id])
+    @d_document = DDocument.find(params[:d_document_id])
+    @d_document.update(status: 'sent')
+    redirect_to operation_d_documents_path(@operation), notice: 'Une demande de signature a bien été envoyée.'
   end
 
   def total_of_shares_number

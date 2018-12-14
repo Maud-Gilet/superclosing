@@ -23,10 +23,12 @@ Rails.application.routes.draw do
   resources :operations, only: :show do
     member do
       post "create_documents", to: "d_documents#create_documents"
-      post "sign_documents", to: "d_documents#sign_documents"
       # post "/operations/:id/create_documents", to: "d_documents#create_documents"
     end
-    resources :d_documents, only: [:index]
+    resources :d_documents, only: [:index] do
+      get "sign_documents", to: "d_documents#sign_documents"
+    end
+
     resources :s_documents, only: [:index, :show, :new, :create, :destroy]
   end
 
@@ -39,6 +41,5 @@ Rails.application.routes.draw do
 
   resources :roles
 
-  get "send_signatures", to: "docusigns#send_envelope", as: 'send_signatures'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
