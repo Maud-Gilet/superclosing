@@ -43,7 +43,7 @@ function refreshSlide(slideHTML) {
 }
 
 
-<% if @investment.errors.any? %>
+<% if @investment.nil? || @investment.errors.any? %>
   closeForm();
   regenerateButton();
   refreshForm();
