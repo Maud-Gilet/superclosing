@@ -84,7 +84,7 @@ class OperationsController < ApplicationController
     ## Sort hash by number_of_shares
     @shareholders = @shareholders.transform_keys{ |key| "#{User.find(key).last_name} #{User.find(key).first_name}" }.sort_by { |_k, v| v }.reverse.to_h
 
-    @shareholders_with_pourcent = @shareholders.map { |k, value| [k, "#{k} - #{(value.to_f / @total_number_of_shares_company.to_f * 100).to_i}%"] }.to_h
+    @shareholders_with_pourcent = @shareholders.map { |k, value| [k, "#{k} - #{(value.to_f / @total_number_of_shares_company.to_f * 100).round(0)}%"] }.to_h
 
     # Totals from the operation
     @total_number_of_shares_operation = 0
