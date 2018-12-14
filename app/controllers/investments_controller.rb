@@ -1,5 +1,5 @@
 class InvestmentsController < ApplicationController
-  before_action :set_investment, only: [:show, :edit, :update, :destroy]
+  before_action :set_investment, only: [:show, :edit, :update, :destroy, :confirm_invest]
 
   def index
     @operation = Operation.find(params[:operation_id])
@@ -27,6 +27,11 @@ class InvestmentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def confirm_invest
+    @investment.update(status: 'confirmed')
+    redirect_to root_path, notice: 'Votre investissement est confirmé!'
   end
 
   def update

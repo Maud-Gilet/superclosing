@@ -31,7 +31,12 @@ Rails.application.routes.draw do
   end
 
   resources :d_documents, only: :show
-  resources :investments, only: [:show, :edit, :update, :destroy]
+  resources :investments, only: [:show, :edit, :update, :destroy] do
+    member do
+      patch 'confirm_invest', to: 'investments#confirm_invest'
+    end
+  end
+
   resources :roles
 
   get "send_signatures", to: "docusigns#send_envelope", as: 'send_signatures'
