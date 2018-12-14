@@ -9,7 +9,7 @@ body {
   padding:0px;
 }
 .sc-banner {
-  height: 100vh;
+  height: 65vh;
   background-size: cover;
   color: white;
   text-align: center;
@@ -30,14 +30,14 @@ body {
   max-width: 900px;
   width: 100%;
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 26px;
 }
 
 .banner-features {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 20px;
   background: #2D3D4D;
 }
@@ -58,6 +58,7 @@ body {
   }
   & h5 {
     font-size:24px;
+    font-family: 'Barlow' !important;
     font-weight: 700px;
     margin-bottom: 12px;
   }
