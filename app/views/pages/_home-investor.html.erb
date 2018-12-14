@@ -10,6 +10,11 @@
       <% unless invest.operation.category == 'initialize-captable' %>
         <li>
           <div class="operation-list">
+            <div class="operation-list-link">
+              <%= link_to confirm_invest_investment_path(invest), method: :patch do %>
+                <button style="button" class="btn-form-action">CONFIRMER</button>
+              <% end %>
+            </div>
             <div class="operation-list-category">
               <div>
                 <span>Nom</span>
@@ -18,7 +23,7 @@
                 <h5><%= invest.operation.name %></h5>
               </div>
             </div>
-            <div class="operation-list-category">
+            <!-- <div class="operation-list-category">
               <div>
                 <span>Catégorie</span>
               </div>
@@ -59,7 +64,7 @@
                   <h5><%= invest.operation.expected_closing_date %></h5>
                 </div>
               <% end %>
-            </div>
+            </div> -->
             <div class="operation-list-status">
               <div>
                 <span>Statut de votre investissement</span>
