@@ -19,6 +19,15 @@ body {
   justify-content: space-around;
 }
 
+.banner-title {
+  text-align: center;
+  h2 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
 .banner-content {
   p {
     font-size: 1.5em;
