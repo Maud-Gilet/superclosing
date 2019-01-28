@@ -8,8 +8,9 @@ body {
   margin: 0;
   padding: 0px;
 }
+
 .sc-banner {
-  height: 92vh;
+  height: 90vh;
   background-size: cover;
   color: white;
   text-align: center;
@@ -35,6 +36,14 @@ body {
   }
 }
 
+.banner-title {
+  font-size: 32px;
+  text-align: center;
+  background: #f7f9fb00;
+  padding-top: 20px;
+  color: #293d4e;
+}
+
 #superclosing-landing-logo{
   max-width: 900px;
   width: 100%;
@@ -48,7 +57,7 @@ body {
   flex-wrap: wrap;
   padding-top: 40px;
   padding-bottom: 20px;
-  background: #2D3D4D;
+  background: #f7f9fb00;
 }
 
 .sc-landing-feature {
@@ -57,9 +66,10 @@ body {
   margin-bottom: 25px;
   width: 380px;
   height: 290px;
-  background: #b5aa9a4d;
-  color:#eee;
-  border-radius: 4px;
+  background: white;
+  color: #293d4e;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px 1px #2d3d4d33;
   & i {
     font-size: 48px;
     color: #ffac30;
@@ -74,7 +84,7 @@ body {
   & p {
     font-size: 16px;
     font-weight: 500px;
-    color: white;
+    color: #2d3d4d;
   }
 
 }
