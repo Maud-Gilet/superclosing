@@ -9,7 +9,7 @@ body {
   padding: 0px;
 }
 .sc-banner {
-  height: 100vh;
+  height: 92vh;
   background-size: cover;
   color: white;
   text-align: center;
@@ -45,7 +45,7 @@ body {
 .sc-landing-feature {
   text-align: center;
   padding: 22px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   width: 380px;
   height: 290px;
   background: #b5aa9a4d;
@@ -57,7 +57,7 @@ body {
     margin-bottom: 12px;
   }
   & h5 {
-    font-size:24px;
+    font-size: 22px;
     font-family: 'Barlow' !important;
     font-weight: 700px;
     margin-bottom: 12px;
@@ -65,8 +65,13 @@ body {
   & p {
     font-size: 16px;
     font-weight: 500px;
+    color: white;
   }
 
+}
+
+.landing-inner-title {
+  height: 60px;
 }
 .landing-inner-text{
   padding: 8px;

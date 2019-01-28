@@ -1,11 +1,11 @@
 <div class="wrapper">
   <div class="sc-banner" style="background-image: linear-gradient(-225deg, rgba(156, 149, 149, 0.3) 0%, rgba(51, 63, 43, 0.3) 70%), url(<%= asset_path "background.jpg" %>);">
 
-    <div class="signin">
-      <%= link_to new_user_session_path do %>
+   <!--  <div class="signin">
+      <%#= link_to new_user_session_path do %>
         <button type="button" class="btn btn-landing-signin">Connexion</button>
-      <% end %>
-    </div>
+      <%# end %>
+    </div> -->
 
     <div class="banner-content">
       <div>
@@ -13,11 +13,11 @@
       </div>
 
       <div>
-        <p>Votre levée de fonds <span id="typed_text"></span></p>
+        <p>Votre opération sur capital <span id="typed_text"></span></p>
       </div>
 
         <%#= link_to new_user_registration_path do %>
-         <button type="button" class="btn btn-landing-signup">Lancez-vous</button>
+         <a class="btn btn-landing-signup" href="mailto:contact@superclosing.com?subject=Demande%20de%20renseignements&#038;body=Bonjour,%20je%20souhaiterais%20avoir%20des%20renseignements%20sur%20votre%20service.%20Merci,">Tenez-moi au courant !</a>
       <%# end %>
 
       </div>
@@ -25,34 +25,42 @@
 </div>
 
 <div class="wrapper">
+  <div class="banner-title">
+    <h2>Ce que nous vous proposons ...</h2>
+  </div>
   <div class = banner-features>
-
     <div class="sc-landing-feature">
       <i class="fas fa-compass"></i>
-      <h5><strong>Une levée de fonds <br> simplifiée</strong></h5>
+      <div class="landing-inner-title">
+        <h5><strong>Vos opérations sur capital <br> simplifiées</strong></h5>
+      </div>
       <div class='landing-inner-text'>
         <p>
-          Nous vous accompagnons étape par étape dans votre levée : chaque étape est expliquée et détaillée - avec tous les documents adaptés à votre situation.
+          Nous vous accompagnons étape par étape dans votre opération : chaque étape est expliquée et détaillée - avec tous les documents adaptés à votre situation
         </p>
       </div>
     </div>
 
     <div class="sc-landing-feature">
       <i class="fas fa-clipboard-check"></i>
-      <h5><strong>Un processus unifié et centralisé</strong></h5>
+      <div class="landing-inner-title">
+        <h5><strong>Un processus unifié et centralisé</strong></h5>
+      </div>
       <div class='landing-inner-text'>
         <p>
-          Une documentation juridique unique, un partage d’informations transparent avec vos investisseurs, une information toujours à jour.
+          Une plateforme unique, un partage d’informations transparent avec vos investisseurs, une documentation toujours à jour
         </p>
       </div>
     </div>
 
     <div class="sc-landing-feature">
       <i class="fas fa-tachometer-alt"></i>
-      <h5><strong>Une solution moins chère et plus rapide</strong></h5>
+      <div class="landing-inner-title">
+        <h5><strong>Une solution moins chère et plus rapide</strong></h5>
+      </div>
       <div class='landing-inner-text'>
         <p>
-          Toutes les étapes sont gérées par votre outil, pas de recours à des prestataires externes générant coûts et complexité.
+          Toutes les étapes sont gérées par votre outil, pas de recours à des prestataires externes générant coûts et complexité
         </p>
       </div>
     </div>
