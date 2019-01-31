@@ -40,7 +40,7 @@ body {
   font-size: 32px;
   text-align: center;
   background: #f7f9fb00;
-  padding-top: 20px;
+  padding-top: 30px;
   color: #293d4e;
 }
 
@@ -55,8 +55,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding-top: 30px;
   background: #f7f9fb00;
 }
 
@@ -96,6 +95,14 @@ body {
   padding: 8px;
   height:160px;
 }
+.landing-video {
+  text-align: center;
+  padding-bottom: 50px;
+}
+#embed-demoday-video {
+  padding-top: 30px;
+}
+
 
 .landing-footer {
   background: #2D3D4D;
