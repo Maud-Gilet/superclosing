@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.4'
 
 gem 'bootsnap', require: false
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
